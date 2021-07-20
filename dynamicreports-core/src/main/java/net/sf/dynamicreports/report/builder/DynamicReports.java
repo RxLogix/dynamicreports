@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -140,7 +140,7 @@ public class DynamicReports {
 		return new JasperConcatenatedReportBuilder(jasperReportHandler);
 	}
 
-	// field
+	//field
 	public static <T> FieldBuilder<T> field(String name, Class<T> valueClass) {
 		FieldBuilder<T> fieldBuilder = new FieldBuilder<T>(name, valueClass);
 		try {
@@ -158,7 +158,7 @@ public class DynamicReports {
 		return fieldBuilder;
 	}
 
-	// variable
+	//variable
 	public static <T> VariableBuilder<T> variable(ValueColumnBuilder<?, ?> column, Calculation calculation) {
 		Validate.notNull(column, "column must not be null");
 		return new VariableBuilder<T>(column, calculation);
@@ -194,7 +194,7 @@ public class DynamicReports {
 		return new VariableBuilder<T>(name, expression, calculation);
 	}
 
-	// sort
+	//sort
 	public static SortBuilder asc(TextColumnBuilder<?> column) {
 		return new SortBuilder(column).setOrderType(OrderType.ASCENDING);
 	}
@@ -235,7 +235,7 @@ public class DynamicReports {
 		return new SortBuilder(expression).setOrderType(OrderType.DESCENDING);
 	}
 
-	// hyperLink
+	//hyperLink
 	public static HyperLinkBuilder hyperLink() {
 		return new HyperLinkBuilder();
 	}
@@ -248,7 +248,7 @@ public class DynamicReports {
 		return new HyperLinkBuilder(linkExpression);
 	}
 
-	// margin
+	//margin
 	public static MarginBuilder margin() {
 		return new MarginBuilder();
 	}
@@ -257,7 +257,7 @@ public class DynamicReports {
 		return new MarginBuilder(margin);
 	}
 
-	// parameter
+	//parameter
 	public static <T> ParameterBuilder<T> parameter(String name, T value) {
 		return new ParameterBuilder<T>(name, value);
 	}
@@ -266,12 +266,12 @@ public class DynamicReports {
 		return new ParameterBuilder<T>(name, valueClass);
 	}
 
-	// query
+	//query
 	public static QueryBuilder query(String text, String language) {
 		return new QueryBuilder(text, language);
 	}
 
-	// units
+	//units
 	public static int cm(Number value) {
 		return Units.cm(value);
 	}
@@ -284,12 +284,12 @@ public class DynamicReports {
 		return Units.mm(value);
 	}
 
-	// template
+	//template
 	public static ReportTemplateBuilder template() {
 		return new ReportTemplateBuilder();
 	}
 
-	// table of contents
+	//table of contents
 	public static TableOfContentsCustomizerBuilder tableOfContentsCustomizer() {
 		return new TableOfContentsCustomizerBuilder();
 	}
@@ -302,7 +302,7 @@ public class DynamicReports {
 		return new TableOfContentsHeadingBuilder().setLabel(label);
 	}
 
-	// dataset
+	//dataset
 	public static DatasetBuilder dataset() {
 		return new DatasetBuilder();
 	}

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -42,8 +42,8 @@ public class CalculatedColumnReport {
 	}
 
 	private void build() {
-		TextColumnBuilder<Integer> column1 = col.column("A", "field1", type.integerType());
-		TextColumnBuilder<Integer> column2 = col.column("B", "field2", type.integerType());
+		TextColumnBuilder<Integer>    column1 = col.column("A", "field1", type.integerType());
+		TextColumnBuilder<Integer>    column2 = col.column("B", "field2", type.integerType());
 		TextColumnBuilder<BigDecimal> column3 = column1.multiply(column2).setTitle("A * B");
 		TextColumnBuilder<BigDecimal> column4 = column1.divide(2, column2).setTitle("A / B");
 		TextColumnBuilder<BigDecimal> column5 = column1.add(column2).setTitle("A + B");
@@ -53,13 +53,13 @@ public class CalculatedColumnReport {
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(
-							column1, column2, column3, column4, column5, column6, column7, column8)
-					.title(Templates.createTitleComponent("CalculatedColumn"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .columns(
+			  	column1, column2, column3, column4, column5, column6, column7, column8)
+			  .title(Templates.createTitleComponent("CalculatedColumn"))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

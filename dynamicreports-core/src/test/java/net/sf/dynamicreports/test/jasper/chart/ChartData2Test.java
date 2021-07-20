@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,12 +48,12 @@ public class ChartData2Test extends AbstractJasperChartTest implements Serializa
 				column1 = col.column("Column1", "field1", String.class),
 				column2 = col.column("Column2", "field2", Integer.class),
 				column3 = col.column("Column3", "field3", Integer.class))
-				.summary(
-						cht.barChart()
-								.setCategory(column1)
-								.series(
-										cht.serie(column2),
-										cht.serie(column3)));
+			.summary(
+					cht.barChart()
+						.setCategory(column1)
+						.series(
+								cht.serie(column2),
+								cht.serie(column3)));
 	}
 
 	@Override
@@ -62,9 +62,9 @@ public class ChartData2Test extends AbstractJasperChartTest implements Serializa
 
 		numberOfPagesTest(1);
 
-		String[] categories = new String[] { "value1", "value2", "value3" };
-		String[] series = new String[] { "Column2", "Column3" };
-		Number[][] values = new Number[][] { { 2d, 4d }, { 4d, 6d }, { 6d, 8d }, { 8d, 10d } };
+		String[] categories = new String[]{"value1", "value2", "value3"};
+		String[] series = new String[]{"Column2", "Column3"};
+		Number[][] values =  new Number[][]{{2d, 4d}, {4d, 6d}, {6d, 8d}, {8d, 10d}};
 
 		chartCountTest("summary.chart1", 1);
 		chartCategoryCountTest("summary.chart1", 0, 4);

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -52,47 +52,47 @@ public class PrintWhenExpressionReport {
 		TextColumnBuilder<String> itemColumn = col.column("Item", "item", type.stringType());
 
 		ColumnGroupBuilder itemGroup = grp.group("itemGroup", itemColumn)
-				.setHeaderLayout(GroupHeaderLayout.EMPTY);
+			.setHeaderLayout(GroupHeaderLayout.EMPTY);
 
 		TextFieldBuilder<String> groupHeader = cmp.text(new GroupHeaderExpression())
-				.setStyle(Templates.groupStyle)
-				.setPrintWhenExpression(new PrintGroupHeaderExpression())
-				.removeLineWhenBlank();
+			.setStyle(Templates.groupStyle)
+			.setPrintWhenExpression(new PrintGroupHeaderExpression())
+			.removeLineWhenBlank();
 
 		VerticalListBuilder oddPageHeader = cmp.verticalList()
-				.add(
-						cmp.text("Odd page header").setStyle(Templates.bold12CenteredStyle),
-						cmp.line())
-				.setPrintWhenExpression(new PrintInOddPageExpression())
-				.removeLineWhenBlank();
+			.add(
+				cmp.text("Odd page header").setStyle(Templates.bold12CenteredStyle),
+				cmp.line())
+			.setPrintWhenExpression(new PrintInOddPageExpression())
+			.removeLineWhenBlank();
 
 		VerticalListBuilder evenPageHeader = cmp.verticalList()
-				.add(
-						cmp.line(),
-						cmp.text("Even page header").setStyle(Templates.bold12CenteredStyle),
-						cmp.line())
-				.setPrintWhenExpression(new PrintInEvenPageExpression())
-				.removeLineWhenBlank();
+			.add(
+				cmp.line(),
+				cmp.text("Even page header").setStyle(Templates.bold12CenteredStyle),
+				cmp.line())
+			.setPrintWhenExpression(new PrintInEvenPageExpression())
+			.removeLineWhenBlank();
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.setPageColumnsPerPage(2)
-					.setPageColumnSpace(5)
-					.columns(
-							itemColumn,
-							col.column("Quantity", "quantity", type.integerType()),
-							col.column("Unit price", "unitprice", type.bigDecimalType()))
-					.groupBy(itemGroup)
-					.title(Templates.createTitleComponent("PrintWhenExpression"))
-					.detailHeader(
-							cmp.columnBreak().setPrintWhenExpression(new PrintGroupHeaderColumnBreakExpression()),
-							groupHeader)
-					.pageHeader(
-							oddPageHeader, evenPageHeader, cmp.verticalGap(10))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .setPageColumnsPerPage(2)
+			  .setPageColumnSpace(5)
+			  .columns(
+			  	itemColumn,
+			  	col.column("Quantity",   "quantity",  type.integerType()),
+			  	col.column("Unit price", "unitprice", type.bigDecimalType()))
+			  .groupBy(itemGroup)
+			  .title(Templates.createTitleComponent("PrintWhenExpression"))
+			  .detailHeader(
+			  	cmp.columnBreak().setPrintWhenExpression(new PrintGroupHeaderColumnBreakExpression()),
+			  	groupHeader)
+			  .pageHeader(
+			  	oddPageHeader, evenPageHeader, cmp.verticalGap(10))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

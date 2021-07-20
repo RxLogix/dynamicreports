@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -40,7 +40,7 @@ public class SeriesBarChartReport {
 	}
 
 	private void build() {
-		FontBuilder boldFont = stl.fontArialBold().setFontSize(12);
+		FontBuilder  boldFont = stl.fontArialBold().setFontSize(12);
 
 		TextColumnBuilder<String> stateColumn = col.column("State", "state", type.stringType());
 		TextColumnBuilder<String> itemColumn = col.column("Item", "item", type.stringType());
@@ -48,21 +48,21 @@ public class SeriesBarChartReport {
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(stateColumn, itemColumn, quantityColumn)
-					.title(Templates.createTitleComponent("SeriesBarChart"))
-					.summary(
-							cht.barChart()
-									.setTitle("Bar chart")
-									.setTitleFont(boldFont)
-									.setCategory(stateColumn)
-									.series(
-											cht.serie(quantityColumn).setSeries(itemColumn))
-									.setCategoryAxisFormat(
-											cht.axisFormat().setLabel("Item")))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.columns(stateColumn, itemColumn, quantityColumn)
+				.title(Templates.createTitleComponent("SeriesBarChart"))
+				.summary(
+					cht.barChart()
+						.setTitle("Bar chart")
+						.setTitleFont(boldFont)
+						.setCategory(stateColumn)
+						.series(
+							cht.serie(quantityColumn).setSeries(itemColumn))
+						.setCategoryAxisFormat(
+							cht.axisFormat().setLabel("Item")))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -51,7 +51,7 @@ public class GeoMapElementHtmlHandler implements GenericElementHtmlHandler {
 	private static final String GEOMAP_ELEMENT_HTML_TEMPLATE = "net/sf/dynamicreports/googlecharts/jasper/geomap/GeoMapElementHtmlTemplate.vm";
 
 	@Override
-	public String getHtmlFragment(JRHtmlExporterContext context, JRGenericPrintElement element) {
+	public String getHtmlFragment(JRHtmlExporterContext context, JRGenericPrintElement element)	{
 		Boolean showLegend = (Boolean) element.getParameterValue(GeoMapPrintElement.PARAMETER_SHOW_LEGEND);
 		GeoMapDataMode dataMode = (GeoMapDataMode) element.getParameterValue(GeoMapPrintElement.PARAMETER_DATA_MODE);
 		String region = (String) element.getParameterValue(GeoMapPrintElement.PARAMETER_REGION);
@@ -76,14 +76,14 @@ public class GeoMapElementHtmlHandler implements GenericElementHtmlHandler {
 		velocityContext.put("showLegend", showLegend);
 		if (dataMode != null) {
 			switch (dataMode) {
-				case REGIONS:
-					velocityContext.put("dataMode", "regions");
-					break;
-				case MARKERS:
-					velocityContext.put("dataMode", "markers");
-					break;
-				default:
-					break;
+			case REGIONS:
+				velocityContext.put("dataMode", "regions");
+				break;
+			case MARKERS:
+				velocityContext.put("dataMode", "markers");
+				break;
+			default:
+				break;
 			}
 		}
 		velocityContext.put("id", "map_" + element.hashCode());
@@ -91,16 +91,17 @@ public class GeoMapElementHtmlHandler implements GenericElementHtmlHandler {
 		velocityContext.put("valueLabel", valueLabel);
 		velocityContext.put("colors", stringColors);
 		velocityContext.put("dataset", dataset);
-		@SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
 		Exporter<ExporterInput, ? extends HtmlReportConfiguration, ? extends HtmlExporterConfiguration, HtmlExporterOutput> exporter = context.getExporterRef();
-		HtmlExporter htmlExporter2 = exporter instanceof HtmlExporter ? (HtmlExporter) exporter : null;
-		if (htmlExporter2 == null) {
+    HtmlExporter htmlExporter2 = exporter instanceof HtmlExporter ? (HtmlExporter)exporter : null;
+		if(htmlExporter2 == null) {
 			velocityContext.put("xhtml", "xhtml");
-			velocityContext.put("elementX", ((HtmlExporter) context.getExporterRef()).toSizeUnit((float) element.getX()));
-			velocityContext.put("elementY", ((HtmlExporter) context.getExporterRef()).toSizeUnit((float) element.getY()));
-		} else {
-			velocityContext.put("elementX", ((HtmlExporter) context.getExporterRef()).toSizeUnit((float) element.getX()));
-			velocityContext.put("elementY", ((HtmlExporter) context.getExporterRef()).toSizeUnit((float) element.getY()));
+			velocityContext.put("elementX", ((HtmlExporter)context.getExporterRef()).toSizeUnit((float) element.getX()));
+			velocityContext.put("elementY", ((HtmlExporter)context.getExporterRef()).toSizeUnit((float) element.getY()));
+		}
+		else {
+			velocityContext.put("elementX", ((HtmlExporter)context.getExporterRef()).toSizeUnit((float) element.getX()));
+			velocityContext.put("elementY", ((HtmlExporter)context.getExporterRef()).toSizeUnit((float) element.getY()));
 		}
 		velocityContext.put("elementWidth", element.getWidth());
 		velocityContext.put("elementHeight", element.getHeight());
@@ -111,11 +112,11 @@ public class GeoMapElementHtmlHandler implements GenericElementHtmlHandler {
 		return VelocityUtil.processTemplate(GEOMAP_ELEMENT_HTML_TEMPLATE, velocityContext);
 	}
 
-	private String getColorString(Color color) {
-		int colorMask = Integer.parseInt("FFFFFF", 16);
-		String hex = Integer.toHexString(color.getRGB() & colorMask).toUpperCase();
-		return "0x" + ("000000" + hex).substring(hex.length());
-	}
+  private String getColorString(Color color) {
+    int colorMask = Integer.parseInt("FFFFFF", 16);
+    String hex = Integer.toHexString(color.getRGB() & colorMask).toUpperCase();
+    return "0x" + ("000000" + hex).substring(hex.length());
+  }
 
 	@Override
 	public boolean toExport(JRGenericPrintElement element) {

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -38,15 +38,14 @@ import org.apache.commons.lang3.Validate;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 @SuppressWarnings("unchecked")
-public abstract class AbstractXyChartBuilder<T extends AbstractXyChartBuilder<T, U>, U extends DRAxisPlot>
-		extends AbstractBaseChartBuilder<T, U, DRSeriesDataset> {
+public abstract class AbstractXyChartBuilder<T extends AbstractXyChartBuilder<T, U>, U extends DRAxisPlot> extends AbstractBaseChartBuilder<T, U, DRSeriesDataset> {
 	private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
 
 	protected AbstractXyChartBuilder(ChartType chartType) {
 		super(chartType);
 	}
 
-	// dataset
+	//dataset
 	public T setXValue(ValueColumnBuilder<?, ? extends Number> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setValueExpression(column.getColumn());
@@ -68,11 +67,11 @@ public abstract class AbstractXyChartBuilder<T extends AbstractXyChartBuilder<T,
 		return (T) this;
 	}
 
-	public T series(XyChartSerieBuilder... chartSeries) {
+	public T series(XyChartSerieBuilder ...chartSeries) {
 		return addSerie(chartSeries);
 	}
 
-	public T addSerie(XyChartSerieBuilder... chartSeries) {
+	public T addSerie(XyChartSerieBuilder ...chartSeries) {
 		Validate.notNull(chartSeries, "chartSeries must not be null");
 		Validate.noNullElements(chartSeries, "chartSeries must not contains null chartSerie");
 		for (XyChartSerieBuilder chartSerie : chartSeries) {
@@ -87,7 +86,7 @@ public abstract class AbstractXyChartBuilder<T extends AbstractXyChartBuilder<T,
 		return (T) this;
 	}
 
-	// plot
+	//plot
 	public T setXAxisFormat(AxisFormatBuilder xAxisFormat) {
 		Validate.notNull(xAxisFormat, "xAxisFormat must not be null");
 		getPlot().setXAxisFormat(xAxisFormat.build());

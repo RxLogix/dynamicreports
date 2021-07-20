@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -51,16 +51,16 @@ public class Crosstab4Test extends AbstractJasperCrosstabValueTest implements Se
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.setDataPreSorted(true)
-				.rowGroups(
-						rowGroup = ctab.rowGroup("field1", String.class))
-				.columnGroups(
-						columnGroup = ctab.columnGroup("field2", String.class))
-				.measures(
-						measure1 = ctab.measure("field3", Integer.class, Calculation.SUM));
+			.setDataPreSorted(true)
+			.rowGroups(
+				rowGroup = ctab.rowGroup("field1", String.class))
+			.columnGroups(
+				columnGroup = ctab.columnGroup("field2", String.class))
+			.measures(
+				measure1 = ctab.measure("field3", Integer.class, Calculation.SUM));
 
 		rb.setLocale(Locale.ENGLISH)
-				.summary(crosstab, crosstab);
+			.summary(crosstab, crosstab);
 	}
 
 	@Override
@@ -71,19 +71,19 @@ public class Crosstab4Test extends AbstractJasperCrosstabValueTest implements Se
 
 		setCrosstabBand("summary");
 
-		// column group
+		//column group
 		crosstabGroupHeaderCountTest(columnGroup, 2);
 		crosstabGroupHeaderValueTest(columnGroup, "d", "c");
 		crosstabGroupTotalHeaderCountTest(columnGroup, 1);
 		crosstabGroupTotalHeaderValueTest(columnGroup, "Total");
 
-		// row group
+		//row group
 		crosstabGroupHeaderCountTest(rowGroup, 3);
 		crosstabGroupHeaderValueTest(rowGroup, "c", "a", "b");
 		crosstabGroupTotalHeaderCountTest(rowGroup, 1);
 		crosstabGroupTotalHeaderValueTest(rowGroup, "Total");
 
-		// measure1
+		//measure1
 		crosstabCellCountTest(measure1, null, null, 6);
 		crosstabCellValueTest(measure1, null, null, "1", "1", "1", "1", "1", "1");
 		crosstabCellCountTest(measure1, null, columnGroup, 3);
@@ -93,11 +93,11 @@ public class Crosstab4Test extends AbstractJasperCrosstabValueTest implements Se
 		crosstabCellCountTest(measure1, rowGroup, columnGroup, 1);
 		crosstabCellValueTest(measure1, rowGroup, columnGroup, "6");
 
-		// column group
+		//column group
 		elementCountTest(getPrefix(2) + JasperTestUtils.getCrosstabGroupHeaderName(columnGroup), 2);
 		elementCountTest(getPrefix(2) + JasperTestUtils.getCrosstabGroupTotalHeaderName(columnGroup), 1);
 
-		// row group
+		//row group
 		elementCountTest(getPrefix(2) + JasperTestUtils.getCrosstabGroupHeaderName(rowGroup), 3);
 		elementCountTest(getPrefix(2) + JasperTestUtils.getCrosstabGroupTotalHeaderName(rowGroup), 1);
 	}

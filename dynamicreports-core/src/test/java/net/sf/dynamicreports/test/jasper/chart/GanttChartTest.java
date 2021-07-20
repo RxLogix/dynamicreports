@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -54,49 +54,49 @@ public class GanttChartTest extends AbstractJasperChartTest {
 		FieldBuilder<Date> field3 = field("field3", Date.class);
 		FieldBuilder<Double> field4 = field("field4", Double.class);
 		rb.summary(
-				cht.ganttChart()
+					cht.ganttChart()
 						.setTask(field1)
 						.series(
-								cht.ganttSerie()
-										.setStartDate(field2)
-										.setEndDate(field3)
-										.setPercent(field4)
-										.setLabel("label"),
-								cht.ganttSerie()
-										.setStartDate(field("field5", Date.class))
-										.setEndDate(field("field6", Date.class)))
+							cht.ganttSerie()
+								.setStartDate(field2)
+								.setEndDate(field3)
+								.setPercent(field4)
+								.setLabel("label"),
+							cht.ganttSerie()
+								.setStartDate(field("field5", Date.class))
+								.setEndDate(field("field6", Date.class)))
 						.setShowLabels(true)
 						.setShowTickLabels(false)
 						.setShowTickMarks(false),
-				cht.ganttChart()
+					cht.ganttChart()
 						.setTask(field1)
 						.series(
-								cht.ganttSerie()
-										.setStartDate(field2)
-										.setEndDate(field3))
+							cht.ganttSerie()
+								.setStartDate(field2)
+								.setEndDate(field3))
 						.setTaskAxisFormat(
 								cht.axisFormat()
-										.setLabel("task")
-										.setLabelColor(Color.BLUE)
-										.setLabelFont(stl.fontArialBold())
-										.setTickLabelFont(stl.fontArial().setItalic(true))
-										.setTickLabelColor(Color.CYAN)
-										.setTickLabelRotation(45d)
-										.setLineColor(Color.LIGHT_GRAY)),
-				cht.ganttChart()
+											.setLabel("task")
+											.setLabelColor(Color.BLUE)
+											.setLabelFont(stl.fontArialBold())
+											.setTickLabelFont(stl.fontArial().setItalic(true))
+											.setTickLabelColor(Color.CYAN)
+											.setTickLabelRotation(45d)
+											.setLineColor(Color.LIGHT_GRAY)),
+					cht.ganttChart()
 						.setTask(field1)
 						.series(
-								cht.ganttSerie()
-										.setStartDate(field2)
-										.setEndDate(field3))
+							cht.ganttSerie()
+								.setStartDate(field2)
+								.setEndDate(field3))
 						.setTimeAxisFormat(
 								cht.axisFormat()
-										.setLabel("time")
-										.setLabelColor(Color.BLUE)
-										.setLabelFont(stl.fontArialBold())
-										.setTickLabelFont(stl.fontArial().setItalic(true))
-										.setTickLabelColor(Color.CYAN)
-										.setLineColor(Color.LIGHT_GRAY)));
+											.setLabel("time")
+											.setLabelColor(Color.BLUE)
+											.setLabelFont(stl.fontArialBold())
+											.setTickLabelFont(stl.fontArial().setItalic(true))
+											.setTickLabelColor(Color.CYAN)
+											.setLineColor(Color.LIGHT_GRAY)));
 	}
 
 	@Override
@@ -111,10 +111,8 @@ public class GanttChartTest extends AbstractJasperChartTest {
 		Assert.assertTrue("show labels", categoryPlot.getRenderer().getBaseItemLabelsVisible());
 		Assert.assertFalse("show tick labels", categoryPlot.getDomainAxis().isTickMarksVisible());
 		Assert.assertFalse("show tick marks", categoryPlot.getDomainAxis().isTickLabelsVisible());
-		ganttChartDataTest(chart, "label", new String[] { "task1", "task2", "task3" }, new Object[][] { { toDate(2011, 1, 1), toDate(2011, 1, 8), 1d },
-				{ toDate(2011, 1, 10), toDate(2011, 1, 15), 0.5d }, { toDate(2011, 1, 15), toDate(2011, 1, 25), 0.8d } });
-		ganttChartDataTest(chart, "serie1", new String[] { "task1", "task2", "task3" }, new Object[][] { { toDate(2011, 1, 2), toDate(2011, 1, 9), null },
-				{ toDate(2011, 1, 8), toDate(2011, 1, 14), null }, { toDate(2011, 1, 16), toDate(2011, 1, 20), null } });
+		ganttChartDataTest(chart, "label", new String[] {"task1", "task2", "task3"}, new Object[][] {{toDate(2011, 1, 1), toDate(2011, 1, 8), 1d}, {toDate(2011, 1, 10), toDate(2011, 1, 15), 0.5d}, {toDate(2011, 1, 15), toDate(2011, 1, 25), 0.8d}});
+		ganttChartDataTest(chart, "serie1", new String[] {"task1", "task2", "task3"}, new Object[][] {{toDate(2011, 1, 2), toDate(2011, 1, 9), null}, {toDate(2011, 1, 8), toDate(2011, 1, 14), null}, {toDate(2011, 1, 16), toDate(2011, 1, 20), null}});
 
 		chart = getChart("summary.chart2", 0);
 		Axis axis = chart.getCategoryPlot().getDomainAxis();

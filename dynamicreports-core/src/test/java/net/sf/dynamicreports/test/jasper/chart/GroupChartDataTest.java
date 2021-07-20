@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -56,40 +56,40 @@ public class GroupChartDataTest extends AbstractJasperChartTest implements Seria
 				column1 = col.column("Column1", "field1", String.class),
 				column2 = col.column("Column2", "field2", String.class),
 				column3 = col.column("Column3", "field3", Integer.class))
-				.groupBy(group1 = grp.group(column1)
-						.header(
-								cht.barChart()
-										.setTitle(new TitleExpression())
-										.customizers(customizer)
-										.setCategory(column2)
-										.series(
-												cht.serie(column3),
-												cht.serie("field4", Integer.class).setLabel("f4"),
-												cht.serie(new ValueExpression()).setLabel("exp")))
-						.footer(
-								cht.barChart()
-										.setTitle(new TitleExpression())
-										.customizers(customizer)
-										.setCategory(column2)
-										.series(
-												cht.serie(column3),
-												cht.serie("field4", Integer.class).setLabel("f4"),
-												cht.serie(new ValueExpression()).setLabel("exp"))))
-				.variables(
-						variable("var1", "field4", Integer.class, Calculation.SUM).setResetGroup(group1))
-				.summary(
-						cht.barChart()
-								.setCategory(column1)
-								.series(
-										cht.serie(column3),
-										cht.serie("field4", Integer.class).setLabel("f4"),
-										cht.serie(new ValueExpression()).setLabel("exp")),
-						cht.barChart()
-								.setCategory(column2)
-								.series(
-										cht.serie(column3),
-										cht.serie("field4", Integer.class).setLabel("f4"),
-										cht.serie(new ValueExpression()).setLabel("exp")));
+			.groupBy(group1 = grp.group(column1)
+															.header(
+																	cht.barChart()
+																		.setTitle(new TitleExpression())
+																		.customizers(customizer)
+																		.setCategory(column2)
+																		.series(
+																			cht.serie(column3),
+																			cht.serie("field4", Integer.class).setLabel("f4"),
+																			cht.serie(new ValueExpression()).setLabel("exp")))
+															.footer(
+																	cht.barChart()
+																		.setTitle(new TitleExpression())
+																		.customizers(customizer)
+																		.setCategory(column2)
+																		.series(
+																			cht.serie(column3),
+																			cht.serie("field4", Integer.class).setLabel("f4"),
+																			cht.serie(new ValueExpression()).setLabel("exp"))))
+			.variables(
+				variable("var1", "field4", Integer.class, Calculation.SUM).setResetGroup(group1))
+			.summary(
+					cht.barChart()
+						.setCategory(column1)
+						.series(
+								cht.serie(column3),
+								cht.serie("field4", Integer.class).setLabel("f4"),
+								cht.serie(new ValueExpression()).setLabel("exp")),
+					cht.barChart()
+						.setCategory(column2)
+						.series(
+								cht.serie(column3),
+								cht.serie("field4", Integer.class).setLabel("f4"),
+								cht.serie(new ValueExpression()).setLabel("exp")));
 	}
 
 	@Override
@@ -98,21 +98,21 @@ public class GroupChartDataTest extends AbstractJasperChartTest implements Seria
 
 		numberOfPagesTest(2);
 
-		String[] categories1 = new String[] { "value1", "value2" };
-		String[] categories2 = new String[] { "group1", "group2" };
-		String[] series = new String[] { "Column3", "f4", "exp" };
+		String[] categories1 = new String[]{"value1", "value2"};
+		String[] categories2 = new String[]{"group1", "group2"};
+		String[] series = new String[]{"Column3", "f4", "exp"};
 
 		chartCountTest("summary.chart1", 1);
 		chartTitleTest("summary.chart1", 0, null);
 		chartCategoryCountTest("summary.chart1", 0, 2);
 		chartSeriesCountTest("summary.chart1", 0, 3);
-		chartDataTest("summary.chart1", 0, categories2, series, new Number[][] { { 10d, 10d, 20d }, { 10d, 26d, 36d } });
+		chartDataTest("summary.chart1", 0, categories2, series, new Number[][]{{10d, 10d, 20d}, {10d, 26d, 36d}});
 
 		chartCountTest("summary.chart2", 1);
 		chartTitleTest("summary.chart2", 0, null);
 		chartCategoryCountTest("summary.chart2", 0, 2);
 		chartSeriesCountTest("summary.chart2", 0, 3);
-		chartDataTest("summary.chart2", 0, categories1, series, new Number[][] { { 6d, 14d, 20d }, { 14d, 22d, 36d } });
+		chartDataTest("summary.chart2", 0, categories1, series, new Number[][]{{6d, 14d, 20d}, {14d, 22d, 36d}});
 
 		groupChartTest("Footer", categories1, series);
 		groupChartTest("Header", categories1, series);
@@ -123,12 +123,12 @@ public class GroupChartDataTest extends AbstractJasperChartTest implements Seria
 		chartTitleTest("group" + name + ".chart1", 0, "Title sum=10 customizer1");
 		chartCategoryCountTest("group" + name + ".chart1", 0, 2);
 		chartSeriesCountTest("group" + name + ".chart1", 0, 3);
-		chartDataTest("group" + name + ".chart1", 0, categories1, series, new Number[][] { { 3d, 3d, 6d }, { 7d, 7d, 14d } });
+		chartDataTest("group" + name + ".chart1", 0, categories1, series, new Number[][]{{3d, 3d, 6d}, {7d, 7d, 14d}});
 
 		chartTitleTest("group" + name + ".chart1", 1, "Title sum=26 customizer2");
 		chartCategoryCountTest("group" + name + ".chart1", 1, 2);
 		chartSeriesCountTest("group" + name + ".chart1", 1, 3);
-		chartDataTest("group" + name + ".chart1", 1, categories1, series, new Number[][] { { 3d, 11d, 14d }, { 7d, 15d, 22d } });
+		chartDataTest("group" + name + ".chart1", 1, categories1, series, new Number[][]{{3d, 11d, 14d}, {7d, 15d, 22d}});
 	}
 
 	@Override

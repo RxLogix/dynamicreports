@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -47,9 +47,9 @@ public class Image2Test extends AbstractJasperTest {
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		ImageBuilder image = cmp.image(Image2Test.class.getResourceAsStream("dynamicreports.png"))
-				.setHorizontalImageAlignment(HorizontalImageAlignment.CENTER);
+			.setHorizontalImageAlignment(HorizontalImageAlignment.CENTER);
 		rb.pageHeader(image)
-				.detail(cmp.filler().setFixedHeight(20));
+			.detail(cmp.filler().setFixedHeight(20));
 	}
 
 	@Override

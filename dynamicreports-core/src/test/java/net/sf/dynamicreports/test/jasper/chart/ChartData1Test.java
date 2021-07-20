@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -52,17 +52,17 @@ public class ChartData1Test extends AbstractJasperChartTest implements Serializa
 		rb.columns(
 				column1 = col.column("Column1", "field1", String.class),
 				column2 = col.column("Column2", "field2", Integer.class))
-				.variables(
-						variable("var1", column2, Calculation.SUM))
-				.summary(
-						cht.barChart()
-								.setTitle(new TitleExpression())
-								.setCategory(column1)
-								.series(
-										cht.serie(column2),
-										cht.serie("field3", Integer.class).setLabel("f3"),
-										cht.serie(column2.multiply(2).add(1)).setLabel("exp")),
-						cht.barChart()
+			.variables(
+				variable("var1", column2, Calculation.SUM))
+			.summary(
+					cht.barChart()
+						.setTitle(new TitleExpression())
+						.setCategory(column1)
+						.series(
+								cht.serie(column2),
+								cht.serie("field3", Integer.class).setLabel("f3"),
+								cht.serie(column2.multiply(2).add(1)).setLabel("exp")),
+					cht.barChart()
 								.setCategory("field1", String.class)
 								.customizers(new Customizer1(), new Customizer2())
 								.setUseSeriesAsCategory(true)
@@ -70,7 +70,7 @@ public class ChartData1Test extends AbstractJasperChartTest implements Serializa
 										cht.serie(column2),
 										cht.serie("field3", Integer.class).setLabel("f3"),
 										cht.serie(new ValueExpression()).setLabel("exp")),
-						cht.barChart()
+					cht.barChart()
 								.setCategory(new CategoryExpression())
 								.series(
 										cht.serie(column2),
@@ -84,9 +84,9 @@ public class ChartData1Test extends AbstractJasperChartTest implements Serializa
 
 		numberOfPagesTest(1);
 
-		String[] categories = new String[] { "value1", "value2", "value3", "value4" };
-		String[] series = new String[] { "Column2", "f3", "exp" };
-		Number[][] values = new Number[][] { { 2d, 4d, 6d }, { 4d, 6d, 10d }, { 6d, 8d, 14d }, { 8d, 10d, 18d } };
+		String[] categories = new String[]{"value1", "value2", "value3", "value4"};
+		String[] series = new String[]{"Column2", "f3", "exp"};
+		Number[][] values =  new Number[][]{{2d, 4d, 6d}, {4d, 6d, 10d}, {6d, 8d, 14d}, {8d, 10d, 18d}};
 
 		chartCountTest("summary.chart1", 1);
 		chartTitleTest("summary.chart1", 0, "Title sum=20");
@@ -98,9 +98,9 @@ public class ChartData1Test extends AbstractJasperChartTest implements Serializa
 		chartTitleTest("summary.chart2", 0, "customizer1 1 customizer2");
 		chartCategoryCountTest("summary.chart2", 0, 3);
 		chartSeriesCountTest("summary.chart2", 0, 4);
-		chartDataTest("summary.chart2", 0, series, categories, new Number[][] { { 2d, 4d, 6d, 8d }, { 4d, 6d, 8d, 10d }, { 6d, 10d, 14d, 18d } });
+		chartDataTest("summary.chart2", 0, series, categories, new Number[][]{{2d, 4d, 6d, 8d}, {4d, 6d, 8d, 10d}, {6d, 10d, 14d, 18d}});
 
-		categories = new String[] { "value1_exp", "value2_exp", "value3_exp", "value4_exp" };
+		categories = new String[]{"value1_exp", "value2_exp", "value3_exp", "value4_exp"};
 		chartCountTest("summary.chart3", 1);
 		chartTitleTest("summary.chart3", 0, null);
 		chartCategoryCountTest("summary.chart3", 0, 4);

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -62,19 +62,19 @@ public class CrosstabStyle4Test extends AbstractJasperCrosstabStyleTest {
 		measure1 = ctab.measure("field5", Integer.class, Calculation.SUM);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.highlightEvenRows()
-				.setCellWidth(50)
-				.setEvenRowStyle(stl.simpleStyle().setBackgroundColor(Color.LIGHT_GRAY).bold())
-				.setGroupStyle(stl.style(1).setBackgroundColor(Color.BLUE).bold())
-				.setGroupTotalStyle(stl.style(1).setBackgroundColor(Color.RED))
-				.setGrandTotalStyle(stl.style(1).setBackgroundColor(Color.MAGENTA).bold())
-				.setCellStyle(stl.style().setBackgroundColor(Color.YELLOW).italic())
-				.rowGroups(
-						rowGroup1, rowGroup2)
-				.columnGroups(
-						columnGroup1, columnGroup2)
-				.measures(
-						measure1);
+			.highlightEvenRows()
+		  .setCellWidth(50)
+			.setEvenRowStyle(stl.simpleStyle().setBackgroundColor(Color.LIGHT_GRAY).bold())
+			.setGroupStyle(stl.style(1).setBackgroundColor(Color.BLUE).bold())
+			.setGroupTotalStyle(stl.style(1).setBackgroundColor(Color.RED))
+			.setGrandTotalStyle(stl.style(1).setBackgroundColor(Color.MAGENTA).bold())
+			.setCellStyle(stl.style().setBackgroundColor(Color.YELLOW).italic())
+			.rowGroups(
+				rowGroup1, rowGroup2)
+			.columnGroups(
+				columnGroup1, columnGroup2)
+			.measures(
+				measure1);
 
 		rb.summary(crosstab);
 	}

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -32,7 +32,7 @@ import net.sf.jasperreports.engine.JRPrintElement;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 public abstract class AbstractJasperPositionTest extends AbstractJasperTest {
-
+	
 	protected void elementPositionTest(String name, int index, int x, int y, int width, int height) {
 		JRPrintElement element = getElementAt(name, index);
 		Assert.assertEquals("width", width, element.getWidth());
@@ -40,18 +40,18 @@ public abstract class AbstractJasperPositionTest extends AbstractJasperTest {
 		Assert.assertEquals("x", x, element.getX());
 		Assert.assertEquals("y", y, element.getY());
 	}
-
-	// column detail
+	
+	//column detail
 	protected void columnDetailPositionTest(ColumnBuilder<?, ?> column, int index, int x, int y, int width, int height) {
 		elementPositionTest(JasperTestUtils.getColumnDetailName(column), index, x, y, width, height);
 	}
-
-	// column title
+	
+	//column title
 	protected void columnTitlePositionTest(ColumnBuilder<?, ?> column, int index, int x, int y, int width, int height) {
 		elementPositionTest(JasperTestUtils.getColumnTitleName(column), index, x, y, width, height);
 	}
-
-	// subtotal label
+	
+	//subtotal label
 	protected void subtotalLabelPositionTest(SubtotalBuilder<?, ?> subtotal, int index, int x, int y, int width, int height) {
 		elementPositionTest(JasperTestUtils.getSubtotalLabelName(subtotal, 1), index, x, y, width, height);
 	}
@@ -59,8 +59,8 @@ public abstract class AbstractJasperPositionTest extends AbstractJasperTest {
 	protected void subtotalLabelIndexPositionTest(SubtotalBuilder<?, ?> subtotal, int subtotalIndex, int index, int x, int y, int width, int height) {
 		elementPositionTest(JasperTestUtils.getSubtotalLabelName(subtotal, subtotalIndex), index, x, y, width, height);
 	}
-
-	// subtotal
+	
+	//subtotal
 	protected void subtotalPositionTest(SubtotalBuilder<?, ?> subtotal, int index, int x, int y, int width, int height) {
 		elementPositionTest(JasperTestUtils.getSubtotalName(subtotal, 1), index, x, y, width, height);
 	}
@@ -69,12 +69,12 @@ public abstract class AbstractJasperPositionTest extends AbstractJasperTest {
 		elementPositionTest(JasperTestUtils.getSubtotalName(subtotal, subtotalIndex), index, x, y, width, height);
 	}
 
-	// group header title
+	//group header title
 	protected void groupHeaderTitlePositionTest(GroupBuilder<?> group, int index, int x, int y, int width, int height) {
 		elementPositionTest(JasperTestUtils.getHeaderTitleGroupName(group), index, x, y, width, height);
 	}
-
-	// group header
+	
+	//group header
 	protected void groupHeaderPositionTest(GroupBuilder<?> group, int index, int x, int y, int width, int height) {
 		elementPositionTest(JasperTestUtils.getHeaderGroupName(group), index, x, y, width, height);
 	}

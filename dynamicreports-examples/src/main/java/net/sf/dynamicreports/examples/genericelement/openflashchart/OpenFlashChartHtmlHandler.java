@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -50,8 +50,7 @@ public class OpenFlashChartHtmlHandler implements GenericElementHtmlHandler {
 		String chartEncodedData = JRStringUtil.htmlEncode(chartData);
 
 		StringBuffer result = new StringBuffer();
-		result.append(
-				"<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" codebase=\"http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0\" ");
+		result.append("<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" codebase=\"http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0\" ");
 		result.append("width=\"" + width + "\" ");
 		result.append("height=\"" + height + "\" ");
 		result.append("id=\"" + divID + "\" ");
@@ -74,8 +73,7 @@ public class OpenFlashChartHtmlHandler implements GenericElementHtmlHandler {
 		result.append("bgcolor=\"#" + JRColorUtil.getColorHexa(backcolor) + "\" ");
 		result.append("width=\"" + width + "\" ");
 		result.append("height=\"" + height + "\" ");
-		result.append(
-				"name=\"open-flash-chart\" align=\"middle\" allowScriptAccess=\"sameDomain\" type=\"application/x-shockwave-flash\" pluginspage=\"http://www.macromedia.com/go/getflashplayer\" /> </object> ");
+		result.append("name=\"open-flash-chart\" align=\"middle\" allowScriptAccess=\"sameDomain\" type=\"application/x-shockwave-flash\" pluginspage=\"http://www.macromedia.com/go/getflashplayer\" /> </object> ");
 
 		return result.toString();
 	}

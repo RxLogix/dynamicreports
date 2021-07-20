@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -57,27 +57,27 @@ public class SpiderChartTest extends AbstractJasperChartTest implements Serializ
 		TextColumnBuilder<Integer> column2 = col.column("Column2", "field2", Integer.class);
 
 		rb.summary(
-				cmp.horizontalList(
-						cht.spiderChart()
-								.setCategory(column1)
-								.series(cht.serie(column2))
-								.setMaxValue(10d)
-								.setRotation(SpiderRotation.ANTICLOCKWISE)
-								.setTableOrder(TableOrder.BY_COLUMN)
-								.setWebFilled(false)
-								.setStartAngle(20d)
-								.setHeadPercent(30d)
-								.setInteriorGap(0.15d)
-								.setAxisLineColor(Color.RED)
-								.setAxisLineWidth(2f)
-								.setLabelColor(Color.BLUE)
-								.setLabelGap(2d)
-								.setLabelFont(stl.font().bold()),
-						cht.spiderChart()
-								.setCategory(column1)
-								.series(cht.serie(column2))
-								.setTitle("title")
-								.setSubtitle("subtitle")));
+			cmp.horizontalList(
+					cht.spiderChart()
+						.setCategory(column1)
+						.series(cht.serie(column2))
+						.setMaxValue(10d)
+						.setRotation(SpiderRotation.ANTICLOCKWISE)
+						.setTableOrder(TableOrder.BY_COLUMN)
+						.setWebFilled(false)
+						.setStartAngle(20d)
+						.setHeadPercent(30d)
+						.setInteriorGap(0.15d)
+						.setAxisLineColor(Color.RED)
+						.setAxisLineWidth(2f)
+						.setLabelColor(Color.BLUE)
+						.setLabelGap(2d)
+						.setLabelFont(stl.font().bold()),
+					cht.spiderChart()
+						.setCategory(column1)
+						.series(cht.serie(column2))
+						.setTitle("title")
+						.setSubtitle("subtitle")));
 	}
 
 	@Override

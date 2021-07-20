@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,12 +48,12 @@ public class BooleanColumn2Test extends AbstractJasperValueTest implements Seria
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.setLocale(Locale.ENGLISH)
-				.setTemplate(template().setBooleanEmptyWhenNullValue(true))
-				.columns(
-						col.booleanColumn("field1").setComponentType(BooleanComponentType.TEXT_TRUE_FALSE),
-						col.booleanColumn("field1").setComponentType(BooleanComponentType.TEXT_TRUE_FALSE).setEmptyWhenNullValue(false),
-						col.booleanColumn("field1").setComponentType(BooleanComponentType.IMAGE_STYLE_1),
-						col.booleanColumn("field1").setComponentType(BooleanComponentType.IMAGE_STYLE_1).setEmptyWhenNullValue(false));
+		  .setTemplate(template().setBooleanEmptyWhenNullValue(true))
+			.columns(
+					col.booleanColumn("field1").setComponentType(BooleanComponentType.TEXT_TRUE_FALSE),
+					col.booleanColumn("field1").setComponentType(BooleanComponentType.TEXT_TRUE_FALSE).setEmptyWhenNullValue(false),
+					col.booleanColumn("field1").setComponentType(BooleanComponentType.IMAGE_STYLE_1),
+					col.booleanColumn("field1").setComponentType(BooleanComponentType.IMAGE_STYLE_1).setEmptyWhenNullValue(false));
 	}
 
 	@Override

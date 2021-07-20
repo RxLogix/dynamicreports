@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -56,17 +56,17 @@ public class CrosstabPosition2Test extends AbstractJasperCrosstabPositionTest {
 		measure2 = ctab.measure(column4, Calculation.SUM);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.headerCell(cmp.text("Header"))
-				.rowGroups(
-						rowGroup = ctab.rowGroup(column1))
-				.columnGroups(
-						columnGroup = ctab.columnGroup(column2))
-				.measures(
-						measure1, measure2);
+			.headerCell(cmp.text("Header"))
+			.rowGroups(
+				rowGroup = ctab.rowGroup(column1))
+			.columnGroups(
+				columnGroup = ctab.columnGroup(column2))
+			.measures(
+				measure1, measure2);
 
 		rb.setPageFormat(PageType.A4, PageOrientation.LANDSCAPE)
-				.columns(column1, column2, column3, column4)
-				.summary(crosstab);
+			.columns(column1, column2, column3, column4)
+			.summary(crosstab);
 	}
 
 	@Override
@@ -79,18 +79,18 @@ public class CrosstabPosition2Test extends AbstractJasperCrosstabPositionTest {
 
 		crosstabHeaderElementPositionTest("textField1", 0, 0, 0, 100, 16);
 
-		// column group
+		//column group
 		crosstabGroupHeaderPositionTest(columnGroup, 0, 0, 0, 150, 16);
 		crosstabGroupHeaderPositionTest(columnGroup, 1, 0, 0, 150, 16);
 		crosstabGroupTotalHeaderPositionTest(columnGroup, 0, 0, 0, 150, 16);
 
-		// row group
+		//row group
 		crosstabGroupHeaderPositionTest(rowGroup, 0, 0, 0, 100, 16);
 		crosstabGroupHeaderPositionTest(rowGroup, 1, 0, 0, 100, 16);
 		crosstabGroupHeaderPositionTest(rowGroup, 2, 0, 0, 100, 16);
 		crosstabGroupTotalHeaderPositionTest(rowGroup, 0, 0, 0, 100, 16);
 
-		// measures
+		//measures
 		for (int i = 0; i < 6; i++) {
 			crosstabCellPositionTest(measure1, null, null, i, 0, 0, 75, 16);
 			crosstabCellPositionTest(measure2, null, null, i, 75, 0, 75, 16);

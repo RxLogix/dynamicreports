@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -51,64 +51,64 @@ public class AggregationSubtotalReport {
 		TextColumnBuilder<BigDecimal> unitPriceColumn = col.column("Unit price", "unitprice", type.bigDecimalType());
 
 		AggregationSubtotalBuilder<Long> itemCount = sbt.count(itemColumn)
-				.setLabel("count");
+			.setLabel("count");
 		AggregationSubtotalBuilder<Long> itemDistCount = sbt.distinctCount(itemColumn)
-				.setLabel("distinct count");
+			.setLabel("distinct count");
 		AggregationSubtotalBuilder<BigDecimal> itemSum = sbt.sum(unitPriceColumn)
-				.setLabel("unit price sum")
-				.setShowInColumn(itemColumn);
+			.setLabel("unit price sum")
+			.setShowInColumn(itemColumn);
 
 		AggregationSubtotalBuilder<Long> orderDateCount = sbt.count(orderDateColumn)
-				.setLabel("count");
+			.setLabel("count");
 		AggregationSubtotalBuilder<Long> orderDateDistCount = sbt.distinctCount(orderDateColumn)
-				.setLabel("distinct count");
+			.setLabel("distinct count");
 		AggregationSubtotalBuilder<Date> orderDateMin = sbt.min(orderDateColumn)
-				.setLabel("min value");
+			.setLabel("min value");
 		AggregationSubtotalBuilder<Date> orderDateMax = sbt.max(orderDateColumn)
-				.setLabel("max value");
+			.setLabel("max value");
 
 		AggregationSubtotalBuilder<Integer> quantitySum = sbt.sum(quantityColumn)
-				.setLabel("sum");
+			.setLabel("sum");
 		AggregationSubtotalBuilder<Number> quantityAvg = sbt.avg(quantityColumn)
-				.setLabel("avg");
+			.setLabel("avg");
 		AggregationSubtotalBuilder<Long> quantityCount = sbt.count(quantityColumn)
-				.setLabel("count");
+			.setLabel("count");
 		AggregationSubtotalBuilder<Long> quantityDistCount = sbt.distinctCount(quantityColumn)
-				.setLabel("distinct count");
+			.setLabel("distinct count");
 		AggregationSubtotalBuilder<Integer> quantityMin = sbt.min(quantityColumn)
-				.setLabel("min value");
+			.setLabel("min value");
 		AggregationSubtotalBuilder<Integer> quantityMax = sbt.max(quantityColumn)
-				.setLabel("max value");
+			.setLabel("max value");
 
 		AggregationSubtotalBuilder<BigDecimal> unitPriceSum = sbt.sum(unitPriceColumn)
-				.setLabel("sum");
+			.setLabel("sum");
 		AggregationSubtotalBuilder<Number> unitPriceAvg = sbt.avg(unitPriceColumn)
-				.setLabel("avg");
+			.setLabel("avg");
 		AggregationSubtotalBuilder<Long> unitPriceCount = sbt.count(unitPriceColumn)
-				.setLabel("count");
+			.setLabel("count");
 		AggregationSubtotalBuilder<Long> unitPriceDistCount = sbt.distinctCount(unitPriceColumn)
-				.setLabel("distinct count");
+			.setLabel("distinct count");
 		AggregationSubtotalBuilder<BigDecimal> unitPriceFirst = sbt.first(unitPriceColumn)
-				.setLabel("first value");
+			.setLabel("first value");
 		AggregationSubtotalBuilder<Number> unitPriceStdDev = sbt.stdDev(unitPriceColumn)
-				.setLabel("standard deviation");
+			.setLabel("standard deviation");
 		AggregationSubtotalBuilder<Number> unitPriceVar = sbt.var(unitPriceColumn)
-				.setLabel("variance");
+			.setLabel("variance");
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(
-							itemColumn, orderDateColumn, quantityColumn, unitPriceColumn)
-					.subtotalsAtSummary(
-							itemSum, itemCount, itemDistCount,
-							orderDateCount, orderDateDistCount, orderDateMin, orderDateMax,
-							quantitySum, quantityAvg, quantityCount, quantityDistCount, quantityMin, quantityMax,
-							unitPriceSum, unitPriceAvg, unitPriceCount, unitPriceDistCount, unitPriceFirst, unitPriceStdDev, unitPriceVar)
-					.title(Templates.createTitleComponent("AggregationSubtotal"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.columns(
+					itemColumn,	orderDateColumn, quantityColumn, unitPriceColumn)
+				.subtotalsAtSummary(
+					itemSum, itemCount, itemDistCount,
+					orderDateCount, orderDateDistCount, orderDateMin, orderDateMax,
+					quantitySum, quantityAvg, quantityCount, quantityDistCount, quantityMin, quantityMax,
+					unitPriceSum, unitPriceAvg, unitPriceCount, unitPriceDistCount, unitPriceFirst, unitPriceStdDev, unitPriceVar)
+				.title(Templates.createTitleComponent("AggregationSubtotal"))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

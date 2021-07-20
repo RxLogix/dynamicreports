@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,29 +48,29 @@ public class XmlDatasourceReport {
 			JRXmlDataSource chartDataSource = dataSource.dataSource("/sales/chart/item");
 
 			FieldBuilder<Integer> idField = field("id", type.integerType())
-					.setDescription("@id");
+				.setDescription("@id");
 			FieldBuilder<String> itemField = field("item", type.stringType());
 			FieldBuilder<Integer> quantityField = field("quantity", type.integerType());
 			FieldBuilder<BigDecimal> unitPriceField = field("unitprice", type.bigDecimalType());
 
 			BarChartBuilder barChart = cht.barChart()
-					.setDataSource(chartDataSource)
-					.setCategory(itemField)
-					.series(
-							cht.serie(quantityField).setLabel("Quantity"));
+				.setDataSource(chartDataSource)
+				.setCategory(itemField)
+				.series(
+					cht.serie(quantityField).setLabel("Quantity"));
 
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(
-							col.column("Id", idField),
-							col.column("Item", itemField),
-							col.column("Quantity", quantityField),
-							col.column("Unit price", unitPriceField))
-					.title(Templates.createTitleComponent("XmlDatasource"))
-					.summary(barChart)
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(dataSource)
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .columns(
+			  	col.column("Id", idField),
+			  	col.column("Item", itemField),
+			  	col.column("Quantity", quantityField),
+			  	col.column("Unit price", unitPriceField))
+			  .title(Templates.createTitleComponent("XmlDatasource"))
+			  .summary(barChart)
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(dataSource)
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		} catch (JRException e) {

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -41,69 +41,64 @@ public abstract class AbstractJasperCrosstabValueTest extends AbstractJasperValu
 		elementCountTest(getPrefix(1) + "headercell." + name, expectedNumberOfElements);
 	}
 
-	protected void crosstabHeaderElementValueTest(String name, String... values) {
+	protected void crosstabHeaderElementValueTest(String name, String ...values) {
 		elementValueTest(getPrefix(1) + "headercell." + name, values);
 	}
 
-	// group header
+	//group header
 	protected void crosstabGroupHeaderCountTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, int expectedNumberOfElements) {
 		elementCountTest(getPrefix(1) + JasperTestUtils.getCrosstabGroupHeaderName(group), expectedNumberOfElements);
 	}
 
-	protected void crosstabGroupHeaderValueTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, String... values) {
+	protected void crosstabGroupHeaderValueTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, String ...values) {
 		elementValueTest(getPrefix(1) + JasperTestUtils.getCrosstabGroupHeaderName(group), values);
 	}
 
-	protected void crosstabGroupHeaderFullValueTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, String... values) {
+	protected void crosstabGroupHeaderFullValueTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, String ...values) {
 		elementFullValueTest(getPrefix(1) + JasperTestUtils.getCrosstabGroupHeaderName(group), values);
 	}
 
-	// group total header
+	//group total header
 	protected void crosstabGroupTotalHeaderCountTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, int expectedNumberOfElements) {
 		elementCountTest(getPrefix(1) + JasperTestUtils.getCrosstabGroupTotalHeaderName(group), expectedNumberOfElements);
 	}
 
-	protected void crosstabGroupTotalHeaderValueTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, String... values) {
+	protected void crosstabGroupTotalHeaderValueTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, String ...values) {
 		elementValueTest(getPrefix(1) + JasperTestUtils.getCrosstabGroupTotalHeaderName(group), values);
 	}
 
-	protected void crosstabGroupTotalHeaderFullValueTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, String... values) {
+	protected void crosstabGroupTotalHeaderFullValueTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, String ...values) {
 		elementFullValueTest(getPrefix(1) + JasperTestUtils.getCrosstabGroupTotalHeaderName(group), values);
 	}
 
-	// group title header
-	protected void crosstabGroupTitleHeaderCountTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, CrosstabMeasureBuilder<?> measure,
-			int expectedNumberOfElements) {
+	//group title header
+	protected void crosstabGroupTitleHeaderCountTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, CrosstabMeasureBuilder<?> measure, int expectedNumberOfElements) {
 		elementCountTest(getPrefix(1) + JasperTestUtils.getCrosstabGroupTitleHeaderName(group, measure), expectedNumberOfElements);
 	}
 
-	protected void crosstabGroupTitleHeaderValueTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, CrosstabMeasureBuilder<?> measure, String... values) {
+	protected void crosstabGroupTitleHeaderValueTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, CrosstabMeasureBuilder<?> measure, String ...values) {
 		elementValueTest(getPrefix(1) + JasperTestUtils.getCrosstabGroupTitleHeaderName(group, measure), values);
 	}
 
-	// group title total header
-	protected void crosstabGroupTitleTotalHeaderCountTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, CrosstabMeasureBuilder<?> measure,
-			int expectedNumberOfElements) {
+	//group title total header
+	protected void crosstabGroupTitleTotalHeaderCountTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, CrosstabMeasureBuilder<?> measure, int expectedNumberOfElements) {
 		elementCountTest(getPrefix(1) + JasperTestUtils.getCrosstabGroupTitleTotalHeaderName(group, measure), expectedNumberOfElements);
 	}
 
-	protected void crosstabGroupTitleTotalHeaderValueTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, CrosstabMeasureBuilder<?> measure, String... values) {
+	protected void crosstabGroupTitleTotalHeaderValueTest(AbstractCrosstabGroupBuilder<?, ?, ?> group, CrosstabMeasureBuilder<?> measure, String ...values) {
 		elementValueTest(getPrefix(1) + JasperTestUtils.getCrosstabGroupTitleTotalHeaderName(group, measure), values);
 	}
 
-	// cell
-	protected void crosstabCellCountTest(CrosstabMeasureBuilder<?> measure, CrosstabRowGroupBuilder<?> rowGroup, CrosstabColumnGroupBuilder<?> columnGroup,
-			int expectedNumberOfElements) {
+	//cell
+	protected void crosstabCellCountTest(CrosstabMeasureBuilder<?> measure, CrosstabRowGroupBuilder<?> rowGroup, CrosstabColumnGroupBuilder<?> columnGroup, int expectedNumberOfElements) {
 		elementCountTest(getPrefix(1) + JasperTestUtils.getCrosstabCellName(measure, rowGroup, columnGroup), expectedNumberOfElements);
 	}
 
-	protected void crosstabCellValueTest(CrosstabMeasureBuilder<?> measure, CrosstabRowGroupBuilder<?> rowGroup, CrosstabColumnGroupBuilder<?> columnGroup,
-			String... values) {
+	protected void crosstabCellValueTest(CrosstabMeasureBuilder<?> measure, CrosstabRowGroupBuilder<?> rowGroup, CrosstabColumnGroupBuilder<?> columnGroup, String ...values) {
 		elementValueTest(getPrefix(1) + JasperTestUtils.getCrosstabCellName(measure, rowGroup, columnGroup), values);
 	}
 
-	protected void crosstabCellFullValueTest(CrosstabMeasureBuilder<?> measure, CrosstabRowGroupBuilder<?> rowGroup, CrosstabColumnGroupBuilder<?> columnGroup,
-			String... values) {
+	protected void crosstabCellFullValueTest(CrosstabMeasureBuilder<?> measure, CrosstabRowGroupBuilder<?> rowGroup, CrosstabColumnGroupBuilder<?> columnGroup, String ...values) {
 		elementFullValueTest(getPrefix(1) + JasperTestUtils.getCrosstabCellName(measure, rowGroup, columnGroup), values);
 	}
 

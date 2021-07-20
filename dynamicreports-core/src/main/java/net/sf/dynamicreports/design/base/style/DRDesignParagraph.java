@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -130,27 +130,27 @@ public class DRDesignParagraph implements DRIDesignParagraph {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+	  if (obj == null) {
 			return false;
 		}
-		if (obj == this) {
+	  if (obj == this) {
 			return true;
 		}
-		if (obj.getClass() != getClass()) {
+	  if (obj.getClass() != getClass()) {
 			return false;
 		}
 
-		DRDesignParagraph o = (DRDesignParagraph) obj;
+	  DRDesignParagraph o = (DRDesignParagraph) obj;
 		EqualsBuilder equalsBuilder = new EqualsBuilder()
-				.append(lineSpacing, o.lineSpacing)
-				.append(lineSpacingSize, o.lineSpacingSize)
-				.append(firstLineIndent, o.firstLineIndent)
-				.append(leftIndent, o.leftIndent)
-				.append(rightIndent, o.rightIndent)
-				.append(spacingBefore, o.spacingBefore)
-				.append(spacingAfter, o.spacingAfter)
-				.append(tabStopWidth, o.tabStopWidth)
-				.append(tabStops, o.tabStops);
+			.append(lineSpacing, o.lineSpacing)
+			.append(lineSpacingSize, o.lineSpacingSize)
+			.append(firstLineIndent, o.firstLineIndent)
+			.append(leftIndent, o.leftIndent)
+			.append(rightIndent, o.rightIndent)
+			.append(spacingBefore, o.spacingBefore)
+			.append(spacingAfter, o.spacingAfter)
+			.append(tabStopWidth, o.tabStopWidth)
+			.append(tabStops, o.tabStops);
 		return equalsBuilder.isEquals();
 	}
 }

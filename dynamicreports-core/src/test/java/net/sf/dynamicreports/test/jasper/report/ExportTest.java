@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -26,9 +26,6 @@ import static net.sf.dynamicreports.report.builder.DynamicReports.*;
 
 import java.io.ByteArrayOutputStream;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import junit.framework.Assert;
 import net.sf.dynamicreports.jasper.builder.JasperConcatenatedReportBuilder;
 import net.sf.dynamicreports.jasper.builder.JasperReportBuilder;
@@ -36,6 +33,9 @@ import net.sf.dynamicreports.jasper.constant.ImageType;
 import net.sf.dynamicreports.report.datasource.DRDataSource;
 import net.sf.dynamicreports.report.exception.DRException;
 import net.sf.jasperreports.engine.JRDataSource;
+
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
@@ -54,6 +54,7 @@ public class ExportTest {
 		concatenatedReport.concatenate(report, report, report);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void exportTest() {
 		try {
@@ -67,6 +68,8 @@ public class ExportTest {
 			report.toPdf(new ByteArrayOutputStream());
 			report.toRtf(new ByteArrayOutputStream());
 			report.toText(new ByteArrayOutputStream());
+			report.toXhtml(new ByteArrayOutputStream());
+			report.toExcelApiXls(new ByteArrayOutputStream());
 			report.toXls(new ByteArrayOutputStream());
 			report.toXlsx(new ByteArrayOutputStream());
 			report.toXml(new ByteArrayOutputStream());
@@ -77,6 +80,7 @@ public class ExportTest {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void concatenatedExportTest() {
 		try {
@@ -89,6 +93,8 @@ public class ExportTest {
 			concatenatedReport.toPdf(new ByteArrayOutputStream());
 			concatenatedReport.toRtf(new ByteArrayOutputStream());
 			concatenatedReport.toText(new ByteArrayOutputStream());
+			concatenatedReport.toXhtml(new ByteArrayOutputStream());
+			concatenatedReport.toExcelApiXls(new ByteArrayOutputStream());
 			concatenatedReport.toXls(new ByteArrayOutputStream());
 			concatenatedReport.toXlsx(new ByteArrayOutputStream());
 			concatenatedReport.toXml(new ByteArrayOutputStream());

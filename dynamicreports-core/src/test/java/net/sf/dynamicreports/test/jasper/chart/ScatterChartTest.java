@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -54,39 +54,39 @@ public class ScatterChartTest extends AbstractJasperChartTest implements Seriali
 		TextColumnBuilder<Integer> column2;
 
 		rb.setLocale(Locale.ENGLISH)
-				.columns(
-						column1 = col.column("Column1", "field1", Integer.class),
-						column2 = col.column("Column2", "field2", Integer.class))
-				.summary(
-						cht.scatterChart()
-								.setXValue(column1)
-								.series(
-										cht.xySerie(column2), cht.xySerie(column1).setXValue(column2))
-								.setShowShapes(false)
-								.setShowLines(false),
-						cht.scatterChart()
-								.setXValue(column1)
-								.series(cht.xySerie(column2))
-								.setXAxisFormat(
-										cht.axisFormat()
-												.setLabel("category")
-												.setLabelColor(Color.BLUE)
-												.setLabelFont(stl.fontArialBold())
-												.setTickLabelFont(stl.fontArial().setItalic(true))
-												.setTickLabelColor(Color.CYAN)
-												.setLineColor(Color.LIGHT_GRAY)),
-						cht.scatterChart()
-								.setXValue(column1)
-								.series(cht.xySerie(column2))
-								.setYAxisFormat(
-										cht.axisFormat()
-												.setLabel("value")
-												.setLabelColor(Color.BLUE)
-												.setLabelFont(stl.fontArialBold())
-												.setTickLabelFont(stl.fontArial().setItalic(true))
-												.setTickLabelColor(Color.CYAN)
-												.setTickLabelMask("#,##0.00")
-												.setLineColor(Color.LIGHT_GRAY)));
+			.columns(
+				column1 = col.column("Column1", "field1", Integer.class),
+				column2 = col.column("Column2", "field2", Integer.class))
+			.summary(
+					cht.scatterChart()
+						.setXValue(column1)
+						.series(
+							cht.xySerie(column2), cht.xySerie(column1).setXValue(column2))
+						.setShowShapes(false)
+						.setShowLines(false),
+					cht.scatterChart()
+						.setXValue(column1)
+						.series(cht.xySerie(column2))
+						.setXAxisFormat(
+								cht.axisFormat()
+											.setLabel("category")
+											.setLabelColor(Color.BLUE)
+											.setLabelFont(stl.fontArialBold())
+											.setTickLabelFont(stl.fontArial().setItalic(true))
+											.setTickLabelColor(Color.CYAN)
+											.setLineColor(Color.LIGHT_GRAY)),
+					cht.scatterChart()
+						.setXValue(column1)
+						.series(cht.xySerie(column2))
+						.setYAxisFormat(
+								cht.axisFormat()
+											.setLabel("value")
+											.setLabelColor(Color.BLUE)
+											.setLabelFont(stl.fontArialBold())
+											.setTickLabelFont(stl.fontArial().setItalic(true))
+											.setTickLabelColor(Color.CYAN)
+											.setTickLabelMask("#,##0.00")
+											.setLineColor(Color.LIGHT_GRAY)));
 	}
 
 	@Override
@@ -100,8 +100,8 @@ public class ScatterChartTest extends AbstractJasperChartTest implements Seriali
 		Assert.assertEquals("renderer", XYLineAndShapeRenderer.class, renderer.getClass());
 		Assert.assertFalse("show shapes", ((XYLineAndShapeRenderer) renderer).getBaseShapesVisible());
 		Assert.assertFalse("show lines", ((XYLineAndShapeRenderer) renderer).getBaseLinesVisible());
-		xyChartDataTest(chart, 0, "Column2", new Number[][] { { 1d, 2d }, { 2d, 3d }, { 3d, 4d }, { 4d, 5d } });
-		xyChartDataTest(chart, 1, "Column1", new Number[][] { { 2d, 1d }, { 3d, 2d }, { 4d, 3d }, { 5d, 4d } });
+		xyChartDataTest(chart, 0, "Column2", new Number[][] {{1d, 2d}, {2d, 3d}, {3d, 4d}, {4d, 5d}});
+		xyChartDataTest(chart, 1, "Column1", new Number[][] {{2d, 1d}, {3d, 2d}, {4d, 3d}, {5d, 4d}});
 
 		chart = getChart("summary.chart2", 0);
 		Axis axis = chart.getXYPlot().getDomainAxis();

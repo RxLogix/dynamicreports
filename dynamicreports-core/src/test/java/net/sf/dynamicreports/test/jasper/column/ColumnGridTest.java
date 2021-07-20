@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -41,44 +41,44 @@ public class ColumnGridTest extends AbstractJasperPositionTest {
 	private AggregationSubtotalBuilder<Integer> subtotal1;
 	private AggregationSubtotalBuilder<Integer> subtotal2;
 	private AggregationSubtotalBuilder<Integer> subtotal3;
-
+	
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.columnGrid(ListType.VERTICAL)
-				.columns(
-						column1 = col.column("Column1", "field1", Integer.class),
-						column2 = col.column("Column2", "field2", Integer.class),
-						column3 = col.column("Column3", "field3", Integer.class))
-				.subtotalsAtSummary(
-						subtotal1 = sbt.sum(column1),
-						subtotal2 = sbt.sum(column2),
-						subtotal3 = sbt.sum(column3));
+			.columns(
+					column1 = col.column("Column1", "field1", Integer.class),
+					column2 = col.column("Column2", "field2", Integer.class),
+					column3 = col.column("Column3", "field3", Integer.class))
+			.subtotalsAtSummary(
+					subtotal1 = sbt.sum(column1),
+					subtotal2 = sbt.sum(column2),
+					subtotal3 = sbt.sum(column3));
 	}
 
 	@Override
 	public void test() {
 		super.test();
+		
+		numberOfPagesTest(1);	
 
-		numberOfPagesTest(1);
-
-		// column1
+		//column1
 		columnTitlePositionTest(column1, 0, 10, 10, 575, 16);
 		columnDetailPositionTest(column1, 0, 10, 58, 575, 16);
-		columnDetailPositionTest(column1, 1, 10, 106, 575, 16);
-		// column2
+		columnDetailPositionTest(column1, 1, 10, 106, 575, 16);		
+		//column2
 		columnTitlePositionTest(column2, 0, 10, 26, 575, 16);
 		columnDetailPositionTest(column2, 0, 10, 74, 575, 16);
-		columnDetailPositionTest(column2, 1, 10, 122, 575, 16);
-		// column3
+		columnDetailPositionTest(column2, 1, 10, 122, 575, 16);		
+		//column3
 		columnTitlePositionTest(column3, 0, 10, 42, 575, 16);
 		columnDetailPositionTest(column3, 0, 10, 90, 575, 16);
 		columnDetailPositionTest(column3, 1, 10, 138, 575, 16);
-		// subtotal
+		//subtotal
 		subtotalPositionTest(subtotal1, 0, 10, 154, 575, 16);
 		subtotalPositionTest(subtotal2, 0, 10, 170, 575, 16);
 		subtotalPositionTest(subtotal3, 0, 10, 186, 575, 16);
 	}
-
+	
 	@Override
 	protected JRDataSource createDataSource() {
 		DRDataSource dataSource = new DRDataSource("field1", "field2", "field3");

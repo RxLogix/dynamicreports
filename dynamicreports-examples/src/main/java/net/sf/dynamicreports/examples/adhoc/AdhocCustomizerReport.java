@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -58,18 +58,18 @@ public class AdhocCustomizerReport {
 		AdhocReport report = new AdhocReport();
 		configuration.setReport(report);
 
-		// columns
+		//columns
 		AdhocColumn column = new AdhocColumn();
 		column.setName("quantity");
 		report.addColumn(column);
 		column = new AdhocColumn();
 		column.setName("unitprice");
 		report.addColumn(column);
-		// groups
+		//groups
 		AdhocGroup group = new AdhocGroup();
 		group.setName("item");
 		report.addGroup(group);
-		// subtotal
+		//subtotal
 		AdhocSubtotal subtotal = new AdhocSubtotal();
 		subtotal.setName("quantity");
 		subtotal.setCalculation(AdhocCalculation.COUNT);
@@ -78,12 +78,12 @@ public class AdhocCustomizerReport {
 		subtotal.setCalculation(AdhocCalculation.SUM);
 		subtotal.setName("unitprice");
 		report.addSubtotal(subtotal);
-		// sorts
+		//sorts
 		AdhocSort sort = new AdhocSort();
 		sort.setName("item");
 		report.addSort(sort);
 
-		try {
+	  try {
 			JasperReportBuilder reportBuilder = AdhocManager.createReport(configuration.getReport(), new ReportCustomizer());
 			reportBuilder.setDataSource(createDataSource());
 			reportBuilder.show();
@@ -116,10 +116,10 @@ public class AdhocCustomizerReport {
 		@Override
 		public void customize(ReportBuilder<?> report, AdhocReport adhocReport) throws DRException {
 			super.customize(report, adhocReport);
-			// default report values
+			//default report values
 			report.setTemplate(Templates.reportTemplate);
 			report.title(Templates.createTitleComponent("AdhocCustomizer"));
-			// a fixed page footer that user cannot change, this customization is not stored in the xml file
+			//a fixed page footer that user cannot change, this customization is not stored in the xml file
 			report.pageFooter(Templates.footerComponent);
 		}
 

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -56,27 +56,27 @@ public class CandlestickChartReport {
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(seriesColumn, dateColumn, highColumn, lowColumn, openColumn, closeColumn, volumeColumn)
-					.title(Templates.createTitleComponent("CandlestickChart"))
-					.summary(
-							cht.candlestickChart()
-									.setTitle("Candlestick chart")
-									.setTitleFont(boldFont)
-									.setSeries(seriesColumn)
-									.setDate(dateColumn)
-									.setHigh(highColumn)
-									.setLow(lowColumn)
-									.setOpen(openColumn)
-									.setClose(closeColumn)
-									.setVolume(volumeColumn)
-									.setTimeAxisFormat(
-											cht.axisFormat().setLabel("Date"))
-									.setValueAxisFormat(
-											cht.axisFormat().setLabel("Value")))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.columns(seriesColumn, dateColumn, highColumn, lowColumn, openColumn, closeColumn, volumeColumn)
+				.title(Templates.createTitleComponent("CandlestickChart"))
+				.summary(
+					cht.candlestickChart()
+						.setTitle("Candlestick chart")
+						.setTitleFont(boldFont)
+						.setSeries(seriesColumn)
+						.setDate(dateColumn)
+						.setHigh(highColumn)
+						.setLow(lowColumn)
+						.setOpen(openColumn)
+						.setClose(closeColumn)
+						.setVolume(volumeColumn)
+						.setTimeAxisFormat(
+							cht.axisFormat().setLabel("Date"))
+						.setValueAxisFormat(
+							cht.axisFormat().setLabel("Value")))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
@@ -87,8 +87,7 @@ public class CandlestickChartReport {
 		Calendar c = Calendar.getInstance();
 		c.add(Calendar.DAY_OF_MONTH, -20);
 		for (int i = 0; i < 20; i++) {
-			dataSource.add("serie", c.getTime(), 150 + Math.random() * 50, 20 + Math.random() * 30, 50 + Math.random() * 90, 50 + Math.random() * 110,
-					50 + Math.random() * 100);
+			dataSource.add("serie", c.getTime(), 150 + Math.random() * 50, 20 + Math.random() * 30, 50 + Math.random() * 90, 50 + Math.random() * 110, 50 + Math.random() * 100);
 			c.add(Calendar.DAY_OF_MONTH, 1);
 		}
 		return dataSource;

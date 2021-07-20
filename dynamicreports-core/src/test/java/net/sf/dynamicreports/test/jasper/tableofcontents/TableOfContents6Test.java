@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,8 +48,8 @@ public class TableOfContents6Test extends AbstractJasperValueTest {
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.setTableOfContents(new CustomTableOfContentsCustomizer())
-				.title(cmp.subreport(createSubreport1()))
-				.columns(column4 = col.column("Column4", "field4", type.stringType()));
+		  .title(cmp.subreport(createSubreport1()))
+		  .columns(column4 = col.column("Column4", "field4", type.stringType()));
 	}
 
 	private JasperReportBuilder createSubreport1() {
@@ -62,11 +62,11 @@ public class TableOfContents6Test extends AbstractJasperValueTest {
 
 		JasperReportBuilder report = report();
 		report
-				.columns(
-						column1,
-						col.column("Column2", "field2", type.stringType()),
-						col.column("Column3", "field3", type.stringType()))
-				.setDataSource(createSubreportDataSource1());
+		  .columns(
+		  	column1,
+		  	col.column("Column2", "field2", type.stringType()),
+		  	col.column("Column3", "field3", type.stringType()))
+		  .setDataSource(createSubreportDataSource1());
 
 		return report;
 	}
@@ -126,18 +126,18 @@ public class TableOfContents6Test extends AbstractJasperValueTest {
 			group2 = grp.group(field("customValue.field3", String.class));
 
 			report.title(
-					cmp.subreport(createSubreport2(group1)),
-					cmp.subreport(createSubreport2(group2)));
+				cmp.subreport(createSubreport2(group1)),
+				cmp.subreport(createSubreport2(group2)));
 		}
 
 		private JasperReportBuilder createSubreport2(CustomGroupBuilder group) {
 			JasperReportBuilder subreport = report();
 			subreport
-					.fields(
-							levelField, textField, referenceField, pageIndexField)
-					.groupBy(group)
-					.detail(detailComponent())
-					.setDataSource(new JRBeanCollectionDataSource(headingList));
+				.fields(
+					levelField, textField, referenceField, pageIndexField)
+				.groupBy(group)
+				.detail(detailComponent())
+				.setDataSource(new JRBeanCollectionDataSource(headingList));
 
 			return subreport;
 		}

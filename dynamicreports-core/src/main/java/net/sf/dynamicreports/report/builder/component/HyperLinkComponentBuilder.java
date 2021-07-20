@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -32,8 +32,7 @@ import net.sf.dynamicreports.report.definition.expression.DRIExpression;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 @SuppressWarnings("unchecked")
-public abstract class HyperLinkComponentBuilder<T extends HyperLinkComponentBuilder<T, U>, U extends DRHyperLinkComponent>
-		extends DimensionComponentBuilder<T, U> {
+public abstract class HyperLinkComponentBuilder<T extends HyperLinkComponentBuilder<T, U>, U extends DRHyperLinkComponent> extends DimensionComponentBuilder<T, U> {
 	private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
 
 	public HyperLinkComponentBuilder(U component) {
@@ -58,7 +57,8 @@ public abstract class HyperLinkComponentBuilder<T extends HyperLinkComponentBuil
 	public T setHyperLink(HyperLinkBuilder hyperLink) {
 		if (hyperLink != null) {
 			getObject().setHyperLink(hyperLink.getHyperLink());
-		} else {
+		}
+		else {
 			getObject().setHyperLink(null);
 		}
 		return (T) this;

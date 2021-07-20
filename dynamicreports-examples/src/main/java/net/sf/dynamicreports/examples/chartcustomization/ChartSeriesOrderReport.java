@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -52,22 +52,22 @@ public class ChartSeriesOrderReport {
 		TextColumnBuilder<Integer> valueColumn = col.column("Value", "value", type.integerType());
 
 		BarChartBuilder chart = cht.barChart()
-				.setCategory(new CategoryExpression())
-				.series(cht.serie(valueColumn).setSeries(stockColumn))
-				.setSeriesOrderType(OrderType.ASCENDING)
-				.setValueAxisFormat(
-						cht.axisFormat().setLabel("Stock"));
+			.setCategory(new CategoryExpression())
+			.series(cht.serie(valueColumn).setSeries(stockColumn))
+			.setSeriesOrderType(OrderType.ASCENDING)
+			.setValueAxisFormat(
+				cht.axisFormat().setLabel("Stock"));
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(dateColumn, stockColumn, valueColumn)
-					.title(Templates.createTitleComponent("ChartSeriesOrder"))
-					.groupBy(dateColumn)
-					.summary(chart)
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.columns(dateColumn, stockColumn, valueColumn)
+				.title(Templates.createTitleComponent("ChartSeriesOrder"))
+				.groupBy(dateColumn)
+				.summary(chart)
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

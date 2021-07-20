@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -45,7 +45,7 @@ public class SubreportTest extends AbstractJasperValueTest implements Serializab
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		SubreportBuilder subreport = Components.subreport(new SubreportExpression())
-				.setDataSource(new SubreportDataSourceExpression());
+    .setDataSource(new SubreportDataSourceExpression());
 
 		rb.detail(subreport);
 	}
@@ -56,14 +56,14 @@ public class SubreportTest extends AbstractJasperValueTest implements Serializab
 
 		numberOfPagesTest(1);
 
-		// title
+		//title
 		elementCountTest("title.textField1", 5);
 		elementValueTest("title.textField1", "Subreport1", "Subreport2", "Subreport3", "Subreport4", "Subreport5");
 
 		elementCountTest("title.textField2", 5);
 		elementValueTest("title.textField2", "Parameter1", "Parameter2", "Parameter3", "Parameter4", "Parameter5");
 
-		// column title
+		//column title
 		elementCountTest("columnHeader.column_column1.title1", 5);
 		elementValueTest("columnHeader.column_column1.title1", "Column1", "Column1", "Column1", "Column1", "Column1");
 
@@ -79,7 +79,7 @@ public class SubreportTest extends AbstractJasperValueTest implements Serializab
 		elementCountTest("columnHeader.column_column5.title1", 1);
 		elementValueTest("columnHeader.column_column5.title1", "Column5");
 
-		// column detail
+		//column detail
 		elementCountTest("detail.column_column11", 15);
 		elementValueTest("detail.column_column11",
 				"row1_column1",
@@ -124,11 +124,11 @@ public class SubreportTest extends AbstractJasperValueTest implements Serializab
 			int masterRowNumber = reportParameters.getReportRowNumber();
 			JasperReportBuilder report = report();
 			report
-					.parameters(parameter("masterRowNumber", masterRowNumber))
-					.title(cmp.text("Subreport" + masterRowNumber), cmp.text(new SubreportTitleExpression()));
+			  .parameters(parameter("masterRowNumber", masterRowNumber))
+			  .title(cmp.text("Subreport" + masterRowNumber), cmp.text(new SubreportTitleExpression()));
 
 			for (int i = 1; i <= masterRowNumber; i++) {
-				report.addColumn(col.column("Column" + i, "column" + i, type.stringType()));
+			  report.addColumn(col.column("Column" + i, "column" + i, type.stringType()));
 			}
 
 			return report;

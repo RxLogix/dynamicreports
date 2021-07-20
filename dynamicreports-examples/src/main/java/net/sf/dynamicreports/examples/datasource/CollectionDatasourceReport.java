@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,22 +48,22 @@ public class CollectionDatasourceReport {
 
 	private void build() {
 		SubreportBuilder subreport = cmp.subreport(createSubreport())
-				.setDataSource(exp.subDatasourceBeanCollection("subData"));
+			.setDataSource(exp.subDatasourceBeanCollection("subData"));
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(
-							col.column("Item", "item", type.stringType()),
-							col.column("Quantity", "quantity", type.integerType()),
-							col.column("Unit price", "unitPrice", type.bigDecimalType()))
-					.title(Templates.createTitleComponent("CollectionDatasource"))
-					.detailFooter(
-							cmp.horizontalList(cmp.horizontalGap(150), subreport, cmp.horizontalGap(150)),
-							cmp.line())
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+			  .columns(
+			  	col.column("Item",       "item",      type.stringType()),
+			  	col.column("Quantity",   "quantity",  type.integerType()),
+			  	col.column("Unit price", "unitPrice", type.bigDecimalType()))
+			  .title(Templates.createTitleComponent("CollectionDatasource"))
+			  .detailFooter(
+			  	cmp.horizontalList(cmp.horizontalGap(150), subreport, cmp.horizontalGap(150)),
+			  	cmp.line())
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
@@ -72,11 +72,11 @@ public class CollectionDatasourceReport {
 	private JasperReportBuilder createSubreport() {
 		JasperReportBuilder report = report();
 		report
-				.setTemplate(Templates.reportTemplate)
-				.title(cmp.text("SubData").setStyle(Templates.boldCenteredStyle))
-				.columns(
-						col.column("Order date", "orderDate", type.dateType()),
-						col.column("Quantity", "quantity", type.integerType()));
+		  .setTemplate(Templates.reportTemplate)
+		  .title(cmp.text("SubData").setStyle(Templates.boldCenteredStyle))
+		  .columns(
+		  	col.column("Order date", "orderDate", type.dateType()),
+		  	col.column("Quantity", "quantity", type.integerType()));
 
 		return report;
 	}

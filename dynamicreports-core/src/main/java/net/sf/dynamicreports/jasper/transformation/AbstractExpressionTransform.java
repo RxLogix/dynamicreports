@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -160,7 +160,7 @@ public abstract class AbstractExpressionTransform {
 		}
 	}
 
-	// field
+	//field
 	private JRDesignField field(DRIDesignField field) {
 		JRDesignField jrField = new JRDesignField();
 		jrField.setName(field.getName());
@@ -169,7 +169,7 @@ public abstract class AbstractExpressionTransform {
 		return jrField;
 	}
 
-	// variable
+	//variable
 	private JRDesignVariable variable(DRIDesignVariable variable) {
 		JRDesignExpression expression = getExpression(variable.getValueExpression());
 		JRDesignExpression initialValueExpression = getExpression(variable.getInitialValueExpression());
@@ -192,7 +192,7 @@ public abstract class AbstractExpressionTransform {
 		return null;
 	}
 
-	// simple expression
+	//simple expression
 	private JRDesignExpression expression(DRIDesignExpression simpleExpression) {
 		JRDesignExpression expression = new JRDesignExpression();
 		expression.setText(getExpressionText(simpleExpression));
@@ -202,33 +202,40 @@ public abstract class AbstractExpressionTransform {
 	private String getExpressionText(DRIDesignExpression expression) {
 		if (expression instanceof DRIDesignField) {
 			return toFieldValue(expression.getName());
-		} else if (expression instanceof DRIDesignVariable) {
+		}
+		else if (expression instanceof DRIDesignVariable) {
 			return toVariableValue(expression.getName());
-		} else if (expression instanceof DRIDesignComplexExpression) {
+		}
+		else if (expression instanceof DRIDesignComplexExpression) {
 			DRIDesignComplexExpression complexExpression = (DRIDesignComplexExpression) expression;
 			String values = "";
 			for (DRIDesignExpression valueExpression : complexExpression.getExpressions()) {
-				values += ", " + getExpressionText(valueExpression);
+				values +=  ", " + getExpressionText(valueExpression);
 			}
 			if (values.length() > 0) {
 				values = values.substring(2);
 			}
 			String parameterName = getExpressionParameterName(complexExpression.getParameterName());
 			return MessageFormat.format(COMPLEX_VALUE, parameterName, expression.getName(), values);
-		} else if (expression instanceof DRIDesignSimpleExpression) {
+		}
+		else if (expression instanceof DRIDesignSimpleExpression) {
 			String parameterName = getExpressionParameterName(((DRIDesignSimpleExpression) expression).getParameterName());
 			return MessageFormat.format(VALUE, parameterName, expression.getName());
-		} else if (expression instanceof DRIDesignSystemExpression) {
+		}
+		else if (expression instanceof DRIDesignSystemExpression) {
 			String name = ((DRIDesignSystemExpression) expression).getName();
 			if (name.equals(SystemExpression.PAGE_NUMBER.name())) {
 				return toVariableValue(JRVariable.PAGE_NUMBER);
-			} else {
+			}
+			else {
 				return toVariableValue(name);
 			}
-			// throw new JasperDesignException("System expression \"" + name + "\" not supported");
-		} else if (expression instanceof DRIDesignJasperExpression) {
+			//throw new JasperDesignException("System expression \"" + name + "\" not supported");
+		}
+		else if (expression instanceof DRIDesignJasperExpression) {
 			return ((DRIDesignJasperExpression) expression).getExpression();
-		} else {
+		}
+		else {
 			throw new JasperDesignException("Expression " + expression.getClass().getName() + " not supported");
 		}
 	}
@@ -236,7 +243,8 @@ public abstract class AbstractExpressionTransform {
 	private String getExpressionParameterName(String parameterName) {
 		if (parameterName == null) {
 			return JasperCustomValues.NAME;
-		} else {
+		}
+		else {
 			return parameterName;
 		}
 	}
@@ -262,7 +270,7 @@ public abstract class AbstractExpressionTransform {
 		return expressions.get(expression.getName());
 	}
 
-	// sort
+	//sort
 	private JRDesignSortField sort(DRIDesignSort sort) {
 		DRIDesignExpression expression = sort.getExpression();
 		String name;
@@ -270,10 +278,12 @@ public abstract class AbstractExpressionTransform {
 		if (expression instanceof DRIDesignField) {
 			name = expression.getName();
 			type = SortFieldTypeEnum.FIELD;
-		} else if (expression instanceof DRIDesignVariable) {
+		}
+		else if (expression instanceof DRIDesignVariable) {
 			name = expression.getName();
 			type = SortFieldTypeEnum.VARIABLE;
-		} else {
+		}
+		else {
 			throw new JasperDesignException("Sort expression \"" + expression.getName() + "\" not supported");
 		}
 

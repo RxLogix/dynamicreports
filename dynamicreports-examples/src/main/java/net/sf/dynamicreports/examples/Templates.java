@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -60,68 +60,68 @@ public class Templates {
 	public static final ComponentBuilder<?, ?> footerComponent;
 
 	static {
-		rootStyle = stl.style().setPadding(2);
-		boldStyle = stl.style(rootStyle).bold();
-		italicStyle = stl.style(rootStyle).italic();
-		boldCenteredStyle = stl.style(boldStyle)
-				.setTextAlignment(HorizontalTextAlignment.CENTER, VerticalTextAlignment.MIDDLE);
+		rootStyle           = stl.style().setPadding(2);
+		boldStyle           = stl.style(rootStyle).bold();
+		italicStyle         = stl.style(rootStyle).italic();
+		boldCenteredStyle   = stl.style(boldStyle)
+		                         .setTextAlignment(HorizontalTextAlignment.CENTER, VerticalTextAlignment.MIDDLE);
 		bold12CenteredStyle = stl.style(boldCenteredStyle)
-				.setFontSize(12);
+		                         .setFontSize(12);
 		bold18CenteredStyle = stl.style(boldCenteredStyle)
-				.setFontSize(18);
+		                         .setFontSize(18);
 		bold22CenteredStyle = stl.style(boldCenteredStyle)
-				.setFontSize(22);
-		columnStyle = stl.style(rootStyle).setVerticalTextAlignment(VerticalTextAlignment.MIDDLE);
-		columnTitleStyle = stl.style(columnStyle)
-				.setBorder(stl.pen1Point())
-				.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER)
-				.setBackgroundColor(Color.LIGHT_GRAY)
-				.bold();
-		groupStyle = stl.style(boldStyle)
-				.setHorizontalTextAlignment(HorizontalTextAlignment.LEFT);
-		subtotalStyle = stl.style(boldStyle)
-				.setTopBorder(stl.pen1Point());
+                             .setFontSize(22);
+		columnStyle         = stl.style(rootStyle).setVerticalTextAlignment(VerticalTextAlignment.MIDDLE);
+		columnTitleStyle    = stl.style(columnStyle)
+		                         .setBorder(stl.pen1Point())
+		                         .setHorizontalTextAlignment(HorizontalTextAlignment.CENTER)
+		                         .setBackgroundColor(Color.LIGHT_GRAY)
+		                         .bold();
+		groupStyle          = stl.style(boldStyle)
+		                         .setHorizontalTextAlignment(HorizontalTextAlignment.LEFT);
+		subtotalStyle       = stl.style(boldStyle)
+		                         .setTopBorder(stl.pen1Point());
 
-		StyleBuilder crosstabGroupStyle = stl.style(columnTitleStyle);
+		StyleBuilder crosstabGroupStyle      = stl.style(columnTitleStyle);
 		StyleBuilder crosstabGroupTotalStyle = stl.style(columnTitleStyle)
-				.setBackgroundColor(new Color(170, 170, 170));
+		                                          .setBackgroundColor(new Color(170, 170, 170));
 		StyleBuilder crosstabGrandTotalStyle = stl.style(columnTitleStyle)
-				.setBackgroundColor(new Color(140, 140, 140));
-		StyleBuilder crosstabCellStyle = stl.style(columnStyle)
-				.setBorder(stl.pen1Point());
+		                                          .setBackgroundColor(new Color(140, 140, 140));
+		StyleBuilder crosstabCellStyle       = stl.style(columnStyle)
+		                                          .setBorder(stl.pen1Point());
 
 		TableOfContentsCustomizerBuilder tableOfContentsCustomizer = tableOfContentsCustomizer()
-				.setHeadingStyle(0, stl.style(rootStyle).bold());
+			.setHeadingStyle(0, stl.style(rootStyle).bold());
 
 		reportTemplate = template()
-				.setLocale(Locale.ENGLISH)
-				.setColumnStyle(columnStyle)
-				.setColumnTitleStyle(columnTitleStyle)
-				.setGroupStyle(groupStyle)
-				.setGroupTitleStyle(groupStyle)
-				.setSubtotalStyle(subtotalStyle)
-				.highlightDetailEvenRows()
-				.crosstabHighlightEvenRows()
-				.setCrosstabGroupStyle(crosstabGroupStyle)
-				.setCrosstabGroupTotalStyle(crosstabGroupTotalStyle)
-				.setCrosstabGrandTotalStyle(crosstabGrandTotalStyle)
-				.setCrosstabCellStyle(crosstabCellStyle)
-				.setTableOfContentsCustomizer(tableOfContentsCustomizer);
+		                   .setLocale(Locale.ENGLISH)
+		                   .setColumnStyle(columnStyle)
+		                   .setColumnTitleStyle(columnTitleStyle)
+		                   .setGroupStyle(groupStyle)
+		                   .setGroupTitleStyle(groupStyle)
+		                   .setSubtotalStyle(subtotalStyle)
+		                   .highlightDetailEvenRows()
+		                   .crosstabHighlightEvenRows()
+		                   .setCrosstabGroupStyle(crosstabGroupStyle)
+		                   .setCrosstabGroupTotalStyle(crosstabGroupTotalStyle)
+		                   .setCrosstabGrandTotalStyle(crosstabGrandTotalStyle)
+		                   .setCrosstabCellStyle(crosstabCellStyle)
+		                   .setTableOfContentsCustomizer(tableOfContentsCustomizer);
 
 		currencyType = new CurrencyType();
 
 		HyperLinkBuilder link = hyperLink("http://www.dynamicreports.org");
-		dynamicReportsComponent = cmp.horizontalList(
-				cmp.image(Templates.class.getResource("images/dynamicreports.png")).setFixedDimension(60, 60),
-				cmp.verticalList(
-						cmp.text("DynamicReports").setStyle(bold22CenteredStyle).setHorizontalTextAlignment(HorizontalTextAlignment.LEFT),
-						cmp.text("http://www.dynamicreports.org").setStyle(italicStyle).setHyperLink(link)))
-				.setFixedWidth(300);
+		dynamicReportsComponent =
+		  cmp.horizontalList(
+		  	cmp.image(Templates.class.getResource("images/dynamicreports.png")).setFixedDimension(60, 60),
+		  	cmp.verticalList(
+		  		cmp.text("DynamicReports").setStyle(bold22CenteredStyle).setHorizontalTextAlignment(HorizontalTextAlignment.LEFT),
+		  		cmp.text("http://www.dynamicreports.org").setStyle(italicStyle).setHyperLink(link))).setFixedWidth(300);
 
 		footerComponent = cmp.pageXofY()
-				.setStyle(
-						stl.style(boldCenteredStyle)
-								.setTopBorder(stl.pen1Point()));
+		                     .setStyle(
+		                     	stl.style(boldCenteredStyle)
+		                     	   .setTopBorder(stl.pen1Point()));
 	}
 
 	/**
@@ -129,13 +129,13 @@ public class Templates {
 	 */
 	public static ComponentBuilder<?, ?> createTitleComponent(String label) {
 		return cmp.horizontalList()
-				.add(
-						dynamicReportsComponent,
-						cmp.text(label).setStyle(bold18CenteredStyle).setHorizontalTextAlignment(HorizontalTextAlignment.RIGHT))
-				.newRow()
-				.add(cmp.line())
-				.newRow()
-				.add(cmp.verticalGap(10));
+		        .add(
+		        	dynamicReportsComponent,
+		        	cmp.text(label).setStyle(bold18CenteredStyle).setHorizontalTextAlignment(HorizontalTextAlignment.RIGHT))
+		        .newRow()
+		        .add(cmp.line())
+		        .newRow()
+		        .add(cmp.verticalGap(10));
 	}
 
 	public static CurrencyValueFormatter createCurrencyValueFormatter(String label) {

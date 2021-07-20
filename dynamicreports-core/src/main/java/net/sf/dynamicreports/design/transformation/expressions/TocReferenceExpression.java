@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -41,8 +41,7 @@ public class TocReferenceExpression extends AbstractComplexExpression<String> {
 	private boolean customId;
 	private boolean isCustomValue;
 
-	public TocReferenceExpression(int level, String expressionName, DRIExpression<?> labelExpression, DRIExpression<String> anchorNameExpression,
-			DRIExpression<?> customValueExpression) {
+	public TocReferenceExpression(int level, String expressionName, DRIExpression<?> labelExpression, DRIExpression<String> anchorNameExpression, DRIExpression<?> customValueExpression) {
 		this.level = level;
 		this.expressionName = expressionName;
 		customId = anchorNameExpression != null;
@@ -65,7 +64,8 @@ public class TocReferenceExpression extends AbstractComplexExpression<String> {
 			if (isCustomValue) {
 				customValue = values.get(2);
 			}
-		} else {
+		}
+		else {
 			id = expressionName + "_" + reportParameters.getReportRowNumber();
 			if (isCustomValue) {
 				customValue = values.get(1);

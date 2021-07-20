@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -46,28 +46,28 @@ public class TableOfContentsStyleTest extends AbstractJasperStyleTest {
 		TextColumnBuilder<String> column2 = col.column("Column2", "field2", type.stringType());
 
 		StyleBuilder titleTocStyle = stl.style()
-				.setForegroundColor(Color.BLUE)
-				.setFontSize(18)
-				.bold()
-				.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
+			.setForegroundColor(Color.BLUE)
+			.setFontSize(18)
+			.bold()
+			.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
 		StyleBuilder headingTocStyle = stl.style()
-				.setFontSize(12)
-				.bold();
+			.setFontSize(12)
+			.bold();
 		StyleBuilder headingToc1Style = stl.style()
-				.italic();
+			.italic();
 
 		TableOfContentsCustomizerBuilder tableOfContentsCustomizer = tableOfContentsCustomizer()
-				.setTitleStyle(titleTocStyle)
-				.setHeadingStyle(headingTocStyle)
-				.setHeadingStyle(1, headingToc1Style);
+			.setTitleStyle(titleTocStyle)
+			.setHeadingStyle(headingTocStyle)
+			.setHeadingStyle(1, headingToc1Style);
 
 		rb.setTableOfContents(tableOfContentsCustomizer)
-				.columns(
-						column1,
-						column2,
-						col.column("Column3", "field3", type.stringType()))
-				.groupBy(
-						column1, column2);
+	  	.columns(
+	  		column1,
+	  		column2,
+	  		col.column("Column3", "field3", type.stringType()))
+			.groupBy(
+			 	column1, column2);
 	}
 
 	@Override
@@ -93,7 +93,7 @@ public class TableOfContentsStyleTest extends AbstractJasperStyleTest {
 
 	@Override
 	protected JRDataSource createDataSource() {
-		String[] values = new String[] { "value1", "value2", "value3" };
+		String[] values = new String[]{"value1", "value2", "value3"};
 		DRDataSource dataSource = new DRDataSource("field1", "field2", "field3");
 		for (String field1 : values) {
 			for (String field2 : values) {

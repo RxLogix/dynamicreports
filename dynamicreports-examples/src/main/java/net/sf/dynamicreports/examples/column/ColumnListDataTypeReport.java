@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -44,41 +44,41 @@ public class ColumnListDataTypeReport {
 	private void build() {
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(
-							col.column("Item", "item", type.stringType()),
-							col.column("Quantity", "quantity", type.integerType()),
-							col.column("Comments", "comments", type.listType()))
-					.title(Templates.createTitleComponent("ColumnListDataType"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .columns(
+			  	col.column("Item",      "item",     type.stringType()),
+			  	col.column("Quantity",  "quantity", type.integerType()),
+			  	col.column("Comments",  "comments", type.listType()))
+			  .title(Templates.createTitleComponent("ColumnListDataType"))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private JRDataSource createDataSource() {
-		List<ReportData> datasource = new ArrayList<ReportData>();
+  private JRDataSource createDataSource() {
+  	List<ReportData> datasource = new ArrayList<ReportData>();
 
-		ReportData data = new ReportData();
-		List<String> comments = new ArrayList<String>();
-		comments.add("comment1");
-		comments.add("comment2");
-		comments.add("comment3");
-		data.setItem("Book");
-		data.setQuantity(new Integer(10));
-		data.setComments(comments);
-		datasource.add(data);
+  	ReportData data = new ReportData();
+  	List<String> comments = new ArrayList<String>();
+  	comments.add("comment1");
+  	comments.add("comment2");
+  	comments.add("comment3");
+  	data.setItem("Book");
+  	data.setQuantity(new Integer(10));
+  	data.setComments(comments);
+  	datasource.add(data);
 
-		data = new ReportData();
-		comments = new ArrayList<String>();
-		comments.add("comment1");
-		comments.add("comment2");
-		data.setItem("Notebook");
-		data.setQuantity(new Integer(20));
-		data.setComments(comments);
-		datasource.add(data);
+  	data = new ReportData();
+  	comments = new ArrayList<String>();
+  	comments.add("comment1");
+  	comments.add("comment2");
+  	data.setItem("Notebook");
+  	data.setQuantity(new Integer(20));
+  	data.setComments(comments);
+  	datasource.add(data);
 
 		return new JRBeanCollectionDataSource(datasource);
 	}

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -35,30 +35,30 @@ import net.sf.jasperreports.engine.JRDataSource;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 public class JasperTemplateDesignReport1 {
-
+	
 	public JasperTemplateDesignReport1() {
 		build();
 	}
-
+	
 	private void build() {
 		InputStream is = JasperTemplateDesignReport1.class.getResourceAsStream("templatedesign1.jrxml");
-
+		
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.setTemplateDesign(is)
-					.columns(
-							col.column("Item", "item", type.stringType()),
-							col.column("Quantity", "quantity", type.integerType()),
-							col.column("Unit price", "unitprice", type.integerType()))
-					.title(Templates.createTitleComponent("JasperTemplateDesign1"))
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .setTemplateDesign(is)
+			  .columns(
+			  	col.column("Item",       "item",      type.stringType()),
+			  	col.column("Quantity",   "quantity",  type.integerType()),
+			  	col.column("Unit price", "unitprice", type.integerType()))
+			  .title(Templates.createTitleComponent("JasperTemplateDesign1"))
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 	private JRDataSource createDataSource() {
 		DRDataSource dataSource = new DRDataSource("item", "quantity", "unitprice");
 		for (int i = 0; i < 10; i++) {
@@ -66,7 +66,7 @@ public class JasperTemplateDesignReport1 {
 		}
 		return dataSource;
 	}
-
+	
 	public static void main(String[] args) {
 		new JasperTemplateDesignReport1();
 	}

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -72,9 +72,9 @@ public class Subreport6Test extends AbstractJasperValueTest implements Serializa
 
 			JasperReportBuilder report = report();
 			report
-					.title(
-							cmp.text(reportParameters.getSubreportWidth()),
-							cmp.horizontalList(cmp.horizontalGap(10 * reportParameters.getReportRowNumber()), subreport));
+			  .title(
+			  	cmp.text(reportParameters.getSubreportWidth()),
+			  	cmp.horizontalList(cmp.horizontalGap(10 * reportParameters.getReportRowNumber()), subreport));
 
 			return report;
 		}
@@ -87,7 +87,7 @@ public class Subreport6Test extends AbstractJasperValueTest implements Serializa
 		public JasperReportBuilder evaluate(ReportParameters reportParameters) {
 			JasperReportBuilder report = report();
 			report
-					.title(cmp.text(reportParameters.getSubreportWidth()));
+			  .title(cmp.text(reportParameters.getSubreportWidth()));
 
 			return report;
 		}

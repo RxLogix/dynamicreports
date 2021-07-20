@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -69,7 +69,7 @@ public class SalesTableOfContentsDesign {
 		TextColumnBuilder<String> itemColumn = col.column("Item", "item", type.stringType());
 
 		StyleBuilder headingToc1Style = stl.style(Templates.rootStyle)
-				.italic();
+			.italic();
 
 		CustomTableOfContentsCustomizer tableOfContentsCustomizer = new CustomTableOfContentsCustomizer();
 		tableOfContentsCustomizer.setHeadingStyle(1, headingToc1Style);
@@ -77,26 +77,26 @@ public class SalesTableOfContentsDesign {
 		tableOfContentsCustomizer.setPageIndexFixedWidth(30);
 
 		TextFieldBuilder<String> pageHeader = cmp.text(new PageHeaderExpression())
-				.setStyle(Templates.bold12CenteredStyle)
-				.setEvaluationTime(Evaluation.PAGE);
+			.setStyle(Templates.bold12CenteredStyle)
+			.setEvaluationTime(Evaluation.PAGE);
 
 		report
-				.setPageFormat(PageType.A5, PageOrientation.LANDSCAPE)
-				.setTemplate(Templates.reportTemplate)
-				.setTableOfContents(tableOfContentsCustomizer)
-				.columns(
-						countryColumn,
-						itemColumn,
-						col.column("Order date", "orderdate", type.dateType()),
-						col.column("Quantity", "quantity", type.integerType()),
-						col.column("Unit price", "unitprice", type.bigDecimalType()))
-				.groupBy(countryColumn, itemColumn)
-				.pageHeader(pageHeader)
-				.title(
-						Templates.createTitleComponent("SalesTableOfContents"))
-				.pageFooter(
-						Templates.footerComponent)
-				.setDataSource(data.createDataSource());
+			.setPageFormat(PageType.A5, PageOrientation.LANDSCAPE)
+			.setTemplate(Templates.reportTemplate)
+			.setTableOfContents(tableOfContentsCustomizer)
+			.columns(
+				countryColumn,
+				itemColumn,
+				col.column("Order date", "orderdate", type.dateType()),
+				col.column("Quantity",   "quantity",  type.integerType()),
+				col.column("Unit price", "unitprice", type.bigDecimalType()))
+			.groupBy(countryColumn, itemColumn)
+			.pageHeader(pageHeader)
+			.title(
+				Templates.createTitleComponent("SalesTableOfContents"))
+			.pageFooter(
+				Templates.footerComponent)
+			.setDataSource(data.createDataSource());
 
 		return report;
 	}
@@ -130,14 +130,14 @@ public class SalesTableOfContentsDesign {
 			super.customize();
 
 			CustomGroupBuilder countryGroup = grp.group(new CountryExpression(textField))
-					.setHeaderLayout(GroupHeaderLayout.EMPTY)
-					.header(countryHeadingComponent())
-					.footer(cmp.verticalGap(5));
+				.setHeaderLayout(GroupHeaderLayout.EMPTY)
+				.header(countryHeadingComponent())
+				.footer(cmp.verticalGap(5));
 
 			report
-					.setPageColumnsPerPage(2)
-					.setPageColumnSpace(10)
-					.groupBy(countryGroup);
+				.setPageColumnsPerPage(2)
+				.setPageColumnSpace(10)
+				.groupBy(countryGroup);
 		}
 
 		private ComponentBuilder<?, ?> countryHeadingComponent() {
@@ -148,19 +148,19 @@ public class SalesTableOfContentsDesign {
 			countryReferenceHyperLink.setType(HyperLinkType.LOCAL_ANCHOR);
 
 			StyleBuilder style = stl.style(Templates.rootStyle)
-					.setFontSize(12)
-					.bold()
-					.setBackgroundColor(Color.LIGHT_GRAY);
+				.setFontSize(12)
+				.bold()
+				.setBackgroundColor(Color.LIGHT_GRAY);
 
 			TextFieldBuilder<String> textComponent = cmp.text(textField)
-					.setHyperLink(countryReferenceHyperLink)
-					.setStyle(style);
+  			.setHyperLink(countryReferenceHyperLink)
+  			.setStyle(style);
 			headingComponent.add(textComponent);
 
 			TextFieldBuilder<String> pageIndexComponent = cmp.text(new CountryHeadingExpression())
-					.setHyperLink(countryReferenceHyperLink)
-					.setStyle(style)
-					.setHorizontalTextAlignment(HorizontalTextAlignment.RIGHT);
+				.setHyperLink(countryReferenceHyperLink)
+				.setStyle(style)
+				.setHorizontalTextAlignment(HorizontalTextAlignment.RIGHT);
 			headingComponent.add(pageIndexComponent);
 
 			return headingComponent;
@@ -175,9 +175,9 @@ public class SalesTableOfContentsDesign {
 			ComponentBuilder<?, ?> headingComponent = super.headingComponent(level);
 
 			ConditionalStyleBuilder conditionalStyle = stl.conditionalStyle(exp.printInOddRow())
-					.setBackgroundColor(new Color(245, 245, 245));
+				.setBackgroundColor(new Color(245, 245, 245));
 			StyleBuilder rowStyle = stl.style()
-					.conditionalStyles(conditionalStyle);
+				.conditionalStyles(conditionalStyle);
 			headingComponent.setStyle(rowStyle);
 
 			return headingComponent;
@@ -208,11 +208,11 @@ public class SalesTableOfContentsDesign {
 
 			private CountryHeadingExpression() {
 				VariableBuilder<Integer> minCountryPage = variable(pageIndexField, Calculation.LOWEST)
-						.setResetType(Evaluation.FIRST_GROUP);
+					.setResetType(Evaluation.FIRST_GROUP);
 				addExpression(minCountryPage);
 
 				VariableBuilder<Integer> maxCountryPage = variable(pageIndexField, Calculation.HIGHEST)
-						.setResetType(Evaluation.FIRST_GROUP);
+					.setResetType(Evaluation.FIRST_GROUP);
 				addExpression(maxCountryPage);
 			}
 

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -57,14 +57,14 @@ public class Column1Test extends AbstractJasperValueTest implements Serializable
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.setLocale(Locale.ENGLISH)
-				.addField("field1", Integer.class)
-				.columns(
-						column2 = col.column("Column2\nColumn2", "field2", String.class),
-						column3 = col.column("Column3", "field3", Date.class).setPattern("dd.MM.yyyy"),
-						column4 = col.column("Column4", "field4", Double.class).setPattern("#,###.00"),
-						column5 = col.column("Column5", "field5", BigDecimal.class).setValueFormatter(new ColumnValueFormatter()),
-						column6 = col.column("Column6", "field6", Double.class).setPattern(new PatternExpression()),
-						column7 = col.column("Column7", field("field7", Date.class).build()));
+			.addField("field1", Integer.class)
+			.columns(
+					column2 = col.column("Column2\nColumn2", "field2", String.class),
+					column3 = col.column("Column3", "field3", Date.class).setPattern("dd.MM.yyyy"),
+					column4 = col.column("Column4", "field4", Double.class).setPattern("#,###.00"),
+					column5 = col.column("Column5", "field5", BigDecimal.class).setValueFormatter(new ColumnValueFormatter()),
+					column6 = col.column("Column6", "field6", Double.class).setPattern(new PatternExpression()),
+					column7 = col.column("Column7", field("field7", Date.class).build()));
 	}
 
 	@Override
@@ -72,27 +72,27 @@ public class Column1Test extends AbstractJasperValueTest implements Serializable
 		super.test();
 
 		numberOfPagesTest(3);
-		// column2
+		//column2
 		columnDetailCountTest(column2, 110);
 		columnDetailValueTest(column2, 50, "test");
 		columnTitleCountTest(column2, 3);
 		columnTitleValueTest(column2, "Column2\nColumn2", "Column2\nColumn2", "Column2\nColumn2");
-		// column3
+		//column3
 		columnDetailCountTest(column3, 110);
 		columnDetailValueTest(column3, 50, new SimpleDateFormat("dd.MM.yyyy").format(date));
 		columnTitleCountTest(column3, 3);
 		columnTitleValueTest(column3, "Column3", "Column3", "Column3");
-		// column4
+		//column4
 		columnDetailCountTest(column4, 110);
 		columnDetailValueTest(column4, 50, "1.00");
 		columnTitleCountTest(column4, 3);
 		columnTitleValueTest(column4, "Column4", "Column4", "Column4");
-		// column5
+		//column5
 		columnDetailCountTest(column5, 110);
 		columnDetailValueTest(column5, 50, "value = 10");
 		columnTitleCountTest(column5, 3);
 		columnTitleValueTest(column5, "Column5", "Column5", "Column5");
-		// column6
+		//column6
 		columnDetailCountTest(column6, 110);
 		columnDetailValueTest(column6, 0, "1.00");
 		columnDetailValueTest(column6, 1, "1.000");
@@ -101,7 +101,7 @@ public class Column1Test extends AbstractJasperValueTest implements Serializable
 		columnDetailValueTest(column6, 50, "1.0");
 		columnTitleCountTest(column6, 3);
 		columnTitleValueTest(column6, "Column6", "Column6", "Column6");
-		// column7
+		//column7
 		columnDetailCountTest(column7, 110);
 		columnDetailValueTest(column7, 50, new SimpleDateFormat("MM/dd/yyyy").format(date));
 		columnTitleCountTest(column7, 3);

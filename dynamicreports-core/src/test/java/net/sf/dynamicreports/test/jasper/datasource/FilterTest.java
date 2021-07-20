@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -63,19 +63,19 @@ public class FilterTest extends AbstractJasperCrosstabValueTest implements Seria
 		dataset.setFilterExpression(new CrosstabFilterExpression());
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.setSubDataset(dataset)
-				.rowGroups(
-						rowGroup = ctab.rowGroup("field1", String.class))
-				.columnGroups(
-						columnGroup = ctab.columnGroup("field2", String.class))
-				.measures(
-						measure1);
+			.setSubDataset(dataset)
+			.rowGroups(
+				rowGroup = ctab.rowGroup("field1", String.class))
+			.columnGroups(
+				columnGroup = ctab.columnGroup("field2", String.class))
+			.measures(
+				measure1);
 
 		rb.columns(
 				column1 = col.column("Column1", "field1", type.stringType()),
 				column2 = col.column("Column2", "field2", type.stringType()))
-				.title(crosstab)
-				.setFilterExpression(new FilterExpression());
+			.title(crosstab)
+			.setFilterExpression(new FilterExpression());
 	}
 
 	@Override
@@ -84,12 +84,12 @@ public class FilterTest extends AbstractJasperCrosstabValueTest implements Seria
 
 		numberOfPagesTest(1);
 
-		// column1
+		//column1
 		columnTitleCountTest(column1, 1);
 		columnTitleValueTest(column1, "Column1");
 		columnDetailCountTest(column1, 1);
 		columnDetailValueTest(column1, "1");
-		// column2
+		//column2
 		columnTitleCountTest(column2, 1);
 		columnTitleValueTest(column2, "Column2");
 		columnDetailCountTest(column2, 1);
@@ -97,19 +97,19 @@ public class FilterTest extends AbstractJasperCrosstabValueTest implements Seria
 
 		setCrosstabBand("title");
 
-		// column group
+		//column group
 		crosstabGroupHeaderCountTest(columnGroup, 2);
 		crosstabGroupHeaderValueTest(columnGroup, "c", "d");
 		crosstabGroupTotalHeaderCountTest(columnGroup, 1);
 		crosstabGroupTotalHeaderValueTest(columnGroup, "Total");
 
-		// row group
+		//row group
 		crosstabGroupHeaderCountTest(rowGroup, 1);
 		crosstabGroupHeaderValueTest(rowGroup, "a");
 		crosstabGroupTotalHeaderCountTest(rowGroup, 1);
 		crosstabGroupTotalHeaderValueTest(rowGroup, "Total");
 
-		// measure1
+		//measure1
 		crosstabCellCountTest(measure1, null, null, 2);
 		crosstabCellValueTest(measure1, null, null, "3", "7");
 		crosstabCellCountTest(measure1, null, columnGroup, 1);

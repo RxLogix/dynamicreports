@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -46,10 +46,10 @@ public class ColumnTitleGroup2Test extends AbstractJasperValueTest {
 		column3 = col.column("Column3", "field3", String.class).setFixedWidth(25);
 
 		ColumnTitleGroupBuilder titleGroup = grid.titleGroup("test test test", column2, column3)
-				.setTitleStretchWithOverflow(false)
-				.addTitleProperty(JasperProperty.PRINT_KEEP_FULL_TEXT, "true");
+			.setTitleStretchWithOverflow(false)
+			.addTitleProperty(JasperProperty.PRINT_KEEP_FULL_TEXT, "true");
 		rb.columnGrid(column1, titleGroup)
-				.columns(column1, column2, column3);
+			.columns(column1, column2, column3);
 	}
 
 	@Override
@@ -60,13 +60,13 @@ public class ColumnTitleGroup2Test extends AbstractJasperValueTest {
 
 		elementValueTest("columnHeader.columngroup.title1", 0, "test test ");
 		elementFullValueTest("columnHeader.columngroup.title1", 0, "test test test");
-		// column1
+		//column1
 		columnTitleValueTest(column1, 0, "Column1");
 		columnDetailValueTest(column1, 0, "text");
-		// column2
+		//column2
 		columnTitleValueTest(column2, 0, "Column2");
 		columnDetailValueTest(column2, 0, "text");
-		// column3
+		//column3
 		columnTitleValueTest(column3, 0, "Column3");
 		columnDetailValueTest(column3, 0, "text");
 	}

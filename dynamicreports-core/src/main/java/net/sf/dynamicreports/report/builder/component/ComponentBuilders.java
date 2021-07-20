@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -41,16 +41,16 @@ import net.sf.jasperreports.renderers.Renderable;
  */
 public class ComponentBuilders {
 
-	// horizontal list
+	//horizontal list
 	public HorizontalListBuilder horizontalList() {
 		return Components.horizontalList();
 	}
 
-	public HorizontalListBuilder horizontalList(ComponentBuilder<?, ?>... components) {
+	public HorizontalListBuilder horizontalList(ComponentBuilder<?, ?> ...components) {
 		return Components.horizontalList(components);
 	}
 
-	public HorizontalListBuilder horizontalList(HorizontalListCellBuilder... cells) {
+	public HorizontalListBuilder horizontalList(HorizontalListCellBuilder ...cells) {
 		return Components.horizontalList(cells);
 	}
 
@@ -58,29 +58,29 @@ public class ComponentBuilders {
 		return Components.hListCell(component);
 	}
 
-	// horizontal flow list
+	//horizontal flow list
 	public HorizontalListBuilder horizontalFlowList() {
 		return Components.horizontalFlowList();
 	}
 
-	public HorizontalListBuilder horizontalFlowList(ComponentBuilder<?, ?>... components) {
+	public HorizontalListBuilder horizontalFlowList(ComponentBuilder<?, ?> ...components) {
 		return Components.horizontalFlowList(components);
 	}
 
-	public HorizontalListBuilder horizontalFlowList(HorizontalListCellBuilder... cells) {
+	public HorizontalListBuilder horizontalFlowList(HorizontalListCellBuilder ...cells) {
 		return Components.horizontalFlowList(cells);
 	}
 
-	// vertical list
+	//vertical list
 	public VerticalListBuilder verticalList() {
 		return Components.verticalList();
 	}
 
-	public VerticalListBuilder verticalList(ComponentBuilder<?, ?>... components) {
+	public VerticalListBuilder verticalList(ComponentBuilder<?, ?> ...components) {
 		return Components.verticalList(components);
 	}
 
-	public VerticalListBuilder verticalList(VerticalListCellBuilder... cells) {
+	public VerticalListBuilder verticalList(VerticalListCellBuilder ...cells) {
 		return Components.verticalList(cells);
 	}
 
@@ -88,12 +88,12 @@ public class ComponentBuilders {
 		return Components.vListCell(component);
 	}
 
-	// xy list
+	//xy list
 	public XyListBuilder xyList() {
 		return Components.xyList();
 	}
 
-	public XyListBuilder xyList(XyListCellBuilder... cells) {
+	public XyListBuilder xyList(XyListCellBuilder ...cells) {
 		return Components.xyList(cells);
 	}
 
@@ -105,12 +105,12 @@ public class ComponentBuilders {
 		return Components.xyListCell(x, y, width, height, component);
 	}
 
-	// multi page list
+	//multi page list
 	public MultiPageListBuilder multiPageList() {
 		return Components.multiPageList();
 	}
 
-	public MultiPageListBuilder multiPageList(ComponentBuilder<?, ?>... components) {
+	public MultiPageListBuilder multiPageList(ComponentBuilder<?, ?> ...components) {
 		return Components.multiPageList(components);
 	}
 
@@ -134,7 +134,7 @@ public class ComponentBuilders {
 		return Components.totalPages();
 	}
 
-	// text
+	//text
 	public TextFieldBuilder<String> text(String text) {
 		return Components.text(text);
 	}
@@ -159,7 +159,7 @@ public class ComponentBuilders {
 		return Components.text(textExpression);
 	}
 
-	// filler
+	//filler
 	public FillerBuilder filler() {
 		return Components.filler();
 	}
@@ -176,7 +176,7 @@ public class ComponentBuilders {
 		return Components.gap(width, height);
 	}
 
-	// image
+	//image
 	public ImageBuilder image(DRIExpression<?> imageExpression) {
 		return Components.image(imageExpression);
 	}
@@ -209,7 +209,7 @@ public class ComponentBuilders {
 		return Components.image(image);
 	}
 
-	// subreport
+	//subreport
 	public SubreportBuilder subreport(JasperReportBuilder reportBuilder) {
 		return Components.subreport(reportBuilder);
 	}
@@ -222,12 +222,12 @@ public class ComponentBuilders {
 		return Components.subreport(reportExpression);
 	}
 
-	// line
+	//line
 	public LineBuilder line() {
 		return Components.line();
 	}
 
-	// break
+	//break
 	public BreakBuilder pageBreak() {
 		return Components.pageBreak();
 	}
@@ -236,12 +236,12 @@ public class ComponentBuilders {
 		return Components.columnBreak();
 	}
 
-	// generic element
+	//generic element
 	public GenericElementBuilder genericElement(String namespace, String name) {
 		return Components.genericElement(namespace, name);
 	}
 
-	// boolean
+	//boolean
 	public BooleanFieldBuilder booleanField(Boolean value) {
 		return Components.booleanField(value);
 	}
@@ -254,12 +254,12 @@ public class ComponentBuilders {
 		return Components.booleanField(valueExpression);
 	}
 
-	// ellipse
+	//ellipse
 	public EllipseBuilder ellipse() {
 		return Components.ellipse();
 	}
 
-	// rectangle
+	//rectangle
 	public RectangleBuilder rectangle() {
 		return Components.rectangle();
 	}
@@ -272,7 +272,7 @@ public class ComponentBuilders {
 		return Components.roundRectangle(radius);
 	}
 
-	// map
+	//map
 	public MapBuilder map() {
 		return Components.map();
 	}
@@ -281,7 +281,7 @@ public class ComponentBuilders {
 		return Components.map(latitude, longitude, zoom);
 	}
 
-	// alignment
+	//alignment
 	public HorizontalListBuilder centerHorizontal(ComponentBuilder<?, ?> component) {
 		return Components.centerHorizontal(component);
 	}

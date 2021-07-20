@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,8 +48,8 @@ public class CustomFontTest extends AbstractJasperPositionTest implements Serial
 		StyleBuilder style = stl.style().setFontName("FreeUniversal");
 
 		rb.columns(
-				column1 = col.column("Column1", "field1", type.stringType()))
-				.subtotalsAtColumnFooter(subtotal1 = sbt.text("text", column1).setStyle(style));
+			column1 = col.column("Column1", "field1", type.stringType()))
+			.subtotalsAtColumnFooter(subtotal1 = sbt.text("text", column1).setStyle(style));
 	}
 
 	@Override
@@ -58,11 +58,11 @@ public class CustomFontTest extends AbstractJasperPositionTest implements Serial
 
 		numberOfPagesTest(1);
 
-		// column1
+		//column1
 		columnTitlePositionTest(column1, 0, 10, 10, 575, 16);
 		columnDetailPositionTest(column1, 0, 10, 26, 575, 16);
 
-		// subtotal1
+		//subtotal1
 		subtotalPositionTest(subtotal1, 0, 10, 818, 575, 14);
 	}
 

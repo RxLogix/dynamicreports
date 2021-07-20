@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -87,26 +87,23 @@ public class DRColumnTitleGroup implements DRIColumnTitleGroup {
 		this.titleStyle = titleStyle;
 	}
 
-	/**
-	 * Returns the column title width.
-	 *
-	 * @return the column title width >= 0
-	 */
+  /**
+   * Returns the column title width.
+   *
+   * @return the column title width >= 0
+   */
 	@Override
 	public Integer getTitleWidth() {
 		return titleWidth;
 	}
 
-	/**
-	 * Sets the column title width.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param titleWidth
-	 *          the column title width >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>titleWidth</code> is < 0
-	 */
+  /**
+   * Sets the column title width.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param titleWidth the column title width >= 0
+   * @exception IllegalArgumentException if <code>titleWidth</code> is < 0
+   */
 	public void setTitleWidth(Integer titleWidth) {
 		if (titleWidth != null) {
 			Validate.isTrue(titleWidth >= 0, "titleWidth must be >= 0");
@@ -123,26 +120,24 @@ public class DRColumnTitleGroup implements DRIColumnTitleGroup {
 		this.titleWidthType = titleWidthType;
 	}
 
-	/**
-	 * Returns the number of title columns.
-	 *
-	 * @return the number of title columns >= 0
-	 */
+  /**
+   * Returns the number of title columns.
+   *
+   * @return the number of title columns >= 0
+   */
 	@Override
 	public Integer getTitleColumns() {
 		return titleColumns;
 	}
 
-	/**
-	 * This method is used to define the width of a column title.
-	 * The width is set to the <code>columns</code> multiplied by width of the
-	 * character <em>m</em> for the font used
-	 *
-	 * @param titleColumns
-	 *          the number of columns >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>columns</code> is < 0
-	 */
+  /**
+   * This method is used to define the width of a column title.
+   * The width is set to the <code>columns</code> multiplied by width of the
+   * character <em>m</em> for the font used
+   *
+   * @param titleColumns the number of columns >= 0
+   * @exception IllegalArgumentException if <code>columns</code> is < 0
+   */
 	public void setTitleColumns(Integer titleColumns) {
 		if (titleColumns != null) {
 			Validate.isTrue(titleColumns >= 0, "titleColumns must be >= 0");
@@ -150,26 +145,23 @@ public class DRColumnTitleGroup implements DRIColumnTitleGroup {
 		this.titleColumns = titleColumns;
 	}
 
-	/**
-	 * Returns the column title height.
-	 *
-	 * @return the column title height >= 0
-	 */
+  /**
+   * Returns the column title height.
+   *
+   * @return the column title height >= 0
+   */
 	@Override
 	public Integer getTitleHeight() {
 		return titleHeight;
 	}
 
-	/**
-	 * Sets the column title height.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param titleHeight
-	 *          the column title height >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>titleHeight</code> is < 0
-	 */
+  /**
+   * Sets the column title height.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param titleHeight the column title height >= 0
+   * @exception IllegalArgumentException if <code>titleHeight</code> is < 0
+   */
 	public void setTitleHeight(Integer titleHeight) {
 		if (titleHeight != null) {
 			Validate.isTrue(titleHeight >= 0, "titleHeight must be >= 0");
@@ -186,25 +178,23 @@ public class DRColumnTitleGroup implements DRIColumnTitleGroup {
 		this.titleHeightType = titleHeightType;
 	}
 
-	/**
-	 * Returns the number of title rows.
-	 *
-	 * @return the number of title rows >= 0
-	 */
+  /**
+   * Returns the number of title rows.
+   *
+   * @return the number of title rows >= 0
+   */
 	@Override
 	public Integer getTitleRows() {
 		return titleRows;
 	}
 
-	/**
-	 * This method is used to define the height of a column title.
-	 * The height is set to the <code>rows</code> multiplied by height of the font
-	 *
-	 * @param titleRows
-	 *          the number of rows >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>rows</code> is < 0
-	 */
+  /**
+   * This method is used to define the height of a column title.
+   * The height is set to the <code>rows</code> multiplied by height of the font
+   *
+   * @param titleRows the number of rows >= 0
+   * @exception IllegalArgumentException if <code>rows</code> is < 0
+   */
 	public void setTitleRows(Integer titleRows) {
 		if (titleRows != null) {
 			Validate.isTrue(titleRows >= 0, "titleRows must be >= 0");

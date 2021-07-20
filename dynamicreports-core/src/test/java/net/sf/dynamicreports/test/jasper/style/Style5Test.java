@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -41,9 +41,9 @@ public class Style5Test extends AbstractJasperStyleTest implements Serializable 
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.setWhenNoDataType(WhenNoDataType.ALL_SECTIONS_NO_DETAIL)
-				.setTextStyle(stl.style(stl.pen1Point()).setPadding(2))
-				.pageFooter(
-						cmp.pageXofY());
+		  .setTextStyle(stl.style(stl.pen1Point()).setPadding(2))
+		  .pageFooter(
+					cmp.pageXofY());
 	}
 
 	@Override
@@ -52,17 +52,15 @@ public class Style5Test extends AbstractJasperStyleTest implements Serializable 
 
 		numberOfPagesTest(1);
 
-		// column1
+		//column1
 		styleTest("pageFooter.textField1", 0, null, null, "Arial", 10f, null, null);
 		horizontalAlignmentTest("pageFooter.textField1", 0, HorizontalTextAlignEnum.RIGHT);
 		paddingTest("pageFooter.textField1", 0, 2, 2, 2, 0);
-		borderTest("pageFooter.textField1", 0, null, LineStyleEnum.SOLID, 1, null, LineStyleEnum.SOLID, 1, null, LineStyleEnum.SOLID, 1, null, LineStyleEnum.SOLID,
-				0);
+		borderTest("pageFooter.textField1", 0, null, LineStyleEnum.SOLID, 1, null, LineStyleEnum.SOLID, 1, null, LineStyleEnum.SOLID, 1, null, LineStyleEnum.SOLID, 0);
 
 		styleTest("pageFooter.textField2", 0, null, null, "Arial", 10f, null, null);
 		horizontalAlignmentTest("pageFooter.textField2", 0, HorizontalTextAlignEnum.LEFT);
 		paddingTest("pageFooter.textField2", 0, 2, 2, 0, 2);
-		borderTest("pageFooter.textField2", 0, null, LineStyleEnum.SOLID, 1, null, LineStyleEnum.SOLID, 1, null, LineStyleEnum.SOLID, 0, null, LineStyleEnum.SOLID,
-				1);
+		borderTest("pageFooter.textField2", 0, null, LineStyleEnum.SOLID, 1, null, LineStyleEnum.SOLID, 1, null, LineStyleEnum.SOLID, 0, null, LineStyleEnum.SOLID, 1);
 	}
 }

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -46,27 +46,27 @@ public class ExcelReport2 {
 	private void build() {
 		try {
 			JasperXlsExporterBuilder xlsExporter = export.xlsExporter("c:/report.xls")
-					.setDetectCellType(true)
-					.setIgnorePageMargins(true)
-					.setWhitePageBackground(false)
-					.setRemoveEmptySpaceBetweenColumns(true);
+			                                             .setDetectCellType(true)
+			                                             .setIgnorePageMargins(true)
+			                                             .setWhitePageBackground(false)
+			                                             .setRemoveEmptySpaceBetweenColumns(true);
 
 			TextColumnBuilder<String> itemColumn = col.column("Item", "item", type.stringType())
-					.setFixedWidth(30)
-					.setStretchWithOverflow(false)
-					.addProperty(JasperProperty.PRINT_KEEP_FULL_TEXT, "true");
+			                                          .setFixedWidth(30)
+			                                          .setStretchWithOverflow(false)
+			                                          .addProperty(JasperProperty.PRINT_KEEP_FULL_TEXT, "true");
 
 			report()
-					.setColumnTitleStyle(Templates.columnTitleStyle)
-					.addProperty(JasperProperty.EXPORT_XLS_FREEZE_ROW, "2")
-					.ignorePageWidth()
-					.ignorePagination()
-					.columns(
-							itemColumn,
-							col.column("Quantity", "quantity", type.integerType()),
-							col.column("Unit price", "unitprice", type.bigDecimalType()))
-					.setDataSource(createDataSource())
-					.toXls(xlsExporter);
+			  .setColumnTitleStyle(Templates.columnTitleStyle)
+			  .addProperty(JasperProperty.EXPORT_XLS_FREEZE_ROW, "2")
+			  .ignorePageWidth()
+			  .ignorePagination()
+			  .columns(
+			  	itemColumn,
+			  	col.column("Quantity",   "quantity",  type.integerType()),
+			  	col.column("Unit price", "unitprice", type.bigDecimalType()))
+			  .setDataSource(createDataSource())
+			  .toXls(xlsExporter);
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

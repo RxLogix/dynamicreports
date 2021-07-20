@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -50,13 +50,13 @@ public class CardReport {
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.setTextStyle(stl.style())
-					.setPageFormat(PageType.A5)
-					.title(
-							Templates.createTitleComponent("Card"),
-							cards)
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .setTextStyle(stl.style())
+			  .setPageFormat(PageType.A5)
+			  .title(
+			  	Templates.createTitleComponent("Card"),
+			  	cards)
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +65,7 @@ public class CardReport {
 	private ComponentBuilder<?, ?> createCardComponent() {
 		HorizontalListBuilder cardComponent = cmp.horizontalList();
 		StyleBuilder cardStyle = stl.style(stl.pen1Point())
-				.setPadding(10);
+		                            .setPadding(10);
 		cardComponent.setStyle(cardStyle);
 
 		ImageBuilder image = cmp.image(Templates.class.getResource("images/user_male.png")).setFixedDimension(60, 60);
@@ -74,12 +74,12 @@ public class CardReport {
 
 		StyleBuilder boldStyle = stl.style().bold();
 		VerticalListBuilder content = cmp.verticalList(
-				cmp.text("Name:").setStyle(boldStyle),
-				cmp.text("Peter Marsh"),
-				cmp.text("Address:").setStyle(boldStyle),
-				cmp.text("23 Baden Av."),
-				cmp.text("City:").setStyle(boldStyle),
-				cmp.text("New York"));
+			cmp.text("Name:").setStyle(boldStyle),
+			cmp.text("Peter Marsh"),
+			cmp.text("Address:").setStyle(boldStyle),
+			cmp.text("23 Baden Av."),
+			cmp.text("City:").setStyle(boldStyle),
+			cmp.text("New York"));
 
 		cardComponent.add(content);
 		return cardComponent;

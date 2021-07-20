@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -56,13 +56,13 @@ public class CrosstabPosition9Test extends AbstractJasperCrosstabPositionTest {
 		measure1 = ctab.measure("measure1", column3, Calculation.SUM);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.rowGroups(rowGroup1, rowGroup2)
-				.columnGroups(
-						columnGroup1 = ctab.columnGroup(column2))
-				.measures(measure1);
+			.rowGroups(rowGroup1, rowGroup2)
+			.columnGroups(
+				columnGroup1 = ctab.columnGroup(column2))
+			.measures(measure1);
 
 		rb.setPageFormat(PageType.A4, PageOrientation.LANDSCAPE)
-				.summary(crosstab);
+			.summary(crosstab);
 	}
 
 	@Override
@@ -73,14 +73,14 @@ public class CrosstabPosition9Test extends AbstractJasperCrosstabPositionTest {
 
 		setCrosstabBand("summary");
 
-		// column group 1
+		//column group 1
 		crosstabGroupHeaderPositionTest(columnGroup1, 0, 0, 0, 100, 16);
 
-		// row group 1
+		//row group 1
 		crosstabGroupHeaderPositionTest(rowGroup1, 0, 0, 0, 100, 26);
 		crosstabGroupHeaderPositionTest(rowGroup2, 0, 0, 0, 25, 26);
 
-		// measures
+		//measures
 		crosstabCellPositionTest(measure1, null, null, 0, 0, 0, 100, 26);
 	}
 

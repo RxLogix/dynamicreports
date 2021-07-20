@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -63,61 +63,61 @@ public class CandlestickChartTest extends AbstractJasperChartTest {
 		TextColumnBuilder<Double> column7;
 
 		rb.setLocale(Locale.ENGLISH)
-				.columns(
-						column1 = col.column("Column1", "field1", String.class),
-						column2 = col.column("Column2", "field2", Date.class),
-						column3 = col.column("Column3", "field3", Double.class),
-						column4 = col.column("Column4", "field4", Double.class),
-						column5 = col.column("Column5", "field5", Double.class),
-						column6 = col.column("Column6", "field6", Double.class),
-						column7 = col.column("Column7", "field7", Double.class))
-				.summary(
-						cht.candlestickChart()
-								.setSeries(column1)
-								.setDate(column2)
-								.setHigh(column3)
-								.setLow(column4)
-								.setOpen(column5)
-								.setClose(column6)
-								.setVolume(column7)
-								.setShowVolume(false),
-						cht.candlestickChart()
-								.setSeries(column1)
-								.setDate(column2)
-								.setHigh(column3)
-								.setLow(column4)
-								.setOpen(column5)
-								.setClose(column6)
-								.setVolume(column7)
-								.setTimeAxisFormat(
-										cht.axisFormat()
-												.setLabel("time")
-												.setLabelColor(Color.BLUE)
-												.setLabelFont(stl.fontArialBold())
-												.setTickLabelFont(stl.fontArial().setItalic(true))
-												.setTickLabelColor(Color.CYAN)
-												.setLineColor(Color.LIGHT_GRAY)
-												.setVerticalTickLabels(true)),
-						cht.candlestickChart()
-								.setSeries(column1)
-								.setDate(column2)
-								.setHigh(column3)
-								.setLow(column4)
-								.setOpen(column5)
-								.setClose(column6)
-								.setVolume(column7)
-								.setValueAxisFormat(
-										cht.axisFormat()
-												.setLabel("value")
-												.setLabelColor(Color.BLUE)
-												.setLabelFont(stl.fontArialBold())
-												.setTickLabelFont(stl.fontArial().setItalic(true))
-												.setTickLabelColor(Color.CYAN)
-												.setTickLabelMask("#,##0.00")
-												.setLineColor(Color.LIGHT_GRAY)
-												.setRangeMinValueExpression(1)
-												.setRangeMaxValueExpression(15)
-												.setVerticalTickLabels(true)));
+			.columns(
+				column1 = col.column("Column1", "field1", String.class),
+				column2 = col.column("Column2", "field2", Date.class),
+				column3 = col.column("Column3", "field3", Double.class),
+				column4 = col.column("Column4", "field4", Double.class),
+				column5 = col.column("Column5", "field5", Double.class),
+				column6 = col.column("Column6", "field6", Double.class),
+				column7 = col.column("Column7", "field7", Double.class))
+			.summary(
+					cht.candlestickChart()
+						.setSeries(column1)
+						.setDate(column2)
+						.setHigh(column3)
+						.setLow(column4)
+						.setOpen(column5)
+						.setClose(column6)
+						.setVolume(column7)
+						.setShowVolume(false),
+					cht.candlestickChart()
+						.setSeries(column1)
+						.setDate(column2)
+						.setHigh(column3)
+						.setLow(column4)
+						.setOpen(column5)
+						.setClose(column6)
+						.setVolume(column7)
+						.setTimeAxisFormat(
+								cht.axisFormat()
+											.setLabel("time")
+											.setLabelColor(Color.BLUE)
+											.setLabelFont(stl.fontArialBold())
+											.setTickLabelFont(stl.fontArial().setItalic(true))
+											.setTickLabelColor(Color.CYAN)
+											.setLineColor(Color.LIGHT_GRAY)
+											.setVerticalTickLabels(true)),
+					cht.candlestickChart()
+						.setSeries(column1)
+						.setDate(column2)
+						.setHigh(column3)
+						.setLow(column4)
+						.setOpen(column5)
+						.setClose(column6)
+						.setVolume(column7)
+						.setValueAxisFormat(
+								cht.axisFormat()
+											.setLabel("value")
+											.setLabelColor(Color.BLUE)
+											.setLabelFont(stl.fontArialBold())
+											.setTickLabelFont(stl.fontArial().setItalic(true))
+											.setTickLabelColor(Color.CYAN)
+											.setTickLabelMask("#,##0.00")
+											.setLineColor(Color.LIGHT_GRAY)
+											.setRangeMinValueExpression(1)
+											.setRangeMaxValueExpression(15)
+											.setVerticalTickLabels(true)));
 	}
 
 	@Override
@@ -131,7 +131,7 @@ public class CandlestickChartTest extends AbstractJasperChartTest {
 		Assert.assertEquals("renderer", CandlestickRenderer.class, renderer.getClass());
 		Assert.assertEquals("show volume", false, ((CandlestickRenderer) renderer).getDrawVolume());
 		highLowChartDataTest(chart, 0, new Object[][] {
-				{ "serie", date1, 50d, 35d, 40d, 47d, 70d }, { "serie", date2, 55d, 40d, 50d, 45d, 120d }, { "serie", date3, 48d, 41d, 42d, 47d, 90d } });
+				{"serie", date1, 50d, 35d, 40d, 47d, 70d}, {"serie", date2, 55d, 40d, 50d, 45d, 120d}, {"serie", date3, 48d, 41d, 42d, 47d, 90d}});
 
 		chart = getChart("summary.chart2", 0);
 		Axis axis = chart.getXYPlot().getDomainAxis();
@@ -151,7 +151,7 @@ public class CandlestickChartTest extends AbstractJasperChartTest {
 		Assert.assertEquals("tick label color", Color.CYAN, axis.getTickLabelPaint());
 		Assert.assertEquals("tick label font", new Font("Arial", Font.ITALIC, 10), axis.getTickLabelFont());
 		Assert.assertEquals("tick label mask", "10.00", ((NumberAxis) axis).getNumberFormatOverride().format(10));
-		// Assert.assertEquals("line color", Color.LIGHT_GRAY, axis.getAxisLinePaint());
+		//Assert.assertEquals("line color", Color.LIGHT_GRAY, axis.getAxisLinePaint());
 		Assert.assertEquals("range min value", 1d, ((ValueAxis) axis).getLowerBound());
 		Assert.assertEquals("range max value", 15d, ((ValueAxis) axis).getUpperBound());
 		Assert.assertTrue("vertical tick labels", ((ValueAxis) axis).isVerticalTickLabels());

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -59,19 +59,19 @@ public class GroupExpressionCrosstabTest extends AbstractJasperCrosstabValueTest
 		measure1 = ctab.measure("field3", Integer.class, Calculation.SUM);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.setCellWidth(50)
-				.rowGroups(
-						rowGroup = ctab.rowGroup("field1", String.class))
-				.columnGroups(
-						columnGroup1 = ctab.columnGroup(new GroupExpression1()),
-						columnGroup2 = ctab.columnGroup(new GroupExpression2()))
-				.measures(
-						measure1);
+			.setCellWidth(50)
+			.rowGroups(
+				rowGroup = ctab.rowGroup("field1", String.class))
+			.columnGroups(
+				columnGroup1 = ctab.columnGroup(new GroupExpression1()),
+				columnGroup2 = ctab.columnGroup(new GroupExpression2()))
+			.measures(
+				measure1);
 
 		rb.setLocale(Locale.ENGLISH)
-				.setPageFormat(PageType.A4, PageOrientation.LANDSCAPE)
-				.fields(field("field2", Date.class))
-				.summary(crosstab);
+			.setPageFormat(PageType.A4, PageOrientation.LANDSCAPE)
+			.fields(field("field2", Date.class))
+			.summary(crosstab);
 	}
 
 	@Override
@@ -82,25 +82,25 @@ public class GroupExpressionCrosstabTest extends AbstractJasperCrosstabValueTest
 
 		setCrosstabBand("summary");
 
-		// column group 1
+		//column group 1
 		crosstabGroupHeaderCountTest(columnGroup1, 2);
 		crosstabGroupHeaderValueTest(columnGroup1, "2010", "2011");
 		crosstabGroupTotalHeaderCountTest(columnGroup1, 1);
 		crosstabGroupTotalHeaderValueTest(columnGroup1, "Total");
 
-		// column group 2
+		//column group 2
 		crosstabGroupHeaderCountTest(columnGroup2, 5);
 		crosstabGroupHeaderValueTest(columnGroup2, "Q1", "Q2", "Q3", "Q4", "Q1");
 		crosstabGroupTotalHeaderCountTest(columnGroup2, 2);
 		crosstabGroupTotalHeaderValueTest(columnGroup2, "Total", "Total");
 
-		// row group
+		//row group
 		crosstabGroupHeaderCountTest(rowGroup, 2);
 		crosstabGroupHeaderValueTest(rowGroup, "a", "b");
 		crosstabGroupTotalHeaderCountTest(rowGroup, 1);
 		crosstabGroupTotalHeaderValueTest(rowGroup, "Total");
 
-		// measure1
+		//measure1
 		crosstabCellCountTest(measure1, null, null, 10);
 		crosstabCellValueTest(measure1, null, null, "6", "15", "24", "33", "27", "39", "30", "21", "12", "3");
 		crosstabCellCountTest(measure1, null, columnGroup1, 2);
@@ -171,22 +171,14 @@ public class GroupExpressionCrosstabTest extends AbstractJasperCrosstabValueTest
 			Calendar c = Calendar.getInstance();
 			c.setTime(date);
 			switch (c.get(Calendar.MONTH)) {
-				case 0:
-				case 1:
-				case 2:
-					return "Q1";
-				case 3:
-				case 4:
-				case 5:
-					return "Q2";
-				case 6:
-				case 7:
-				case 8:
-					return "Q3";
-				case 9:
-				case 10:
-				case 11:
-					return "Q4";
+			case 0:	case 1:	case 2:
+				return "Q1";
+			case 3:	case 4:	case 5:
+				return "Q2";
+			case 6:	case 7:	case 8:
+				return "Q3";
+			case 9:	case 10:	case 11:
+				return "Q4";
 			}
 			return null;
 		}

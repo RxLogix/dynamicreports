@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,7 +49,7 @@ public class SubDatasourceTest extends AbstractJasperValueTest implements Serial
 		rb.columns(
 				column1 = col.column("Column1", "field1", type.stringType()),
 				column2 = col.column("Column2", "field2", type.stringType()))
-				.detailFooter(cmp.subreport(createSubreport()).setDataSource(exp.subDatasourceBeanCollection("field3")));
+			.detailFooter(cmp.subreport(createSubreport()).setDataSource(exp.subDatasourceBeanCollection("field3")));
 	}
 
 	@Override
@@ -58,23 +58,23 @@ public class SubDatasourceTest extends AbstractJasperValueTest implements Serial
 
 		numberOfPagesTest(1);
 
-		// column1
+		//column1
 		columnTitleCountTest(column1, 1);
 		columnTitleValueTest(column1, "Column1");
 		columnDetailCountTest(column1, 2);
 		columnDetailValueTest(column1, "1", "2");
-		// column2
+		//column2
 		columnTitleCountTest(column2, 1);
 		columnTitleValueTest(column2, "Column2");
 		columnDetailCountTest(column2, 2);
 		columnDetailValueTest(column2, "text1", "text2");
 
-		// column3
+		//column3
 		columnTitleCountTest(column3, 2);
 		columnTitleValueTest(column3, "Column3", "Column3");
 		columnDetailCountTest(column3, 3);
 		columnDetailValueTest(column3, "texta1", "texta3", "textb1");
-		// column4
+		//column4
 		columnTitleCountTest(column4, 2);
 		columnTitleValueTest(column4, "Column4", "Column4");
 		columnDetailCountTest(column4, 3);

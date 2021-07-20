@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -52,33 +52,33 @@ public class TableOfContentsReport2 {
 
 		TableOfContentsHeadingBuilder tocHeading1 = tableOfContentsHeading();
 		TextFieldBuilder<String> title1 = cmp.text("Title1")
-				.setTableOfContentsHeading(tocHeading1);
+			.setTableOfContentsHeading(tocHeading1);
 
 		TableOfContentsHeadingBuilder tocHeading2 = tableOfContentsHeading()
-				.setParentHeading(tocHeading1);
+			.setParentHeading(tocHeading1);
 		TextFieldBuilder<String> title2 = cmp.text("Title2")
-				.setTableOfContentsHeading(tocHeading2);
+			.setTableOfContentsHeading(tocHeading2);
 
 		BarChartBuilder chart = cht.barChart()
-				.setDataSource(createChartDataSource())
-				.setCategory(itemField)
-				.series(
-						cht.serie(quantityField).setLabel("Quantity"),
-						cht.serie(unitPriceField).setLabel("Unit price"))
-				.setTableOfContentsHeading("Chart");
+  		.setDataSource(createChartDataSource())
+  		.setCategory(itemField)
+  		.series(
+  			cht.serie(quantityField).setLabel("Quantity"),
+  			cht.serie(unitPriceField).setLabel("Unit price"))
+  		.setTableOfContentsHeading("Chart");
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.tableOfContents()
-					.title(
-							Templates.createTitleComponent("TableOfContents2"),
-							title1, title2,
-							cmp.subreport(createSubreport(1)),
-							cmp.subreport(createSubreport(2)),
-							chart)
-					.pageFooter(Templates.footerComponent)
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .tableOfContents()
+			  .title(
+			  	Templates.createTitleComponent("TableOfContents2"),
+			  	title1, title2,
+			  	cmp.subreport(createSubreport(1)),
+			  	cmp.subreport(createSubreport(2)),
+			  	chart)
+			  .pageFooter(Templates.footerComponent)
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
@@ -86,18 +86,18 @@ public class TableOfContentsReport2 {
 
 	private JasperReportBuilder createSubreport(int index) {
 		TextFieldBuilder<String> title = cmp.text("Subreport" + index)
-				.setStyle(Templates.bold12CenteredStyle)
-				.setTableOfContentsHeading(tableOfContentsHeading());
+			.setStyle(Templates.bold12CenteredStyle)
+			.setTableOfContentsHeading(tableOfContentsHeading());
 
 		JasperReportBuilder report = report();
 		report
-				.setTemplate(Templates.reportTemplate)
-				.title(title)
-				.columns(
-						col.column("Item", "item", type.stringType()),
-						col.column("Quantity", "quantity", type.integerType()),
-						col.column("Unit price", "unitprice", type.bigDecimalType()))
-				.setDataSource(createSubreportDataSource());
+		  .setTemplate(Templates.reportTemplate)
+		  .title(title)
+		  .columns(
+		  	col.column("Item", "item", type.stringType()),
+		  	col.column("Quantity", "quantity", type.integerType()),
+		  	col.column("Unit price", "unitprice", type.bigDecimalType()))
+		  .setDataSource(createSubreportDataSource());
 
 		return report;
 	}

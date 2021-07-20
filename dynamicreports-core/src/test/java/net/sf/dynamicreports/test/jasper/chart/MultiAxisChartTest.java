@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -62,20 +62,20 @@ public class MultiAxisChartTest extends AbstractJasperChartTest implements Seria
 		FieldBuilder<Integer> field3 = field("field3", type.integerType());
 
 		TimeSeriesChartBuilder chart1 = cht.timeSeriesChart()
-				.setTimePeriod(field1)
-				.setTimePeriodType(TimePeriod.DAY)
-				.series(cht.serie(field2).setLabel("serie1"));
+  		.setTimePeriod(field1)
+  		.setTimePeriodType(TimePeriod.DAY)
+  		.series(cht.serie(field2).setLabel("serie1"));
 
 		TimeSeriesChartBuilder chart2 = cht.timeSeriesChart()
-				.setTimePeriod(field1)
-				.setTimePeriodType(TimePeriod.DAY)
-				.series(cht.serie(field3).setLabel("serie2"));
+	  	.setTimePeriod(field1)
+	  	.setTimePeriodType(TimePeriod.DAY)
+	  	.series(cht.serie(field3).setLabel("serie2"));
 
 		rb.summary(
-				cht.multiAxisChart(chart1, chart2),
-				cht.multiAxisChart()
-						.addChart(chart1, AxisPosition.LEFT_OR_TOP)
-						.addChart(chart2, AxisPosition.RIGHT_OR_BOTTOM));
+	  	cht.multiAxisChart(chart1, chart2),
+	  	cht.multiAxisChart()
+	  		.addChart(chart1, AxisPosition.LEFT_OR_TOP)
+	  		.addChart(chart2, AxisPosition.RIGHT_OR_BOTTOM));
 	}
 
 	@Override

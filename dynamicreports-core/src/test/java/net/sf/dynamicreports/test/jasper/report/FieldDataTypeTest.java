@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -88,48 +88,48 @@ public class FieldDataTypeTest extends AbstractJasperValueTest implements Serial
 		FieldBuilder<Date> field4;
 
 		rb.setLocale(Locale.ENGLISH)
-				.fields(
-						field1 = field("field1", type.bigDecimalType()),
-						field2 = field("field2", type.integerType()),
-						field3 = field("field3", type.stringType()),
-						field4 = field("field4", type.dateType()))
-				.columns(
-						column1 = col.column("Column1", field1),
-						column2 = col.column("Column2", field2),
-						column3 = col.column("Column2", field3),
-						column4 = col.column("Column3", field4))
-				.subtotalsAtSummary(
-						subtotal1 = sbt.sum(field1, column1),
-						subtotal2 = sbt.avg(field1, column1),
-						subtotal3 = sbt.count(field1, column1),
-						subtotal4 = sbt.distinctCount(field1, column1),
-						subtotal5 = sbt.first(field1, column1),
-						subtotal6 = sbt.min(field1, column1),
-						subtotal7 = sbt.max(field1, column1),
-						subtotal8 = sbt.stdDev(field1, column1),
-						subtotal9 = sbt.var(field1, column1),
+			.fields(
+					field1 = field("field1", type.bigDecimalType()),
+					field2 = field("field2", type.integerType()),
+					field3 = field("field3", type.stringType()),
+					field4 = field("field4", type.dateType()))
+			.columns(
+					column1 = col.column("Column1", field1),
+					column2 = col.column("Column2", field2),
+					column3 = col.column("Column2", field3),
+					column4 = col.column("Column3", field4))
+			.subtotalsAtSummary(
+					subtotal1 = sbt.sum(field1, column1),
+					subtotal2 = sbt.avg(field1, column1),
+					subtotal3 = sbt.count(field1, column1),
+					subtotal4 = sbt.distinctCount(field1, column1),
+					subtotal5 = sbt.first(field1, column1),
+					subtotal6 = sbt.min(field1, column1),
+					subtotal7 = sbt.max(field1, column1),
+					subtotal8 = sbt.stdDev(field1, column1),
+					subtotal9 = sbt.var(field1, column1),
 
-						subtotal10 = sbt.sum(field2, column2),
-						subtotal11 = sbt.avg(field2, column2),
-						subtotal12 = sbt.count(field2, column2),
-						subtotal13 = sbt.distinctCount(field2, column2),
-						subtotal14 = sbt.first(field2, column2),
-						subtotal15 = sbt.min(field2, column2),
-						subtotal16 = sbt.max(field2, column2),
-						subtotal17 = sbt.stdDev(field2, column2),
-						subtotal18 = sbt.var(field2, column2),
+					subtotal10 = sbt.sum(field2, column2),
+					subtotal11 = sbt.avg(field2, column2),
+					subtotal12 = sbt.count(field2, column2),
+					subtotal13 = sbt.distinctCount(field2, column2),
+					subtotal14 = sbt.first(field2, column2),
+					subtotal15 = sbt.min(field2, column2),
+					subtotal16 = sbt.max(field2, column2),
+					subtotal17 = sbt.stdDev(field2, column2),
+					subtotal18 = sbt.var(field2, column2),
 
-						subtotal19 = sbt.count(field3, column3),
-						subtotal20 = sbt.distinctCount(field3, column3),
-						subtotal21 = sbt.first(field3, column3),
-						subtotal22 = sbt.min(field3, column3),
-						subtotal23 = sbt.max(field3, column3),
+					subtotal19 = sbt.count(field3, column3),
+					subtotal20 = sbt.distinctCount(field3, column3),
+					subtotal21 = sbt.first(field3, column3),
+					subtotal22 = sbt.min(field3, column3),
+					subtotal23 = sbt.max(field3, column3),
 
-						subtotal24 = sbt.count(field4, column4),
-						subtotal25 = sbt.distinctCount(field4, column4),
-						subtotal26 = sbt.first(field4, column4),
-						subtotal27 = sbt.min(field4, column4),
-						subtotal28 = sbt.max(field4, column4));
+					subtotal24 = sbt.count(field4, column4),
+					subtotal25 = sbt.distinctCount(field4, column4),
+					subtotal26 = sbt.first(field4, column4),
+					subtotal27 = sbt.min(field4, column4),
+					subtotal28 = sbt.max(field4, column4));
 	}
 
 	@Override
@@ -138,7 +138,7 @@ public class FieldDataTypeTest extends AbstractJasperValueTest implements Serial
 
 		numberOfPagesTest(1);
 
-		// column
+		//column
 		columnDetailCountTest(column1, 5);
 		columnDetailValueTest(column1, "1.01", "2.01", "9.01", "11.01", "2.01");
 		columnDetailCountTest(column2, 5);
@@ -148,7 +148,7 @@ public class FieldDataTypeTest extends AbstractJasperValueTest implements Serial
 		columnDetailCountTest(column4, 5);
 		columnDetailValueTest(column4, "01/01/2010", "02/01/2010", "02/01/2010", "03/01/2010", "04/01/2010");
 
-		// summary
+		//summary
 		subtotalIndexCountTest(subtotal1, 1, 1);
 		subtotalIndexValueTest(subtotal1, 1, "25.05");
 		subtotalIndexCountTest(subtotal2, 2, 1);

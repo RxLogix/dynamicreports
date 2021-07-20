@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -52,27 +52,27 @@ public class SubtotalReport {
 		ColumnGroupBuilder columnGroup = grp.group(column1);
 
 		try {
-			report()// create new report design
-					.setPageColumnsPerPage(2)
-					.setSubtotalStyle(boldStyle)
-					.columns(column1, column2)
-					.groupBy(columnGroup)
+			report()//create new report design
+			  .setPageColumnsPerPage(2)
+			  .setSubtotalStyle(boldStyle)
+			  .columns(column1, column2)
+			  .groupBy(columnGroup)
 
-					// subtotals
-					.subtotalsAtTitle(createSubtotal("This is a title sum"))
-					.subtotalsAtPageHeader(createSubtotal("This is a page header sum"))
-					.subtotalsAtPageFooter(createSubtotal("This is a page footer sum"))
-					.subtotalsAtColumnHeader(createSubtotal("This is a column header sum"))
-					.subtotalsAtColumnFooter(createSubtotal("This is a column footer sum"))
-					.subtotalsAtLastPageFooter(createSubtotal("This is a last page footer sum"))
-					.subtotalsAtSummary(createSubtotal("This is a summary sum"))
-					.subtotalsAtGroupHeader(columnGroup, createSubtotal("This is a group header sum"))
-					.subtotalsAtGroupFooter(columnGroup, createSubtotal("This is a group footer sum"))
-					.subtotalsOfPercentageAtGroupHeader(columnGroup, createPercSubtotal("This is a group header perc."))
-					.subtotalsOfPercentageAtGroupFooter(columnGroup, createPercSubtotal("This is a group footer perc."))
+			  //subtotals
+			  .subtotalsAtTitle(createSubtotal("This is a title sum"))
+			  .subtotalsAtPageHeader(createSubtotal("This is a page header sum"))
+			  .subtotalsAtPageFooter(createSubtotal("This is a page footer sum"))
+			  .subtotalsAtColumnHeader(createSubtotal("This is a column header sum"))
+			  .subtotalsAtColumnFooter(createSubtotal("This is a column footer sum"))
+			  .subtotalsAtLastPageFooter(createSubtotal("This is a last page footer sum"))
+			  .subtotalsAtSummary(createSubtotal("This is a summary sum"))
+			  .subtotalsAtGroupHeader(columnGroup, createSubtotal("This is a group header sum"))
+			  .subtotalsAtGroupFooter(columnGroup, createSubtotal("This is a group footer sum"))
+			  .subtotalsOfPercentageAtGroupHeader(columnGroup, createPercSubtotal("This is a group header perc."))
+			  .subtotalsOfPercentageAtGroupFooter(columnGroup, createPercSubtotal("This is a group footer perc."))
 
-					.setDataSource(createDataSource())// set datasource
-					.show();// create and show report
+			  .setDataSource(createDataSource())//set datasource
+			  .show();//create and show report
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

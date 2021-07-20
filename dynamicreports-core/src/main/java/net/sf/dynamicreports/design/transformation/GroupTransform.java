@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -115,64 +115,60 @@ public class GroupTransform {
 		}
 
 		switch (templateTransform.getGroupHeaderLayout(group)) {
-			case EMPTY:
-				break;
-			case TITLE_AND_VALUE:
-				if (groupPadding > 0) {
-					DRDesignFiller filler = new DRDesignFiller();
-					filler.setWidth(groupPadding);
-					filler.setHeight(0);
-					header.addComponent(HorizontalCellComponentAlignment.CENTER, null, filler);
-				}
-				header.addComponent(HorizontalCellComponentAlignment.LEFT, null, titleComponent(group));
-				DRDesignTextField valueComponent = valueComponent(group);
-				header.addComponent(valueComponent);
-				if (designTocHeading != null) {
-					valueComponent.setAnchorNameExpression(designTocHeading.getReferenceField().getAnchorNameExpression());
-					valueComponent.setBookmarkLevel(designTocHeading.getReferenceField().getBookmarkLevel());
-					valueComponent.setHyperLink(designTocHeading.getReferenceField().getHyperLink());
-				}
-				break;
-			case VALUE:
-				if (groupPadding > 0) {
-					DRDesignFiller filler = new DRDesignFiller();
-					filler.setWidth(groupPadding);
-					filler.setHeight(0);
-					header.addComponent(HorizontalCellComponentAlignment.CENTER, null, filler);
-				}
-				valueComponent = valueComponent(group);
-				header.addComponent(valueComponent);
-				if (designTocHeading != null) {
-					valueComponent.setAnchorNameExpression(designTocHeading.getReferenceField().getAnchorNameExpression());
-					valueComponent.setBookmarkLevel(designTocHeading.getReferenceField().getBookmarkLevel());
-					valueComponent.setHyperLink(designTocHeading.getReferenceField().getHyperLink());
-				}
-				break;
-			default:
-				throw new DRDesignReportException("Group header layout " + templateTransform.getGroupHeaderLayout(group).name() + " not supported");
+		case EMPTY:
+			break;
+		case TITLE_AND_VALUE:
+			if (groupPadding > 0) {
+				DRDesignFiller filler = new DRDesignFiller();
+				filler.setWidth(groupPadding);
+				filler.setHeight(0);
+				header.addComponent(HorizontalCellComponentAlignment.CENTER, null, filler);
+			}
+			header.addComponent(HorizontalCellComponentAlignment.LEFT, null, titleComponent(group));
+			DRDesignTextField valueComponent = valueComponent(group);
+			header.addComponent(valueComponent);
+			if (designTocHeading != null) {
+				valueComponent.setAnchorNameExpression(designTocHeading.getReferenceField().getAnchorNameExpression());
+				valueComponent.setBookmarkLevel(designTocHeading.getReferenceField().getBookmarkLevel());
+				valueComponent.setHyperLink(designTocHeading.getReferenceField().getHyperLink());
+			}
+			break;
+		case VALUE:
+			if (groupPadding > 0) {
+				DRDesignFiller filler = new DRDesignFiller();
+				filler.setWidth(groupPadding);
+				filler.setHeight(0);
+				header.addComponent(HorizontalCellComponentAlignment.CENTER, null, filler);
+			}
+			valueComponent = valueComponent(group);
+			header.addComponent(valueComponent);
+			if (designTocHeading != null) {
+				valueComponent.setAnchorNameExpression(designTocHeading.getReferenceField().getAnchorNameExpression());
+				valueComponent.setBookmarkLevel(designTocHeading.getReferenceField().getBookmarkLevel());
+				valueComponent.setHyperLink(designTocHeading.getReferenceField().getHyperLink());
+			}
+			break;
+		default:
+			throw new DRDesignReportException("Group header layout " + templateTransform.getGroupHeaderLayout(group).name() + " not supported");
 		}
 		if (!header.isEmpty()) {
 			DRIBand bnd = group.getHeaderBand();
-			DRDesignBand band = accessor.getBandTransform().band("groupHeaderTitleAndValue", bnd, templateTransform.getGroupHeaderSplitType(bnd),
-					templateTransform.getGroupHeaderStyle(bnd), templateTransform.getGroupHeaderBackgroundComponent(bnd));
+			DRDesignBand band = accessor.getBandTransform().band("groupHeaderTitleAndValue", bnd, templateTransform.getGroupHeaderSplitType(bnd), templateTransform.getGroupHeaderStyle(bnd), templateTransform.getGroupHeaderBackgroundComponent(bnd));
 			band.addComponent(header);
 			designGroup.addHeaderBand(band);
 		}
 
 		DRIBand band = group.getHeaderBand();
-		designGroup.addHeaderBand(groupBand("groupHeader", band, templateTransform.getGroupHeaderSplitType(band), templateTransform.getGroupHeaderStyle(band),
-				templateTransform.getGroupHeaderBackgroundComponent(band), groupPadding, designGroup));
+		designGroup.addHeaderBand(groupBand("groupHeader", band, templateTransform.getGroupHeaderSplitType(band), templateTransform.getGroupHeaderStyle(band), templateTransform.getGroupHeaderBackgroundComponent(band), groupPadding, designGroup));
 		band = group.getFooterBand();
-		designGroup.addFooterBand(groupBand("groupFooter", band, templateTransform.getGroupFooterSplitType(band), templateTransform.getGroupFooterStyle(band),
-				templateTransform.getGroupFooterBackgroundComponent(band), groupPadding, designGroup));
+		designGroup.addFooterBand(groupBand("groupFooter", band, templateTransform.getGroupFooterSplitType(band), templateTransform.getGroupFooterStyle(band), templateTransform.getGroupFooterBackgroundComponent(band), groupPadding, designGroup));
 		if (templateTransform.isGroupShowColumnHeaderAndFooter(group)) {
 			designGroup.addHeaderBand(accessor.getBandTransform().getColumnHeaderForGroupBand());
 			designGroup.addFooterBand(accessor.getBandTransform().getColumnFooterBand());
 		}
 	}
 
-	private DRDesignBand groupBand(String name, DRIBand band, SplitType splitType, DRIReportStyle defaultStyle, DRIComponent defaultBackgroundComponent,
-			int groupPadding, DRDesignGroup resetGroup) throws DRException {
+	private DRDesignBand groupBand(String name, DRIBand band, SplitType splitType, DRIReportStyle defaultStyle, DRIComponent defaultBackgroundComponent, int groupPadding, DRDesignGroup resetGroup) throws DRException {
 		DRDesignBand designBand = accessor.getBandTransform().band(name, band, splitType, defaultStyle, defaultBackgroundComponent, ResetType.GROUP, resetGroup);
 		if (groupPadding > 0) {
 			DRDesignFiller filler = new DRDesignFiller();
@@ -186,7 +182,7 @@ public class GroupTransform {
 		return designBand;
 	}
 
-	// title
+	//title
 	@SuppressWarnings("unchecked")
 	private DRDesignComponent titleComponent(DRIGroup group) throws DRException {
 		@SuppressWarnings("rawtypes")
@@ -199,14 +195,14 @@ public class GroupTransform {
 		return designTitleField;
 	}
 
-	// value
+	//value
 	private DRDesignTextField valueComponent(DRIGroup group) throws DRException {
 		DRDesignTextField designValueField = accessor.getComponentTransform().textField(group.getValueField(), DefaultStyleType.GROUP);
 		designValueField.setUniqueName("group_" + group.getName());
 		return designValueField;
 	}
 
-	// group
+	//group
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private DRDesignGroup group(DRIGroup group) throws DRException {
 		TemplateTransform templateTransform = accessor.getTemplateTransform();

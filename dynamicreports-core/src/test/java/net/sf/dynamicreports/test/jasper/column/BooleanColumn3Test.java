@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,32 +49,33 @@ public class BooleanColumn3Test {
 
 	@Test
 	public void test() {
-		try {
-			JasperReportBuilder rb = createReport();
-			JRDataSource dataSource = createDataSource();
+    try {
+      JasperReportBuilder rb = createReport();
+      JRDataSource dataSource = createDataSource();
 
-			JasperReport report = rb.toJasperReport();
-			Map<String, Object> params = new HashMap<String, Object>();
-			params.putAll(rb.getJasperParameters());
+      JasperReport report = rb.toJasperReport();
+      Map<String, Object> params = new HashMap<String, Object>();
+      params.putAll(rb.getJasperParameters());
 
-			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+      ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			JasperFillManager.fillReportToStream(report, bos, params, dataSource);
 
-			JasperExportManager.exportReportToPdfStream(new ByteArrayInputStream(bos.toByteArray()), new ByteArrayOutputStream());
+      JasperExportManager.exportReportToPdfStream(new ByteArrayInputStream(bos.toByteArray()), new ByteArrayOutputStream());
 
-			bos.flush();
-			bos.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			Assert.fail(e.getMessage());
-		}
+      bos.flush();
+      bos.close();
+    }
+    catch ( Exception e ) {
+    	e.printStackTrace();
+    	Assert.fail(e.getMessage());
+    }
 	}
 
 	private JasperReportBuilder createReport() {
 		JasperReportBuilder rb = report();
 		rb.columns(col.booleanColumn("Column1", "field1")
-				.setComponentType(BooleanComponentType.IMAGE_CHECKBOX_1)
-				.setStyle(stl.style().setTextAlignment(HorizontalTextAlignment.CENTER, VerticalTextAlignment.TOP)));
+			.setComponentType(BooleanComponentType.IMAGE_CHECKBOX_1)
+			.setStyle(stl.style().setTextAlignment(HorizontalTextAlignment.CENTER, VerticalTextAlignment.TOP)));
 		return rb;
 	}
 

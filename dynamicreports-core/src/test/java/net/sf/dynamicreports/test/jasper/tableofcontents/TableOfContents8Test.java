@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -42,13 +42,13 @@ public class TableOfContents8Test extends AbstractJasperValueTest implements Ser
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.tableOfContents()
-				.columns(
-						col.column("Column1", "field1", type.stringType()))
-				.detail(
-						cmp.text("detail")
-								.setTableOfContentsHeading("detailToc")
-								.removeLineWhenBlank()
-								.setPrintWhenExpression(new PrintWhenExpression()));
+	  	.columns(
+	  		col.column("Column1", "field1", type.stringType()))
+		  .detail(
+		  	cmp.text("detail")
+		  		.setTableOfContentsHeading("detailToc")
+		  		.removeLineWhenBlank()
+		  		.setPrintWhenExpression(new PrintWhenExpression()));
 	}
 
 	@Override

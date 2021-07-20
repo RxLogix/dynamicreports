@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -50,27 +50,27 @@ public class GroupChartReport {
 		TextColumnBuilder<BigDecimal> salesColumn = col.column("Sales", "sales", type.bigDecimalType());
 
 		Bar3DChartBuilder chart = cht.bar3DChart()
-				.setFixedHeight(180)
-				.setCategory(itemColumn)
-				.series(cht.serie(quantityColumn), cht.serie(salesColumn))
-				.setCategoryAxisFormat(
-						cht.axisFormat().setLabel("Item"));
+			.setFixedHeight(180)
+			.setCategory(itemColumn)
+			.series(cht.serie(quantityColumn), cht.serie(salesColumn))
+			.setCategoryAxisFormat(
+				cht.axisFormat().setLabel("Item"));
 
 		ColumnGroupBuilder countryGroup = grp.group(countryColumn)
-				.footer(chart);
+			.footer(chart);
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(countryColumn, itemColumn, quantityColumn, salesColumn)
-					.title(Templates.createTitleComponent("GroupChart"))
-					.groupBy(countryGroup)
-					.summary(
-							cmp.text("All countries").setStyle(Templates.bold12CenteredStyle),
-							chart)
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.columns(countryColumn, itemColumn, quantityColumn, salesColumn)
+				.title(Templates.createTitleComponent("GroupChart"))
+				.groupBy(countryGroup)
+				.summary(
+					cmp.text("All countries").setStyle(Templates.bold12CenteredStyle),
+					chart)
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

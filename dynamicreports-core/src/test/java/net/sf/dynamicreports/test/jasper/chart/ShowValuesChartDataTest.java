@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -64,89 +64,89 @@ public class ShowValuesChartDataTest extends AbstractJasperChartTest implements 
 		Locale.setDefault(Locale.ENGLISH);
 
 		rb.setPageFormat(PageType.A2, PageOrientation.PORTRAIT)
-				.columns(
-						column1 = col.column("Column1", "field1", String.class),
-						column2 = col.column("Column2", "field2", Integer.class),
-						column3 = col.column("Column3", "field3", Integer.class),
-						column4 = col.column("Column4", "field4", Date.class))
-				.summary(
-						cmp.horizontalList(
-								cht.barChart()
-										.setShowValues(true)
-										.setCategory(column1)
-										.series(cht.serie(column2), cht.serie(column3)),
-								cht.bar3DChart()
-										.setShowValues(true)
-										.setValuePattern("#,##0.#")
-										.setCategory(column1)
-										.series(cht.serie(column2), cht.serie(column3))
-										.setValueAxisFormat(cht.axisFormat().setRangeMaxValueExpression(6)),
-								cht.stackedBarChart()
-										.setShowValues(true)
-										.setCategory(column1)
-										.series(cht.serie(column2), cht.serie(column3)),
-								cht.stackedBar3DChart()
-										.setShowValues(true)
-										.setCategory(column1)
-										.series(cht.serie(column2), cht.serie(column3))),
-						cmp.horizontalList(
-								cht.areaChart()
-										.setShowValues(true)
-										.setCategory(column1)
-										.series(cht.serie(column3), cht.serie(column2)),
-								cht.lineChart()
-										.setShowValues(true)
-										.setCategory(column1)
-										.series(cht.serie(column2), cht.serie(column3)),
-								cht.groupedStackedBarChart()
-										.setShowValues(true)
-										.setCategory(column1)
-										.series(cht.groupedSerie(column2).setGroup(column1).setSeries(column1))),
-						cmp.horizontalList(
-								cht.pieChart()
-										.setShowValues(true)
-										.setKey(column1)
-										.series(cht.serie(column2)),
-								cht.pie3DChart()
-										.setShowValues(true)
-										.setValuePattern("#,##0.#")
-										.setKey(column1)
-										.series(cht.serie(column2))),
-						cmp.horizontalList(
-								cht.xyBarChart()
-										.setShowValues(true)
-										.setXValue(column2)
-										.series(cht.xySerie(column3)),
-								cht.xyLineChart()
-										.setShowValues(true)
-										.setValuePattern("#,##0.#")
-										.setXValue(column2)
-										.series(cht.xySerie(column3)),
-								cht.scatterChart()
-										.setShowValues(true)
-										.setXValue(column2)
-										.series(cht.xySerie(column3))),
-						cmp.horizontalList(
-								cht.timeSeriesChart()
-										.setShowValues(true)
-										.setTimePeriod(column4)
-										.series(cht.serie(column2), cht.serie(column3))
-										.setTimePeriodType(TimePeriod.DAY),
-								cht.differenceChart()
-										.setShowValues(true)
-										.setTimePeriod(column4)
-										.series(cht.serie(column2), cht.serie(column3))
-										.setTimePeriodType(TimePeriod.DAY),
-								cht.xyStepChart()
-										.setShowValues(true)
-										.setValuePattern("#,##0.#")
-										.setXValue(column2)
-										.series(cht.xySerie(column3)),
-								cht.waterfallBarChart()
-										.setShowValues(true)
-										.setValuePattern("#,##0.#")
-										.setCategory(column1)
-										.series(cht.serie(column2))));
+			.columns(
+				column1 = col.column("Column1", "field1", String.class),
+				column2 = col.column("Column2", "field2", Integer.class),
+				column3 = col.column("Column3", "field3", Integer.class),
+				column4 = col.column("Column4", "field4", Date.class))
+			.summary(
+				cmp.horizontalList(
+					cht.barChart()
+						.setShowValues(true)
+						.setCategory(column1)
+						.series(cht.serie(column2), cht.serie(column3)),
+					cht.bar3DChart()
+						.setShowValues(true)
+						.setValuePattern("#,##0.#")
+						.setCategory(column1)
+						.series(cht.serie(column2), cht.serie(column3))
+						.setValueAxisFormat(cht.axisFormat().setRangeMaxValueExpression(6)),
+					cht.stackedBarChart()
+						.setShowValues(true)
+						.setCategory(column1)
+						.series(cht.serie(column2), cht.serie(column3)),
+					cht.stackedBar3DChart()
+						.setShowValues(true)
+						.setCategory(column1)
+						.series(cht.serie(column2), cht.serie(column3))),
+				cmp.horizontalList(
+					cht.areaChart()
+						.setShowValues(true)
+						.setCategory(column1)
+						.series(cht.serie(column3), cht.serie(column2)),
+					cht.lineChart()
+						.setShowValues(true)
+						.setCategory(column1)
+						.series(cht.serie(column2), cht.serie(column3)),
+					cht.groupedStackedBarChart()
+						.setShowValues(true)
+						.setCategory(column1)
+						.series(cht.groupedSerie(column2).setGroup(column1).setSeries(column1))),
+				cmp.horizontalList(
+					cht.pieChart()
+						.setShowValues(true)
+						.setKey(column1)
+						.series(cht.serie(column2)),
+					cht.pie3DChart()
+						.setShowValues(true)
+						.setValuePattern("#,##0.#")
+						.setKey(column1)
+						.series(cht.serie(column2))),
+				cmp.horizontalList(
+					cht.xyBarChart()
+						.setShowValues(true)
+						.setXValue(column2)
+						.series(cht.xySerie(column3)),
+					cht.xyLineChart()
+						.setShowValues(true)
+						.setValuePattern("#,##0.#")
+						.setXValue(column2)
+						.series(cht.xySerie(column3)),
+					cht.scatterChart()
+						.setShowValues(true)
+						.setXValue(column2)
+						.series(cht.xySerie(column3))),
+				cmp.horizontalList(
+					cht.timeSeriesChart()
+						.setShowValues(true)
+						.setTimePeriod(column4)
+						.series(cht.serie(column2), cht.serie(column3))
+						.setTimePeriodType(TimePeriod.DAY),
+					cht.differenceChart()
+						.setShowValues(true)
+						.setTimePeriod(column4)
+						.series(cht.serie(column2), cht.serie(column3))
+						.setTimePeriodType(TimePeriod.DAY),
+					cht.xyStepChart()
+						.setShowValues(true)
+						.setValuePattern("#,##0.#")
+						.setXValue(column2)
+						.series(cht.xySerie(column3)),
+					cht.waterfallBarChart()
+						.setShowValues(true)
+						.setValuePattern("#,##0.#")
+						.setCategory(column1)
+						.series(cht.serie(column2))));
 	}
 
 	@Override
@@ -210,7 +210,7 @@ public class ShowValuesChartDataTest extends AbstractJasperChartTest implements 
 		Assert.assertEquals("key1 = 1.2", labelGenerator.generateSectionLabel(dataset, "key1"));
 
 		DefaultXYDataset xyDataset = new DefaultXYDataset();
-		xyDataset.addSeries("key", new double[][] { new double[] { 1d }, new double[] { 1.191d } });
+		xyDataset.addSeries("key", new double[][] {new double[]{1d}, new double[]{1.191d}});
 
 		chart = getChart("summary.chart10", 0);
 		XYItemRenderer renderer2 = chart.getXYPlot().getRenderer();

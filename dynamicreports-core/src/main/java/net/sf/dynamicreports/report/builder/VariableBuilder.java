@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -38,7 +38,7 @@ import net.sf.dynamicreports.report.definition.expression.DRIJasperExpression;
 public class VariableBuilder<T> extends AbstractBuilder<VariableBuilder<T>, DRVariable<T>> implements DRIValue<T> {
 	private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
 
-	// column
+	//column
 	protected VariableBuilder(ValueColumnBuilder<?, ?> column, Calculation calculation) {
 		super(new DRVariable<T>(column.build(), calculation));
 	}
@@ -47,7 +47,7 @@ public class VariableBuilder<T> extends AbstractBuilder<VariableBuilder<T>, DRVa
 		super(new DRVariable<T>(name, column.build(), calculation));
 	}
 
-	// field
+	//field
 	protected VariableBuilder(FieldBuilder<?> field, Calculation calculation) {
 		super(new DRVariable<T>(field.getField(), calculation));
 	}
@@ -56,7 +56,7 @@ public class VariableBuilder<T> extends AbstractBuilder<VariableBuilder<T>, DRVa
 		super(new DRVariable<T>(name, field.getField(), calculation));
 	}
 
-	// simple expression
+	//simple expression
 	protected VariableBuilder(DRIExpression<?> expression, Calculation calculation) {
 		super(new DRVariable<T>(expression, calculation));
 	}
@@ -79,7 +79,8 @@ public class VariableBuilder<T> extends AbstractBuilder<VariableBuilder<T>, DRVa
 		if (resetGroup != null) {
 			getObject().setResetGroup(resetGroup.getGroup());
 			setResetType(Evaluation.GROUP);
-		} else {
+		}
+		else {
 			getObject().setResetGroup(null);
 		}
 		return this;

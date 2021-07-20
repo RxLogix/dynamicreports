@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -46,17 +46,17 @@ public class ListBackgroundComponentTest extends AbstractJasperPositionTest {
 	protected void configureReport(JasperReportBuilder rb) {
 		RectangleBuilder background = cmp.rectangle();
 		ReportTemplateBuilder template = template()
-				.setDetailBackgroundComponent(background);
+			.setDetailBackgroundComponent(background);
 
 		rb.setTemplate(template)
-				.setTitleBackgroundComponent(background)
-				.setSummaryBackgroundComponent(background)
-				.title(cmp.text("title").setFixedHeight(300))
-				.columns(column = col.column("field1", String.class))
-				.summary(
-						cmp.text("text\ntext"),
-						cmp.horizontalList(cmp.text("text"), cmp.horizontalList(cmp.text("text"), cmp.text("text")).setBackgroundComponent(background), cmp.text("text")),
-						cmp.verticalList(cmp.text("text"), cmp.text("text")).setStyle(stl.style(5)).setBackgroundComponent(background));
+			.setTitleBackgroundComponent(background)
+			.setSummaryBackgroundComponent(background)
+			.title(cmp.text("title").setFixedHeight(300))
+			.columns(column = col.column("field1", String.class))
+		  .summary(
+		  	cmp.text("text\ntext"),
+		  	cmp.horizontalList(cmp.text("text"), cmp.horizontalList(cmp.text("text"), cmp.text("text")).setBackgroundComponent(background), cmp.text("text")),
+		  	cmp.verticalList(cmp.text("text"), cmp.text("text")).setStyle(stl.style(5)).setBackgroundComponent(background));
 	}
 
 	@Override

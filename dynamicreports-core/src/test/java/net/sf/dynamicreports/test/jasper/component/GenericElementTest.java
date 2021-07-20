@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -46,40 +46,40 @@ import org.junit.Test;
 public class GenericElementTest {
 	private String data = "";
 	private String output;
-
+	
 	@Before
 	public void init() {
 		try {
-			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();			
 			JasperHtmlExporterBuilder htmlExporter = export.htmlExporter(outputStream);
-
+			
 			JasperReportBuilder reportBuilder = DynamicReports.report();
 			configureReport(reportBuilder);
 			reportBuilder.setDataSource(createDataSource())
-					.toHtml(htmlExporter);
-
+			             .toHtml(htmlExporter);						
+			
 			output = outputStream.toString();
 		} catch (Exception e) {
 			e.printStackTrace();
-			Assert.fail(e.getMessage());
+			Assert.fail(e.getMessage());	
 		}
 	}
-
+	
 	protected void configureReport(JasperReportBuilder rb) {
 		GenericElementBuilder genericElement = cmp.genericElement("http://www.dynamicreports.org/custom", "custom")
-				.addParameter("id", "10")
-				.addParameter("data", new ParameterExpression());
-
+		  .addParameter("id", "10")
+		  .addParameter("data", new ParameterExpression());
+		
 		rb.scriptlets(new ReportScriptlet())
-				.fields(field("field1", type.stringType()))
-				.summary(genericElement);
+		  .fields(field("field1", type.stringType()))
+			.summary(genericElement);
 	}
 
 	@Test
-	public void test() {
+	public void test() {		
 		Assert.assertTrue("generic element output", output.indexOf("<div id=\"10\">ABCD</div>") != -1);
 	}
-
+	
 	protected JRDataSource createDataSource() {
 		DRDataSource dataSource = new DRDataSource("field1");
 		dataSource.add("A");
@@ -88,23 +88,23 @@ public class GenericElementTest {
 		dataSource.add("D");
 		return dataSource;
 	}
-
+	
 	private class ParameterExpression extends AbstractSimpleExpression<String> {
 		private static final long serialVersionUID = 1L;
 
 		@Override
 		public String evaluate(ReportParameters reportParameters) {
 			return data;
-		}
+		}		
 	}
-
-	private class ReportScriptlet extends AbstractScriptlet {
-
+	
+	private class ReportScriptlet extends AbstractScriptlet {		
+		
 		@Override
 		public void afterDetailEval(ReportParameters reportParameters) {
 			super.afterDetailEval(reportParameters);
 			String name = reportParameters.getValue("field1");
 			data += name;
-		}
+		}		
 	}
 }

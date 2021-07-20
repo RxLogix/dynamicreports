@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -47,17 +47,17 @@ public class ConcatenatedReport5Test {
 	@Before
 	public void init() {
 		JasperReportBuilder report1 = report()
-				.title(cmp.text("text1"))
-				.setWhenNoDataType(WhenNoDataType.BLANK_PAGE)
-				.setDataSource(new DataSource());
+			.title(cmp.text("text1"))
+			.setWhenNoDataType(WhenNoDataType.BLANK_PAGE)
+			.setDataSource(new DataSource());
 		JasperReportBuilder report2 = report()
-				.title(cmp.text("text2"))
-				.setWhenNoDataType(WhenNoDataType.BLANK_PAGE)
-				.setDataSource(new DataSource());
+			.title(cmp.text("text2"))
+			.setWhenNoDataType(WhenNoDataType.BLANK_PAGE)
+			.setDataSource(new DataSource());
 		JasperReportBuilder report3 = report()
-				.title(cmp.text("text3"))
-				.setWhenNoDataType(WhenNoDataType.BLANK_PAGE)
-				.setDataSource(new DataSource());
+			.title(cmp.text("text3"))
+			.setWhenNoDataType(WhenNoDataType.BLANK_PAGE)
+			.setDataSource(new DataSource());
 
 		concatenatedReport = concatenatedReport();
 		concatenatedReport.concatenate(report1, report2, report3);

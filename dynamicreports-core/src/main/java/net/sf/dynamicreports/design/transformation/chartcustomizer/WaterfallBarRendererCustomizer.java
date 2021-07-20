@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -43,9 +43,9 @@ public class WaterfallBarRendererCustomizer implements DRIChartCustomizer, Seria
 	private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
 
 	private Paint firstBarPaint;
-	private Paint lastBarPaint;
-	private Paint positiveBarPaint;
-	private Paint negativeBarPaint;
+  private Paint lastBarPaint;
+  private Paint positiveBarPaint;
+  private Paint negativeBarPaint;
 
 	public WaterfallBarRendererCustomizer(DRIWaterfallBarPlot waterfallBarPlot) {
 		this.firstBarPaint = waterfallBarPlot.getFirstBarPaint();
@@ -59,14 +59,14 @@ public class WaterfallBarRendererCustomizer implements DRIChartCustomizer, Seria
 		BarRenderer categoryRenderer = (BarRenderer) chart.getCategoryPlot().getRenderer();
 		WaterfallBarRenderer renderer = new WaterfallBarRenderer();
 
-		renderer.setBaseItemLabelsVisible(categoryRenderer.getBaseItemLabelsVisible());
-		renderer.setBaseItemLabelFont(categoryRenderer.getBaseItemLabelFont());
-		renderer.setBaseItemLabelPaint(categoryRenderer.getBaseItemLabelPaint());
-		renderer.setBaseItemLabelGenerator(categoryRenderer.getBaseItemLabelGenerator());
+    renderer.setBaseItemLabelsVisible(categoryRenderer.getBaseItemLabelsVisible());
+    renderer.setBaseItemLabelFont(categoryRenderer.getBaseItemLabelFont());
+    renderer.setBaseItemLabelPaint(categoryRenderer.getBaseItemLabelPaint());
+    renderer.setBaseItemLabelGenerator(categoryRenderer.getBaseItemLabelGenerator());
 		renderer.setShadowVisible(categoryRenderer.getShadowsVisible());
 		CategoryDataset categoryDataset = chart.getCategoryPlot().getDataset();
-		if (categoryDataset != null) {
-			for (int i = 0; i < categoryDataset.getRowCount(); i++) {
+		if(categoryDataset != null)	{
+			for(int i = 0; i < categoryDataset.getRowCount(); i++) {
 				Paint seriesOutlinePaint = categoryRenderer.getSeriesOutlinePaint(i);
 				if (seriesOutlinePaint != null) {
 					renderer.setSeriesOutlinePaint(i, seriesOutlinePaint);
@@ -96,7 +96,7 @@ public class WaterfallBarRendererCustomizer implements DRIChartCustomizer, Seria
 			renderer.setNegativeBarPaint(negativeBarPaint);
 		}
 
-		chart.getCategoryPlot().setRenderer(renderer);
-	}
+    chart.getCategoryPlot().setRenderer(renderer);
+  }
 
 }

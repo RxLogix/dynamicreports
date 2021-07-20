@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -55,33 +55,31 @@ public class DRPage implements DRIPage {
 		if (orientation.equals(PageOrientation.PORTRAIT)) {
 			setWidth(width);
 			setHeight(height);
-		} else {
+		}
+		else {
 			setWidth(height);
 			setHeight(width);
 		}
 		setOrientation(orientation);
 	}
 
-	/**
-	 * Returns the page width.
-	 *
-	 * @return the page width >= 0
-	 */
+  /**
+   * Returns the page width.
+   *
+   * @return the page width >= 0
+   */
 	@Override
 	public Integer getWidth() {
 		return width;
 	}
 
-	/**
-	 * Sets the page width.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param width
-	 *          the page width >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>width</code> is < 0
-	 */
+  /**
+   * Sets the page width.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param width the page width >= 0
+   * @exception IllegalArgumentException if <code>width</code> is < 0
+   */
 	public void setWidth(Integer width) {
 		if (width != null) {
 			Validate.isTrue(width >= 0, "width must be >= 0");
@@ -89,26 +87,23 @@ public class DRPage implements DRIPage {
 		this.width = width;
 	}
 
-	/**
-	 * Returns the page height.
-	 *
-	 * @return the page height >= 0
-	 */
+  /**
+   * Returns the page height.
+   *
+   * @return the page height >= 0
+   */
 	@Override
 	public Integer getHeight() {
 		return height;
 	}
 
-	/**
-	 * Sets the page height.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param height
-	 *          the page height >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>height</code> is < 0
-	 */
+  /**
+   * Sets the page height.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param height the page height >= 0
+   * @exception IllegalArgumentException if <code>height</code> is < 0
+   */
 	public void setHeight(Integer height) {
 		if (height != null) {
 			Validate.isTrue(height >= 0, "height must be >= 0");

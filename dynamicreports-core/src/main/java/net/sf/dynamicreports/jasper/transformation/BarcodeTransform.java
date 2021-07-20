@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -93,35 +93,50 @@ public class BarcodeTransform {
 	private BarcodeComponent barcodeComponent(DRIDesignBarcode barcode) {
 		if (barcode instanceof DRIDesignCodabarBarcode) {
 			return codabar((DRIDesignCodabarBarcode) barcode);
-		} else if (barcode instanceof DRIDesignCode128Barcode) {
+		}
+		else if (barcode instanceof DRIDesignCode128Barcode) {
 			return code128((DRIDesignCode128Barcode) barcode);
-		} else if (barcode instanceof DRIDesignEan128Barcode) {
+		}
+		else if (barcode instanceof DRIDesignEan128Barcode) {
 			return ean128((DRIDesignEan128Barcode) barcode);
-		} else if (barcode instanceof DRIDesignDataMatrixBarcode) {
+		}
+		else if (barcode instanceof DRIDesignDataMatrixBarcode) {
 			return dataMatrix((DRIDesignDataMatrixBarcode) barcode);
-		} else if (barcode instanceof DRIDesignCode39Barcode) {
+		}
+		else if (barcode instanceof DRIDesignCode39Barcode) {
 			return code39((DRIDesignCode39Barcode) barcode);
-		} else if (barcode instanceof DRIDesignInterleaved2Of5Barcode) {
+		}
+		else if (barcode instanceof DRIDesignInterleaved2Of5Barcode) {
 			return interleaved2Of5((DRIDesignInterleaved2Of5Barcode) barcode);
-		} else if (barcode instanceof DRIDesignUpcaBarcode) {
+		}
+		else if (barcode instanceof DRIDesignUpcaBarcode) {
 			return upca((DRIDesignUpcaBarcode) barcode);
-		} else if (barcode instanceof DRIDesignUpceBarcode) {
+		}
+		else if (barcode instanceof DRIDesignUpceBarcode) {
 			return upce((DRIDesignUpceBarcode) barcode);
-		} else if (barcode instanceof DRIDesignEan13Barcode) {
+		}
+		else if (barcode instanceof DRIDesignEan13Barcode) {
 			return ean13((DRIDesignEan13Barcode) barcode);
-		} else if (barcode instanceof DRIDesignEan8Barcode) {
+		}
+		else if (barcode instanceof DRIDesignEan8Barcode) {
 			return ean8((DRIDesignEan8Barcode) barcode);
-		} else if (barcode instanceof DRIDesignUspsIntelligentMailBarcode) {
+		}
+		else if (barcode instanceof DRIDesignUspsIntelligentMailBarcode) {
 			return uspsIntelligentMail((DRIDesignUspsIntelligentMailBarcode) barcode);
-		} else if (barcode instanceof DRIDesignRoyalMailCustomerBarcode) {
+		}
+		else if (barcode instanceof DRIDesignRoyalMailCustomerBarcode) {
 			return royalMailCustomer((DRIDesignRoyalMailCustomerBarcode) barcode);
-		} else if (barcode instanceof DRIDesignPostnetBarcode) {
+		}
+		else if (barcode instanceof DRIDesignPostnetBarcode) {
 			return postnet((DRIDesignPostnetBarcode) barcode);
-		} else if (barcode instanceof DRIDesignPdf417Barcode) {
+		}
+		else if (barcode instanceof DRIDesignPdf417Barcode) {
 			return pdf417((DRIDesignPdf417Barcode) barcode);
-		} else if (barcode instanceof DRIDesignQrCode) {
+		}
+		else if (barcode instanceof DRIDesignQrCode) {
 			return qrCode((DRIDesignQrCode) barcode);
-		} else {
+		}
+		else {
 			throw new JasperDesignException("Barcode " + barcode.getClass().getName() + " not supported");
 		}
 	}

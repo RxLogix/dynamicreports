@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -79,8 +79,8 @@ public class GroupedStackedBarRendererCustomizer implements DRIChartCustomizer, 
 			}
 		}
 
-		DefaultCategoryDataset newDataset = new DefaultCategoryDataset();
-		for (Object column : dataset.getColumnKeys()) {
+    DefaultCategoryDataset newDataset = new DefaultCategoryDataset();
+    for (Object column : dataset.getColumnKeys()) {
 			for (String group : groups) {
 				for (String series : seriesColors.keySet()) {
 					try {
@@ -93,27 +93,27 @@ public class GroupedStackedBarRendererCustomizer implements DRIChartCustomizer, 
 
 			}
 		}
-		dataset = newDataset;
+    dataset = newDataset;
 
 		GroupedStackedBarRenderer renderer = new GroupedStackedBarRenderer();
 		renderer.setSeriesToGroupMap(map);
 
 		StackedBarRenderer categoryRenderer = (StackedBarRenderer) chart.getCategoryPlot().getRenderer();
-		renderer.setBaseItemLabelsVisible(categoryRenderer.getBaseItemLabelsVisible());
-		renderer.setBaseItemLabelFont(categoryRenderer.getBaseItemLabelFont());
-		renderer.setBaseItemLabelPaint(categoryRenderer.getBaseItemLabelPaint());
-		renderer.setBaseItemLabelGenerator(categoryRenderer.getBaseItemLabelGenerator());
+    renderer.setBaseItemLabelsVisible(categoryRenderer.getBaseItemLabelsVisible());
+    renderer.setBaseItemLabelFont(categoryRenderer.getBaseItemLabelFont());
+    renderer.setBaseItemLabelPaint(categoryRenderer.getBaseItemLabelPaint());
+    renderer.setBaseItemLabelGenerator(categoryRenderer.getBaseItemLabelGenerator());
 		renderer.setShadowVisible(categoryRenderer.getShadowsVisible());
 
-		renderer.setItemMargin(0.10);
-		renderer.setDrawBarOutline(false);
+    renderer.setItemMargin(0.10);
+    renderer.setDrawBarOutline(false);
 		for (int i = 0; i < dataset.getRowCount(); i++) {
 			String rowKey = (String) dataset.getRowKey(i);
 			String score = StringUtils.substringAfter(rowKey, GROUP_SERIES_KEY);
 			renderer.setSeriesPaint(i, seriesColors.get(score));
 		}
 
-		CategoryAxis domainAxis = chart.getCategoryPlot().getDomainAxis();
+    CategoryAxis domainAxis = chart.getCategoryPlot().getDomainAxis();
 		SubCategoryAxis newDomainAxis = new SubCategoryAxis(domainAxis.getLabel());
 		newDomainAxis.setLabelFont(domainAxis.getLabelFont());
 		newDomainAxis.setTickLabelFont(domainAxis.getTickLabelFont());
@@ -123,22 +123,22 @@ public class GroupedStackedBarRendererCustomizer implements DRIChartCustomizer, 
 		newDomainAxis.setTickMarkPaint(domainAxis.getTickMarkPaint());
 		newDomainAxis.setTickLabelsVisible(domainAxis.isTickLabelsVisible());
 		newDomainAxis.setTickMarksVisible(domainAxis.isTickMarksVisible());
-		newDomainAxis.setCategoryMargin(0.05);
-		for (String group : groups) {
-			newDomainAxis.addSubCategory(group);
+    newDomainAxis.setCategoryMargin(0.05);
+    for (String group : groups) {
+    	newDomainAxis.addSubCategory(group);
 		}
 
-		CategoryPlot plot = (CategoryPlot) chart.getPlot();
-		plot.setDomainAxis(newDomainAxis);
-		plot.setRenderer(renderer);
+    CategoryPlot plot = (CategoryPlot) chart.getPlot();
+    plot.setDomainAxis(newDomainAxis);
+    plot.setRenderer(renderer);
 
-		LegendItemCollection legendItems = new LegendItemCollection();
-		for (String item : seriesColors.keySet()) {
-			legendItems.add(new LegendItem(item, seriesColors.get(item)));
+    LegendItemCollection legendItems = new LegendItemCollection();
+    for (String item : seriesColors.keySet()) {
+    	legendItems.add(new LegendItem(item, seriesColors.get(item)));
 		}
-		plot.setFixedLegendItems(legendItems);
+    plot.setFixedLegendItems(legendItems);
 
-		chart.getCategoryPlot().setDataset(dataset);
+    chart.getCategoryPlot().setDataset(dataset);
 	}
 
 }

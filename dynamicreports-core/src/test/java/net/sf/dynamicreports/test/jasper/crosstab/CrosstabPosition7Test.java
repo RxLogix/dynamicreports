@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -57,18 +57,18 @@ public class CrosstabPosition7Test extends AbstractJasperCrosstabPositionTest {
 		measure = ctab.measure("measure", column5, Calculation.SUM);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.rowGroups(
-						rowGroup1 = ctab.rowGroup(column1),
-						rowGroup2 = ctab.rowGroup(column2).setShowTotal(false))
-				.columnGroups(
-						columnGroup1 = ctab.columnGroup(column3),
-						columnGroup2 = ctab.columnGroup(column4).setShowTotal(false))
-				.measures(measure)
-				.setCellWidth(50)
-				.setCellHeight(20);
+			.rowGroups(
+				rowGroup1 = ctab.rowGroup(column1),
+				rowGroup2 = ctab.rowGroup(column2).setShowTotal(false))
+			.columnGroups(
+				columnGroup1 = ctab.columnGroup(column3),
+				columnGroup2 = ctab.columnGroup(column4).setShowTotal(false))
+			.measures(measure)
+			.setCellWidth(50)
+			.setCellHeight(20);
 
 		rb.setPageFormat(PageType.A4, PageOrientation.LANDSCAPE)
-				.summary(crosstab);
+			.summary(crosstab);
 	}
 
 	@Override
@@ -79,18 +79,18 @@ public class CrosstabPosition7Test extends AbstractJasperCrosstabPositionTest {
 
 		setCrosstabBand("summary");
 
-		// column group 1
+		//column group 1
 		crosstabGroupHeaderPositionTest(columnGroup1, 0, 0, 0, 50, 16);
 		crosstabGroupTotalHeaderPositionTest(columnGroup1, 0, 0, 0, 50, 24);
 
-		// column group 2
+		//column group 2
 		crosstabGroupHeaderPositionTest(columnGroup2, 0, 0, 0, 50, 16);
 
-		// row group 1
+		//row group 1
 		crosstabGroupHeaderPositionTest(rowGroup1, 0, 0, 0, 100, 20);
 		crosstabGroupTotalHeaderPositionTest(rowGroup1, 0, 0, 0, 200, 20);
 
-		// row group 2
+		//row group 2
 		crosstabGroupHeaderPositionTest(rowGroup2, 0, 0, 0, 100, 20);
 	}
 

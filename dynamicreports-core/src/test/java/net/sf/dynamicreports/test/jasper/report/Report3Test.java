@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -41,12 +41,12 @@ public class Report3Test extends AbstractJasperValueTest implements Serializable
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.setReportName("report1")
-				.setWhenNoDataType(WhenNoDataType.ALL_SECTIONS_NO_DETAIL)
-				.setSummaryOnANewPage(true)
-				.setSummaryWithPageHeaderAndFooter(true)
-				.pageHeader(cmp.text("page header"))
-				.pageFooter(cmp.text("page footer"))
-				.summary(cmp.text("summary"));
+			.setWhenNoDataType(WhenNoDataType.ALL_SECTIONS_NO_DETAIL)
+		  .setSummaryOnANewPage(true)
+			.setSummaryWithPageHeaderAndFooter(true)
+			.pageHeader(cmp.text("page header"))
+		  .pageFooter(cmp.text("page footer"))
+		  .summary(cmp.text("summary"));
 	}
 
 	@Override
@@ -58,15 +58,15 @@ public class Report3Test extends AbstractJasperValueTest implements Serializable
 		JasperPrint jasperPrint = getJasperPrint();
 		Assert.assertEquals("report1", jasperPrint.getName());
 
-		// page header
+		//page header
 		elementCountTest("pageHeader.textField1", 2);
 		elementValueTest("pageHeader.textField1", "page header", "page header");
 
-		// page footer
+		//page footer
 		elementCountTest("pageFooter.textField1", 2);
 		elementValueTest("pageFooter.textField1", "page footer", "page footer");
 
-		// summary
+		//summary
 		elementCountTest("summary.textField1", 1);
 		elementValueTest("summary.textField1", "summary");
 	}

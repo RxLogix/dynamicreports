@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -199,7 +199,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		TextColumnBuilder<?> column = Columns.column(getFieldExpression(adhocColumn.getName()));
 		if (adhocColumn.getTitle() != null) {
 			column.setTitle(adhocColumn.getTitle());
-		} else {
+		}
+		else {
 			String columnTitle = getFieldLabel(adhocColumn.getName());
 			if (columnTitle != null) {
 				column.setTitle(columnTitle);
@@ -218,7 +219,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		ColumnBuilder<?, ?> groupColumn = columns.get(adhocGroup.getName());
 		if (groupColumn != null && groupColumn instanceof ValueColumnBuilder<?, ?>) {
 			group = Groups.group((ValueColumnBuilder<?, ?>) groupColumn);
-		} else {
+		}
+		else {
 			group = Groups.group(getFieldExpression(adhocGroup.getName()));
 		}
 		group.setStartInNewPage(adhocGroup.getStartInNewPage());
@@ -234,14 +236,14 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		}
 
 		switch (groupHeaderLayout) {
-			case EMPTY:
-				return GroupHeaderLayout.EMPTY;
-			case VALUE:
-				return GroupHeaderLayout.VALUE;
-			case TITLE_AND_VALUE:
-				return GroupHeaderLayout.TITLE_AND_VALUE;
-			default:
-				throw new AdhocException("Group header layout" + groupHeaderLayout.name() + " is not supported");
+		case EMPTY:
+			return GroupHeaderLayout.EMPTY;
+		case VALUE:
+			return GroupHeaderLayout.VALUE;
+		case TITLE_AND_VALUE:
+			return GroupHeaderLayout.TITLE_AND_VALUE;
+		default:
+			throw new AdhocException("Group header layout" + groupHeaderLayout.name() + " is not supported");
 		}
 	}
 
@@ -280,9 +282,9 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		ColumnBuilder<?, ?> subtotalColumn = columns.get(adhocSubtotal.getName());
 		if (subtotalColumn != null && subtotalColumn instanceof ValueColumnBuilder<?, ?>) {
 			subtotal = Subtotals.aggregate((ValueColumnBuilder<?, ?>) subtotalColumn, calculation(adhocSubtotal.getCalculation()));
-		} else {
-			subtotal = Subtotals.aggregate(getFieldExpression(adhocSubtotal.getName()), (ValueColumnBuilder<?, ?>) subtotalColumn,
-					calculation(adhocSubtotal.getCalculation()));
+		}
+		else {
+			subtotal = Subtotals.aggregate(getFieldExpression(adhocSubtotal.getName()), (ValueColumnBuilder<?, ?>) subtotalColumn, calculation(adhocSubtotal.getCalculation()));
 		}
 		if (adhocSubtotal.getLabel() != null) {
 			subtotal.setLabel(adhocSubtotal.getLabel());
@@ -298,28 +300,28 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		}
 
 		switch (adhocCalculation) {
-			case NOTHING:
-				return Calculation.NOTHING;
-			case COUNT:
-				return Calculation.COUNT;
-			case SUM:
-				return Calculation.SUM;
-			case AVERAGE:
-				return Calculation.AVERAGE;
-			case LOWEST:
-				return Calculation.LOWEST;
-			case HIGHEST:
-				return Calculation.HIGHEST;
-			case STANDARD_DEVIATION:
-				return Calculation.STANDARD_DEVIATION;
-			case VARIANCE:
-				return Calculation.VARIANCE;
-			case FIRST:
-				return Calculation.FIRST;
-			case DISTINCT_COUNT:
-				return Calculation.DISTINCT_COUNT;
-			default:
-				throw new AdhocException("Calculation " + adhocCalculation.name() + " not supported");
+		case NOTHING:
+			return Calculation.NOTHING;
+		case COUNT:
+			return Calculation.COUNT;
+		case SUM:
+			return Calculation.SUM;
+		case AVERAGE:
+			return Calculation.AVERAGE;
+		case LOWEST:
+			return Calculation.LOWEST;
+		case HIGHEST:
+			return Calculation.HIGHEST;
+		case STANDARD_DEVIATION:
+			return Calculation.STANDARD_DEVIATION;
+		case VARIANCE:
+			return Calculation.VARIANCE;
+		case FIRST:
+			return Calculation.FIRST;
+		case DISTINCT_COUNT:
+			return Calculation.DISTINCT_COUNT;
+		default:
+			throw new AdhocException("Calculation " + adhocCalculation.name() + " not supported");
 		}
 	}
 
@@ -327,47 +329,47 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		Validate.notNull(adhocSubtotalPosition, "subtotalPosition must not be null");
 
 		switch (adhocSubtotalPosition) {
-			case TITLE:
-				report.addSubtotalAtTitle(subtotal);
-				break;
-			case PAGE_HEADER:
-				report.addSubtotalAtPageHeader(subtotal);
-				break;
-			case PAGE_FOOTER:
-				report.addSubtotalAtPageFooter(subtotal);
-				break;
-			case COLUMN_HEADER:
-				report.addSubtotalAtColumnHeader(subtotal);
-				break;
-			case COLUMN_FOOTER:
-				report.addSubtotalAtColumnFooter(subtotal);
-				break;
-			case GROUP_HEADER:
-				report.addSubtotalAtGroupHeader(groups.get(groupName), subtotal);
-				break;
-			case GROUP_FOOTER:
-				report.addSubtotalAtGroupFooter(groups.get(groupName), subtotal);
-				break;
-			case FIRST_GROUP_HEADER:
-				report.addSubtotalAtFirstGroupHeader(subtotal);
-				break;
-			case FIRST_GROUP_FOOTER:
-				report.addSubtotalAtFirstGroupFooter(subtotal);
-				break;
-			case LAST_GROUP_HEADER:
-				report.addSubtotalAtLastGroupHeader(subtotal);
-				break;
-			case LAST_GROUP_FOOTER:
-				report.addSubtotalAtLastGroupFooter(subtotal);
-				break;
-			case LAST_PAGE_FOOTER:
-				report.addSubtotalAtPageFooter(subtotal);
-				break;
-			case SUMMARY:
-				report.addSubtotalAtSummary(subtotal);
-				break;
-			default:
-				throw new AdhocException("SubtotalPosition " + adhocSubtotalPosition.name() + " not supported");
+		case TITLE:
+			report.addSubtotalAtTitle(subtotal);
+			break;
+		case PAGE_HEADER:
+			report.addSubtotalAtPageHeader(subtotal);
+			break;
+		case PAGE_FOOTER:
+			report.addSubtotalAtPageFooter(subtotal);
+			break;
+		case COLUMN_HEADER:
+			report.addSubtotalAtColumnHeader(subtotal);
+			break;
+		case COLUMN_FOOTER:
+			report.addSubtotalAtColumnFooter(subtotal);
+			break;
+		case GROUP_HEADER:
+			report.addSubtotalAtGroupHeader(groups.get(groupName), subtotal);
+			break;
+		case GROUP_FOOTER:
+			report.addSubtotalAtGroupFooter(groups.get(groupName), subtotal);
+			break;
+		case FIRST_GROUP_HEADER:
+			report.addSubtotalAtFirstGroupHeader(subtotal);
+			break;
+		case FIRST_GROUP_FOOTER:
+			report.addSubtotalAtFirstGroupFooter(subtotal);
+			break;
+		case LAST_GROUP_HEADER:
+			report.addSubtotalAtLastGroupHeader(subtotal);
+			break;
+		case LAST_GROUP_FOOTER:
+			report.addSubtotalAtLastGroupFooter(subtotal);
+			break;
+		case LAST_PAGE_FOOTER:
+			report.addSubtotalAtPageFooter(subtotal);
+			break;
+		case SUMMARY:
+			report.addSubtotalAtSummary(subtotal);
+			break;
+		default:
+			throw new AdhocException("SubtotalPosition " + adhocSubtotalPosition.name() + " not supported");
 		}
 	}
 
@@ -376,7 +378,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		ColumnBuilder<?, ?> sortColumn = columns.get(adhocSort.getName());
 		if (sortColumn != null && sortColumn instanceof TextColumnBuilder<?>) {
 			sort = DynamicReports.asc((TextColumnBuilder<?>) sortColumn);
-		} else {
+		}
+		else {
 			sort = DynamicReports.asc(getFieldExpression(adhocSort.getName()));
 		}
 		sort.setOrderType(orderType(adhocSort.getOrderType()));
@@ -390,12 +393,12 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		}
 
 		switch (adhocOrderType) {
-			case ASCENDING:
-				return OrderType.ASCENDING;
-			case DESCENDING:
-				return OrderType.DESCENDING;
-			default:
-				throw new AdhocException("Order type " + adhocOrderType.name() + " not supported");
+		case ASCENDING:
+			return OrderType.ASCENDING;
+		case DESCENDING:
+			return OrderType.DESCENDING;
+		default:
+			throw new AdhocException("Order type " + adhocOrderType.name() + " not supported");
 		}
 	}
 
@@ -429,7 +432,7 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 			return null;
 		}
 
-		StyleBuilder style = Styles.style();
+		StyleBuilder style= Styles.style();
 		baseStyle(adhocStyle, style);
 		return style;
 	}
@@ -439,7 +442,7 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 			return null;
 		}
 
-		SimpleStyleBuilder simpleStyle = Styles.simpleStyle();
+		SimpleStyleBuilder simpleStyle= Styles.simpleStyle();
 		baseStyle(adhocStyle, simpleStyle);
 		return simpleStyle;
 	}
@@ -476,16 +479,16 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		}
 
 		switch (adhocHorizontalAlignment) {
-			case LEFT:
-				return HorizontalTextAlignment.LEFT;
-			case CENTER:
-				return HorizontalTextAlignment.CENTER;
-			case RIGHT:
-				return HorizontalTextAlignment.RIGHT;
-			case JUSTIFIED:
-				return HorizontalTextAlignment.JUSTIFIED;
-			default:
-				throw new AdhocException("Horizontal text alignment " + adhocHorizontalAlignment.name() + " not supported");
+		case LEFT:
+			return HorizontalTextAlignment.LEFT;
+		case CENTER:
+			return HorizontalTextAlignment.CENTER;
+		case RIGHT:
+			return HorizontalTextAlignment.RIGHT;
+		case JUSTIFIED:
+			return HorizontalTextAlignment.JUSTIFIED;
+		default:
+			throw new AdhocException("Horizontal text alignment " + adhocHorizontalAlignment.name() + " not supported");
 		}
 	}
 
@@ -495,16 +498,16 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		}
 
 		switch (adhocVerticalAlignment) {
-			case TOP:
-				return VerticalTextAlignment.TOP;
-			case MIDDLE:
-				return VerticalTextAlignment.MIDDLE;
-			case BOTTOM:
-				return VerticalTextAlignment.BOTTOM;
-			case JUSTIFIED:
-				return VerticalTextAlignment.JUSTIFIED;
-			default:
-				throw new AdhocException("Vertical text alignment " + adhocVerticalAlignment.name() + " not supported");
+		case TOP:
+			return VerticalTextAlignment.TOP;
+		case MIDDLE:
+			return VerticalTextAlignment.MIDDLE;
+		case BOTTOM:
+			return VerticalTextAlignment.BOTTOM;
+		case JUSTIFIED:
+			return VerticalTextAlignment.JUSTIFIED;
+		default:
+			throw new AdhocException("Vertical text alignment " + adhocVerticalAlignment.name() + " not supported");
 		}
 	}
 
@@ -537,12 +540,12 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		}
 
 		switch (adhocPageOrientation) {
-			case PORTRAIT:
-				return PageOrientation.PORTRAIT;
-			case LANDSCAPE:
-				return PageOrientation.LANDSCAPE;
-			default:
-				throw new AdhocException("Page orientation " + adhocPageOrientation.name() + " not supported");
+		case PORTRAIT:
+			return PageOrientation.PORTRAIT;
+		case LANDSCAPE:
+			return PageOrientation.LANDSCAPE;
+		default:
+			throw new AdhocException("Page orientation " + adhocPageOrientation.name() + " not supported");
 		}
 	}
 
@@ -584,50 +587,50 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		}
 
 		switch (type) {
-			case AREA:
-				return areaChart(adhocChart);
-			case STACKEDAREA:
-				return stackedAreaChart(adhocChart);
-			case BAR:
-				return barChart(adhocChart);
-			case STACKEDBAR:
-				return stackedBarChart(adhocChart);
-			case GROUPEDSTACKEDBAR:
-				return groupedStackedBarChart(adhocChart);
-			case BAR3D:
-				return bar3DChart(adhocChart);
-			case STACKEDBAR3D:
-				return stackedBar3DChart(adhocChart);
-			case LINE:
-				return lineChart(adhocChart);
-			case LAYEREDBAR:
-				return layeredBarChart(adhocChart);
-			case WATERFALLBAR:
-				return waterfallBarChart(adhocChart);
-			case DIFFERENCE:
-				return differenceChart(adhocChart);
-			case PIE:
-				return pieChart(adhocChart);
-			case PIE3D:
-				return pie3DChart(adhocChart);
-			case SCATTER:
-				return scatterChart(adhocChart);
-			case SPIDER:
-				return spiderChart(adhocChart);
-			case TIMESERIES:
-				return timeSeriesChart(adhocChart);
-			case XYAREA:
-				return xyAreaChart(adhocChart);
-			case XYBAR:
-				return xyBarChart(adhocChart);
-			case XYLINE:
-				return xyLineChart(adhocChart);
-			case XYSTEP:
-				return xyStepChart(adhocChart);
-			case BUBBLE:
-				return bubbleChart(adhocChart);
-			default:
-				throw new AdhocException("Chart type " + type.name() + " not supported");
+		case AREA:
+			return areaChart(adhocChart);
+		case STACKEDAREA:
+			return stackedAreaChart(adhocChart);
+		case BAR:
+			return barChart(adhocChart);
+		case STACKEDBAR:
+			return stackedBarChart(adhocChart);
+		case GROUPEDSTACKEDBAR:
+			return groupedStackedBarChart(adhocChart);
+		case BAR3D:
+			return bar3DChart(adhocChart);
+		case STACKEDBAR3D:
+			return stackedBar3DChart(adhocChart);
+		case LINE:
+			return lineChart(adhocChart);
+		case LAYEREDBAR:
+			return layeredBarChart(adhocChart);
+		case WATERFALLBAR:
+			return waterfallBarChart(adhocChart);
+		case DIFFERENCE:
+			return differenceChart(adhocChart);
+		case PIE:
+			return pieChart(adhocChart);
+		case PIE3D:
+			return pie3DChart(adhocChart);
+		case SCATTER:
+			return scatterChart(adhocChart);
+		case SPIDER:
+			return spiderChart(adhocChart);
+		case TIMESERIES:
+			return timeSeriesChart(adhocChart);
+		case XYAREA:
+			return xyAreaChart(adhocChart);
+		case XYBAR:
+			return xyBarChart(adhocChart);
+		case XYLINE:
+			return xyLineChart(adhocChart);
+		case XYSTEP:
+			return xyStepChart(adhocChart);
+		case BUBBLE:
+			return bubbleChart(adhocChart);
+		default:
+			throw new AdhocException("Chart type " + type.name() + " not supported");
 		}
 	}
 
@@ -659,7 +662,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		ColumnBuilder valueColumn = columns.get(adhocChart.getXValue());
 		if (valueColumn != null && valueColumn instanceof ValueColumnBuilder) {
 			categoryChart.setCategory((ValueColumnBuilder) valueColumn);
-		} else {
+		}
+		else {
 			DRIExpression field = getFieldExpression(adhocChart.getXValue());
 			categoryChart.setCategory(field);
 		}
@@ -668,7 +672,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 				AdhocChartType chartType = adhocChart.getType();
 				if (chartType != null && chartType.equals(AdhocChartType.GROUPEDSTACKEDBAR)) {
 					categoryChart.addSerie(groupedCategoryChartSerie(adhocChartSerie));
-				} else {
+				}
+				else {
 					categoryChart.addSerie(categoryChartSerie(adhocChartSerie));
 				}
 			}
@@ -693,7 +698,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		ColumnBuilder valueColumn = columns.get(adhocChart.getXValue());
 		if (valueColumn != null && valueColumn instanceof ValueColumnBuilder) {
 			timeSeriesChart.setTimePeriod((ValueColumnBuilder) valueColumn);
-		} else {
+		}
+		else {
 			DRIExpression field = getFieldExpression(adhocChart.getXValue());
 			timeSeriesChart.setTimePeriod(field);
 		}
@@ -722,26 +728,26 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		}
 
 		switch (timePeriod) {
-			case YEAR:
-				return TimePeriod.YEAR;
-			case QUARTER:
-				return TimePeriod.QUARTER;
-			case MONTH:
-				return TimePeriod.MONTH;
-			case WEEK:
-				return TimePeriod.WEEK;
-			case DAY:
-				return TimePeriod.DAY;
-			case HOUR:
-				return TimePeriod.HOUR;
-			case MINUTE:
-				return TimePeriod.MINUTE;
-			case SECOND:
-				return TimePeriod.SECOND;
-			case MILLISECOND:
-				return TimePeriod.MILLISECOND;
-			default:
-				throw new AdhocException("Time period type " + timePeriod.name() + " not supported");
+		case YEAR:
+			return TimePeriod.YEAR;
+		case QUARTER:
+			return TimePeriod.QUARTER;
+		case MONTH:
+			return TimePeriod.MONTH;
+		case WEEK:
+			return TimePeriod.WEEK;
+		case DAY:
+			return TimePeriod.DAY;
+		case HOUR:
+			return TimePeriod.HOUR;
+		case MINUTE:
+			return TimePeriod.MINUTE;
+		case SECOND:
+			return TimePeriod.SECOND;
+		case MILLISECOND:
+			return TimePeriod.MILLISECOND;
+		default:
+			throw new AdhocException("Time period type " + timePeriod.name() + " not supported");
 		}
 	}
 
@@ -751,7 +757,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		ColumnBuilder valueColumn = columns.get(adhocChart.getXValue());
 		if (valueColumn != null && valueColumn instanceof ValueColumnBuilder) {
 			pieChart.setKey((ValueColumnBuilder) valueColumn);
-		} else {
+		}
+		else {
 			DRIExpression field = getFieldExpression(adhocChart.getXValue());
 			pieChart.setKey(field);
 		}
@@ -772,7 +779,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		ColumnBuilder valueColumn = columns.get(adhocChart.getXValue());
 		if (valueColumn != null && valueColumn instanceof ValueColumnBuilder) {
 			xyChart.setXValue((ValueColumnBuilder) valueColumn);
-		} else {
+		}
+		else {
 			DRIExpression field = getFieldExpression(adhocChart.getXValue());
 			xyChart.setXValue(field);
 		}
@@ -797,7 +805,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		ColumnBuilder valueColumn = columns.get(adhocChart.getXValue());
 		if (valueColumn != null && valueColumn instanceof ValueColumnBuilder) {
 			spiderChart.setCategory((ValueColumnBuilder) valueColumn);
-		} else {
+		}
+		else {
 			DRIExpression field = getFieldExpression(adhocChart.getXValue());
 			spiderChart.setCategory(field);
 		}
@@ -814,7 +823,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		ColumnBuilder valueColumn = columns.get(adhocChart.getXValue());
 		if (valueColumn != null && valueColumn instanceof ValueColumnBuilder) {
 			bubbleChart.setXValue((ValueColumnBuilder) valueColumn);
-		} else {
+		}
+		else {
 			DRIExpression field = getFieldExpression(adhocChart.getXValue());
 			bubbleChart.setXValue(field);
 		}
@@ -987,12 +997,12 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		}
 
 		switch (adhocOrientation) {
-			case HORIZONTAL:
-				return Orientation.HORIZONTAL;
-			case VERTICAL:
-				return Orientation.VERTICAL;
-			default:
-				throw new AdhocException("Orientation " + adhocOrientation.name() + " not supported");
+		case HORIZONTAL:
+			return Orientation.HORIZONTAL;
+		case VERTICAL:
+			return Orientation.VERTICAL;
+		default:
+			throw new AdhocException("Orientation " + adhocOrientation.name() + " not supported");
 		}
 	}
 
@@ -1017,7 +1027,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 			ColumnBuilder<?, ?> seriesColumn = columns.get(adhocChartSerie.getSeries());
 			if (seriesColumn != null && seriesColumn instanceof ValueColumnBuilder<?, ?>) {
 				chartSerie.setSeries((ValueColumnBuilder<?, ?>) seriesColumn);
-			} else {
+			}
+			else {
 				chartSerie.setSeries(getFieldExpression(adhocChartSerie.getSeries()));
 			}
 		}
@@ -1029,14 +1040,16 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		ColumnBuilder valueColumn = columns.get(adhocChartSerie.getYValue());
 		if (valueColumn != null && valueColumn instanceof ValueColumnBuilder) {
 			categoryChartSerie = Charts.serie((ValueColumnBuilder) valueColumn);
-		} else {
+		}
+		else {
 			DRIExpression field = getFieldExpression(adhocChartSerie.getYValue());
 			categoryChartSerie = Charts.serie(field);
 		}
 		chartSerie(adhocChartSerie, categoryChartSerie);
 		if (adhocChartSerie.getLabel() != null) {
 			categoryChartSerie.setLabel(adhocChartSerie.getLabel());
-		} else if (valueColumn == null) {
+		}
+		else if (valueColumn == null) {
 			String label = getFieldLabel(adhocChartSerie.getYValue());
 			if (StringUtils.isNotBlank(label)) {
 				categoryChartSerie.setLabel(label);
@@ -1051,7 +1064,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		ColumnBuilder valueColumn = columns.get(adhocChartSerie.getYValue());
 		if (valueColumn != null && valueColumn instanceof ValueColumnBuilder) {
 			groupedCategoryChartSerie = Charts.groupedSerie((ValueColumnBuilder) valueColumn);
-		} else {
+		}
+		else {
 			DRIExpression field = getFieldExpression(adhocChartSerie.getYValue());
 			groupedCategoryChartSerie = Charts.groupedSerie(field);
 		}
@@ -1060,7 +1074,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 			ColumnBuilder groupColumn = columns.get(seriesGroup);
 			if (groupColumn != null && groupColumn instanceof ValueColumnBuilder) {
 				groupedCategoryChartSerie.setGroup((ValueColumnBuilder) groupColumn);
-			} else {
+			}
+			else {
 				DRIExpression field = getFieldExpression(seriesGroup);
 				groupedCategoryChartSerie.setGroup(field);
 			}
@@ -1068,7 +1083,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		chartSerie(adhocChartSerie, groupedCategoryChartSerie);
 		if (adhocChartSerie.getLabel() != null) {
 			groupedCategoryChartSerie.setLabel(adhocChartSerie.getLabel());
-		} else if (valueColumn == null) {
+		}
+		else if (valueColumn == null) {
 			String label = getFieldLabel(adhocChartSerie.getYValue());
 			if (StringUtils.isNotBlank(label)) {
 				groupedCategoryChartSerie.setLabel(label);
@@ -1083,7 +1099,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 		ColumnBuilder valueColumn = columns.get(adhocChartSerie.getYValue());
 		if (valueColumn != null && valueColumn instanceof ValueColumnBuilder) {
 			xyChartSerie = Charts.xySerie((ValueColumnBuilder) valueColumn);
-		} else {
+		}
+		else {
 			DRIExpression field = getFieldExpression(adhocChartSerie.getYValue());
 			xyChartSerie = Charts.xySerie(field);
 		}
@@ -1092,14 +1109,16 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 			valueColumn = columns.get(adhocChartSerie.getXValue());
 			if (valueColumn != null && valueColumn instanceof ValueColumnBuilder) {
 				xyChartSerie.setXValue((ValueColumnBuilder) valueColumn);
-			} else {
+			}
+			else {
 				DRIExpression field = getFieldExpression(adhocChartSerie.getXValue());
 				xyChartSerie.setXValue(field);
 			}
 		}
 		if (adhocChartSerie.getLabel() != null) {
 			xyChartSerie.setLabel(adhocChartSerie.getLabel());
-		} else if (valueColumn == null) {
+		}
+		else if (valueColumn == null) {
 			String label = getFieldLabel(adhocChartSerie.getYValue());
 			if (StringUtils.isNotBlank(label)) {
 				xyChartSerie.setLabel(label);
@@ -1116,7 +1135,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 			ColumnBuilder valueColumn = columns.get(adhocChartSerie.getXValue());
 			if (valueColumn != null && valueColumn instanceof ValueColumnBuilder) {
 				xyzChartSerie.setXValue((ValueColumnBuilder) valueColumn);
-			} else {
+			}
+			else {
 				DRIExpression field = getFieldExpression(adhocChartSerie.getXValue());
 				xyzChartSerie.setXValue(field);
 			}
@@ -1125,7 +1145,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 			ColumnBuilder valueColumn = columns.get(adhocChartSerie.getYValue());
 			if (valueColumn != null && valueColumn instanceof ValueColumnBuilder) {
 				xyzChartSerie.setYValue((ValueColumnBuilder) valueColumn);
-			} else {
+			}
+			else {
 				DRIExpression field = getFieldExpression(adhocChartSerie.getYValue());
 				xyzChartSerie.setYValue(field);
 			}
@@ -1134,7 +1155,8 @@ public class DefaultAdhocReportCustomizer implements AdhocReportCustomizer {
 			ColumnBuilder valueColumn = columns.get(adhocChartSerie.getZValue());
 			if (valueColumn != null && valueColumn instanceof ValueColumnBuilder) {
 				xyzChartSerie.setZValue((ValueColumnBuilder) valueColumn);
-			} else {
+			}
+			else {
 				DRIExpression field = getFieldExpression(adhocChartSerie.getZValue());
 				xyzChartSerie.setZValue(field);
 			}

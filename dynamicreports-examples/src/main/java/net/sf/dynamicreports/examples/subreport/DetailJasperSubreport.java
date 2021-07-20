@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -51,16 +51,16 @@ public class DetailJasperSubreport {
 	private void build() {
 		try {
 			SubreportBuilder subreport = cmp.subreport(getJasperSubreport())
-					.setDataSource(new SubreportDataSourceExpression());
+			                                .setDataSource(new SubreportDataSourceExpression());
 
 			report()
-					.title(Templates.createTitleComponent("DetailJasperSubreport"))
-					.detail(
-							subreport,
-							cmp.verticalGap(20))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .title(Templates.createTitleComponent("DetailJasperSubreport"))
+			  .detail(
+			  	subreport,
+			  	cmp.verticalGap(20))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		} catch (JRException e) {

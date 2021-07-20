@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -51,12 +51,12 @@ public class Subreport4Test extends AbstractJasperValueTest {
 		parameters2.put("parameter5", "value7");
 
 		SubreportBuilder subreport1 = cmp.subreport(subreport1())
-				.setParameters(parameters1);
+			.setParameters(parameters1);
 		SubreportBuilder subreport2 = cmp.subreport(subreport2())
-				.setParameters(parameters2);
+			.setParameters(parameters2);
 
 		rb.addParameter("parameter4", "value4")
-				.title(subreport1, subreport2);
+			.title(subreport1, subreport2);
 	}
 
 	@Override
@@ -82,16 +82,16 @@ public class Subreport4Test extends AbstractJasperValueTest {
 	private JasperReportBuilder subreport1() throws DRException {
 		JasperReportBuilder report = report();
 		report
-				.addParameter("parameter1", "value1")
-				.addParameter("parameter2", String.class)
-				.addParameter("parameter6", String.class)
-				.setParameter("parameter2", "value2")
-				.setParameter("parameter3", "value3")
-				.setTemplateDesign(Subreport4Test.class.getResourceAsStream("subreport4.jrxml"))
-				.title(
-						cmp.text(exp.jasperSyntax("$P{parameter1}", String.class)),
-						cmp.text(exp.jasperSyntax("$P{parameter2}", String.class)),
-						cmp.text(exp.jasperSyntax("$P{parameter6}", String.class)));
+			.addParameter("parameter1", "value1")
+			.addParameter("parameter2", String.class)
+			.addParameter("parameter6", String.class)
+			.setParameter("parameter2", "value2")
+			.setParameter("parameter3", "value3")
+			.setTemplateDesign(Subreport4Test.class.getResourceAsStream("subreport4.jrxml"))
+		  .title(
+		  	cmp.text(exp.jasperSyntax("$P{parameter1}", String.class)),
+		  	cmp.text(exp.jasperSyntax("$P{parameter2}", String.class)),
+		  	cmp.text(exp.jasperSyntax("$P{parameter6}", String.class)));
 		return report;
 	}
 

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -45,12 +45,12 @@ public class SubtotalPosition3Test extends AbstractJasperPositionTest {
 		rb.columns(
 				column1 = col.column("Column1", "field1", type.stringType()).setFixedWidth(540),
 				column2 = col.column("Column2", "field2", type.integerType()))
-				.groupBy(
-						grp.group(column1).setHideColumn(false).setPadding(0).setHeaderLayout(GroupHeaderLayout.EMPTY))
-				.subtotalsAtFirstGroupFooter(
-						subtotal1 = sbt.sum(column2))
-				.subtotalsAtSummary(
-						subtotal2 = sbt.sum(column2));
+			.groupBy(
+				grp.group(column1).setHideColumn(false).setPadding(0).setHeaderLayout(GroupHeaderLayout.EMPTY))
+			.subtotalsAtFirstGroupFooter(
+				subtotal1 = sbt.sum(column2))
+			.subtotalsAtSummary(
+				subtotal2 = sbt.sum(column2));
 	}
 
 	@Override
@@ -59,11 +59,11 @@ public class SubtotalPosition3Test extends AbstractJasperPositionTest {
 
 		numberOfPagesTest(1);
 
-		// columns
+		//columns
 		columnDetailPositionTest(column1, 0, 0, 0, 540, 26);
 		columnDetailPositionTest(column2, 0, 540, 0, 35, 26);
 
-		// summary
+		//summary
 		elementPositionTest("subtotalGroupFooter.list1", 0, 10, 88, 575, 26);
 		subtotalPositionTest(subtotal1, 0, 540, 0, 35, 26);
 		elementPositionTest("summary.list1", 0, 10, 114, 575, 26);

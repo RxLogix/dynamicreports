@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -140,7 +140,8 @@ public class ReportTransform {
 			} catch (JRException e) {
 				throw new JasperDesignException("Registration failed for parameter \"" + name + "\"", e);
 			}
-		} else {
+		}
+		else {
 			JRParameter jrParameter = accessor.getDesign().getParametersMap().get(name);
 			if (!parameterClass.isAssignableFrom(jrParameter.getValueClass())) {
 				throw new JasperDesignException("Registration failed for parameter \"" + name + "\", parameter is not instance of " + parameterClass.getName());
@@ -200,7 +201,8 @@ public class ReportTransform {
 			HyperlinkTypeEnum hyperLinkType = ConstantTransform.hyperLinkType(hyperLink.getType());
 			if (hyperLinkType != null) {
 				jrHyperLink.setHyperlinkType(hyperLinkType);
-			} else {
+			}
+			else {
 				jrHyperLink.setLinkType(hyperLink.getType());
 			}
 		}
@@ -208,7 +210,8 @@ public class ReportTransform {
 			HyperlinkTargetEnum hyperLinkTarget = ConstantTransform.hyperLinkTarget(hyperLink.getTarget());
 			if (hyperLinkTarget != null) {
 				jrHyperLink.setHyperlinkTarget(hyperLinkTarget);
-			} else {
+			}
+			else {
 				jrHyperLink.setLinkTarget(hyperLink.getTarget());
 			}
 		}
@@ -216,7 +219,7 @@ public class ReportTransform {
 		return jrHyperLink;
 	}
 
-	// page
+	//page
 	private void page() {
 		DRIDesignPage page = accessor.getReport().getPage();
 		DRIDesignMargin margin = page.getMargin();
@@ -234,7 +237,7 @@ public class ReportTransform {
 		design.setColumnWidth(page.getColumnWidth());
 	}
 
-	// parameter
+	//parameter
 	private JRDesignParameter parameter(DRIDesignParameter parameter) {
 		JRDesignParameter jrParameter = new JRDesignParameter();
 		jrParameter.setName(parameter.getName());
@@ -242,7 +245,7 @@ public class ReportTransform {
 		return jrParameter;
 	}
 
-	// scriptlet
+	//scriptlet
 	protected JRDesignScriptlet scriptlet(String name, Class<? extends JRAbstractScriptlet> scriptletClass) {
 		JRDesignScriptlet jrScriptlet = new JRDesignScriptlet();
 		jrScriptlet.setName(name);
@@ -250,7 +253,7 @@ public class ReportTransform {
 		return jrScriptlet;
 	}
 
-	// query
+	//query
 	protected JRDesignQuery query(DRIDesignQuery query) {
 		JRDesignQuery jrQuery = new JRDesignQuery();
 		jrQuery.setText(query.getText());

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -56,7 +56,8 @@ public class Style1Test extends AbstractJasperStyleTest implements Serializable 
 		StyleBuilder textStyle = stl.style().setForegroundColor(Color.BLACK).setPadding(2);
 		StyleBuilder columnStyle = stl.style(textStyle).italic();
 
-		StyleBuilder columnStyle1 = stl.style(columnStyle)
+		StyleBuilder columnStyle1 =
+			stl.style(columnStyle)
 				.conditionalStyles(
 						stl.conditionalStyle(new ConditionExpression(2, 5, 6, 7)).bold(),
 						stl.conditionalStyle(new ConditionExpression(16)).setBackgroundColor(Color.ORANGE));
@@ -68,25 +69,25 @@ public class Style1Test extends AbstractJasperStyleTest implements Serializable 
 		StyleBuilder subtotalStyle = stl.style(textStyle).bold().setTopBorder(stl.pen1Point()).setBackgroundColor(Color.YELLOW);
 
 		rb.columns(
-				column1 = col.column("Column1", "field1", Integer.class).setStyle(columnStyle1),
-				column2 = col.column("Column2", "field2", Integer.class).setStyle(columnStyle2),
-				column3 = col.column("Column3", "field3", Integer.class).setTitleStyle(columnTitleStyle3))
-				.setTextStyle(textStyle)
-				.setColumnTitleStyle(titleStyle)
-				.setColumnStyle(columnStyle)
-				.setSubtotalStyle(subtotalStyle)
-				.setHighlightDetailOddRows(true)
-				.setHighlightDetailEvenRows(true)
-				.subtotalsAtSummary(
-						subtotal1 = sbt.sum(column1))
-				.detailRowHighlighters(
-						stl.conditionalStyle(new ConditionExpression(5, 16)).setBackgroundColor(Color.RED),
-						stl.conditionalStyle(new ConditionExpression(2, 9)).setForegroundColor(Color.RED))
-				.title(
-						cmp.horizontalList()
-								.setStyle(stl.style(stl.pen1Point()))
-								.add(cmp.text("text").setStyle(stl.style(textStyle).setBold(true).setFontSize(15)))
-								.add(cmp.text("text")));
+					column1 = col.column("Column1", "field1", Integer.class).setStyle(columnStyle1),
+					column2 = col.column("Column2", "field2", Integer.class).setStyle(columnStyle2),
+					column3 = col.column("Column3", "field3", Integer.class).setTitleStyle(columnTitleStyle3))
+			.setTextStyle(textStyle)
+			.setColumnTitleStyle(titleStyle)
+			.setColumnStyle(columnStyle)
+			.setSubtotalStyle(subtotalStyle)
+			.setHighlightDetailOddRows(true)
+			.setHighlightDetailEvenRows(true)
+			.subtotalsAtSummary(
+					subtotal1 = sbt.sum(column1))
+			.detailRowHighlighters(
+					stl.conditionalStyle(new ConditionExpression(5, 16)).setBackgroundColor(Color.RED),
+					stl.conditionalStyle(new ConditionExpression(2, 9)).setForegroundColor(Color.RED))
+			.title(
+					cmp.horizontalList()
+						.setStyle(stl.style(stl.pen1Point()))
+						.add(cmp.text("text").setStyle(stl.style(textStyle).setBold(true).setFontSize(15)))
+						.add(cmp.text("text")));
 	}
 
 	@Override
@@ -98,10 +99,9 @@ public class Style1Test extends AbstractJasperStyleTest implements Serializable 
 		Color color1 = new Color(240, 240, 240);
 		Color color2 = new Color(200, 200, 200);
 
-		// column1
+		//column1
 		columnTitleStyleTest(column1, 0, Color.BLACK, null, "Arial", 10f, true, null);
-		columnTitleBorderTest(column1, 0, Color.BLACK, LineStyleEnum.SOLID, 0, Color.BLACK, LineStyleEnum.SOLID, 2, Color.BLACK, LineStyleEnum.SOLID, 0,
-				Color.BLACK, LineStyleEnum.SOLID, 0);
+		columnTitleBorderTest(column1, 0, Color.BLACK, LineStyleEnum.SOLID, 0, Color.BLACK, LineStyleEnum.SOLID, 2, Color.BLACK, LineStyleEnum.SOLID, 0, Color.BLACK, LineStyleEnum.SOLID, 0);
 		columnTitlePaddingTest(column1, 0, 2, 2, 2, 2);
 
 		columnDetailPaddingTest(column1, 0, 2, 2, 2, 2);
@@ -113,10 +113,9 @@ public class Style1Test extends AbstractJasperStyleTest implements Serializable 
 		columnDetailStyleTest(column1, 9, Color.RED, color2, "Arial", 10f, null, true);
 		columnDetailStyleTest(column1, 16, Color.BLACK, Color.ORANGE, "Arial", 10f, null, true);
 
-		// column2
+		//column2
 		columnTitleStyleTest(column2, 0, Color.BLACK, null, "Arial", 10f, true, null);
-		columnTitleBorderTest(column2, 0, Color.BLACK, LineStyleEnum.SOLID, 0, Color.BLACK, LineStyleEnum.SOLID, 2, Color.BLACK, LineStyleEnum.SOLID, 0,
-				Color.BLACK, LineStyleEnum.SOLID, 0);
+		columnTitleBorderTest(column2, 0, Color.BLACK, LineStyleEnum.SOLID, 0, Color.BLACK, LineStyleEnum.SOLID, 2, Color.BLACK, LineStyleEnum.SOLID, 0, Color.BLACK, LineStyleEnum.SOLID, 0);
 		columnTitlePaddingTest(column2, 0, 2, 2, 2, 2);
 
 		columnDetailPaddingTest(column2, 0, 2, 2, 2, 2);
@@ -128,10 +127,9 @@ public class Style1Test extends AbstractJasperStyleTest implements Serializable 
 		columnDetailStyleTest(column2, 9, Color.RED, color2, "Arial", 10f, true, true);
 		columnDetailStyleTest(column2, 16, Color.BLACK, Color.RED, "Arial", 10f, true, true);
 
-		// column3
+		//column3
 		columnTitleStyleTest(column3, 0, Color.BLACK, null, "Arial", 10f, true, null);
-		columnTitleBorderTest(column3, 0, Color.BLACK, LineStyleEnum.SOLID, 2, Color.BLACK, LineStyleEnum.SOLID, 2, Color.BLACK, LineStyleEnum.SOLID, 2,
-				Color.BLACK, LineStyleEnum.SOLID, 2);
+		columnTitleBorderTest(column3, 0, Color.BLACK, LineStyleEnum.SOLID, 2, Color.BLACK, LineStyleEnum.SOLID, 2, Color.BLACK, LineStyleEnum.SOLID, 2, Color.BLACK, LineStyleEnum.SOLID, 2);
 		columnTitlePaddingTest(column3, 0, 2, 2, 2, 2);
 
 		columnDetailPaddingTest(column3, 0, 2, 2, 2, 2);
@@ -143,13 +141,12 @@ public class Style1Test extends AbstractJasperStyleTest implements Serializable 
 		columnDetailStyleTest(column3, 9, Color.RED, color2, "Arial", 10f, null, true);
 		columnDetailStyleTest(column3, 16, Color.BLACK, Color.RED, "Arial", 10f, null, true);
 
-		// subtotal1
+		//subtotal1
 		subtotalStyleTest(subtotal1, 0, Color.BLACK, Color.YELLOW, "Arial", 10f, true, null);
-		subtotalBorderTest(subtotal1, 0, Color.BLACK, LineStyleEnum.SOLID, 1, Color.BLACK, LineStyleEnum.SOLID, 0, Color.BLACK, LineStyleEnum.SOLID, 0, Color.BLACK,
-				LineStyleEnum.SOLID, 0);
+		subtotalBorderTest(subtotal1, 0, Color.BLACK, LineStyleEnum.SOLID, 1, Color.BLACK, LineStyleEnum.SOLID, 0, Color.BLACK, LineStyleEnum.SOLID, 0, Color.BLACK, LineStyleEnum.SOLID, 0);
 		subtotalPaddingTest(subtotal1, 0, 2, 2, 2, 2);
 
-		// title
+		//title
 		styleTest("title.list1", 0, null, null, "SansSerif", null, null, null);
 		borderTest("title.list1", 0, null, LineStyleEnum.SOLID, 1, null, LineStyleEnum.SOLID, 1, null, LineStyleEnum.SOLID, 1, null, LineStyleEnum.SOLID, 1);
 		paddingTest("title.list1", 0, 0, 0, 0, 0);
@@ -170,7 +167,7 @@ public class Style1Test extends AbstractJasperStyleTest implements Serializable 
 
 		private List<Integer> values;
 
-		private ConditionExpression(Integer... values) {
+		private ConditionExpression(Integer ...values) {
 			this.values = Arrays.asList(values);
 		}
 

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -35,8 +35,7 @@ import org.apache.commons.lang3.Validate;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 @SuppressWarnings("unchecked")
-public abstract class AbstractJasperExcelExporterBuilder<T extends AbstractJasperExcelExporterBuilder<T, U>, U extends AbstractJasperExcelExporter>
-		extends AbstractJasperExporterBuilder<T, U> {
+public abstract class AbstractJasperExcelExporterBuilder<T extends AbstractJasperExcelExporterBuilder<T, U>, U extends AbstractJasperExcelExporter> extends AbstractJasperExporterBuilder<T, U> {
 	private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
 
 	protected AbstractJasperExcelExporterBuilder(U exporter) {
@@ -68,11 +67,11 @@ public abstract class AbstractJasperExcelExporterBuilder<T extends AbstractJaspe
 		return (T) this;
 	}
 
-	public T sheetNames(String... sheetNames) {
+	public T sheetNames(String ...sheetNames) {
 		return addSheetName(sheetNames);
 	}
 
-	public T addSheetName(String... sheetNames) {
+	public T addSheetName(String ...sheetNames) {
 		Validate.notNull(sheetNames, "sheetNames must not be null");
 		Validate.noNullElements(sheetNames, "sheetNames must not contains null sheetName");
 		for (String sheetName : sheetNames) {

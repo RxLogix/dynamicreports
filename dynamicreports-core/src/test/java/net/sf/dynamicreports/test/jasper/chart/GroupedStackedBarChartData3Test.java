@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -55,13 +55,13 @@ public class GroupedStackedBarChartData3Test extends AbstractJasperChartTest {
 		TextColumnBuilder<Integer> column5 = col.column("Column5", "field5", Integer.class);
 
 		ColumnGroupBuilder group = grp.group(column1)
-				.footer(
-						cht.groupedStackedBarChart()
-								.setCategory(column2)
-								.series(cht.groupedSerie(column5).setSeries(column3).setGroup(column4)));
+			.footer(
+				cht.groupedStackedBarChart()
+					.setCategory(column2)
+					.series(cht.groupedSerie(column5).setSeries(column3).setGroup(column4)));
 
 		rb.columns(column1, column2, column3, column4, column5)
-				.groupBy(group);
+			.groupBy(group);
 	}
 
 	@Override
@@ -70,12 +70,12 @@ public class GroupedStackedBarChartData3Test extends AbstractJasperChartTest {
 
 		numberOfPagesTest(1);
 
-		String[] categories = new String[] { "value1" };
-		String[] series = new String[] {
+		String[] categories = new String[]{"value1"};
+		String[] series = new String[]{
 				"group1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "series1",
 				"group2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "series1",
-				"group3" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "series1" };
-		Number[][] values = new Number[][] { { 1d, 2d, 3d } };
+				"group3" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "series1"};
+		Number[][] values =  new Number[][]{{1d, 2d, 3d}};
 		chartCountTest("groupFooter.chart1", 2);
 		chartCategoryCountTest("groupFooter.chart1", 0, 1);
 		chartSeriesCountTest("groupFooter.chart1", 0, 3);
@@ -85,12 +85,12 @@ public class GroupedStackedBarChartData3Test extends AbstractJasperChartTest {
 		Assert.assertEquals("series name", "series1", fixedLegendItems.get(0).getLabel());
 		testMap(chart, "group1", "group2", "group3");
 
-		series = new String[] {
+		series = new String[]{
 				"group2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "series1",
 				"group4" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "series1",
 				"group5" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "series1",
-				"group6" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "series1" };
-		values = new Number[][] { { 4d, 5d, 6d, 7d } };
+				"group6" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "series1"};
+		values =  new Number[][]{{4d, 5d, 6d, 7d}};
 		chartCategoryCountTest("groupFooter.chart1", 1, 1);
 		chartSeriesCountTest("groupFooter.chart1", 1, 4);
 		chartDataTest("groupFooter.chart1", 1, categories, series, values);
@@ -100,7 +100,7 @@ public class GroupedStackedBarChartData3Test extends AbstractJasperChartTest {
 		testMap(chart, "group2", "group4", "group5", "group6");
 	}
 
-	private void testMap(JFreeChart chart, String... groups) {
+	private void testMap(JFreeChart chart, String ...groups) {
 		GroupedStackedBarRenderer renderer = (GroupedStackedBarRenderer) chart.getCategoryPlot().getRenderer();
 		try {
 			Field field = renderer.getClass().getDeclaredField("seriesToGroupMap");

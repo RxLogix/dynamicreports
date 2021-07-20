@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,24 +49,24 @@ public class ThermometerChartTest extends AbstractJasperChartTest {
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.setLocale(Locale.ENGLISH)
-				.summary(
-						cht.thermometerChart()
-								.setValue(field("field1", Integer.class))
-								.setDataRangeLowExpression(3)
-								.setDataRangeHighExpression(30)
-								.setValueColor(Color.BLUE)
-								.setValueMask("#,###.0")
-								.setValueFont(stl.fontArial())
-								.setValueLocation(ValueLocation.BULB)
-								.setMercuryColor(Color.LIGHT_GRAY)
-								.setLowDataRangeLowExpression(8)
-								.setLowDataRangeHighExpression(10)
-								.setMediumDataRangeLowExpression(18)
-								.setMediumDataRangeHighExpression(20)
-								.setHighDataRangeLowExpression(28)
-								.setHighDataRangeHighExpression(30),
-						cht.thermometerChart()
-								.setValue(field("field1", Integer.class)));
+			.summary(
+				cht.thermometerChart()
+					.setValue(field("field1", Integer.class))
+					.setDataRangeLowExpression(3)
+					.setDataRangeHighExpression(30)
+					.setValueColor(Color.BLUE)
+					.setValueMask("#,###.0")
+					.setValueFont(stl.fontArial())
+					.setValueLocation(ValueLocation.BULB)
+					.setMercuryColor(Color.LIGHT_GRAY)
+					.setLowDataRangeLowExpression(8)
+					.setLowDataRangeHighExpression(10)
+					.setMediumDataRangeLowExpression(18)
+					.setMediumDataRangeHighExpression(20)
+					.setHighDataRangeLowExpression(28)
+					.setHighDataRangeHighExpression(30),
+				cht.thermometerChart()
+					.setValue(field("field1", Integer.class)));
 	}
 
 	@Override

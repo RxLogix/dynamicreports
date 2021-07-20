@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -51,71 +51,71 @@ public class ShippingLabelDesign {
 		ShippingLabel shippingLabel = data.getShippingLabel();
 
 		StyleBuilder textStyle = stl.style()
-				.setFontSize(12);
+			.setFontSize(12);
 		bold14Style = stl.style(Templates.boldStyle).setFontSize(14);
 		StyleBuilder boldCentered30Style = stl.style(bold14Style)
-				.setFontSize(30)
-				.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
+			.setFontSize(30)
+			.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
 		StyleBuilder boldCentered100Style = stl.style(boldCentered30Style)
-				.setFontSize(100);
+			.setFontSize(100);
 
 		Ean128BarcodeBuilder shippingContainerCode = bcode.ean128("100264835710351")
-				.setModuleWidth(2.5)
-				.setStyle(bold14Style);
+			.setModuleWidth(2.5)
+			.setStyle(bold14Style);
 		Code128BarcodeBuilder shipToPostalCode = bcode.code128("09820")
-				.setModuleWidth(3d)
-				.setStyle(bold14Style);
+			.setModuleWidth(3d)
+			.setStyle(bold14Style);
 		TextFieldBuilder<Integer> priority = cmp.text(shippingLabel.getPriority())
-				.setStyle(boldCentered100Style);
+			.setStyle(boldCentered100Style);
 		TextFieldBuilder<String> pod = cmp.text(shippingLabel.getPod())
-				.setStyle(boldCentered30Style);
+			.setStyle(boldCentered30Style);
 		TextFieldBuilder<Date> dateShipped = cmp.text(exp.date(shippingLabel.getDateShipped()))
-				.setDataType(type.dateType());
+			.setDataType(type.dateType());
 		TextFieldBuilder<String> po = cmp.text(shippingLabel.getPo())
-				.setStyle(boldCentered30Style);
+			.setStyle(boldCentered30Style);
 
 		report
-				.setTemplate(Templates.reportTemplate)
-				.setPageFormat(PageType.A5)
-				.setTextStyle(textStyle)
-				.title(
-						Templates.createTitleComponent("ShippingLabel"),
+			.setTemplate(Templates.reportTemplate)
+			.setPageFormat(PageType.A5)
+			.setTextStyle(textStyle)
+			.title(
+				Templates.createTitleComponent("ShippingLabel"),
+				cmp.horizontalList(
+					createCustomerComponent("From", shippingLabel.getFrom()),
+					createCustomerComponent("To", shippingLabel.getTo())),
+				cmp.horizontalList(
+					cmp.verticalList(
+						createCellComponent("Priority", priority),
+						createCellComponent("POD", pod)),
+					cmp.verticalList(
 						cmp.horizontalList(
-								createCustomerComponent("From", shippingLabel.getFrom()),
-								createCustomerComponent("To", shippingLabel.getTo())),
+							createCellComponent("Carrier", cmp.text(shippingLabel.getCarrier())),
+							createCellComponent("Date shipped", dateShipped)),
 						cmp.horizontalList(
-								cmp.verticalList(
-										createCellComponent("Priority", priority),
-										createCellComponent("POD", pod)),
-								cmp.verticalList(
-										cmp.horizontalList(
-												createCellComponent("Carrier", cmp.text(shippingLabel.getCarrier())),
-												createCellComponent("Date shipped", dateShipped)),
-										cmp.horizontalList(
-												createCellComponent("Weight", cmp.text(shippingLabel.getWeight())),
-												createCellComponent("Quantity", cmp.text(shippingLabel.getQuantity()))),
-										createCellComponent("Ship to postal code", shipToPostalCode))),
-						createCellComponent("PO", po),
-						createCellComponent("Serial shipping container", shippingContainerCode));
+							createCellComponent("Weight", cmp.text(shippingLabel.getWeight())),
+							createCellComponent("Quantity", cmp.text(shippingLabel.getQuantity()))),
+						createCellComponent("Ship to postal code", shipToPostalCode))),
+					createCellComponent("PO", po),
+				createCellComponent("Serial shipping container", shippingContainerCode));
 
 		return report;
 	}
 
 	private ComponentBuilder<?, ?> createCustomerComponent(String label, Customer customer) {
 		VerticalListBuilder content = cmp.verticalList(
-				cmp.text(customer.getName()),
-				cmp.text(customer.getAddress()),
-				cmp.text(customer.getCity()));
+			cmp.text(customer.getName()),
+			cmp.text(customer.getAddress()),
+			cmp.text(customer.getCity()));
 		return createCellComponent(label, content);
 	}
 
 	private ComponentBuilder<?, ?> createCellComponent(String label, ComponentBuilder<?, ?> content) {
 		VerticalListBuilder cell = cmp.verticalList(
-				cmp.text(label).setStyle(bold14Style),
-				cmp.horizontalList(
-						cmp.horizontalGap(20),
-						content,
-						cmp.horizontalGap(5)));
+			cmp.text(label).setStyle(bold14Style),
+			cmp.horizontalList(
+				cmp.horizontalGap(20),
+				content,
+				cmp.horizontalGap(5)));
 		cell.setStyle(stl.style(stl.pen2Point()));
 		return cell;
 	}

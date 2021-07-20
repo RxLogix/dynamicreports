@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -50,17 +50,17 @@ public class GroupSubtotal2Test extends AbstractJasperValueTest {
 		ColumnGroupBuilder group1;
 
 		rb.setLocale(Locale.ENGLISH)
-				.columns(
-						column1 = col.column("Column1", "field1", String.class),
-						column2 = col.column("Column2", "field2", Integer.class))
-				.groupBy(
-						group1 = grp.group(column1).headerWithSubtotal())
-				.subtotalsAtFirstGroupHeader(
-						subtotal1 = sbt.aggregate(column2, Calculation.AVERAGE))
-				.subtotalsAtGroupHeader(group1,
-						subtotal2 = sbt.sum(column2))
-				.subtotalsAtSummary(
-						subtotal3 = sbt.sum(column2));
+			.columns(
+					column1 = col.column("Column1", "field1", String.class),
+					column2 = col.column("Column2", "field2", Integer.class))
+			.groupBy(
+					group1 = grp.group(column1).headerWithSubtotal())
+			.subtotalsAtFirstGroupHeader(
+					subtotal1 = sbt.aggregate(column2, Calculation.AVERAGE))
+			.subtotalsAtGroupHeader(group1,
+					subtotal2 = sbt.sum(column2))
+			.subtotalsAtSummary(
+					subtotal3 = sbt.sum(column2));
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class GroupSubtotal2Test extends AbstractJasperValueTest {
 
 		numberOfPagesTest(1);
 
-		// groupHeader
+		//groupHeader
 		subtotalCountTest(subtotal1, 2);
 		subtotalValueTest(subtotal1, "2", "4.5");
 		subtotalIndexCountTest(subtotal2, 2, 2);

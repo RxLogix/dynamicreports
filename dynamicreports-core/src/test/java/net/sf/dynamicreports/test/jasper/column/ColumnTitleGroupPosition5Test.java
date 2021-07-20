@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,12 +49,12 @@ public class ColumnTitleGroupPosition5Test extends AbstractJasperPositionTest {
 		column4 = col.column("Col4", "field4", String.class);
 
 		ColumnTitleGroupBuilder titleGroup2 = grid.titleGroup("Group 2", column3, column4).setTitleFixedWidth(150);
-		ColumnTitleGroupBuilder titleGroup1 = grid.titleGroup("Group 1", column2, titleGroup2).setTitleFixedWidth(300);
+		ColumnTitleGroupBuilder titleGroup1 = grid.titleGroup("Group 1", column2,	titleGroup2).setTitleFixedWidth(300);
 
 		rb.columnGrid(column1, titleGroup1)
-				.columns(column1, column2, column3, column4)
-				.subtotalsAtSummary(
-						subtotal1 = sbt.sum(column2));
+			.columns(column1, column2, column3, column4)
+			.subtotalsAtSummary(
+					subtotal1 = sbt.sum(column2));
 	}
 
 	@Override
@@ -68,19 +68,19 @@ public class ColumnTitleGroupPosition5Test extends AbstractJasperPositionTest {
 		elementPositionTest("columnHeader.list5", 0, 150, 16, 150, 16);
 		elementPositionTest("columnHeader.columngroup.title1", 0, 275, 0, 300, 16);
 		elementPositionTest("columnHeader.columngroup.title2", 0, 150, 0, 150, 16);
-		// column1
+		//column1
 		columnTitlePositionTest(column1, 0, 0, 0, 275, 48);
 		columnDetailPositionTest(column1, 0, 0, 0, 275, 16);
-		// column2
+		//column2
 		columnTitlePositionTest(column2, 0, 0, 0, 150, 32);
 		columnDetailPositionTest(column2, 0, 275, 0, 150, 16);
-		// column3
+		//column3
 		columnTitlePositionTest(column3, 0, 0, 0, 50, 16);
 		columnDetailPositionTest(column3, 0, 425, 0, 50, 16);
-		// column4
+		//column4
 		columnTitlePositionTest(column4, 0, 50, 0, 100, 16);
 		columnDetailPositionTest(column4, 0, 475, 0, 100, 16);
-		// subtotal
+		//subtotal
 		subtotalPositionTest(subtotal1, 0, 275, 0, 150, 16);
 	}
 

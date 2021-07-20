@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -31,27 +31,27 @@ import net.sf.dynamicreports.report.constant.Constants;
  */
 public abstract class AbstractBuilder<T extends AbstractBuilder<T, U>, U> implements Serializable {
 	private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
-
+	
 	private U object;
 	protected boolean builded;
-
+	
 	protected AbstractBuilder(U object) {
-		this.object = object;
+		this.object = object;		
 		this.builded = false;
 	}
-
+	
 	public U build() {
 		if (!builded) {
-			configure();
-			builded = true;
-		}
+			configure();						
+			builded = true;	
+		}		
 		return object;
 	}
-
+	
 	protected U getObject() {
 		return object;
 	}
-
-	protected void configure() {
-	}
+	
+	protected void configure() {		
+	}	
 }

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,21 +49,21 @@ public class StackedAreaChartReport {
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(itemColumn, stock1Column, stock2Column, stock3Column)
-					.title(Templates.createTitleComponent("StackedAreaChart"))
-					.summary(
-							cht.stackedAreaChart()
-									.setTitle("Stacked area chart")
-									.setTitleFont(boldFont)
-									.setCategory(itemColumn)
-									.series(
-											cht.serie(stock1Column), cht.serie(stock2Column), cht.serie(stock3Column))
-									.setCategoryAxisFormat(
-											cht.axisFormat().setLabel("Item")))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.columns(itemColumn, stock1Column, stock2Column, stock3Column)
+				.title(Templates.createTitleComponent("StackedAreaChart"))
+				.summary(
+					cht.stackedAreaChart()
+						.setTitle("Stacked area chart")
+						.setTitleFont(boldFont)
+						.setCategory(itemColumn)
+						.series(
+							cht.serie(stock1Column), cht.serie(stock2Column), cht.serie(stock3Column))
+						.setCategoryAxisFormat(
+							cht.axisFormat().setLabel("Item")))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

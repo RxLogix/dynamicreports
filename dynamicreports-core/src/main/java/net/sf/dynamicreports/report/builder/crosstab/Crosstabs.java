@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -41,7 +41,7 @@ public class Crosstabs {
 		return new CrosstabBuilder();
 	}
 
-	// column group
+	//column group
 	public static <T> CrosstabColumnGroupBuilder<T> columnGroup(ValueColumnBuilder<?, T> column) {
 		return new CrosstabColumnGroupBuilder<T>(column);
 	}
@@ -58,7 +58,7 @@ public class Crosstabs {
 		return new CrosstabColumnGroupBuilder<T>(expression);
 	}
 
-	// row group
+	//row group
 	public static <T> CrosstabRowGroupBuilder<T> rowGroup(ValueColumnBuilder<?, T> column) {
 		return new CrosstabRowGroupBuilder<T>(column);
 	}
@@ -75,7 +75,7 @@ public class Crosstabs {
 		return new CrosstabRowGroupBuilder<T>(expression);
 	}
 
-	// variable
+	//variable
 	public static <T> CrosstabVariableBuilder<T> variable(ValueColumnBuilder<?, ?> column, Calculation calculation) {
 		Validate.notNull(column, "column must not be null");
 		return new CrosstabVariableBuilder<T>(column, calculation);
@@ -94,7 +94,7 @@ public class Crosstabs {
 		return new CrosstabVariableBuilder<T>(expression, calculation);
 	}
 
-	// measure
+	//measure
 	public static <T> CrosstabMeasureBuilder<T> measure(ValueColumnBuilder<?, ?> column, Calculation calculation) {
 		Validate.notNull(column, "column must not be null");
 		return new CrosstabMeasureBuilder<T>(column, calculation);

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -38,33 +38,33 @@ import net.sf.dynamicreports.test.design.AbstractBandTest;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 public class SubtotalPositionTest extends AbstractBandTest {
-
+	
 	@Override
 	public void configureReport(ReportBuilder<?> rb) {
-		TextColumnBuilder<Integer> column3;
-
-		rb.setShowColumnTitle(false)
-				.columns(
-						col.column("Column1", "field1", Integer.class),
-						col.column("Column2", "field2", Integer.class),
-						column3 = col.column("Column3", "field3", Integer.class))
-				.subtotalsAtTitle(
-						sbt.sum(column3))
-				.subtotalsAtPageHeader(
-						sbt.sum(column3))
-				.subtotalsAtPageFooter(
-						sbt.sum(column3))
-				.subtotalsAtColumnHeader(
-						sbt.sum(column3))
-				.subtotalsAtColumnFooter(
-						sbt.sum(column3))
-				.subtotalsAtLastPageFooter(
-						sbt.sum(column3))
-				.subtotalsAtSummary(
-						sbt.sum(column3),
-						sbt.aggregate(column3, Calculation.AVERAGE));
+		TextColumnBuilder<Integer> column3;	
+		
+		rb.setShowColumnTitle(false)			
+			.columns(					
+					col.column("Column1", "field1", Integer.class),
+					col.column("Column2", "field2", Integer.class),
+					column3 = col.column("Column3", "field3", Integer.class))
+			.subtotalsAtTitle(					
+					sbt.sum(column3))
+			.subtotalsAtPageHeader(
+					sbt.sum(column3))
+			.subtotalsAtPageFooter(
+					sbt.sum(column3))
+			.subtotalsAtColumnHeader(
+					sbt.sum(column3))
+			.subtotalsAtColumnFooter(
+					sbt.sum(column3))
+			.subtotalsAtLastPageFooter(
+					sbt.sum(column3))
+			.subtotalsAtSummary(
+					sbt.sum(column3),
+					sbt.aggregate(column3, Calculation.AVERAGE));
 	}
-
+	
 	@Override
 	protected void titleBandTest(DRDesignBand band) {
 		testBand(band);
@@ -74,32 +74,32 @@ public class SubtotalPositionTest extends AbstractBandTest {
 	protected void pageHeaderBandTest(DRDesignBand band) {
 		testBand(band);
 	}
-
+	
 	@Override
 	protected void pageFooterBandTest(DRDesignBand band) {
 		testBand(band);
 	}
-
+	
 	@Override
 	protected void columnHeaderBandTest(DRDesignBand band) {
 		testBand(band);
 	}
-
+	
 	@Override
 	protected void columnFooterBandTest(DRDesignBand band) {
 		testBand(band);
 	}
-
+	
 	@Override
 	protected void detailBandTest(DRDesignBand band) {
 		Assert.assertNotNull(band);
 	}
-
+	
 	@Override
 	protected void lastPageFooterBandTest(DRDesignBand band) {
 		testBand(band);
 	}
-
+	
 	@Override
 	protected void summaryBandTest(DRDesignBand band) {
 		DRDesignComponent component = band.getBandComponent();
@@ -107,31 +107,31 @@ public class SubtotalPositionTest extends AbstractBandTest {
 		DRDesignList list = (DRDesignList) component;
 		Assert.assertEquals(ListType.HORIZONTAL, list.getType());
 		Assert.assertEquals(1, list.getComponents().size());
-		componentPositionTest(list, 0, 0, 575, 32);
+		componentPositionTest(list, 0, 0, 575, 32);		
 		Assert.assertTrue(list.getComponents().get(0) instanceof DRDesignList);
 
 		list = (DRDesignList) list.getComponents().get(0);
 		Assert.assertEquals(ListType.VERTICAL, list.getType());
 		Assert.assertEquals(2, list.getComponents().size());
-		componentPositionTest(list, 383, 0, 192, 32);
+		componentPositionTest(list, 383, 0, 192, 32);		
 		Assert.assertTrue(list.getComponents().get(0) instanceof DRDesignTextField);
 		Assert.assertTrue(list.getComponents().get(1) instanceof DRDesignTextField);
-
-		// column3
+		
+		//column3
 		componentPositionTest(list.getComponents().get(0), 383, 0, 192, 16);
 		componentPositionTest(list.getComponents().get(1), 383, 16, 192, 16);
 	}
-
-	protected void testBand(DRDesignBand band) {
+	
+	protected void testBand(DRDesignBand band) {		
 		DRDesignComponent component = band.getBandComponent();
 		Assert.assertTrue(component instanceof DRDesignList);
 		DRDesignList list = (DRDesignList) component;
 		Assert.assertEquals(ListType.HORIZONTAL, list.getType());
 		Assert.assertEquals(1, list.getComponents().size());
-		componentPositionTest(list, 0, 0, 575, 16);
+		componentPositionTest(list, 0, 0, 575, 16);		
 		Assert.assertTrue(list.getComponents().get(0) instanceof DRDesignTextField);
-
-		// column3
+	
+		//column3
 		componentPositionTest(list.getComponents().get(0), 383, 0, 192, 16);
 	}
 }

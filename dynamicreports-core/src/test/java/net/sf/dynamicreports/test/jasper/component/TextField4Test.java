@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,8 +49,8 @@ public class TextField4Test extends AbstractJasperValueTest implements Serializa
 		VariableBuilder<Integer> variable1 = variable("variable1", column1, Calculation.SUM);
 
 		rb.columns(column1)
-				.variables(variable1)
-				.title(cmp.text(new TextExpression()).setEvaluationTime(Evaluation.REPORT));
+			.variables(variable1)
+			.title(cmp.text(new TextExpression()).setEvaluationTime(Evaluation.REPORT));
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,7 +48,7 @@ public class FlowColumnPairsReport {
 
 	private void build() {
 		StyleBuilder textStyle = stl.style(Templates.columnStyle)
-				.setBorder(stl.pen1Point());
+			.setBorder(stl.pen1Point());
 
 		FieldBuilder<Integer> idField = field("id", type.integerType());
 		FieldBuilder<String> itemField = field("item", type.stringType());
@@ -61,24 +61,24 @@ public class FlowColumnPairsReport {
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.setColumnStyle(textStyle)
-					.columnGrid(ListType.HORIZONTAL_FLOW)
-					.fields(idField, itemField, quantityField, unitPriceField, orderDateField, orderYearField, orderMonthField, orderDayField)
-					.columns(
-							col.componentColumn(columnPair("Id", idField)),
-							col.componentColumn(columnPair("Item", itemField).setFixedWidth(200)),
-							col.componentColumn(columnPair("Quantity", quantityField)),
-							col.componentColumn(columnPair("Unit price", unitPriceField)),
-							col.componentColumn(columnPair("Order date", orderDateField)),
-							col.componentColumn(columnPair("Order year", orderYearField)),
-							col.componentColumn(columnPair("Order month", orderMonthField)),
-							col.componentColumn(columnPair("Order day", orderDayField)))
-					.title(Templates.createTitleComponent("FlowColumnPairs"))
-					.detailFooter(cmp.verticalGap(20))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.setColumnStyle(textStyle)
+				.columnGrid(ListType.HORIZONTAL_FLOW)
+				.fields(idField, itemField, quantityField, unitPriceField, orderDateField, orderYearField, orderMonthField, orderDayField)
+				.columns(
+					col.componentColumn(columnPair("Id", idField)),
+					col.componentColumn(columnPair("Item", itemField).setFixedWidth(200)),
+					col.componentColumn(columnPair("Quantity", quantityField)),
+					col.componentColumn(columnPair("Unit price", unitPriceField)),
+					col.componentColumn(columnPair("Order date", orderDateField)),
+					col.componentColumn(columnPair("Order year", orderYearField)),
+					col.componentColumn(columnPair("Order month", orderMonthField)),
+					col.componentColumn(columnPair("Order day", orderDayField)))
+				.title(Templates.createTitleComponent("FlowColumnPairs"))
+				.detailFooter(cmp.verticalGap(20))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
@@ -86,7 +86,7 @@ public class FlowColumnPairsReport {
 
 	private VerticalListBuilder columnPair(String title, FieldBuilder<?> value) {
 		TextFieldBuilder<String> titleCmp = cmp.text(title)
-				.setStyle(Templates.columnTitleStyle);
+			.setStyle(Templates.columnTitleStyle);
 		TextFieldBuilder<?> valueCmp = cmp.text(value);
 		return cmp.verticalList(titleCmp, valueCmp);
 	}

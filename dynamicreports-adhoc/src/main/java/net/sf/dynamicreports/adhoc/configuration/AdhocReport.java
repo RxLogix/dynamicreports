@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -257,7 +257,8 @@ public class AdhocReport implements Cloneable, Serializable {
 		}
 		if (index != -1) {
 			components.set(index, component);
-		} else {
+		}
+		else {
 			addComponent(component);
 		}
 	}
@@ -320,8 +321,7 @@ public class AdhocReport implements Cloneable, Serializable {
 		if (!(detailEvenRowStyle == null ? object.getDetailEvenRowStyle() == null : detailEvenRowStyle.equals(object.getDetailEvenRowStyle()))) {
 			return false;
 		}
-		if (!(highlightDetailEvenRows == null ? object.getHighlightDetailEvenRows() == null
-				: highlightDetailEvenRows.equals(object.getHighlightDetailEvenRows()))) {
+		if (!(highlightDetailEvenRows == null ? object.getHighlightDetailEvenRows() == null : highlightDetailEvenRows.equals(object.getHighlightDetailEvenRows()))) {
 			return false;
 		}
 		if (!(ignorePagination == null ? object.getIgnorePagination() == null : ignorePagination.equals(object.getIgnorePagination()))) {

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,24 +48,24 @@ public class ComponentColumnReport {
 		try {
 			ImageBuilder image = cmp.image(new ImageExpression()).setFixedDimension(48, 48);
 			HorizontalListBuilder itemComponent = cmp.horizontalList(
-					image,
-					cmp.verticalList(
-							cmp.text(new ItemExpression()),
-							bcode.ean128(new BarcodeExpression()).setFixedHeight(24)));
+				image,
+				cmp.verticalList(
+					cmp.text(new ItemExpression()),
+					bcode.ean128(new BarcodeExpression()).setFixedHeight(24)));
 
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.fields(
-							field("image", String.class),
-							field("barcode", String.class))
-					.columns(
-							col.componentColumn("Image", image),
-							col.column("Item", "item", type.stringType()),
-							col.componentColumn("Item", itemComponent))
-					.title(Templates.createTitleComponent("ComponentColumn"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .fields(
+			  	field("image", String.class),
+			  	field("barcode", String.class))
+			  .columns(
+			  	col.componentColumn("Image", image),
+			  	col.column("Item", "item", type.stringType()),
+			  	col.componentColumn("Item",	itemComponent))
+			  .title(Templates.createTitleComponent("ComponentColumn"))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

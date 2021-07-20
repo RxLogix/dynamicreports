@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -47,7 +47,8 @@ public class ShowPercentagesCustomizer implements DRIChartCustomizer, Serializab
 				CategoryDataset dataset;
 				if (!(chart.getCategoryPlot().getRenderer() instanceof GroupedStackedBarRenderer)) {
 					dataset = new PercentageCategoryDataset(chart.getCategoryPlot().getDataset());
-				} else {
+				}
+				else {
 					dataset = new PercentageGroupedCategoryDataset(chart.getCategoryPlot().getDataset());
 				}
 				chart.getCategoryPlot().setDataset(dataset);

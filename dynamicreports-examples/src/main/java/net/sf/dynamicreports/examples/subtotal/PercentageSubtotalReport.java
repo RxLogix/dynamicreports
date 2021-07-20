@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -55,49 +55,49 @@ public class PercentageSubtotalReport {
 		ColumnGroupBuilder itemGroup = grp.group(itemColumn);
 
 		StyleBuilder countryLabelStyle = stl.style()
-				.setForegroundColor(Color.RED);
+			.setForegroundColor(Color.RED);
 		StyleBuilder countryStyle = stl.style(countryLabelStyle)
-				.setTopBorder(stl.pen1Point());
+			.setTopBorder(stl.pen1Point());
 		StyleBuilder itemInCountryLabelStyle = stl.style()
-				.setForegroundColor(Color.GREEN);
+			.setForegroundColor(Color.GREEN);
 		StyleBuilder itemInCountryStyle = stl.style(itemInCountryLabelStyle)
-				.setTopBorder(stl.pen1Point());
+			.setTopBorder(stl.pen1Point());
 		StyleBuilder itemLabelStyle = stl.style()
-				.setForegroundColor(Color.BLUE);
+			.setForegroundColor(Color.BLUE);
 		StyleBuilder itemStyle = stl.style(itemLabelStyle)
-				.setTopBorder(stl.pen1Point());
+			.setTopBorder(stl.pen1Point());
 
 		PercentageSubtotalBuilder countryPercentage = sbt.percentage(priceColumn)
-				.setLabel("country price [%]")
-				.setLabelStyle(countryLabelStyle)
-				.setStyle(countryStyle);
+			.setLabel("country price [%]")
+			.setLabelStyle(countryLabelStyle)
+			.setStyle(countryStyle);
 
 		PercentageSubtotalBuilder itemInCountryPercentage = sbt.percentage(priceColumn)
-				.setLabel("item in country price[%]")
-				.setLabelStyle(itemInCountryLabelStyle)
-				.setStyle(itemInCountryStyle);
+			.setLabel("item in country price[%]")
+			.setLabelStyle(itemInCountryLabelStyle)
+			.setStyle(itemInCountryStyle);
 
 		PercentageSubtotalBuilder itemPercentage = sbt.percentage(priceColumn)
-				.setLabel("item price[%]")
-				.setLabelStyle(itemLabelStyle)
-				.setStyle(itemStyle)
-				.setTotalType(PercentageTotalType.REPORT);
+			.setLabel("item price[%]")
+			.setLabelStyle(itemLabelStyle)
+			.setStyle(itemStyle)
+			.setTotalType(PercentageTotalType.REPORT);
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(
-							countryColumn, itemColumn, priceColumn)
-					.groupBy(
-							countryGroup, itemGroup)
-					.subtotalsOfPercentageAtGroupFooter(
-							countryGroup, countryPercentage)
-					.subtotalsOfPercentageAtGroupFooter(
-							itemGroup, itemInCountryPercentage, itemPercentage)
-					.title(Templates.createTitleComponent("PercentageSubtotal"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.columns(
+					countryColumn, itemColumn,	priceColumn)
+				.groupBy(
+					countryGroup, itemGroup)
+				.subtotalsOfPercentageAtGroupFooter(
+					countryGroup, countryPercentage)
+				.subtotalsOfPercentageAtGroupFooter(
+					itemGroup, itemInCountryPercentage, itemPercentage)
+				.title(Templates.createTitleComponent("PercentageSubtotal"))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

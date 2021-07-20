@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -42,13 +42,13 @@ public class TableOfContentsPosition1Test extends AbstractJasperPositionTest {
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.tableOfContents()
-				.columns(
-						column1 = col.column("Column1", "field1", type.stringType()),
-						column2 = col.column("Column2", "field2", type.stringType()),
-						col.column("Column3", "field3", type.stringType()))
-				.groupBy(
-						group1 = grp.group(column1),
-						group2 = grp.group(column2));
+	  	.columns(
+	  		column1 = col.column("Column1", "field1", type.stringType()),
+	  		column2 = col.column("Column2", "field2", type.stringType()),
+	  		col.column("Column3", "field3", type.stringType()))
+		  .groupBy(
+		  	group1 = grp.group(column1),
+		  	group2 = grp.group(column2));
 	}
 
 	@Override
@@ -113,7 +113,7 @@ public class TableOfContentsPosition1Test extends AbstractJasperPositionTest {
 
 	@Override
 	protected JRDataSource createDataSource() {
-		String[] values = new String[] { "value1", "value2", "value3" };
+		String[] values = new String[]{"value1", "value2", "value3"};
 		DRDataSource dataSource = new DRDataSource("field1", "field2", "field3");
 		for (String field1 : values) {
 			for (String field2 : values) {

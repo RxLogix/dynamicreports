@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -44,7 +44,7 @@ public class GanttChartBuilder extends AbstractBaseChartBuilder<GanttChartBuilde
 		super(ChartType.GANTT);
 	}
 
-	// dataset
+	//dataset
 	public GanttChartBuilder setTask(ValueColumnBuilder<?, String> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setValueExpression(column.getColumn());
@@ -66,11 +66,11 @@ public class GanttChartBuilder extends AbstractBaseChartBuilder<GanttChartBuilde
 		return this;
 	}
 
-	public GanttChartBuilder series(GanttChartSerieBuilder... chartSeries) {
+	public GanttChartBuilder series(GanttChartSerieBuilder ...chartSeries) {
 		return addSerie(chartSeries);
 	}
 
-	public GanttChartBuilder addSerie(GanttChartSerieBuilder... chartSeries) {
+	public GanttChartBuilder addSerie(GanttChartSerieBuilder ...chartSeries) {
 		Validate.notNull(chartSeries, "chartSeries must not be null");
 		Validate.noNullElements(chartSeries, "chartSeries must not contains null chartSerie");
 		for (GanttChartSerieBuilder chartSerie : chartSeries) {
@@ -85,7 +85,7 @@ public class GanttChartBuilder extends AbstractBaseChartBuilder<GanttChartBuilde
 		return this;
 	}
 
-	// plot
+	//plot
 	public GanttChartBuilder setTimeAxisFormat(AxisFormatBuilder timeAxisFormat) {
 		Validate.notNull(timeAxisFormat, "timeAxisFormat must not be null");
 		getPlot().setYAxisFormat(timeAxisFormat.build());

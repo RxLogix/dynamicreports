@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -41,15 +41,14 @@ import org.apache.commons.lang3.Validate;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 @SuppressWarnings("unchecked")
-public abstract class AbstractTimeSeriesChartBuilder<T extends AbstractTimeSeriesChartBuilder<T, U>, U extends DRAxisPlot>
-		extends AbstractBaseChartBuilder<T, U, DRTimeSeriesDataset> {
+public abstract class AbstractTimeSeriesChartBuilder<T extends AbstractTimeSeriesChartBuilder<T, U>, U extends DRAxisPlot> extends AbstractBaseChartBuilder<T, U, DRTimeSeriesDataset> {
 	private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
 
 	protected AbstractTimeSeriesChartBuilder(ChartType chartType) {
 		super(chartType);
 	}
 
-	// dataset
+	//dataset
 	public T setTimePeriod(ValueColumnBuilder<?, ? extends Date> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setValueExpression(column.getColumn());
@@ -71,11 +70,11 @@ public abstract class AbstractTimeSeriesChartBuilder<T extends AbstractTimeSerie
 		return (T) this;
 	}
 
-	public T series(CategoryChartSerieBuilder... chartSeries) {
+	public T series(CategoryChartSerieBuilder ...chartSeries) {
 		return addSerie(chartSeries);
 	}
 
-	public T addSerie(CategoryChartSerieBuilder... chartSeries) {
+	public T addSerie(CategoryChartSerieBuilder ...chartSeries) {
 		Validate.notNull(chartSeries, "chartSeries must not be null");
 		Validate.noNullElements(chartSeries, "chartSeries must not contains null chartSerie");
 		for (CategoryChartSerieBuilder chartSerie : chartSeries) {
@@ -95,7 +94,7 @@ public abstract class AbstractTimeSeriesChartBuilder<T extends AbstractTimeSerie
 		return (T) this;
 	}
 
-	// plot
+	//plot
 	public T setTimeAxisFormat(AxisFormatBuilder timeAxisFormat) {
 		Validate.notNull(timeAxisFormat, "timeAxisFormat must not be null");
 		getPlot().setXAxisFormat(timeAxisFormat.build());

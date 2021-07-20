@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -53,7 +53,7 @@ public class ThermometerChartBuilder extends AbstractChartBuilder<ThermometerCha
 		return this;
 	}
 
-	// dataset
+	//dataset
 	public ThermometerChartBuilder setValue(Number value) {
 		getDataset().setValueExpression(Expressions.number(value));
 		return this;
@@ -80,7 +80,7 @@ public class ThermometerChartBuilder extends AbstractChartBuilder<ThermometerCha
 		return this;
 	}
 
-	// plot
+	//plot
 	public ThermometerChartBuilder setDataRangeLowExpression(Number dataRangeLowValue) {
 		getPlot().setDataRangeLowExpression(Expressions.number(dataRangeLowValue));
 		return this;

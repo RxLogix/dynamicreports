@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -62,60 +62,60 @@ public class BandStyle1Test extends AbstractJasperStyleTest implements Serializa
 		ColumnGroupBuilder group1;
 
 		rb.setPageColumnsPerPage(2)
-				.columns(
-						column1 = col.column("Column1", "field1", String.class),
-						column2 = col.column("Column2", "field2", Integer.class))
-				.groupBy(
-						group1 = grp.group(column1).setHeaderLayout(GroupHeaderLayout.TITLE_AND_VALUE))
+			.columns(
+				column1 = col.column("Column1", "field1", String.class),
+				column2 = col.column("Column2", "field2", Integer.class))
+			.groupBy(
+				group1 = grp.group(column1).setHeaderLayout(GroupHeaderLayout.TITLE_AND_VALUE))
 
-				.subtotalsAtTitle(sbt.sum(column2))
-				.subtotalsAtPageHeader(sbt.sum(column2))
-				.subtotalsAtPageFooter(sbt.sum(column2))
-				.subtotalsAtColumnHeader(sbt.sum(column2))
-				.subtotalsAtColumnFooter(sbt.sum(column2))
-				.subtotalsAtGroupHeader(group1, sbt.sum(column2))
-				.subtotalsAtGroupFooter(group1, sbt.sum(column2))
-				.subtotalsAtLastPageFooter(sbt.sum(column2))
-				.subtotalsAtSummary(sbt.sum(column2))
+			.subtotalsAtTitle(sbt.sum(column2))
+			.subtotalsAtPageHeader(sbt.sum(column2))
+			.subtotalsAtPageFooter(sbt.sum(column2))
+			.subtotalsAtColumnHeader(sbt.sum(column2))
+			.subtotalsAtColumnFooter(sbt.sum(column2))
+			.subtotalsAtGroupHeader(group1, sbt.sum(column2))
+			.subtotalsAtGroupFooter(group1, sbt.sum(column2))
+			.subtotalsAtLastPageFooter(sbt.sum(column2))
+			.subtotalsAtSummary(sbt.sum(column2))
 
-				.title(cmp.text("title"))
-				.setTitleStyle(stl.style().setBackgroundColor(color1))
+			.title(cmp.text("title"))
+			.setTitleStyle(stl.style().setBackgroundColor(color1))
 
-				.pageHeader(cmp.text("pageHeader"))
-				.setPageHeaderStyle(stl.style().setBackgroundColor(color2))
+			.pageHeader(cmp.text("pageHeader"))
+			.setPageHeaderStyle(stl.style().setBackgroundColor(color2))
 
-				.pageFooter(cmp.text("pageFooter"))
-				.setPageFooterStyle(stl.style().setBackgroundColor(color3))
+			.pageFooter(cmp.text("pageFooter"))
+			.setPageFooterStyle(stl.style().setBackgroundColor(color3))
 
-				.columnHeader(cmp.text("columnHeader"))
-				.setColumnHeaderStyle(stl.style().setBackgroundColor(color4))
+			.columnHeader(cmp.text("columnHeader"))
+			.setColumnHeaderStyle(stl.style().setBackgroundColor(color4))
 
-				.columnFooter(cmp.text("columnFooter"))
-				.setColumnFooterStyle(stl.style().setBackgroundColor(color5))
+			.columnFooter(cmp.text("columnFooter"))
+			.setColumnFooterStyle(stl.style().setBackgroundColor(color5))
 
-				.groupHeader(group1, cmp.text("groupHeader"))
-				.setGroupHeaderStyle(group1, stl.style().setBackgroundColor(color6))
+			.groupHeader(group1, cmp.text("groupHeader"))
+			.setGroupHeaderStyle(group1, stl.style().setBackgroundColor(color6))
 
-				.groupFooter(group1, cmp.text("groupFooter"))
-				.setGroupFooterStyle(group1, stl.style().setBackgroundColor(color7))
+			.groupFooter(group1, cmp.text("groupFooter"))
+			.setGroupFooterStyle(group1, stl.style().setBackgroundColor(color7))
 
-				.detailHeader(cmp.text("detailHeader"))
-				.setDetailHeaderStyle(stl.style().setBackgroundColor(color8))
+			.detailHeader(cmp.text("detailHeader"))
+			.setDetailHeaderStyle(stl.style().setBackgroundColor(color8))
 
-				.detail(cmp.text("detail"))
-				.setDetailStyle(stl.style().setBackgroundColor(color9))
+			.detail(cmp.text("detail"))
+			.setDetailStyle(stl.style().setBackgroundColor(color9))
 
-				.detailFooter(cmp.text("detailFooter"))
-				.setDetailFooterStyle(stl.style().setBackgroundColor(color10))
+			.detailFooter(cmp.text("detailFooter"))
+			.setDetailFooterStyle(stl.style().setBackgroundColor(color10))
 
-				.lastPageFooter(cmp.text("lastPageFooter"))
-				.setLastPageFooterStyle(stl.style().setBackgroundColor(color11))
+			.lastPageFooter(cmp.text("lastPageFooter"))
+			.setLastPageFooterStyle(stl.style().setBackgroundColor(color11))
 
-				.summary(cmp.text("summary"))
-				.setSummaryStyle(stl.style().setBackgroundColor(color12))
+			.summary(cmp.text("summary"))
+			.setSummaryStyle(stl.style().setBackgroundColor(color12))
 
-				.background(cmp.text("background"))
-				.setBackgroundStyle(stl.style().setBackgroundColor(color13));
+			.background(cmp.text("background"))
+			.setBackgroundStyle(stl.style().setBackgroundColor(color13));
 	}
 
 	@Override

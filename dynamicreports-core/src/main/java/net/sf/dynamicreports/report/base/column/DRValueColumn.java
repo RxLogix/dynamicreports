@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -32,11 +32,11 @@ import net.sf.dynamicreports.report.definition.component.DRITextField;
  */
 public class DRValueColumn<T> extends DRColumn<DRITextField<T>> implements DRIValueColumn<T> {
 	private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
-
+	
 	private Boolean printRepeatedDetailValues;
-
+	
 	public DRValueColumn(DRTextField<T> valueField) {
-		super(valueField);
+		super(valueField);	
 	}
 
 	@Override
@@ -47,12 +47,12 @@ public class DRValueColumn<T> extends DRColumn<DRITextField<T>> implements DRIVa
 	public void setPrintRepeatedDetailValues(Boolean printRepeatedDetailValues) {
 		this.printRepeatedDetailValues = printRepeatedDetailValues;
 	}
-
+	
 	@Override
 	public String getName() {
 		return getComponent().getValueExpression().getName();
 	}
-
+	
 	@Override
 	public Class<? super T> getValueClass() {
 		return getComponent().getValueExpression().getValueClass();

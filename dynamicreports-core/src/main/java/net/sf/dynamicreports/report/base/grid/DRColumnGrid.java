@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -32,9 +32,9 @@ import net.sf.dynamicreports.report.definition.grid.DRIColumnGridComponent;
  */
 public class DRColumnGrid implements DRIColumnGrid {
 	private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
-
+	
 	private DRColumnGridList list;
-
+	
 	public DRColumnGrid() {
 		this(ListType.HORIZONTAL);
 	}
@@ -42,12 +42,12 @@ public class DRColumnGrid implements DRIColumnGrid {
 	public DRColumnGrid(ListType type) {
 		this.list = new DRColumnGridList(type);
 	}
-
+	
 	@Override
 	public DRColumnGridList getList() {
 		return list;
 	}
-
+	
 	public void addComponent(DRIColumnGridComponent component) {
 		list.addComponent(component);
 	}

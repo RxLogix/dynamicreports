@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,13 +49,13 @@ public class SortTest extends AbstractJasperChartTest {
 		rb.columns(
 				column1 = col.column("Column1", "field1", type.stringType()),
 				column2 = col.column("Column2", "field2", type.stringType()))
-				.summary(
-						cht.barChart()
-								.setSubDataset(dataset)
-								.setCategory(field1)
-								.series(
-										cht.serie("field2", Integer.class).setLabel("f2")))
-				.sortBy(column1, column2);
+			.summary(
+				cht.barChart()
+					.setSubDataset(dataset)
+					.setCategory(field1)
+					.series(
+						cht.serie("field2", Integer.class).setLabel("f2")))
+			.sortBy(column1, column2);
 	}
 
 	@Override
@@ -64,20 +64,20 @@ public class SortTest extends AbstractJasperChartTest {
 
 		numberOfPagesTest(1);
 
-		// column1
+		//column1
 		columnTitleCountTest(column1, 1);
 		columnTitleValueTest(column1, "Column1");
 		columnDetailCountTest(column1, 4);
 		columnDetailValueTest(column1, "1", "2", "3", "3");
-		// column2
+		//column2
 		columnTitleCountTest(column2, 1);
 		columnTitleValueTest(column2, "Column2");
 		columnDetailCountTest(column2, 4);
 		columnDetailValueTest(column2, "text1", "text2", "text3", "text4");
 
-		String[] categories = new String[] { "text4", "text3", "text2", "text1" };
-		String[] series = new String[] { "f2" };
-		Number[][] values = new Number[][] { { 6d }, { 10d }, { 1d }, { 3d } };
+		String[] categories = new String[]{"text4", "text3", "text2", "text1"};
+		String[] series = new String[]{"f2"};
+		Number[][] values = new Number[][]{{6d}, {10d}, {1d}, {3d}};
 		chartDataTest("summary.chart1", 0, categories, series, values);
 	}
 

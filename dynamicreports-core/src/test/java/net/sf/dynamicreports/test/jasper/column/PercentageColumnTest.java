@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -43,41 +43,41 @@ import net.sf.jasperreports.engine.JRDataSource;
  */
 public class PercentageColumnTest extends AbstractJasperValueTest implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	private PercentageColumnBuilder percentage1;
 	private PercentageColumnBuilder percentage2;
 	private PercentageColumnBuilder percentage3;
-
+	
 	@Override
-	protected void configureReport(JasperReportBuilder rb) {
+	protected void configureReport(JasperReportBuilder rb) {		
 		TextColumnBuilder<Integer> column2;
-
+		
 		rb.setLocale(Locale.ENGLISH)
-				.fields(
-						field("field1", Integer.class))
-				.columns(
-						column2 = col.column("field2", Integer.class),
-						percentage1 = col.percentageColumn("field1", Integer.class),
-						percentage2 = col.percentageColumn(column2),
-						percentage3 = col.percentageColumn("field3", Integer.class).setValueFormatter(new ColumnValueFormatter()));
+			.fields(
+					field("field1", Integer.class))
+			.columns(
+					column2 = col.column("field2", Integer.class),
+					percentage1 = col.percentageColumn("field1", Integer.class),
+					percentage2 = col.percentageColumn(column2),
+					percentage3 = col.percentageColumn("field3", Integer.class).setValueFormatter(new ColumnValueFormatter()));
 	}
-
+	
 	@Override
 	public void test() {
 		super.test();
-
+		
 		numberOfPagesTest(1);
-		// percentage1
+		//percentage1
 		columnDetailCountTest(percentage1, 3);
 		columnDetailValueTest(percentage1, "16.67%", "33.33%", "50.00%");
-		// percentage2
+		//percentage2
 		columnDetailCountTest(percentage2, 3);
 		columnDetailValueTest(percentage2, "26.67%", "33.33%", "40.00%");
-		// percentage3
+		//percentage3
 		columnDetailCountTest(percentage3, 3);
 		columnDetailValueTest(percentage3, "value = 29.17%", "value = 33.33%", "value = 37.50%");
 	}
-
+	
 	@Override
 	protected JRDataSource createDataSource() {
 		DRDataSource dataSource = new DRDataSource("field1", "field2", "field3");
@@ -85,14 +85,14 @@ public class PercentageColumnTest extends AbstractJasperValueTest implements Ser
 		dataSource.add(2, 5, 8);
 		dataSource.add(3, 6, 9);
 		return dataSource;
-	}
-
+	}	
+	
 	private class ColumnValueFormatter extends AbstractValueFormatter<String, Double> {
 		private static final long serialVersionUID = 1L;
 
 		@Override
 		public String format(Double value, ReportParameters reportParameters) {
 			return "value = " + new DecimalFormat("#,##0.00%", new DecimalFormatSymbols(Locale.ENGLISH)).format(value);
-		}
+		}		
 	}
 }

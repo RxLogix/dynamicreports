@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -50,40 +50,40 @@ public class TemplateStyleReport {
 
 	private void build() {
 		StyleBuilder style1 = stl.style()
-				.setName("style1")
-				.bold();
+			.setName("style1")
+			.bold();
 		StyleBuilder style2 = stl.style(style1)
-				.setName("style2")
-				.italic();
+			.setName("style2")
+			.italic();
 		StyleBuilder columnStyle = stl.style()
-				.setName("columnStyle")
-				.setVerticalTextAlignment(VerticalTextAlignment.MIDDLE);
+			.setName("columnStyle")
+			.setVerticalTextAlignment(VerticalTextAlignment.MIDDLE);
 		StyleBuilder columnTitleStyle = stl.style(columnStyle)
-				.setName("columnTitleStyle")
-				.setBorder(stl.pen1Point())
-				.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER)
-				.setBackgroundColor(Color.LIGHT_GRAY);
+			.setName("columnTitleStyle")
+			.setBorder(stl.pen1Point())
+			.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER)
+			.setBackgroundColor(Color.LIGHT_GRAY);
 		ReportTemplateBuilder template = template()
-				.templateStyles(style1, style2, columnStyle, columnTitleStyle);
+			.templateStyles(style1, style2, columnStyle, columnTitleStyle);
 
 		TextColumnBuilder<String> itemColumn = col.column("Item", "item", type.stringType())
-				.setStyle(stl.templateStyle("style1"));
+			.setStyle(stl.templateStyle("style1"));
 		TextColumnBuilder<Date> orderDateColumn = col.column("Order date", "orderdate", type.dateType())
-				.setStyle(stl.templateStyle("style2"));
+			.setStyle(stl.templateStyle("style2"));
 		TextColumnBuilder<Integer> quantityColumn = col.column("Quantity", "quantity", type.integerType());
 		TextColumnBuilder<BigDecimal> unitPriceColumn = col.column("Unit price", "unitprice", type.bigDecimalType());
 
 		try {
 			report()
-					.setTemplate(template)
-					.setColumnStyle(stl.templateStyle("columnStyle"))
-					.setColumnTitleStyle(stl.templateStyle("columnTitleStyle"))
-					.columns(
-							itemColumn, orderDateColumn, quantityColumn, unitPriceColumn)
-					.title(Templates.createTitleComponent("TemplateStyle"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(template)
+			  .setColumnStyle(stl.templateStyle("columnStyle"))
+			  .setColumnTitleStyle(stl.templateStyle("columnTitleStyle"))
+			  .columns(
+			  	itemColumn, orderDateColumn, quantityColumn, unitPriceColumn)
+			  .title(Templates.createTitleComponent("TemplateStyle"))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

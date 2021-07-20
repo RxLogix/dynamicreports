@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,33 +49,33 @@ public class ConditionalStyleReport {
 	}
 
 	private void build() {
-		TextColumnBuilder<String> itemColumn = col.column("Item", "item", type.stringType());
-		TextColumnBuilder<Date> orderDateColumn = col.column("Order date", "orderdate", type.dateType());
-		TextColumnBuilder<Integer> quantityColumn = col.column("Quantity", "quantity", type.integerType());
+		TextColumnBuilder<String>     itemColumn      = col.column("Item",       "item",      type.stringType());
+		TextColumnBuilder<Date>       orderDateColumn = col.column("Order date", "orderdate", type.dateType());
+		TextColumnBuilder<Integer>    quantityColumn  = col.column("Quantity",   "quantity",  type.integerType());
 		TextColumnBuilder<BigDecimal> unitPriceColumn = col.column("Unit price", "unitprice", type.bigDecimalType());
 
 		ConditionalStyleBuilder condition1 = stl.conditionalStyle(new OrderDateConditionExpression())
-				.setBackgroundColor(new Color(255, 210, 210));
+    	.setBackgroundColor(new Color(255, 210, 210));
 		ConditionalStyleBuilder condition2 = stl.conditionalStyle(cnd.greater(unitPriceColumn, 20))
-				.setBackgroundColor(new Color(210, 255, 210));
+			.setBackgroundColor(new Color(210, 255, 210));
 
 		StyleBuilder orderDateStyle = stl.style()
-				.conditionalStyles(condition1);
+    	.conditionalStyles(condition1);
 		orderDateColumn.setStyle(orderDateStyle);
 
 		StyleBuilder unitPriceStyle = stl.style()
-				.conditionalStyles(condition2);
+  		.conditionalStyles(condition2);
 		unitPriceColumn.setStyle(unitPriceStyle);
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(
-							itemColumn, orderDateColumn, quantityColumn, unitPriceColumn)
-					.title(Templates.createTitleComponent("ConditionalStyle"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .columns(
+			  	itemColumn, orderDateColumn, quantityColumn, unitPriceColumn)
+			  .title(Templates.createTitleComponent("ConditionalStyle"))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

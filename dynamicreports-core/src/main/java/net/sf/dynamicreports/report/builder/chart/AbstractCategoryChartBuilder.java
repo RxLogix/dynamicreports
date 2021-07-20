@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -43,15 +43,14 @@ import org.apache.commons.lang3.Validate;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 @SuppressWarnings("unchecked")
-public abstract class AbstractCategoryChartBuilder<T extends AbstractCategoryChartBuilder<T, U>, U extends DRAxisPlot>
-		extends AbstractBaseChartBuilder<T, U, DRCategoryDataset> {
+public abstract class AbstractCategoryChartBuilder<T extends AbstractCategoryChartBuilder<T, U>, U extends DRAxisPlot> extends AbstractBaseChartBuilder<T, U, DRCategoryDataset> {
 	private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
 
 	protected AbstractCategoryChartBuilder(ChartType chartType) {
 		super(chartType);
 	}
 
-	// dataset
+	//dataset
 	public T setCategory(ValueColumnBuilder<?, String> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setValueExpression(column.getColumn());
@@ -73,11 +72,11 @@ public abstract class AbstractCategoryChartBuilder<T extends AbstractCategoryCha
 		return (T) this;
 	}
 
-	public T series(AbstractCategoryChartSerieBuilder<?, ?>... chartSeries) {
+	public T series(AbstractCategoryChartSerieBuilder<?, ?> ...chartSeries) {
 		return addSerie(chartSeries);
 	}
 
-	public T addSerie(AbstractCategoryChartSerieBuilder<?, ?>... chartSeries) {
+	public T addSerie(AbstractCategoryChartSerieBuilder<?, ?> ...chartSeries) {
 		Validate.notNull(chartSeries, "chartSeries must not be null");
 		Validate.noNullElements(chartSeries, "chartSeries must not contains null chartSerie");
 		for (AbstractCategoryChartSerieBuilder<?, ?> chartSerie : chartSeries) {
@@ -97,7 +96,7 @@ public abstract class AbstractCategoryChartBuilder<T extends AbstractCategoryCha
 		return (T) this;
 	}
 
-	// plot
+	//plot
 	public T setCategoryAxisFormat(AxisFormatBuilder categoryAxisFormat) {
 		Validate.notNull(categoryAxisFormat, "categoryAxisFormat must not be null");
 		getPlot().setXAxisFormat(categoryAxisFormat.build());
@@ -125,7 +124,7 @@ public abstract class AbstractCategoryChartBuilder<T extends AbstractCategoryCha
 		return (T) this;
 	}
 
-	public T seriesOrderBy(String... seriesOrderByNames) {
+	public T seriesOrderBy(String ...seriesOrderByNames) {
 		return setSeriesOrderBy(Arrays.asList(seriesOrderByNames));
 	}
 

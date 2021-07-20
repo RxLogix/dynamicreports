@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -31,16 +31,16 @@ import org.apache.commons.lang3.Validate;
  */
 public class Grids {
 
-	// horizontal
+	//horizontal
 	public static HorizontalColumnGridListBuilder horizontalColumnGridList() {
 		return new HorizontalColumnGridListBuilder();
 	}
 
-	public static HorizontalColumnGridListBuilder horizontalColumnGridList(ColumnGridComponentBuilder... components) {
+	public static HorizontalColumnGridListBuilder horizontalColumnGridList(ColumnGridComponentBuilder ...components) {
 		return new HorizontalColumnGridListBuilder().add(components);
 	}
 
-	public static HorizontalColumnGridListBuilder horizontalColumnGridList(HorizontalColumnGridListCellBuilder... cells) {
+	public static HorizontalColumnGridListBuilder horizontalColumnGridList(HorizontalColumnGridListCellBuilder ...cells) {
 		return new HorizontalColumnGridListBuilder().add(cells);
 	}
 
@@ -49,29 +49,29 @@ public class Grids {
 		return new HorizontalColumnGridListCellBuilder(component);
 	}
 
-	// horizontal flow
+	//horizontal flow
 	public static HorizontalColumnGridListBuilder horizontalFlowColumnGridList() {
 		return new HorizontalFlowColumnGridListBuilder();
 	}
 
-	public static HorizontalColumnGridListBuilder horizontalFlowColumnGridList(ColumnGridComponentBuilder... components) {
+	public static HorizontalColumnGridListBuilder horizontalFlowColumnGridList(ColumnGridComponentBuilder ...components) {
 		return new HorizontalFlowColumnGridListBuilder().add(components);
 	}
 
-	public static HorizontalColumnGridListBuilder horizontalFlowColumnGridList(HorizontalColumnGridListCellBuilder... cells) {
+	public static HorizontalColumnGridListBuilder horizontalFlowColumnGridList(HorizontalColumnGridListCellBuilder ...cells) {
 		return new HorizontalFlowColumnGridListBuilder().add(cells);
 	}
 
-	// vertical
+	//vertical
 	public static VerticalColumnGridListBuilder verticalColumnGridList() {
 		return new VerticalColumnGridListBuilder();
 	}
 
-	public static VerticalColumnGridListBuilder verticalColumnGridList(ColumnGridComponentBuilder... components) {
+	public static VerticalColumnGridListBuilder verticalColumnGridList(ColumnGridComponentBuilder ...components) {
 		return new VerticalColumnGridListBuilder().add(components);
 	}
 
-	public static VerticalColumnGridListBuilder verticalColumnGridList(VerticalColumnGridListCellBuilder... cells) {
+	public static VerticalColumnGridListBuilder verticalColumnGridList(VerticalColumnGridListCellBuilder ...cells) {
 		return new VerticalColumnGridListBuilder().add(cells);
 	}
 
@@ -80,16 +80,16 @@ public class Grids {
 		return new VerticalColumnGridListCellBuilder(component);
 	}
 
-	// title group
+	//title group
 	public static ColumnTitleGroupBuilder titleGroup() {
 		return new ColumnTitleGroupBuilder();
 	}
 
-	public static ColumnTitleGroupBuilder titleGroup(ColumnGridComponentBuilder... components) {
+	public static ColumnTitleGroupBuilder titleGroup(ColumnGridComponentBuilder ...components) {
 		return new ColumnTitleGroupBuilder().add(components);
 	}
 
-	public static ColumnTitleGroupBuilder titleGroup(String title, ColumnGridComponentBuilder... components) {
+	public static ColumnTitleGroupBuilder titleGroup(String title, ColumnGridComponentBuilder ...components) {
 		return titleGroup(components).setTitle(title);
 	}
 }

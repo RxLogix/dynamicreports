@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -53,24 +53,24 @@ public class SubtotalPosition2Test extends AbstractJasperPositionTest {
 		StyleBuilder columnStyle = stl.style(textStyle).setVerticalTextAlignment(VerticalTextAlignment.MIDDLE);
 
 		rb.setTextStyle(textStyle)
-				.setColumnStyle(columnStyle)
-				.columns(
-						column1 = col.column("", "field1", type.stringType()).setFixedWidth(200),
-						column2 = col.column("", "field2", type.stringType()),
-						column3 = col.column("", "field3", type.stringType()),
-						column4 = col.column("", "field4", type.integerType()).setRows(2),
-						column5 = col.column("", "field5", type.integerType()),
-						column6 = col.column("", "field6", type.stringType()).setFixedColumns(3),
-						column7 = col.column("", "field7", type.integerType()).setTitleRows(2))
-				.subtotalsAtSummary(
-						subtotal1 = sbt.sum(column4),
-						subtotal2 = sbt.sum(column5).setRows(2),
-						subtotal3 = sbt.sum(column7))
-				.columnGrid(
-						column1, column2, column3,
-						grid.horizontalColumnGridList()
-								.add(column4).newRow()
-								.add(column5, column6, column7));
+		.setColumnStyle(columnStyle)
+			.columns(
+				column1 = col.column("", "field1", type.stringType()).setFixedWidth(200),
+				column2 = col.column("", "field2", type.stringType()),
+				column3 = col.column("", "field3", type.stringType()),
+				column4 = col.column("", "field4", type.integerType()).setRows(2),
+				column5 = col.column("", "field5", type.integerType()),
+				column6 = col.column("", "field6", type.stringType()).setFixedColumns(3),
+				column7 = col.column("", "field7", type.integerType()).setTitleRows(2))
+			.subtotalsAtSummary(
+					subtotal1 = sbt.sum(column4),
+					subtotal2 = sbt.sum(column5).setRows(2),
+					subtotal3 = sbt.sum(column7))
+			.columnGrid(
+					column1, column2, column3,
+					grid.horizontalColumnGridList()
+						.add(column4).newRow()
+						.add(column5, column6, column7));
 	}
 
 	@Override
@@ -79,12 +79,12 @@ public class SubtotalPosition2Test extends AbstractJasperPositionTest {
 
 		numberOfPagesTest(1);
 
-		// columns
+		//columns
 		elementPositionTest("columnHeader.list1", 0, 10, 10, 575, 43);
 		columnTitlePositionTest(column1, 0, 0, 0, 200, 43);
 		columnTitlePositionTest(column2, 0, 200, 0, 87, 43);
 		columnTitlePositionTest(column3, 0, 287, 0, 87, 43);
-		// elementPositionTest("columnHeader.list2", 0, 374, 0, 201, 43);
+		//elementPositionTest("columnHeader.list2", 0, 374, 0, 201, 43);
 		columnTitlePositionTest(column4, 0, 374, 0, 201, 16);
 		elementPositionTest("columnHeader.list3", 0, 374, 16, 201, 27);
 		columnTitlePositionTest(column5, 0, 0, 0, 85, 27);
@@ -95,16 +95,16 @@ public class SubtotalPosition2Test extends AbstractJasperPositionTest {
 		columnDetailPositionTest(column1, 0, 0, 0, 200, 43);
 		columnDetailPositionTest(column2, 0, 200, 0, 87, 43);
 		columnDetailPositionTest(column3, 0, 287, 0, 87, 43);
-		// elementPositionTest("detail.list2", 0, 374, 0, 201, 43);
+		//elementPositionTest("detail.list2", 0, 374, 0, 201, 43);
 		columnDetailPositionTest(column4, 0, 374, 0, 201, 27);
 		elementPositionTest("detail.list3", 0, 374, 27, 201, 16);
 		columnDetailPositionTest(column5, 0, 0, 0, 85, 16);
 		columnDetailPositionTest(column6, 0, 85, 0, 31, 16);
 		columnDetailPositionTest(column7, 0, 116, 0, 85, 16);
 
-		// summary
+		//summary
 		elementPositionTest("summary.list1", 0, 10, 96, 575, 43);
-		// elementPositionTest("summary.list2", 0, 374, 0, 201, 43);
+		//elementPositionTest("summary.list2", 0, 374, 0, 201, 43);
 		subtotalPositionTest(subtotal1, 0, 374, 0, 201, 16);
 		elementPositionTest("summary.list3", 0, 374, 16, 201, 27);
 		subtotalPositionTest(subtotal2, 0, 0, 0, 85, 27);

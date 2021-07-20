@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -30,8 +30,8 @@ import net.sf.dynamicreports.report.exception.DRException;
 /**
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  *
- *         This report is working properly only when the font "FreeUniversal" is registered.
- *         The font is registered in these files: customfonts.xml and jasperreports_extension.properties. The files are located in the root of the classpath.
+ * This report is working properly only when the font "FreeUniversal" is registered.
+ * The font is registered in these files: customfonts.xml and jasperreports_extension.properties. The files are located in the root of the classpath.
  */
 public class FontsReport {
 
@@ -41,23 +41,23 @@ public class FontsReport {
 
 	private void build() {
 		StyleBuilder plainStyle = stl.style()
-				.setFontName("FreeUniversal");
+			.setFontName("FreeUniversal");
 		StyleBuilder boldStyle = stl.style(plainStyle)
-				.bold();
+			.bold();
 		StyleBuilder italicStyle = stl.style(plainStyle)
-				.italic();
+			.italic();
 		StyleBuilder boldItalicStyle = stl.style(plainStyle)
-				.boldItalic();
+			.boldItalic();
 
 		try {
 			report()
-					.title(
-							Templates.createTitleComponent("Fonts"),
-							cmp.text("FreeUniversal font - plain").setStyle(plainStyle),
-							cmp.text("FreeUniversal font - bold").setStyle(boldStyle),
-							cmp.text("FreeUniversal font - italic").setStyle(italicStyle),
-							cmp.text("FreeUniversal font - bolditalic").setStyle(boldItalicStyle))
-					.show();
+			  .title(
+			  	Templates.createTitleComponent("Fonts"),
+			  	cmp.text("FreeUniversal font - plain").setStyle(plainStyle),
+			  	cmp.text("FreeUniversal font - bold").setStyle(boldStyle),
+			  	cmp.text("FreeUniversal font - italic").setStyle(italicStyle),
+			  	cmp.text("FreeUniversal font - bolditalic").setStyle(boldItalicStyle))
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

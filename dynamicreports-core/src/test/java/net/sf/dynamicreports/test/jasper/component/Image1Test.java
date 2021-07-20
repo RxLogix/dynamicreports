@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -55,8 +55,8 @@ public class Image1Test extends AbstractJasperTest {
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.setWhenNoDataType(WhenNoDataType.ALL_SECTIONS_NO_DETAIL)
-				.setImageStyle(stl.style().setImageScale(ImageScale.CLIP))
-				.title(cmp.image(image = new TestImage()), cmp.image(Image1Test.class.getResource("noimage")));
+			.setImageStyle(stl.style().setImageScale(ImageScale.CLIP))
+			.title(cmp.image(image = new TestImage()), cmp.image(Image1Test.class.getResource("noimage")));
 	}
 
 	@Override
@@ -68,8 +68,7 @@ public class Image1Test extends AbstractJasperTest {
 		try {
 			byte[] imageData = JRImageLoader.getInstance(DefaultJasperReportsContext.getInstance()).loadBytesFromAwtImage(image, ImageTypeEnum.JPEG);
 			JRPrintImage jrImage = (JRPrintImage) getElementAt("title.image1", 0);
-			Assert.assertTrue("image data",
-					Arrays.equals(imageData, ((SimpleDataRenderer) jrImage.getRenderer()).getData(DefaultJasperReportsContext.getInstance())));
+			Assert.assertTrue("image data", Arrays.equals(imageData, ((SimpleDataRenderer) jrImage.getRenderer()).getData(DefaultJasperReportsContext.getInstance())));
 			Assert.assertEquals("scale image", ScaleImageEnum.CLIP, jrImage.getScaleImageValue());
 		} catch (JRException e) {
 			e.printStackTrace();

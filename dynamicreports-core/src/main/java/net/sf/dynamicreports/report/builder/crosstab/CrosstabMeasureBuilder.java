@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -59,10 +59,12 @@ public class CrosstabMeasureBuilder<T> extends AbstractBuilder<CrosstabMeasureBu
 		super(new DRCrosstabMeasure<T>(Crosstabs.variable(column, calculation).build()));
 		if (calculation.equals(Calculation.COUNT) || calculation.equals(Calculation.DISTINCT_COUNT)) {
 			setDataType(DataTypes.longType());
-		} else if (calculation.equals(Calculation.AVERAGE) || calculation.equals(Calculation.STANDARD_DEVIATION) ||
+		}
+		else if (calculation.equals(Calculation.AVERAGE) || calculation.equals(Calculation.STANDARD_DEVIATION) ||
 				calculation.equals(Calculation.VARIANCE)) {
 			setDataType(DataTypes.doubleType());
-		} else {
+		}
+		else {
 			DRITextField<?> columnComponent = column.getColumn().getComponent();
 			setDataType(columnComponent.getDataType());
 			setPattern(columnComponent.getPattern());
@@ -73,10 +75,12 @@ public class CrosstabMeasureBuilder<T> extends AbstractBuilder<CrosstabMeasureBu
 		super(new DRCrosstabMeasure<T>(Crosstabs.variable(field, calculation).build()));
 		if (calculation.equals(Calculation.COUNT) || calculation.equals(Calculation.DISTINCT_COUNT)) {
 			setDataType(DataTypes.longType());
-		} else if (calculation.equals(Calculation.AVERAGE) || calculation.equals(Calculation.STANDARD_DEVIATION) ||
+		}
+		else if (calculation.equals(Calculation.AVERAGE) || calculation.equals(Calculation.STANDARD_DEVIATION) ||
 				calculation.equals(Calculation.VARIANCE)) {
 			setDataType(DataTypes.doubleType());
-		} else {
+		}
+		else {
 			setDataType(field.getField().getDataType());
 		}
 	}
@@ -85,10 +89,12 @@ public class CrosstabMeasureBuilder<T> extends AbstractBuilder<CrosstabMeasureBu
 		super(new DRCrosstabMeasure<T>(Crosstabs.variable(expression, calculation).build()));
 		if (calculation.equals(Calculation.COUNT) || calculation.equals(Calculation.DISTINCT_COUNT)) {
 			setDataType(DataTypes.longType());
-		} else if (calculation.equals(Calculation.AVERAGE) || calculation.equals(Calculation.STANDARD_DEVIATION) ||
+		}
+		else if (calculation.equals(Calculation.AVERAGE) || calculation.equals(Calculation.STANDARD_DEVIATION) ||
 				calculation.equals(Calculation.VARIANCE)) {
 			setDataType(DataTypes.doubleType());
-		} else if (expression instanceof DRIField) {
+		}
+		else if (expression instanceof DRIField) {
 			setDataType(((DRIField<?>) expression).getDataType());
 		}
 	}
@@ -111,7 +117,8 @@ public class CrosstabMeasureBuilder<T> extends AbstractBuilder<CrosstabMeasureBu
 				setDataType(DataTypes.doubleType());
 			}
 			variable.setPercentageType(percentageType);
-		} else {
+		}
+		else {
 			throw new DRReportException("Percentage is not supported in this type of measure");
 		}
 		return this;
@@ -129,7 +136,8 @@ public class CrosstabMeasureBuilder<T> extends AbstractBuilder<CrosstabMeasureBu
 	public CrosstabMeasureBuilder<T> setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
 		if (horizontalAlignment != null) {
 			getObject().setHorizontalTextAlignment(HorizontalTextAlignment.valueOf(horizontalAlignment.name()));
-		} else {
+		}
+		else {
 			getObject().setHorizontalTextAlignment(null);
 		}
 		return this;
@@ -153,14 +161,14 @@ public class CrosstabMeasureBuilder<T> extends AbstractBuilder<CrosstabMeasureBu
 	/**
 	 * Sets the crosstab measure hyperlink.
 	 *
-	 * @param hyperLink
-	 *          the measure hyperlink
+	 * @param hyperLink the measure hyperlink
 	 * @return a crosstab measure builder
 	 */
 	public CrosstabMeasureBuilder<T> setHyperLink(HyperLinkBuilder hyperLink) {
 		if (hyperLink != null) {
 			getObject().setHyperLink(hyperLink.getHyperLink());
-		} else {
+		}
+		else {
 			getObject().setHyperLink(null);
 		}
 		return this;
@@ -169,8 +177,7 @@ public class CrosstabMeasureBuilder<T> extends AbstractBuilder<CrosstabMeasureBu
 	/**
 	 * Adds a jasper property to the measure.
 	 *
-	 * @param propertyExpression
-	 *          the property expression
+	 * @param propertyExpression the property expression
 	 * @return a crosstab measure builder
 	 */
 	public CrosstabMeasureBuilder<T> addProperty(DRIPropertyExpression propertyExpression) {
@@ -181,10 +188,8 @@ public class CrosstabMeasureBuilder<T> extends AbstractBuilder<CrosstabMeasureBu
 	/**
 	 * Adds a jasper property to the measure.
 	 *
-	 * @param name
-	 *          the property name
-	 * @param valueExpression
-	 *          the property value expression
+	 * @param name the property name
+	 * @param valueExpression the property value expression
 	 * @return a crosstab measure builder
 	 */
 	public CrosstabMeasureBuilder<T> addProperty(String name, DRIExpression<String> valueExpression) {
@@ -195,10 +200,8 @@ public class CrosstabMeasureBuilder<T> extends AbstractBuilder<CrosstabMeasureBu
 	/**
 	 * Adds a jasper property to the measure.
 	 *
-	 * @param name
-	 *          the property name
-	 * @param value
-	 *          the property value
+	 * @param name the property name
+	 * @param value the property value
 	 * @return a crosstab measure builder
 	 */
 	public CrosstabMeasureBuilder<T> addProperty(String name, String value) {
@@ -247,7 +250,8 @@ public class CrosstabMeasureBuilder<T> extends AbstractBuilder<CrosstabMeasureBu
 	public CrosstabMeasureBuilder<T> setTitleStyle(ReportStyleBuilder titleStyle) {
 		if (titleStyle != null) {
 			getObject().setTitleStyle(titleStyle.getStyle());
-		} else {
+		}
+		else {
 			getObject().setTitleStyle(null);
 		}
 		return this;

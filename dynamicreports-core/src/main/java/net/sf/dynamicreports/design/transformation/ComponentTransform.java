@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -131,9 +131,8 @@ public class ComponentTransform {
 		this.accessor = accessor;
 	}
 
-	// component
-	protected DRDesignComponent component(DRIComponent component, DefaultStyleType defaultStyleType, ResetType resetType, DRDesignGroup resetGroup)
-			throws DRException {
+	//component
+	protected DRDesignComponent component(DRIComponent component, DefaultStyleType defaultStyleType, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		if (component instanceof DRITextField<?>) {
 			return textField((DRITextField<?>) component, defaultStyleType);
 		}
@@ -206,8 +205,7 @@ public class ComponentTransform {
 		throw new DRDesignReportException("Component " + component.getClass().getName() + " not supported");
 	}
 
-	private void component(DRDesignComponent designComponent, DRIComponent component, DRIReportStyle style, boolean textStyle, DefaultStyleType defaultStyleType)
-			throws DRException {
+	private void component(DRDesignComponent designComponent, DRIComponent component, DRIReportStyle style, boolean textStyle, DefaultStyleType defaultStyleType) throws DRException {
 		designComponent.setStyle(accessor.getStyleTransform().transformStyle(style, textStyle, defaultStyleType));
 		designComponent.setPrintWhenExpression(accessor.getExpressionTransform().transformExpression(component.getPrintWhenExpression()));
 		designComponent.setRemoveLineWhenBlank(accessor.getTemplateTransform().getRemoveLineWhenBlank(component));
@@ -233,8 +231,7 @@ public class ComponentTransform {
 		}
 	}
 
-	private void hyperlink(DRDesignHyperlinkComponent designHyperlinkComponent, DRIHyperLinkComponent hyperlinkComponent, DRIReportStyle style, boolean textStyle,
-			DefaultStyleType defaultStyleType) throws DRException {
+	private void hyperlink(DRDesignHyperlinkComponent designHyperlinkComponent, DRIHyperLinkComponent hyperlinkComponent, DRIReportStyle style, boolean textStyle, DefaultStyleType defaultStyleType) throws DRException {
 		component(designHyperlinkComponent, hyperlinkComponent, style, textStyle, defaultStyleType);
 
 		if (hyperlinkComponent.getAnchorNameExpression() != null) {
@@ -251,7 +248,7 @@ public class ComponentTransform {
 		}
 	}
 
-	// list
+	//list
 	protected DRDesignList list(DRIList list, DefaultStyleType defaultStyleType, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		DRDesignList designList = new DRDesignList();
 		component(designList, list, list.getStyle(), false, DefaultStyleType.NONE);
@@ -297,41 +294,38 @@ public class ComponentTransform {
 		return designList;
 	}
 
-	protected DRDesignComponent listBackgroundComponent(DRIComponent backgroundComponent, DefaultStyleType defaultStyleType, ResetType resetType,
-			DRDesignGroup resetGroup) throws DRException {
+	protected DRDesignComponent listBackgroundComponent(DRIComponent backgroundComponent, DefaultStyleType defaultStyleType, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		if (backgroundComponent != null) {
 			if (backgroundComponent instanceof DRIRectangle ||
 					backgroundComponent instanceof DRIImage ||
 					backgroundComponent instanceof DRITextField) {
 				return component(backgroundComponent, defaultStyleType, resetType, resetGroup);
-			} else {
+			}
+			else {
 				throw new DRDesignReportException("List background component not supported. Only rectangle, image and textfield are supported");
 			}
 		}
 		return null;
 	}
 
-	// multi page list
+	//multi page list
 	private DRDesignSubreport multiPageList(DRIMultiPageList multiPageList) throws DRException {
 		DRDesignSubreport designSubreport = new DRDesignSubreport();
 		component(designSubreport, multiPageList, multiPageList.getStyle(), false, DefaultStyleType.NONE);
 		designSubreport.setWidth(accessor.getTemplateTransform().getMultiPageListWidth(multiPageList));
 		designSubreport.setHeight(accessor.getTemplateTransform().getMultiPageListHeight(multiPageList));
-		JasperReportBuilder multiPageReport = DynamicReports.report();
-		MultiPageListSubreportExpression subreportExpression = new MultiPageListSubreportExpression(accessor.getLocale(), accessor.getResourceBundle(),
-				accessor.getResourceBundleName(), accessor.getWhenResourceMissingType(), multiPageList.getComponents(),
-				accessor.getTemplateTransform().getTemplateStyles());
-		multiPageReport.detail(Components.subreport(subreportExpression));
-		multiPageReport.setDetailSplitType(multiPageList.getSplitType());
-		DRIDesignExpression reportExpression = accessor.getExpressionTransform().transformExpression(Expressions.value(multiPageReport));
-		DRIDesignExpression dataSourceExpression = accessor.getExpressionTransform()
-				.transformExpression(new MultiPageListDataSourceExpression(multiPageList.getComponents().size()));
-		designSubreport.setReportExpression(reportExpression);
-		designSubreport.setDataSourceExpression(dataSourceExpression);
+    JasperReportBuilder multiPageReport = DynamicReports.report();
+    MultiPageListSubreportExpression subreportExpression = new MultiPageListSubreportExpression(accessor.getLocale(), accessor.getResourceBundle(), accessor.getResourceBundleName(), accessor.getWhenResourceMissingType(), multiPageList.getComponents(), accessor.getTemplateTransform().getTemplateStyles());
+    multiPageReport.detail(Components.subreport(subreportExpression));
+    multiPageReport.setDetailSplitType(multiPageList.getSplitType());
+    DRIDesignExpression reportExpression = accessor.getExpressionTransform().transformExpression(Expressions.value(multiPageReport));
+    DRIDesignExpression dataSourceExpression = accessor.getExpressionTransform().transformExpression(new MultiPageListDataSourceExpression(multiPageList.getComponents().size()));
+    designSubreport.setReportExpression(reportExpression);
+    designSubreport.setDataSourceExpression(dataSourceExpression);
 		return designSubreport;
 	}
 
-	// text field
+	//text field
 	protected DRDesignTextField textField(DRITextField<?> textField, DefaultStyleType defaultStyleType) throws DRException {
 		DRDesignTextField designTextField = new DRDesignTextField();
 		hyperlink(designTextField, textField, textField.getStyle(), true, defaultStyleType);
@@ -344,14 +338,13 @@ public class ComponentTransform {
 		designTextField.setPattern(templateTransform.getTextFieldPattern(textField, style));
 		designTextField.setPatternExpression(accessor.getExpressionTransform().transformExpression(textField.getPatternExpression()));
 		designTextField.setHorizontalTextAlignment(templateTransform.getTextFieldHorizontalTextAlignment(textField, style));
-		designTextField.setValueExpression(
-				accessor.getExpressionTransform().transformExpression(textField.getValueExpression(), templateTransform.getTextFieldValueFormatter(textField), null));
+		designTextField.setValueExpression(accessor.getExpressionTransform().transformExpression(textField.getValueExpression(), templateTransform.getTextFieldValueFormatter(textField), null));
 		designTextField.setMarkup(textField.getMarkup());
 		if (textField.getEvaluationTime() != null) {
 			designTextField.setEvaluationTime(ConstantTransform.textFieldEvaluationTime(textField.getEvaluationTime(), textField.getEvaluationGroup(), accessor));
-			designTextField.setEvaluationGroup(accessor.getGroupTransform()
-					.getGroup(ConstantTransform.textFieldEvaluationGroup(textField.getEvaluationTime(), textField.getEvaluationGroup(), accessor)));
-		} else {
+			designTextField.setEvaluationGroup(accessor.getGroupTransform().getGroup(ConstantTransform.textFieldEvaluationGroup(textField.getEvaluationTime(), textField.getEvaluationGroup(), accessor)));
+		}
+		else {
 			if (textField.getEvaluationGroup() != null) {
 				throw new DRException("Evaluation group for textField is required only for evaluation time BEFORE_GROUP or GROUP");
 			}
@@ -362,7 +355,7 @@ public class ComponentTransform {
 		return designTextField;
 	}
 
-	// filler
+	//filler
 	protected DRDesignFiller filler(DRIFiller filler) throws DRException {
 		DRDesignFiller designFiller = new DRDesignFiller();
 		component(designFiller, filler, filler.getStyle(), false, DefaultStyleType.NONE);
@@ -371,7 +364,7 @@ public class ComponentTransform {
 		return designFiller;
 	}
 
-	// image
+	//image
 	private DRDesignImage image(DRIImage image) throws DRException {
 		return image(image, null, DefaultStyleType.IMAGE);
 	}
@@ -390,7 +383,7 @@ public class ComponentTransform {
 		return designImage;
 	}
 
-	// chart
+	//chart
 	private DRDesignChart chart(DRIChart chart, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		DRDesignChart designChart = accessor.getChartTransform().transform(chart, resetType, resetGroup);
 		hyperlink(designChart, chart, chart.getStyle(), false, DefaultStyleType.CHART);
@@ -399,7 +392,7 @@ public class ComponentTransform {
 		return designChart;
 	}
 
-	// barcode
+	//barcode
 	private DRDesignBarcode barcode(DRIBarcode barcode, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		DRDesignBarcode designBarcode = accessor.getBarcodeTransform().transform(barcode);
 		component(designBarcode, barcode, barcode.getStyle(), false, DefaultStyleType.BARCODE);
@@ -408,7 +401,7 @@ public class ComponentTransform {
 		return designBarcode;
 	}
 
-	// barbecue
+	//barbecue
 	private DRDesignBarbecue barbecue(DRIBarbecue barbecue, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		DRDesignBarbecue designBarbecue = accessor.getBarcodeTransform().transform(barbecue);
 		component(designBarbecue, barbecue, barbecue.getStyle(), false, DefaultStyleType.BARCODE);
@@ -417,7 +410,7 @@ public class ComponentTransform {
 		return designBarbecue;
 	}
 
-	// subreport
+	//subreport
 	private DRDesignSubreport subreport(DRISubreport subreport) throws DRException {
 		DRDesignSubreport designSubreport = new DRDesignSubreport();
 		component(designSubreport, subreport, subreport.getStyle(), false, DefaultStyleType.NONE);
@@ -431,7 +424,7 @@ public class ComponentTransform {
 		return designSubreport;
 	}
 
-	// page x of y
+	//page x of y
 	private DRDesignList pageXofY(DRIPageXofY pageXofY, DefaultStyleType defaultStyleType) throws DRException {
 		TemplateTransform templateTransform = accessor.getTemplateTransform();
 		DRIReportStyle pageXofYStyle = pageXofY.getStyle();
@@ -477,41 +470,42 @@ public class ComponentTransform {
 		DRIGroup pageYEvaluationGroup = accessor.getGroupTransform().getFirstResetPageNumberGroup();
 		if (pageYEvaluationGroup == null) {
 			pageYField.setEvaluationTime(Evaluation.REPORT);
-		} else {
+		}
+		else {
 			pageYField.setEvaluationTime(Evaluation.GROUP);
 			pageYField.setEvaluationGroup((DRGroup) pageYEvaluationGroup);
 		}
 
 		int pageXofYWidth = templateTransform.getPageXofYWidth(pageXofY);
 		switch (horizontalTextAlignment) {
-			case LEFT:
-				int pageXWidth = StyleResolver.getFontWidth(style, 4);
-				int pageYWidth = pageXofYWidth - pageXWidth;
-				if (pageYWidth <= 0) {
-					pageYWidth = 10;
-				}
-				pageXField.setWidth(pageXWidth);
-				pageXField.setWidthType(ComponentDimensionType.FIXED);
-				pageYField.setWidth(pageYWidth);
-				pageYField.setWidthType(pageXofY.getWidthType());
-				break;
-			case RIGHT:
-				pageYWidth = StyleResolver.getFontWidth(style, 6);
-				pageXWidth = pageXofYWidth - pageYWidth;
-				if (pageXWidth <= 0) {
-					pageXWidth = 10;
-				}
-				pageXField.setWidth(pageXWidth);
-				pageXField.setWidthType(pageXofY.getWidthType());
-				pageYField.setWidth(pageYWidth);
-				pageYField.setWidthType(ComponentDimensionType.FIXED);
-				break;
-			default:
-				pageXField.setWidth(pageXofYWidth / 2);
-				pageXField.setWidthType(pageXofY.getWidthType());
-				pageYField.setWidth(pageXofYWidth / 2);
-				pageYField.setWidthType(pageXofY.getWidthType());
-				break;
+		case LEFT:
+			int pageXWidth = StyleResolver.getFontWidth(style, 4);
+			int pageYWidth = pageXofYWidth - pageXWidth;
+			if (pageYWidth <= 0) {
+				pageYWidth = 10;
+			}
+			pageXField.setWidth(pageXWidth);
+			pageXField.setWidthType(ComponentDimensionType.FIXED);
+			pageYField.setWidth(pageYWidth);
+			pageYField.setWidthType(pageXofY.getWidthType());
+			break;
+		case RIGHT:
+			pageYWidth = StyleResolver.getFontWidth(style, 6);
+			pageXWidth = pageXofYWidth - pageYWidth;
+			if (pageXWidth <= 0) {
+				pageXWidth = 10;
+			}
+			pageXField.setWidth(pageXWidth);
+			pageXField.setWidthType(pageXofY.getWidthType());
+			pageYField.setWidth(pageYWidth);
+			pageYField.setWidthType(ComponentDimensionType.FIXED);
+			break;
+		default:
+			pageXField.setWidth(pageXofYWidth / 2);
+			pageXField.setWidthType(pageXofY.getWidthType());
+			pageYField.setWidth(pageXofYWidth / 2);
+			pageYField.setWidthType(pageXofY.getWidthType());
+			break;
 		}
 
 		if (pageXofY.getPageXWidth() != null) {
@@ -533,14 +527,15 @@ public class ComponentTransform {
 		return list(listPageXofY, DefaultStyleType.TEXT, null, null);
 	}
 
-	// total pages
+	//total pages
 	private DRDesignTextField totalPages(DRITotalPages totalPages, DefaultStyleType defaultStyleType) throws DRException {
 		PageNumberExpression expression = new PageNumberExpression(totalPages.getFormatExpression());
 		DRTextField<String> totalPagesField = formatField(totalPages, expression);
 		DRIGroup pageEvaluationGroup = accessor.getGroupTransform().getFirstResetPageNumberGroup();
 		if (pageEvaluationGroup == null) {
 			totalPagesField.setEvaluationTime(Evaluation.REPORT);
-		} else {
+		}
+		else {
 			totalPagesField.setEvaluationTime(Evaluation.GROUP);
 			totalPagesField.setEvaluationGroup((DRGroup) pageEvaluationGroup);
 		}
@@ -548,19 +543,19 @@ public class ComponentTransform {
 		return textField(totalPagesField, defaultStyleType);
 	}
 
-	// page number
+	//page number
 	private DRDesignTextField pageNumber(DRIPageNumber pageNumber, DefaultStyleType defaultStyleType) throws DRException {
 		PageNumberExpression expression = new PageNumberExpression(pageNumber.getFormatExpression());
 		return textField(formatField(pageNumber, expression), defaultStyleType);
 	}
 
-	// current date
+	//current date
 	private DRDesignTextField currentDate(DRICurrentDate currentDate, DefaultStyleType defaultStyleType) throws DRException {
 		CurrentDateExpression expression = new CurrentDateExpression(currentDate.getFormatExpression(), currentDate.getPattern());
 		return textField(formatField(currentDate, expression), defaultStyleType);
 	}
 
-	// format field
+	//format field
 	private DRTextField<String> formatField(DRIFormatField formatField, DRIExpression<String> expression) throws DRException {
 		DRTextField<String> formatFieldTextField = new DRTextField<String>();
 		formatFieldTextField.setAnchorNameExpression(formatField.getAnchorNameExpression());
@@ -577,7 +572,7 @@ public class ComponentTransform {
 		return formatFieldTextField;
 	}
 
-	// line
+	//line
 	protected DRDesignLine line(DRILine line) throws DRException {
 		DRDesignLine designLine = new DRDesignLine();
 		component(designLine, line, line.getStyle(), false, DefaultStyleType.NONE);
@@ -588,7 +583,7 @@ public class ComponentTransform {
 		return designLine;
 	}
 
-	// ellipse
+	//ellipse
 	protected DRDesignEllipse ellipse(DRIEllipse ellipse) throws DRException {
 		DRDesignEllipse designEllipse = new DRDesignEllipse();
 		component(designEllipse, ellipse, ellipse.getStyle(), false, DefaultStyleType.NONE);
@@ -598,7 +593,7 @@ public class ComponentTransform {
 		return designEllipse;
 	}
 
-	// rectangle
+	//rectangle
 	protected DRDesignRectangle rectangle(DRIRectangle rectangle) throws DRException {
 		DRDesignRectangle designRectangle = new DRDesignRectangle();
 		component(designRectangle, rectangle, rectangle.getStyle(), false, DefaultStyleType.NONE);
@@ -609,49 +604,48 @@ public class ComponentTransform {
 		return designRectangle;
 	}
 
-	// boolean
-	protected DRDesignComponent booleanField(DRIBooleanField booleanField, DefaultStyleType defaultStyleType, ResetType resetType, DRDesignGroup resetGroup)
-			throws DRException {
+	//boolean
+	protected DRDesignComponent booleanField(DRIBooleanField booleanField, DefaultStyleType defaultStyleType, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		BooleanComponentType componentType = accessor.getTemplateTransform().getBooleanComponentType(booleanField);
-		boolean emptyWhenNullValue = accessor.getTemplateTransform().getBooleanEmptyWhenNullValue(booleanField);
-		;
+		boolean emptyWhenNullValue = accessor.getTemplateTransform().getBooleanEmptyWhenNullValue(booleanField);;
 		DRHyperLinkComponent component = null;
 
 		switch (componentType) {
-			case TEXT_TRUE_FALSE:
-			case TEXT_YES_NO:
-				String keyTrue;
-				String keyFalse;
-				if (componentType.equals(BooleanComponentType.TEXT_TRUE_FALSE)) {
-					keyTrue = "true";
-					keyFalse = "false";
-				} else {
-					keyTrue = "yes";
-					keyFalse = "no";
-				}
-				DRTextField<Boolean> textField = new DRTextField<Boolean>();
-				textField.setValueExpression(booleanField.getValueExpression());
-				textField.setDataType(DataTypes.booleanType());
-				textField.setHorizontalTextAlignment(booleanField.getHorizontalTextAlignment());
-				textField.setValueFormatter(new BooleanTextValueFormatter(keyTrue, keyFalse, emptyWhenNullValue));
-				component = textField;
-				break;
-			case IMAGE_STYLE_1:
-			case IMAGE_STYLE_2:
-			case IMAGE_STYLE_3:
-			case IMAGE_STYLE_4:
-			case IMAGE_CHECKBOX_1:
-			case IMAGE_CHECKBOX_2:
-			case IMAGE_BALL:
-				DRImage image = new DRImage();
-				image.setImageScale(ImageScale.CLIP);
-				int width = accessor.getTemplateTransform().getBooleanImageWidth(booleanField);
-				int height = accessor.getTemplateTransform().getBooleanImageHeight(booleanField);
-				image.setImageExpression(new BooleanImageExpression(booleanField, emptyWhenNullValue, width, height));
-				component = image;
-				break;
-			default:
-				throw new DRDesignReportException("Boolean component type " + componentType.name() + " not supported");
+		case TEXT_TRUE_FALSE:
+		case TEXT_YES_NO:
+			String keyTrue;
+			String keyFalse;
+			if (componentType.equals(BooleanComponentType.TEXT_TRUE_FALSE)) {
+				keyTrue = "true";
+				keyFalse = "false";
+			}
+			else {
+				keyTrue = "yes";
+				keyFalse = "no";
+			}
+			DRTextField<Boolean> textField = new DRTextField<Boolean>();
+			textField.setValueExpression(booleanField.getValueExpression());
+			textField.setDataType(DataTypes.booleanType());
+			textField.setHorizontalTextAlignment(booleanField.getHorizontalTextAlignment());
+			textField.setValueFormatter(new BooleanTextValueFormatter(keyTrue, keyFalse, emptyWhenNullValue));
+			component = textField;
+			break;
+		case IMAGE_STYLE_1:
+		case IMAGE_STYLE_2:
+		case IMAGE_STYLE_3:
+		case IMAGE_STYLE_4:
+		case IMAGE_CHECKBOX_1:
+		case IMAGE_CHECKBOX_2:
+		case IMAGE_BALL:
+			DRImage image = new DRImage();
+			image.setImageScale(ImageScale.CLIP);
+			int width = accessor.getTemplateTransform().getBooleanImageWidth(booleanField);
+			int height = accessor.getTemplateTransform().getBooleanImageHeight(booleanField);
+			image.setImageExpression(new BooleanImageExpression(booleanField, emptyWhenNullValue, width, height));
+			component = image;
+			break;
+		default:
+			throw new DRDesignReportException("Boolean component type " + componentType.name() + " not supported");
 		}
 
 		component.setWidth(booleanField.getWidth());
@@ -670,15 +664,15 @@ public class ComponentTransform {
 			int imageHeight = accessor.getTemplateTransform().getBooleanImageHeight(booleanField);
 			designComponent = image((DRIImage) component, imageHeight, defaultStyleType);
 			TemplateTransform templateTransform = accessor.getTemplateTransform();
-			((DRDesignImage) designComponent)
-					.setHorizontalImageAlignment(templateTransform.getBooleanHorizontalImageAlignment(booleanField, designComponent.getStyle()));
-		} else {
+			((DRDesignImage) designComponent).setHorizontalImageAlignment(templateTransform.getBooleanHorizontalImageAlignment(booleanField, designComponent.getStyle()));
+		}
+		else {
 			designComponent = component(component, defaultStyleType, resetType, resetGroup);
 		}
 		return designComponent;
 	}
 
-	// break
+	//break
 	protected DRDesignBreak breakComponent(DRIBreak breakComponent) throws DRException {
 		DRDesignBreak designBreak = new DRDesignBreak();
 		component(designBreak, breakComponent, null, false, DefaultStyleType.NONE);
@@ -688,7 +682,7 @@ public class ComponentTransform {
 		return designBreak;
 	}
 
-	// generic element
+	//generic element
 	protected DRDesignGenericElement genericElement(DRIGenericElement genericElement, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		DRDesignGenericElement designGenericElement = new DRDesignGenericElement();
 		component(designGenericElement, genericElement, genericElement.getStyle(), false, DefaultStyleType.NONE);
@@ -704,14 +698,14 @@ public class ComponentTransform {
 		return designGenericElement;
 	}
 
-	// crosstab
+	//crosstab
 	private DRDesignCrosstab crosstab(DRICrosstab crosstab, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		DRDesignCrosstab designCrosstab = accessor.getCrosstabTransform().transform(crosstab, resetType, resetGroup);
 		component(designCrosstab, crosstab, crosstab.getStyle(), false, DefaultStyleType.NONE);
 		return designCrosstab;
 	}
 
-	// map
+	//map
 	private DRDesignMap map(DRIMap map, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		DRDesignMap designMap = new DRDesignMap();
 		component(designMap, map, map.getStyle(), false, DefaultStyleType.NONE);
@@ -725,7 +719,7 @@ public class ComponentTransform {
 		return designMap;
 	}
 
-	// custom component
+	//custom component
 	private DRDesignComponent customComponent(DRICustomComponent component, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		@SuppressWarnings("rawtypes")
 		CustomComponentTransform componentTransfom = CustomComponents.getComponentTransform(component);
@@ -769,18 +763,18 @@ public class ComponentTransform {
 		}
 
 		switch (resetType) {
-			case NONE:
-				return EvaluationTime.NOW;
-			case REPORT:
-				return EvaluationTime.REPORT;
-			case PAGE:
-				return EvaluationTime.PAGE;
-			case COLUMN:
-				return EvaluationTime.COLUMN;
-			case GROUP:
-				return EvaluationTime.GROUP;
-			default:
-				throw new DRDesignReportException("Reset type " + resetType.name() + " not supported");
+		case NONE:
+			return EvaluationTime.NOW;
+		case REPORT:
+			return EvaluationTime.REPORT;
+		case PAGE:
+			return EvaluationTime.PAGE;
+		case COLUMN:
+			return EvaluationTime.COLUMN;
+		case GROUP:
+			return EvaluationTime.GROUP;
+		default:
+			throw new DRDesignReportException("Reset type " + resetType.name() + " not supported");
 		}
 	}
 
@@ -790,7 +784,8 @@ public class ComponentTransform {
 			EvaluationTime evalTime = detectEvaluationTime(expression);
 			if (evaluationTime == null) {
 				evaluationTime = evalTime;
-			} else if (evaluationTime != evalTime || evaluationTime.equals(EvaluationTime.GROUP) && evalTime.equals(EvaluationTime.GROUP)) {
+			}
+			else if (evaluationTime != evalTime || evaluationTime.equals(EvaluationTime.GROUP) && evalTime.equals(EvaluationTime.GROUP)) {
 				return EvaluationTime.AUTO;
 			}
 		}
@@ -827,7 +822,8 @@ public class ComponentTransform {
 			DRDesignGroup group = detectEvaluationGroup(expression);
 			if (evaluationGroup == null) {
 				evaluationGroup = group;
-			} else if (evaluationGroup != group) {
+			}
+			else if (evaluationGroup != group) {
 				throw new DRDesignReportException("Can not detect evaluation group");
 			}
 		}

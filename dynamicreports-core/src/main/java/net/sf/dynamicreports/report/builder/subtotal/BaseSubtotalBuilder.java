@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -75,7 +75,8 @@ public abstract class BaseSubtotalBuilder<T extends BaseSubtotalBuilder<T, U>, U
 	public T setLabelStyle(ReportStyleBuilder labelStyle) {
 		if (labelStyle != null) {
 			getObject().setLabelStyle(labelStyle.getStyle());
-		} else {
+		}
+		else {
 			getObject().setLabelStyle(null);
 		}
 		return (T) this;
@@ -86,47 +87,38 @@ public abstract class BaseSubtotalBuilder<T extends BaseSubtotalBuilder<T, U>, U
 		return (T) this;
 	}
 
-	/**
-	 * Sets the label component preferred width.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param width
-	 *          the label component preferred width >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>width</code> is < 0
-	 */
+  /**
+   * Sets the label component preferred width.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param width the label component preferred width >= 0
+   * @exception IllegalArgumentException if <code>width</code> is < 0
+   */
 	public T setLabelWidth(Integer width) {
 		getObject().setLabelWidth(width);
 		return (T) this;
 	}
 
-	/**
-	 * Sets the label component fixed width.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param width
-	 *          the label component fixed width >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>width</code> is < 0
-	 */
+  /**
+   * Sets the label component fixed width.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param width the label component fixed width >= 0
+   * @exception IllegalArgumentException if <code>width</code> is < 0
+   */
 	public T setLabelFixedWidth(Integer width) {
 		getObject().setLabelWidth(width);
 		getObject().setLabelWidthType(ComponentDimensionType.FIXED);
 		return (T) this;
 	}
 
-	/**
-	 * Sets the label component minimum width.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param width
-	 *          the label component minimum width >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>width</code> is < 0
-	 */
+  /**
+   * Sets the label component minimum width.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param width the label component minimum width >= 0
+   * @exception IllegalArgumentException if <code>width</code> is < 0
+   */
 	public T setLabelMinWidth(Integer width) {
 		getObject().setLabelWidth(width);
 		getObject().setLabelWidthType(ComponentDimensionType.EXPAND);
@@ -172,7 +164,8 @@ public abstract class BaseSubtotalBuilder<T extends BaseSubtotalBuilder<T, U>, U
 	public T setHyperLink(HyperLinkBuilder hyperLink) {
 		if (hyperLink != null) {
 			getObject().getValueField().setHyperLink(hyperLink.getHyperLink());
-		} else {
+		}
+		else {
 			getObject().getValueField().setHyperLink(null);
 		}
 		return (T) this;
@@ -215,7 +208,8 @@ public abstract class BaseSubtotalBuilder<T extends BaseSubtotalBuilder<T, U>, U
 	public T setStyle(ReportStyleBuilder style) {
 		if (style != null) {
 			getObject().getValueField().setStyle(style.getStyle());
-		} else {
+		}
+		else {
 			getObject().getValueField().setStyle(null);
 		}
 		return (T) this;
@@ -229,7 +223,8 @@ public abstract class BaseSubtotalBuilder<T extends BaseSubtotalBuilder<T, U>, U
 	public T setGroup(GroupBuilder<?> group) {
 		if (group != null) {
 			getObject().setGroup(group.getGroup());
-		} else {
+		}
+		else {
 			getObject().setGroup(null);
 		}
 		return (T) this;

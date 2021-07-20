@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -82,7 +82,7 @@ public class Default {
 	private RunDirection columnDirection;
 	private String language;
 	private boolean useFieldNameAsDescription;
-	// style
+	//style
 	private boolean highlightDetailOddRows;
 	private DRSimpleStyle detailOddRowStyle;
 	private boolean highlightDetailEvenRows;
@@ -96,7 +96,7 @@ public class Default {
 	private DRStyle imageStyle;
 	private DRStyle chartStyle;
 	private DRStyle barcodeStyle;
-	// page
+	//page
 	private int pageWidth;
 	private int pageHeight;
 	private PageOrientation pageOrientation;
@@ -105,14 +105,14 @@ public class Default {
 	private int pageColumnsPerPage;
 	private int pageColumnSpace;
 	private boolean ignorePageWidth;
-	// column
+	//column
 	private boolean columnPrintRepeatedDetailValues;
 	private int columnWidth;
-	// component
+	//component
 	private boolean removeLineWhenBlank;
 	private boolean printInFirstWholeBand;
 	private boolean printWhenDetailOverflows;
-	// group
+	//group
 	private GroupHeaderLayout groupHeaderLayout;
 	private boolean groupHideColumn;
 	private boolean groupShowColumnHeaderAndFooter;
@@ -126,55 +126,55 @@ public class Default {
 	private boolean groupKeepTogether;
 	private boolean groupHeaderWithSubtotal;
 	private boolean groupByDataType;
-	// subtotal
+	//subtotal
 	private Position subtotalLabelPosition;
-	// table of contents
+	//table of contents
 	private boolean tableOfContents;
 	private DRITableOfContentsCustomizer tableOfContentsCustomizer;
 	private boolean addGroupToTableOfContents;
 	private TableOfContentsPosition tableOfContentsPosition;
-	// text field
+	//text field
 	private int textFieldWidth;
 	private boolean textFieldPrintRepeatedValues;
 	private boolean textFieldStretchWithOverflow;
-	// image
+	//image
 	private int imageWidth;
 	private int imageHeight;
-	// filler
+	//filler
 	private int fillerWidth;
 	private int fillerHeight;
-	// line
+	//line
 	private int lineWidth;
 	private int lineHeight;
-	// ellipse
+	//ellipse
 	private int ellipseWidth;
 	private int ellipseHeight;
-	// rectangle
+	//rectangle
 	private Integer rectangleRadius;
 	private int rectangleWidth;
 	private int rectangleHeight;
-	// map
+	//map
 	private int mapWidth;
 	private int mapHeight;
-	// custom component
+	//custom component
 	private int customComponentWidth;
 	private int customComponentHeight;
-	// break
+	//break
 	private int breakWidth;
 	private int breakHeight;
-	// generic element
+	//generic element
 	private int genericElementWidth;
 	private int genericElementHeight;
-	// list
+	//list
 	private Integer listWidth;
 	private Integer listHeight;
 	private int listgap;
 	private HorizontalCellComponentAlignment horizontalCellComponentAlignment;
 	private VerticalCellComponentAlignment verticalCellComponentAlignment;
-	// multi page list
+	//multi page list
 	private int multiPageListWidth;
 	private int multiPageListHeight;
-	// chart
+	//chart
 	private int chartWidth;
 	private int chartHeight;
 	private List<Color> chartSeriesColors;
@@ -184,13 +184,13 @@ public class Default {
 	private TimePeriod chartTimeSeriesDatasetTimePeriodType;
 	private ValueLocation chartThermometerPlotValueLocation;
 	private String chartTheme;
-	// barcode
+	//barcode
 	private int barcodeWidth;
 	private int barcodeHeight;
-	// subreport
+	//subreport
 	private int subreportWidth;
 	private int subreportHeight;
-	// crosstab
+	//crosstab
 	private int crosstabWidth;
 	private int crosstabHeight;
 	private CrosstabTotalPosition crosstabColumnGroupTotalPosition;
@@ -210,14 +210,14 @@ public class Default {
 	private DRStyle crosstabCellStyle;
 	private DRStyle crosstabMeasureTitleStyle;
 	private CrosstabPercentageType crosstabPercentageType;
-	// boolean
+	//boolean
 	private BooleanComponentType booleanComponentType;
 	private boolean booleanEmptyWhenNullValue;
 	private int booleanImageWidth;
 	private int booleanImageHeight;
 	private DRStyle booleanColumnStyle;
 	private HorizontalImageAlignment booleanHorizontalImageAlignment;
-	// split
+	//split
 	private SplitType defaultSplitType;
 	private SplitType titleSplitType;
 	private SplitType pageHeaderSplitType;
@@ -233,39 +233,39 @@ public class Default {
 	private SplitType summarySplitType;
 	private SplitType noDataSplitType;
 	private SplitType backgroundSplitType;
-	// band style
+	//band style
 	private DRIStyle bandStyle;
-	// band background component
+	//band background component
 	private DRIComponent bandBackgroundComponent;
-	// font
-	private DRFont font;
-	// datatype
-	private DRDataType<Number, BigDecimal> bigDecimalType;
-	private DRDataType<Number, BigInteger> bigIntegerType;
-	private DRDataType<Number, Byte> byteType;
-	private DRDataType<Number, Double> doubleType;
-	private DRDataType<Number, Float> floatType;
-	private DRDataType<Number, Integer> integerType;
-	private DRDataType<Number, Long> longType;
-	private DRDataType<Number, Short> shortType;
-	private DRDataType<Date, Date> dateType;
-	private DRDataType<Date, Date> dateYearToMonthType;
-	private DRDataType<Date, Date> dateYearToHourType;
-	private DRDataType<Date, Date> dateYearToMinuteType;
-	private DRDataType<Date, Date> dateYearToSecondType;
-	private DRDataType<Date, Date> dateYearToFractionType;
-	private DRDataType<Date, Date> dateYearType;
-	private DRDataType<Date, Date> dateMonthType;
-	private DRDataType<Date, Date> dateDayType;
-	private DRDataType<Date, Date> timeHourToMinuteType;
-	private DRDataType<Date, Date> timeHourToSecondType;
-	private DRDataType<Date, Date> timeHourToFractionType;
-	private DRDataType<Number, Double> percentageType;
-	private DRDataType<Boolean, Boolean> booleanType;
-	private DRDataType<Character, Character> characterType;
-	private DRDataType<String, String> stringType;
+	//font
+  private DRFont font;
+  //datatype
+  private DRDataType<Number, BigDecimal> bigDecimalType;
+  private DRDataType<Number, BigInteger> bigIntegerType;
+  private DRDataType<Number, Byte> byteType;
+  private DRDataType<Number, Double> doubleType;
+  private DRDataType<Number, Float> floatType;
+  private DRDataType<Number, Integer> integerType;
+  private DRDataType<Number, Long> longType;
+  private DRDataType<Number, Short> shortType;
+  private DRDataType<Date, Date> dateType;
+  private DRDataType<Date, Date> dateYearToMonthType;
+  private DRDataType<Date, Date> dateYearToHourType;
+  private DRDataType<Date, Date> dateYearToMinuteType;
+  private DRDataType<Date, Date> dateYearToSecondType;
+  private DRDataType<Date, Date> dateYearToFractionType;
+  private DRDataType<Date, Date> dateYearType;
+  private DRDataType<Date, Date> dateMonthType;
+  private DRDataType<Date, Date> dateDayType;
+  private DRDataType<Date, Date> timeHourToMinuteType;
+  private DRDataType<Date, Date> timeHourToSecondType;
+  private DRDataType<Date, Date> timeHourToFractionType;
+  private DRDataType<Number, Double> percentageType;
+  private DRDataType<Boolean, Boolean> booleanType;
+  private DRDataType<Character, Character> characterType;
+  private DRDataType<String, String> stringType;
 	private HorizontalTextAlignment pageXofYHorizontalTextAlignment;
-	// system fonts
+	//system fonts
 	private boolean loadSystemFonts;
 
 	public Default() {
@@ -277,7 +277,7 @@ public class Default {
 		this.locale = Locale.getDefault();
 		this.showColumnTitle = true;
 		this.showColumnValues = true;
-		this.ignorePagination = false;
+		this.ignorePagination =  false;
 		this.whenNoDataType = WhenNoDataType.NO_PAGES;
 		this.whenResourceMissingType = WhenResourceMissingType.NULL;
 		this.titleOnANewPage = false;
@@ -291,10 +291,10 @@ public class Default {
 
 		this.highlightDetailOddRows = false;
 		this.detailOddRowStyle = new DRSimpleStyle();
-		detailOddRowStyle.setBackgroundColor(new Color(200, 200, 200));
+		detailOddRowStyle.setBackgroundColor(new Color(200,200,200));
 		this.highlightDetailEvenRows = false;
 		this.detailEvenRowStyle = new DRSimpleStyle();
-		detailEvenRowStyle.setBackgroundColor(new Color(240, 240, 240));
+		detailEvenRowStyle.setBackgroundColor(new Color(240,240,240));
 
 		this.textStyle = new DRStyle();
 		textStyle.setForegroundColor(Color.BLACK);
@@ -418,10 +418,10 @@ public class Default {
 		this.crosstabCellMaxWidth = 150;
 		this.crosstabHighlightOddRows = false;
 		this.crosstabOddRowStyle = new DRSimpleStyle();
-		crosstabOddRowStyle.setBackgroundColor(new Color(200, 200, 200));
+		crosstabOddRowStyle.setBackgroundColor(new Color(200,200,200));
 		this.crosstabHighlightEvenRows = false;
 		this.crosstabEvenRowStyle = new DRSimpleStyle();
-		crosstabEvenRowStyle.setBackgroundColor(new Color(240, 240, 240));
+		crosstabEvenRowStyle.setBackgroundColor(new Color(240,240,240));
 		this.crosstabGroupStyle = null;
 		this.crosstabGroupTotalStyle = null;
 		this.crosstabGrandTotalStyle = null;

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,7 +49,7 @@ public class HorizontalListBuilder extends DimensionComponentBuilder<HorizontalL
 		newRow();
 	}
 
-	public HorizontalListBuilder add(ComponentBuilder<?, ?>... components) {
+	public HorizontalListBuilder add(ComponentBuilder<?, ?> ...components) {
 		Validate.notNull(components, "components must not be null");
 		Validate.noNullElements(components, "components must not contains null component");
 		for (ComponentBuilder<?, ?> component : components) {
@@ -58,7 +58,7 @@ public class HorizontalListBuilder extends DimensionComponentBuilder<HorizontalL
 		return this;
 	}
 
-	public HorizontalListBuilder add(int gap, ComponentBuilder<?, ?>... components) {
+	public HorizontalListBuilder add(int gap, ComponentBuilder<?, ?> ...components) {
 		Validate.notNull(components, "components must not be null");
 		for (ComponentBuilder<?, ?> component : components) {
 			add(Components.hListCell(Components.filler().setWidth(gap)).widthFixed());
@@ -67,7 +67,7 @@ public class HorizontalListBuilder extends DimensionComponentBuilder<HorizontalL
 		return this;
 	}
 
-	public HorizontalListBuilder add(HorizontalListCellBuilder... cells) {
+	public HorizontalListBuilder add(HorizontalListCellBuilder ...cells) {
 		Validate.notNull(cells, "cells must not be null");
 		Validate.noNullElements(cells, "cells must not contains null cell");
 		for (HorizontalListCellBuilder cell : cells) {
@@ -76,7 +76,7 @@ public class HorizontalListBuilder extends DimensionComponentBuilder<HorizontalL
 		return this;
 	}
 
-	public HorizontalListBuilder add(int gap, HorizontalListCellBuilder... cells) {
+	public HorizontalListBuilder add(int gap, HorizontalListCellBuilder ...cells) {
 		Validate.notNull(cells, "cells must not be null");
 		for (HorizontalListCellBuilder cell : cells) {
 			add(Components.hListCell(Components.filler().setWidth(gap)).widthFixed(), cell);
@@ -121,7 +121,8 @@ public class HorizontalListBuilder extends DimensionComponentBuilder<HorizontalL
 	public HorizontalListBuilder setStyle(ReportStyleBuilder style) {
 		if (style != null) {
 			row.setStyle(style.build());
-		} else {
+		}
+		else {
 			row.setStyle(null);
 		}
 		return this;
@@ -140,7 +141,8 @@ public class HorizontalListBuilder extends DimensionComponentBuilder<HorizontalL
 	public HorizontalListBuilder setBaseStyle(ReportStyleBuilder style) {
 		if (style != null) {
 			getObject().setStyle(style.build());
-		} else {
+		}
+		else {
 			getObject().setStyle(null);
 		}
 		return this;

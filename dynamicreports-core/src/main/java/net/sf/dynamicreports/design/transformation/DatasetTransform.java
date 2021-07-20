@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -29,7 +29,6 @@ import java.util.Map;
 import net.sf.dynamicreports.design.base.DRDesignDataset;
 import net.sf.dynamicreports.design.definition.DRIDesignDataset;
 import net.sf.dynamicreports.design.exception.DRDesignReportException;
-import net.sf.dynamicreports.jasper.base.JasperScriptlet;
 import net.sf.dynamicreports.report.definition.DRIDataset;
 import net.sf.dynamicreports.report.exception.DRException;
 
@@ -43,8 +42,8 @@ public class DatasetTransform {
 
 	public DatasetTransform(DesignTransformAccessor accessor) {
 		this.accessor = accessor;
-		datasets = new HashMap<>();
-		designDatasets = new HashMap<>();
+		datasets = new HashMap<String, DRIDesignDataset>();
+		designDatasets = new HashMap<DRIDataset, DRDesignDataset>();
 	}
 
 	public DRDesignDataset transform(DRIDataset dataset) throws DRException {
@@ -63,7 +62,7 @@ public class DatasetTransform {
 		}
 		designDataset.setConnectionExpression(accessor.getExpressionTransform().transformExpression(dataset.getConnectionExpression()));
 		designDataset.setDataSourceExpression(accessor.getExpressionTransform().transformExpression(dataset.getDataSourceExpression()));
-		designDataset.setFilterExpression(datasetExpressionTransform.transformExpression(dataset.getFilterExpression(), JasperScriptlet.SCRIPTLET_NAME));
+		designDataset.setFilterExpression(datasetExpressionTransform.transformExpression(dataset.getFilterExpression()));
 
 		addDataset(dataset, designDataset);
 

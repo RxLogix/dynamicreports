@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -58,18 +58,18 @@ public class CrosstabPosition5Test extends AbstractJasperCrosstabPositionTest {
 		measure2 = ctab.measure("measure2", column5, Calculation.SUM);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.headerCell(cmp.text("Header"))
-				.setCellWidth(100)
-				.rowGroups(
-						rowGroup = ctab.rowGroup(column1).setHeaderWidth(50))
-				.columnGroups(
-						columnGroup1 = ctab.columnGroup(column2),
-						columnGroup2 = ctab.columnGroup(column3))
-				.measures(
-						measure1, measure2);
+			.headerCell(cmp.text("Header"))
+			.setCellWidth(100)
+			.rowGroups(
+				rowGroup = ctab.rowGroup(column1).setHeaderWidth(50))
+			.columnGroups(
+				columnGroup1 = ctab.columnGroup(column2),
+				columnGroup2 = ctab.columnGroup(column3))
+			.measures(
+				measure1, measure2);
 
 		rb.setPageFormat(PageType.A4, PageOrientation.LANDSCAPE)
-				.summary(crosstab);
+			.summary(crosstab);
 	}
 
 	@Override
@@ -82,14 +82,14 @@ public class CrosstabPosition5Test extends AbstractJasperCrosstabPositionTest {
 
 		crosstabHeaderElementPositionTest("textField1", 0, 0, 0, 50, 48);
 
-		// column group 1
+		//column group 1
 		crosstabGroupHeaderPositionTest(columnGroup1, 0, 0, 0, 300, 16);
 		crosstabGroupTotalHeaderPositionTest(columnGroup1, 0, 0, 0, 100, 24);
 
 		crosstabGroupTitleTotalHeaderPositionTest(columnGroup1, measure1, 0, 0, 0, 50, 24);
 		crosstabGroupTitleTotalHeaderPositionTest(columnGroup1, measure2, 0, 50, 0, 50, 24);
 
-		// column group 2
+		//column group 2
 		crosstabGroupHeaderPositionTest(columnGroup2, 0, 0, 0, 100, 16);
 		crosstabGroupHeaderPositionTest(columnGroup2, 1, 0, 0, 100, 16);
 		crosstabGroupTotalHeaderPositionTest(columnGroup2, 0, 0, 0, 100, 16);
@@ -101,11 +101,11 @@ public class CrosstabPosition5Test extends AbstractJasperCrosstabPositionTest {
 		crosstabGroupTitleTotalHeaderPositionTest(columnGroup2, measure1, 0, 0, 0, 50, 16);
 		crosstabGroupTitleTotalHeaderPositionTest(columnGroup2, measure2, 0, 50, 0, 50, 16);
 
-		// row group
+		//row group
 		crosstabGroupHeaderPositionTest(rowGroup, 0, 0, 0, 50, 16);
 		crosstabGroupTotalHeaderPositionTest(rowGroup, 0, 0, 0, 50, 16);
 
-		// measures
+		//measures
 		for (int i = 0; i < 2; i++) {
 			crosstabCellPositionTest(measure1, null, null, i, 0, 0, 50, 16);
 			crosstabCellPositionTest(measure2, null, null, i, 50, 0, 50, 16);

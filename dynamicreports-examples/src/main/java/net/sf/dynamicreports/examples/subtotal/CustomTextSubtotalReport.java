@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -67,33 +67,33 @@ public class CustomTextSubtotalReport {
 		priceGrpSum.setResetType(Evaluation.FIRST_GROUP);
 
 		StyleBuilder subtotalStyle = stl.style()
-				.bold()
-				.setTopBorder(stl.pen1Point())
-				.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
+			.bold()
+			.setTopBorder(stl.pen1Point())
+			.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
 
 		TextFieldBuilder<String> summarySbt = cmp.text(new CustomTextSubtotal(quantitySum, priceSum))
-				.setStyle(subtotalStyle);
+			.setStyle(subtotalStyle);
 
 		TextFieldBuilder<String> groupSbt = cmp.text(new CustomTextSubtotal(quantityGrpSum, priceGrpSum))
-				.setStyle(subtotalStyle);
+			.setStyle(subtotalStyle);
 
 		countryGroup.footer(groupSbt);
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.variables(
-							quantitySum, priceSum, quantityGrpSum, priceGrpSum)
-					.columns(
-							countryColumn, itemColumn, quantityColumn, priceColumn)
-					.groupBy(
-							countryGroup)
-					.summary(
-							summarySbt)
-					.title(Templates.createTitleComponent("CustomTextSubtotal"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.variables(
+					quantitySum, priceSum, quantityGrpSum, priceGrpSum)
+				.columns(
+					countryColumn, itemColumn, quantityColumn, priceColumn)
+				.groupBy(
+					countryGroup)
+				.summary(
+					summarySbt)
+				.title(Templates.createTitleComponent("CustomTextSubtotal"))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
@@ -116,8 +116,8 @@ public class CustomTextSubtotalReport {
 			BigDecimal priceSumValue = reportParameters.getValue(priceSum);
 			BigDecimal unitPriceSbt = priceSumValue.divide(new BigDecimal(quantitySumValue), 2, BigDecimal.ROUND_HALF_UP);
 			return "sum(quantity) = " + type.integerType().valueToString(quantitySum, reportParameters) + ", " +
-					"sum(price) = " + type.bigDecimalType().valueToString(priceSum, reportParameters) + ", " +
-					"sum(price) / sum(quantity) = " + type.bigDecimalType().valueToString(unitPriceSbt, reportParameters.getLocale());
+				"sum(price) = " + type.bigDecimalType().valueToString(priceSum, reportParameters) + ", " +
+				"sum(price) / sum(quantity) = " + type.bigDecimalType().valueToString(unitPriceSbt, reportParameters.getLocale());
 		}
 	}
 

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -64,8 +64,7 @@ public class GeoMapTransform implements CustomComponentTransform<DRIGeoMap, DRID
 		return designGeoMap;
 	}
 
-	private DRDesignGeoMapDataset dataset(DesignTransformAccessor accessor, DRIGeoMapDataset dataset, ResetType resetType, DRDesignGroup resetGroup)
-			throws DRException {
+	private DRDesignGeoMapDataset dataset(DesignTransformAccessor accessor, DRIGeoMapDataset dataset, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		DRDesignGeoMapDataset designDataset = new DRDesignGeoMapDataset();
 
 		designDataset.setSubDataset(accessor.getDatasetTransform().transform(dataset.getSubDataset()));
@@ -75,7 +74,8 @@ public class GeoMapTransform implements CustomComponentTransform<DRIGeoMap, DRID
 		designDataset.setLabelExpression(accessor.getExpressionTransform().transformExpression(dataset.getLabelExpression()));
 		if (resetType != null && resetType.equals(ResetType.NONE)) {
 			designDataset.setResetType(ResetType.REPORT);
-		} else {
+		}
+		else {
 			designDataset.setResetType(resetType);
 		}
 		designDataset.setResetGroup(resetGroup);

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -43,55 +43,55 @@ public class ConditionsTest {
 
 	@Test
 	public void test() {
-		// equal
+		//equal
 		FieldBuilder<Integer> value = field("name", Integer.class);
 		conditionTrue("equal", cnd.equal(value, 5, 10, 20));
 		conditionFalse("equal", cnd.equal(value, 5, 20));
 
-		// unequal
+		//unequal
 		conditionFalse("unequal", cnd.unEqual(value, 5, 10, 20));
 		conditionTrue("unequal", cnd.unEqual(value, 5, 20));
 
-		// smaller
+		//smaller
 		conditionFalse("smaller", cnd.smaller(value, 5));
 		conditionFalse("smaller", cnd.smaller(value, 10));
 		conditionTrue("smaller", cnd.smaller(value, 15));
 
-		// smallerOrEquals
+		//smallerOrEquals
 		conditionFalse("smallerOrEquals", cnd.smallerOrEquals(value, 5));
 		conditionTrue("smallerOrEquals", cnd.smallerOrEquals(value, 10));
 		conditionTrue("smallerOrEquals", cnd.smallerOrEquals(value, 15));
 
-		// greater
+		//greater
 		conditionTrue("greater", cnd.greater(value, 5));
 		conditionFalse("greater", cnd.greater(value, 10));
 		conditionFalse("greater", cnd.greater(value, 15));
 
-		// greaterOrEquals
+		//greaterOrEquals
 		conditionTrue("greaterOrEquals", cnd.greaterOrEquals(value, 5));
 		conditionTrue("greaterOrEquals", cnd.greaterOrEquals(value, 10));
 		conditionFalse("greaterOrEquals", cnd.greaterOrEquals(value, 15));
 
-		// between
+		//between
 		conditionTrue("between", cnd.between(value, 5, 15));
 		conditionTrue("between", cnd.between(value, 5, 10));
 		conditionTrue("between", cnd.between(value, 10, 20));
 		conditionFalse("between", cnd.between(value, 5, 9));
 		conditionFalse("between", cnd.between(value, 11, 20));
 
-		// notBetween
+		//notBetween
 		conditionFalse("notBetween", cnd.notBetween(value, 5, 15));
 		conditionFalse("notBetween", cnd.notBetween(value, 5, 10));
 		conditionFalse("notBetween", cnd.notBetween(value, 10, 20));
 		conditionTrue("notBetween", cnd.notBetween(value, 5, 9));
 		conditionTrue("notBetween", cnd.notBetween(value, 11, 20));
 
-		// equal object
+		//equal object
 		FieldBuilder<Object> value2 = field("name", Object.class);
 		conditionTrue("equal", cnd.equal(value2, Type.A, Type.C, Type.F), Type.C);
 		conditionFalse("equal", cnd.equal(value2, Type.B, Type.C), Type.E);
 
-		// unequal object
+		//unequal object
 		conditionFalse("unequal", cnd.unEqual(value2, Type.A, Type.C, Type.F), Type.C);
 		conditionTrue("unequal", cnd.unEqual(value2, Type.B, Type.C), Type.E);
 	}
@@ -217,6 +217,11 @@ public class ConditionsTest {
 	}
 
 	private enum Type {
-		A, B, C, D, E, F
+		A,
+		B,
+		C,
+		D,
+		E,
+		F
 	}
 }

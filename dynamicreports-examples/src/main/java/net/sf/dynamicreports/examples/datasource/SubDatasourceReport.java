@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -61,46 +61,46 @@ public class SubDatasourceReport {
 		CategoryChartSerieBuilder unitPriceSerie = cht.serie(unitPriceField).setLabel("Unit price");
 
 		BarChartBuilder chart1 = cht.barChart()
-				.setDataSource(createDataSource1())
-				.setTitle("SubDatasource 1")
-				.setTitleFont(boldFont)
-				.setCategory(itemField)
-				.series(
-						quantitySerie, unitPriceSerie);
+  		.setDataSource(createDataSource1())
+  		.setTitle("SubDatasource 1")
+  		.setTitleFont(boldFont)
+  		.setCategory(itemField)
+  		.series(
+  			quantitySerie, unitPriceSerie);
 
 		BarChartBuilder chart2 = cht.barChart()
-				.setDataSource(createDataSource2())
-				.setTitle("SubDatasource 2")
-				.setTitleFont(boldFont)
-				.setCategory(itemField)
-				.series(
-						quantitySerie, unitPriceSerie);
+	  	.setDataSource(createDataSource2())
+	  	.setTitle("SubDatasource 2")
+	  	.setTitleFont(boldFont)
+	  	.setCategory(itemField)
+	  	.series(
+	  		quantitySerie, unitPriceSerie);
 
 		CrosstabRowGroupBuilder<String> rowGroup = ctab.rowGroup("state", String.class)
-				.setTotalHeader("Total for state");
+			.setTotalHeader("Total for state");
 
 		CrosstabColumnGroupBuilder<String> columnGroup = ctab.columnGroup("item", String.class);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.setDataSource(createDataSource3())
-				.headerCell(cmp.text("State / Item").setStyle(Templates.boldCenteredStyle))
-				.rowGroups(rowGroup)
-				.columnGroups(columnGroup)
-				.measures(
-						ctab.measure("Quantity", "quantity", Integer.class, Calculation.SUM),
-						ctab.measure("Unit price", "unitprice", BigDecimal.class, Calculation.SUM));
+			.setDataSource(createDataSource3())
+			.headerCell(cmp.text("State / Item").setStyle(Templates.boldCenteredStyle))
+			.rowGroups(rowGroup)
+			.columnGroups(columnGroup)
+			.measures(
+				ctab.measure("Quantity",   "quantity",  Integer.class,    Calculation.SUM),
+				ctab.measure("Unit price", "unitprice", BigDecimal.class, Calculation.SUM));
 
 		try {
 			report()
-					.setPageFormat(PageType.A4, PageOrientation.LANDSCAPE)
-					.setTemplate(Templates.reportTemplate)
-					.title(
-							Templates.createTitleComponent("SubDatasource"),
-							cmp.horizontalList(chart1, chart2),
-							cmp.text("SubDatasource 3").setStyle(Templates.bold12CenteredStyle),
-							crosstab)
-					.pageFooter(Templates.footerComponent)
-					.show();
+				.setPageFormat(PageType.A4, PageOrientation.LANDSCAPE)
+			  .setTemplate(Templates.reportTemplate)
+			  .title(
+			  	Templates.createTitleComponent("SubDatasource"),
+			  	cmp.horizontalList(chart1, chart2),
+			  	cmp.text("SubDatasource 3").setStyle(Templates.bold12CenteredStyle),
+					crosstab)
+			  .pageFooter(Templates.footerComponent)
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

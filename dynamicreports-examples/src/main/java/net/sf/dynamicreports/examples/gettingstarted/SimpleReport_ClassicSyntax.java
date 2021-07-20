@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -37,11 +37,11 @@ import net.sf.jasperreports.engine.JRDataSource;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 public class SimpleReport_ClassicSyntax {
-
+	
 	public SimpleReport_ClassicSyntax() {
 		build();
 	}
-
+	
 	private void build() {
 		try {
 			JasperReportBuilder report = DynamicReports.report();
@@ -56,7 +56,7 @@ public class SimpleReport_ClassicSyntax {
 			e.printStackTrace();
 		}
 	}
-
+	
 	private JRDataSource createDataSource() {
 		DRDataSource dataSource = new DRDataSource("item", "quantity", "unitprice");
 		dataSource.add("Notebook", 1, new BigDecimal(500));
@@ -69,7 +69,7 @@ public class SimpleReport_ClassicSyntax {
 		dataSource.add("Book", 8, new BigDecimal(9));
 		return dataSource;
 	}
-
+	
 	public static void main(String[] args) {
 		new SimpleReport_ClassicSyntax();
 	}

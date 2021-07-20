@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -39,11 +39,11 @@ public class TextField2Test extends AbstractJasperPositionTest {
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.columns(
 				column1 = col.column("test test", "field1", String.class).setFixedWidth(25)
-						.setStretchWithOverflow(false)
-						.setTitleStretchWithOverflow(false))
-				.title(
-						cmp.text("test test").setFixedWidth(25).setStretchWithOverflow(false),
-						cmp.text("test test").setFixedWidth(25));
+					.setStretchWithOverflow(false)
+					.setTitleStretchWithOverflow(false))
+			.title(
+				cmp.text("test test").setFixedWidth(25).setStretchWithOverflow(false),
+				cmp.text("test test").setFixedWidth(25));
 	}
 
 	@Override

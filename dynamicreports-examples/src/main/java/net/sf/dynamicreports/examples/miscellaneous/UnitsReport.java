@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -45,36 +45,36 @@ public class UnitsReport {
 
 	private void build() {
 		TextColumnBuilder<String> itemColumn = col.column("Item", "item", type.stringType())
-				.setFixedWidth(cm(10));
+			.setFixedWidth(cm(10));
 		TextColumnBuilder<Integer> quantityColumn = col.column("Quantity", "quantity", type.integerType());
 		TextColumnBuilder<BigDecimal> priceColumn = col.column("Unit price", "unitprice", type.bigDecimalType());
 
 		StyleBuilder style = stl.style(Templates.bold12CenteredStyle)
-				.setBorder(stl.pen1Point());
+			.setBorder(stl.pen1Point());
 		TextFieldBuilder<String> text1 = cmp.text("width = 120 pixels")
 				.setFixedWidth(120)
 				.setStyle(style);
 		TextFieldBuilder<String> text2 = cmp.text("width = 10cm")
-				.setFixedWidth(cm(10))
-				.setStyle(style);
+			.setFixedWidth(cm(10))
+			.setStyle(style);
 		TextFieldBuilder<String> text3 = cmp.text("width = 5 inches")
-				.setFixedWidth(inch(5))
-				.setStyle(style);
+			.setFixedWidth(inch(5))
+			.setStyle(style);
 		TextFieldBuilder<String> text4 = cmp.text("width = 150mm")
-				.setFixedWidth(mm(150))
-				.setStyle(style);
+			.setFixedWidth(mm(150))
+			.setStyle(style);
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(
-							itemColumn, quantityColumn, priceColumn)
-					.title(
-							Templates.createTitleComponent("Units"),
-							text1, text2, text3, text4, cmp.verticalGap(cm(1)))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .columns(
+			  	itemColumn, quantityColumn, priceColumn)
+			  .title(
+			  	Templates.createTitleComponent("Units"),
+			  	text1, text2, text3, text4, cmp.verticalGap(cm(1)))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

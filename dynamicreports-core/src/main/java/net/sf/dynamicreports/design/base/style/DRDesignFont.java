@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -126,27 +126,27 @@ public class DRDesignFont implements DRIDesignFont {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+	  if (obj == null) {
 			return false;
 		}
-		if (obj == this) {
+	  if (obj == this) {
 			return true;
 		}
-		if (obj.getClass() != getClass()) {
+	  if (obj.getClass() != getClass()) {
 			return false;
 		}
 
-		DRDesignFont o = (DRDesignFont) obj;
+	  DRDesignFont o = (DRDesignFont) obj;
 		EqualsBuilder equalsBuilder = new EqualsBuilder()
-				.append(fontName, o.fontName)
-				.append(fontSize, o.fontSize)
-				.append(bold, o.bold)
-				.append(italic, o.italic)
-				.append(underline, o.underline)
-				.append(strikeThrough, o.strikeThrough)
-				.append(pdfFontName, o.pdfFontName)
-				.append(pdfEncoding, o.pdfEncoding)
-				.append(pdfEmbedded, o.pdfEmbedded);
+			.append(fontName, o.fontName)
+			.append(fontSize, o.fontSize)
+			.append(bold, o.bold)
+			.append(italic, o.italic)
+			.append(underline, o.underline)
+			.append(strikeThrough, o.strikeThrough)
+			.append(pdfFontName, o.pdfFontName)
+			.append(pdfEncoding, o.pdfEncoding)
+			.append(pdfEmbedded, o.pdfEmbedded);
 		return equalsBuilder.isEquals();
 	}
 }

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -37,35 +37,35 @@ import net.sf.dynamicreports.test.design.AbstractBandTest;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 public class HorizontalListPositionTest extends AbstractBandTest {
-
+	
 	@Override
 	public void configureReport(ReportBuilder<?> rb) {
 		rb.setPageFormat(PageType.A2)
-				.title(
-						cmp.horizontalList(
-								cmp.hListCell(cmp.text("").setHeight(23)),
-								cmp.hListCell(cmp.text("")),
-								cmp.hListCell(cmp.text("")).widthFixed(),
-								cmp.hListCell(cmp.text("")).widthFixed().heightFixedOnTop(),
-								cmp.hListCell(cmp.text("")).heightFixedOnTop(),
-								cmp.hListCell(cmp.text("")).widthFixed().heightFixedOnMiddle(),
-								cmp.hListCell(cmp.text("")).heightFixedOnMiddle(),
-								cmp.hListCell(cmp.text("")).widthFixed().heightFixedOnBottom(),
-								cmp.hListCell(cmp.text("")).heightFixedOnBottom()));
+			.title(
+					cmp.horizontalList(
+							cmp.hListCell(cmp.text("").setHeight(23)),
+							cmp.hListCell(cmp.text("")),
+							cmp.hListCell(cmp.text("")).widthFixed(),
+							cmp.hListCell(cmp.text("")).widthFixed().heightFixedOnTop(),
+							cmp.hListCell(cmp.text("")).heightFixedOnTop(),
+							cmp.hListCell(cmp.text("")).widthFixed().heightFixedOnMiddle(),
+							cmp.hListCell(cmp.text("")).heightFixedOnMiddle(),
+							cmp.hListCell(cmp.text("")).widthFixed().heightFixedOnBottom(),
+							cmp.hListCell(cmp.text("")).heightFixedOnBottom()));	
 	}
-
+	
 	@Override
-	protected void titleBandTest(DRDesignBand band) {
+	protected void titleBandTest(DRDesignBand band) {		
 		DRDesignComponent component = band.getBandComponent();
 		Assert.assertTrue(component instanceof DRDesignList);
 		DRDesignList list = (DRDesignList) component;
 		Assert.assertEquals(ListType.HORIZONTAL, list.getType());
 		Assert.assertEquals(9, list.getComponents().size());
-		componentPositionTest(list, 0, 0, 1170, 23);
+		componentPositionTest(list, 0, 0, 1170, 23);		
 		for (int i = 0; i < 9; i++) {
-			Assert.assertTrue(list.getComponents().get(i) instanceof DRDesignTextField);
+			Assert.assertTrue(list.getComponents().get(i) instanceof DRDesignTextField);	
 		}
-
+		
 		componentPositionTest(list.getComponents().get(0), 0, 0, 154, 23);
 		componentPositionTest(list.getComponents().get(1), 154, 0, 154, 23);
 		componentPositionTest(list.getComponents().get(2), 308, 0, 100, 23);

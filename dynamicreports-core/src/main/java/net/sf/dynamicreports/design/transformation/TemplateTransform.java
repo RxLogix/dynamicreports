@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -322,7 +322,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().isUseFieldNameAsDescription();
 	}
 
-	// table of contents
+	//table of contents
 	public boolean isTableOfContents(Map<String, JasperTocHeading> tocHeadings) {
 		if (tocHeadings != null) {
 			return true;
@@ -353,7 +353,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().isAddGroupToTableOfContents();
 	}
 
-	// style
+	//style
 	protected DRISimpleStyle getDetailOddRowStyle() {
 		if (isHighlightDetailOddRows()) {
 			if (report.getDetailOddRowStyle() != null) {
@@ -598,7 +598,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getBarcodeStyle();
 	}
 
-	// page
+	//page
 	protected int getPageWidth() throws DRException {
 		if (isIgnorePageWidth()) {
 			return getDynamicPageWidth();
@@ -738,7 +738,7 @@ public class TemplateTransform {
 		return columnWidth;
 	}
 
-	// column
+	//column
 	protected boolean isColumnPrintRepeatedDetailValues(DRIValueColumn<?> column) {
 		if (column.getPrintRepeatedDetailValues() != null) {
 			return column.getPrintRepeatedDetailValues();
@@ -755,7 +755,8 @@ public class TemplateTransform {
 			if (component instanceof DRIList) {
 				DRDesignList list = accessor.getComponentTransform().list((DRIList) component, DefaultStyleType.COLUMN, null, null);
 				return detectWidth(list);
-			} else if (component instanceof DRIDimensionComponent) {
+			}
+			else if (component instanceof DRIDimensionComponent) {
 				if (((DRIDimensionComponent) component).getWidth() != null) {
 					return ((DRIDimensionComponent) component).getWidth();
 				}
@@ -764,7 +765,8 @@ public class TemplateTransform {
 						return StyleResolver.getFontWidth(style, ((DRITextField<?>) component).getColumns());
 					}
 				}
-			} else {
+			}
+			else {
 				throw new DRDesignReportException("Component " + component.getClass().getName() + " not supported");
 			}
 		}
@@ -778,7 +780,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getColumnWidth();
 	}
 
-	// component
+	//component
 	protected boolean getRemoveLineWhenBlank(DRIComponent component) {
 		if (component.getRemoveLineWhenBlank() != null) {
 			return component.getRemoveLineWhenBlank();
@@ -787,41 +789,41 @@ public class TemplateTransform {
 	}
 
 	protected ComponentPositionType getPositionType(DRIComponent component) {
-		if (component instanceof DRIDimensionComponent && ((DRIDimensionComponent) component).getPositionType() != null) {
-			return ((DRIDimensionComponent) component).getPositionType();
+		if (component instanceof DRIDimensionComponent && ((DRIDimensionComponent)component).getPositionType() != null) {
+			return ((DRIDimensionComponent)component).getPositionType();
 		}
 		return null;
 	}
 
 	protected StretchType getStretchType(DRIComponent component) {
-		if (component instanceof DRIDimensionComponent && ((DRIDimensionComponent) component).getStretchType() != null) {
-			return ((DRIDimensionComponent) component).getStretchType();
+		if (component instanceof DRIDimensionComponent && ((DRIDimensionComponent)component).getStretchType() != null) {
+			return ((DRIDimensionComponent)component).getStretchType();
 		}
 		return null;
 	}
 
 	protected boolean getPrintInFirstWholeBand(DRIComponent component) {
-		if (component instanceof DRIDimensionComponent && ((DRIDimensionComponent) component).getPrintInFirstWholeBand() != null) {
-			return ((DRIDimensionComponent) component).getPrintInFirstWholeBand();
+		if (component instanceof DRIDimensionComponent && ((DRIDimensionComponent)component).getPrintInFirstWholeBand() != null) {
+			return ((DRIDimensionComponent)component).getPrintInFirstWholeBand();
 		}
 		return Defaults.getDefaults().isPrintInFirstWholeBand();
 	}
 
 	protected boolean getPrintWhenDetailOverflows(DRIComponent component) {
-		if (component instanceof DRIDimensionComponent && ((DRIDimensionComponent) component).getPrintWhenDetailOverflows() != null) {
-			return ((DRIDimensionComponent) component).getPrintWhenDetailOverflows();
+		if (component instanceof DRIDimensionComponent && ((DRIDimensionComponent)component).getPrintWhenDetailOverflows() != null) {
+			return ((DRIDimensionComponent)component).getPrintWhenDetailOverflows();
 		}
 		return Defaults.getDefaults().isPrintWhenDetailOverflows();
 	}
 
 	protected DRIDesignGroup getPrintWhenGroupChanges(DRIComponent component) {
-		if (component instanceof DRIDimensionComponent && ((DRIDimensionComponent) component).getPrintWhenGroupChanges() != null) {
-			return accessor.getGroupTransform().getGroup(((DRIDimensionComponent) component).getPrintWhenGroupChanges());
+		if (component instanceof DRIDimensionComponent && ((DRIDimensionComponent)component).getPrintWhenGroupChanges() != null) {
+			return accessor.getGroupTransform().getGroup(((DRIDimensionComponent)component).getPrintWhenGroupChanges());
 		}
 		return null;
 	}
 
-	// group
+	//group
 	protected GroupHeaderLayout getGroupHeaderLayout(DRIGroup group) {
 		if (group.getHeaderLayout() != null) {
 			return group.getHeaderLayout();
@@ -946,7 +948,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().isGroupByDataType();
 	}
 
-	// subtotal
+	//subtotal
 	public Position getSubtotalLabelPosition(DRISubtotal<?> subtotal) {
 		if (subtotal.getLabelPosition() != null) {
 			return subtotal.getLabelPosition();
@@ -957,7 +959,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getSubtotalLabelPosition();
 	}
 
-	// text field
+	//text field
 	protected int getTextFieldWidth(DRITextField<?> textField, DRDesignStyle style) {
 		if (textField.getWidth() != null) {
 			return textField.getWidth();
@@ -986,7 +988,7 @@ public class TemplateTransform {
 			return textField.getPattern();
 		}
 		if (StyleResolver.getPattern(style) != null) {
-			return null;// StyleResolver.getPattern(style);
+			return null;//StyleResolver.getPattern(style);
 		}
 		if (textField.getDataType() != null) {
 			return textField.getDataType().getPattern();
@@ -999,7 +1001,7 @@ public class TemplateTransform {
 			return textField.getHorizontalTextAlignment();
 		}
 		if (StyleResolver.getHorizontalTextAlignment(style) != null) {
-			return null;// StyleResolver.getHorizontalTextAlignment(style);
+			return null;//StyleResolver.getHorizontalTextAlignment(style);
 		}
 		if (textField.getDataType() != null) {
 			return textField.getDataType().getHorizontalTextAlignment();
@@ -1031,7 +1033,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().isTextFieldPrintRepeatedValues();
 	}
 
-	// text field
+	//text field
 	protected int getBooleanFieldWidth(DRIBooleanField booleanField, DRDesignStyle style) {
 		if (booleanField.getWidth() != null) {
 			return booleanField.getWidth();
@@ -1049,7 +1051,7 @@ public class TemplateTransform {
 		return StyleResolver.getFontHeight(style, 1);
 	}
 
-	// page x of y
+	//page x of y
 	protected int getPageXofYWidth(DRIPageXofY pageXofY) {
 		if (pageXofY.getWidth() != null) {
 			return pageXofY.getWidth();
@@ -1077,7 +1079,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getPageXofYHorizontalTextAlignment();
 	}
 
-	// image
+	//image
 	protected int getImageWidth(DRIImage image) {
 		if (image.getWidth() != null) {
 			return image.getWidth();
@@ -1101,7 +1103,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getImageHeight();
 	}
 
-	// filler
+	//filler
 	protected int getFillerWidth(DRIFiller filler) {
 		if (filler.getWidth() != null) {
 			return filler.getWidth();
@@ -1116,7 +1118,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getFillerHeight();
 	}
 
-	// line
+	//line
 	protected int getLineWidth(DRILine line) {
 		if (line.getWidth() != null) {
 			return line.getWidth();
@@ -1131,7 +1133,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getLineHeight();
 	}
 
-	// ellipse
+	//ellipse
 	protected int getEllipseWidth(DRIEllipse ellipse) {
 		if (ellipse.getWidth() != null) {
 			return ellipse.getWidth();
@@ -1146,7 +1148,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getEllipseHeight();
 	}
 
-	// rectangle
+	//rectangle
 	protected Integer getRectangleRadius(DRIRectangle rectangle) {
 		if (rectangle.getRadius() != null) {
 			return rectangle.getRadius();
@@ -1168,7 +1170,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getRectangleHeight();
 	}
 
-	// map
+	//map
 	protected int getMapWidth(DRIMap map) {
 		if (map.getWidth() != null) {
 			return map.getWidth();
@@ -1183,7 +1185,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getMapHeight();
 	}
 
-	// custom component
+	//custom component
 	protected int getCustomComponentWidth(DRIDimensionComponent component) {
 		if (component.getWidth() != null) {
 			return component.getWidth();
@@ -1198,7 +1200,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getCustomComponentHeight();
 	}
 
-	// break
+	//break
 	protected int getBreakWidth(DRIBreak breakComponent) {
 		return Defaults.getDefaults().getBreakWidth();
 	}
@@ -1207,7 +1209,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getBreakHeight();
 	}
 
-	// generic element
+	//generic element
 	protected Integer getGenericElementWidth(DRIGenericElement genericElement) {
 		if (genericElement.getWidth() != null) {
 			return genericElement.getWidth();
@@ -1222,7 +1224,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getGenericElementHeight();
 	}
 
-	// list
+	//list
 	protected Integer getListWidth(DRIList list) {
 		if (list.getWidth() != null) {
 			return list.getWidth();
@@ -1247,7 +1249,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getListgap();
 	}
 
-	// xy list
+	//xy list
 	protected Integer getXyListWidth(DRIXyList xyList) {
 		if (xyList.getWidth() != null) {
 			return xyList.getWidth();
@@ -1262,7 +1264,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getListHeight();
 	}
 
-	// multi page list
+	//multi page list
 	protected int getMultiPageListWidth(DRIMultiPageList multiPageList) {
 		if (multiPageList.getWidth() != null) {
 			return multiPageList.getWidth();
@@ -1283,7 +1285,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getMultiPageListHeight();
 	}
 
-	// chart
+	//chart
 	protected int getChartWidth(DRIChart chart) {
 		if (chart.getWidth() != null) {
 			return chart.getWidth();
@@ -1385,7 +1387,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getChartTheme();
 	}
 
-	// barcode
+	//barcode
 	protected int getBarcodeWidth(DRIBarcode barcode) {
 		if (barcode.getWidth() != null) {
 			return barcode.getWidth();
@@ -1406,7 +1408,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getBarcodeHeight();
 	}
 
-	// barbecue
+	//barbecue
 	protected int getBarbecueWidth(DRIBarbecue barbecue) {
 		if (barbecue.getWidth() != null) {
 			return barbecue.getWidth();
@@ -1427,7 +1429,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getBarcodeHeight();
 	}
 
-	// subreport
+	//subreport
 	protected int getSubreportWidth(DRISubreport subreport) {
 		if (subreport.getWidth() != null) {
 			return subreport.getWidth();
@@ -1448,7 +1450,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getSubreportHeight();
 	}
 
-	// crosstab
+	//crosstab
 	protected int getCrosstabWidth(DRICrosstab crosstab) {
 		if (crosstab.getWidth() != null) {
 			return crosstab.getWidth();
@@ -1463,9 +1465,11 @@ public class TemplateTransform {
 		int height;
 		if (crosstab.getHeight() != null) {
 			height = crosstab.getHeight();
-		} else if (template.getCrosstabHeight() != null) {
+		}
+		else if (template.getCrosstabHeight() != null) {
 			height = template.getCrosstabHeight();
-		} else {
+		}
+		else {
 			height = Defaults.getDefaults().getCrosstabHeight();
 		}
 		int whenNoDataCellHeight = getCrosstabWhenNoDataCellHeight(whenNoDataCell);
@@ -1835,7 +1839,7 @@ public class TemplateTransform {
 			return booleanField.getHorizontalImageAlignment();
 		}
 		if (StyleResolver.getHorizontalImageAlignment(style) != null) {
-			return null;// StyleResolver.getHorizontalAlignment(style);
+			return null;//StyleResolver.getHorizontalAlignment(style);
 		}
 		return Defaults.getDefaults().getBooleanHorizontalImageAlignment();
 	}
@@ -1861,7 +1865,7 @@ public class TemplateTransform {
 		return templateStyles;
 	}
 
-	// split
+	//split
 	protected SplitType getTitleSplitType(DRIBand band) {
 		return getSplitType(band, template.getTitleSplitType(), Defaults.getDefaults().getTitleSplitType());
 	}
@@ -1934,7 +1938,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getDefaultSplitType();
 	}
 
-	// band style
+	//band style
 	protected DRIReportStyle getTitleStyle(DRIBand band) {
 		return getBandStyle(band, template.getTitleStyle());
 	}
@@ -2001,7 +2005,7 @@ public class TemplateTransform {
 		return Defaults.getDefaults().getBandStyle();
 	}
 
-	// band background component
+	//band background component
 	protected DRIComponent getTitleBackgroundComponent(DRIBand band) {
 		return getBandBackgroundComponent(band, template.getTitleBackgroundComponent());
 	}

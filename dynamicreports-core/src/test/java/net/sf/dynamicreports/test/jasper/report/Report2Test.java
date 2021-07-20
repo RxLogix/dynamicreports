@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -38,42 +38,42 @@ import net.sf.jasperreports.engine.JRDataSource;
  */
 public class Report2Test extends AbstractJasperPositionTest implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+		
 	private AggregationSubtotalBuilder<Integer> subtotal1;
 	private AggregationSubtotalBuilder<Integer> subtotal2;
-
+	
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		TextColumnBuilder<Integer> column1;
-
+		
 		rb.setTitleOnANewPage(true)
-				.setSummaryOnANewPage(true)
-				.setFloatColumnFooter(true)
-				.columns(
-						column1 = col.column("Column1", "field1", Integer.class))
-				.subtotalsAtColumnFooter(
-						subtotal1 = sbt.sum(column1))
-				.subtotalsAtSummary(
-						subtotal2 = sbt.sum(column1))
-				.title(cmp.text("title"));
+			.setSummaryOnANewPage(true)
+			.setFloatColumnFooter(true)
+			.columns(
+					column1 = col.column("Column1", "field1", Integer.class))
+			.subtotalsAtColumnFooter(
+					subtotal1 = sbt.sum(column1))
+			.subtotalsAtSummary(
+					subtotal2 = sbt.sum(column1))
+			.title(cmp.text("title"));		
 	}
 
 	@Override
 	public void test() {
 		super.test();
-
+		
 		numberOfPagesTest(3);
-
-		// title
+		
+		//title
 		elementPositionTest("title.textField1", 0, 10, 10, 575, 16);
-
-		// column footer
+		
+		//column footer
 		subtotalPositionTest(subtotal1, 0, 10, 186, 575, 16);
 
-		// summary
+		//summary
 		subtotalPositionTest(subtotal2, 0, 10, 10, 575, 16);
 	}
-
+	
 	@Override
 	protected JRDataSource createDataSource() {
 		DRDataSource dataSource = new DRDataSource("field1");

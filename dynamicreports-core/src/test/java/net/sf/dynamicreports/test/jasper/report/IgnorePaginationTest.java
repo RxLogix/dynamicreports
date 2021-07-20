@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -39,33 +39,33 @@ import net.sf.jasperreports.engine.type.OrientationEnum;
  */
 public class IgnorePaginationTest extends AbstractJasperValueTest implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
-
-		rb.columns(
+		
+		rb.columns(				
 				col.column("Column1", "field1", Integer.class))
-				.setIgnorePagination(true);
+			.setIgnorePagination(true);
 	}
 
 	@Override
 	public void test() {
 		super.test();
-
+		
 		numberOfPagesTest(1);
-
+		
 		JasperPrint jasperPrint = getJasperPrint();
 		Assert.assertEquals(OrientationEnum.PORTRAIT, jasperPrint.getOrientationValue());
 		Assert.assertEquals(595, jasperPrint.getPageWidth());
 		Assert.assertEquals(1636, jasperPrint.getPageHeight());
 	}
-
+	
 	@Override
 	protected JRDataSource createDataSource() {
 		DRDataSource dataSource = new DRDataSource("field1");
 		for (int i = 0; i < 100; i++) {
 			dataSource.add(i);
-		}
+		}		
 		return dataSource;
 	}
 }

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,10 +48,10 @@ public class Subreport2Test extends AbstractJasperValueTest implements Serializa
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		SubreportBuilder detailSubreport = cmp.subreport(detailSubreport())
-				.setDataSource(new SubreportDataSourceExpression());
+    .setDataSource(new SubreportDataSourceExpression());
 
 		rb.title(cmp.subreport(titleSubreport()))
-				.detail(detailSubreport);
+		  .detail(detailSubreport);
 	}
 
 	@Override
@@ -60,16 +60,16 @@ public class Subreport2Test extends AbstractJasperValueTest implements Serializa
 
 		numberOfPagesTest(1);
 
-		// title subreport
+		//title subreport
 		columnDetailCountTest(column1, 3);
-		columnDetailValueTest(column1, "value1", "value2", "value3");
+		columnDetailValueTest(column1,	"value1", "value2", "value3");
 
-		// detail subreport
+		//detail subreport
 		elementCountTest("title.textField1", 3);
 		elementValueTest("title.textField1", "Subreport1", "Subreport2", "Subreport3");
 
 		columnDetailCountTest(column2, 6);
-		columnDetailValueTest(column2, "1_1", "1_2", "2_1", "2_2", "3_1", "3_2");
+		columnDetailValueTest(column2,	"1_1", "1_2", "2_1", "2_2", "3_1", "3_2");
 	}
 
 	@Override
@@ -81,8 +81,8 @@ public class Subreport2Test extends AbstractJasperValueTest implements Serializa
 		JasperReportBuilder report = report();
 		column1 = col.column("Column1", "field1", type.stringType());
 		report
-				.columns(column1)
-				.setDataSource(titleSubreportDataSource());
+		  .columns(column1)
+		  .setDataSource(titleSubreportDataSource());
 		return report;
 	}
 
@@ -90,8 +90,8 @@ public class Subreport2Test extends AbstractJasperValueTest implements Serializa
 		JasperReportBuilder report = report();
 		column2 = col.column(new ValueExpression());
 		report
-				.columns(column2)
-				.title(cmp.text(new SubreportTitleExpression()));
+		  .columns(column2)
+		  .title(cmp.text(new SubreportTitleExpression()));
 		return report;
 	}
 

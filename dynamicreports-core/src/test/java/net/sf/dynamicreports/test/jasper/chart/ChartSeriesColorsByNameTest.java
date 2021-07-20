@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -70,54 +70,54 @@ public class ChartSeriesColorsByNameTest extends AbstractJasperChartTest impleme
 		colors.put("d", Color.MAGENTA);
 
 		rb.addProperty("net.sf.jasperreports.chart.pie.ignore.duplicated.key", "true")
-				.columns(
-						column1 = col.column("Column1", "field1", String.class),
-						column2 = col.column("Column2", "field2", String.class),
-						column3 = col.column("Column3", "field3", Integer.class),
-						column4 = col.column("Column4", "field4", String.class),
-						column5 = col.column("Column5", "field5", Integer.class))
-				.summary(
-						cmp.horizontalList(
-								cht.barChart()
-										.seriesColorsByName(colors)
-										.setCategory(column1)
-										.series(
-												cht.serie(column3).setSeries(column2)),
-								cht.groupedStackedBarChart()
-										.seriesColorsByName(colors)
-										.setCategory(column1)
-										.series(
-												cht.groupedSerie(column3).setSeries(column2).setGroup(column4))),
-						cmp.horizontalList(
-								cht.pieChart()
-										.seriesColorsByName(colors)
-										.setKey(column2)
-										.series(
-												cht.serie(column3)),
-								cht.xyBarChart()
-										.seriesColorsByName(colors)
-										.setXValue(column5)
-										.series(
-												cht.xySerie(column3).setSeries(column2))),
-						cmp.horizontalList(
-								cht.barChart()
-										.setDataSource(new DRDataSource("field1", "field2", "field3", "field4", "field5"))
-										.seriesColorsByName(colors)
-										.setCategory(column1)
-										.series(
-												cht.serie(column3).setSeries(column2)),
-								cht.pieChart()
-										.setDataSource(new DRDataSource("field1", "field2", "field3", "field4", "field5"))
-										.seriesColorsByName(colors)
-										.setKey(column2)
-										.series(
-												cht.serie(column3)),
-								cht.xyBarChart()
-										.setDataSource(new DRDataSource("field1", "field2", "field3", "field4", "field5"))
-										.seriesColorsByName(colors)
-										.setXValue(column5)
-										.series(
-												cht.xySerie(column3).setSeries(column2))));
+			.columns(
+				column1 = col.column("Column1", "field1", String.class),
+				column2 = col.column("Column2", "field2", String.class),
+				column3 = col.column("Column3", "field3", Integer.class),
+				column4 = col.column("Column4", "field4", String.class),
+				column5 = col.column("Column5", "field5", Integer.class))
+			.summary(
+				cmp.horizontalList(
+					cht.barChart()
+						.seriesColorsByName(colors)
+						.setCategory(column1)
+						.series(
+							cht.serie(column3).setSeries(column2)),
+					cht.groupedStackedBarChart()
+						.seriesColorsByName(colors)
+						.setCategory(column1)
+						.series(
+							cht.groupedSerie(column3).setSeries(column2).setGroup(column4))),
+				cmp.horizontalList(
+					cht.pieChart()
+						.seriesColorsByName(colors)
+						.setKey(column2)
+						.series(
+							cht.serie(column3)),
+					cht.xyBarChart()
+						.seriesColorsByName(colors)
+						.setXValue(column5)
+						.series(
+							cht.xySerie(column3).setSeries(column2))),
+				cmp.horizontalList(
+					cht.barChart()
+						.setDataSource(new DRDataSource("field1", "field2", "field3", "field4", "field5"))
+						.seriesColorsByName(colors)
+						.setCategory(column1)
+						.series(
+							cht.serie(column3).setSeries(column2)),
+					cht.pieChart()
+						.setDataSource(new DRDataSource("field1", "field2", "field3", "field4", "field5"))
+						.seriesColorsByName(colors)
+						.setKey(column2)
+						.series(
+							cht.serie(column3)),
+					cht.xyBarChart()
+						.setDataSource(new DRDataSource("field1", "field2", "field3", "field4", "field5"))
+						.seriesColorsByName(colors)
+						.setXValue(column5)
+						.series(
+							cht.xySerie(column3).setSeries(column2))));
 	}
 
 	@Override

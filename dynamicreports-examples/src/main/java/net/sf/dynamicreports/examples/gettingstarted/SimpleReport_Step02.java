@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -43,24 +43,24 @@ public class SimpleReport_Step02 {
 	}
 
 	private void build() {
-		StyleBuilder boldStyle = stl.style().bold();
+		StyleBuilder boldStyle         = stl.style().bold();
 		StyleBuilder boldCenteredStyle = stl.style(boldStyle).setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
-		StyleBuilder columnTitleStyle = stl.style(boldCenteredStyle)
-				.setBorder(stl.pen1Point())
-				.setBackgroundColor(Color.LIGHT_GRAY);
+		StyleBuilder columnTitleStyle  = stl.style(boldCenteredStyle)
+		                                    .setBorder(stl.pen1Point())
+		                                    .setBackgroundColor(Color.LIGHT_GRAY);
 		try {
-			report()// create new report design
-					.setColumnTitleStyle(columnTitleStyle)
-					.highlightDetailEvenRows()
-					.columns(// add columns
-							// title, field name data type
-							col.column("Item", "item", type.stringType()),
-							col.column("Quantity", "quantity", type.integerType()),
-							col.column("Unit price", "unitprice", type.bigDecimalType()))
-					.title(cmp.text("Getting started").setStyle(boldCenteredStyle))// shows report title
-					.pageFooter(cmp.pageXofY().setStyle(boldCenteredStyle))// shows number of page at page footer
-					.setDataSource(createDataSource())// set datasource
-					.show();// create and show report
+			report()//create new report design
+			  .setColumnTitleStyle(columnTitleStyle)
+			  .highlightDetailEvenRows()
+			  .columns(//add columns
+			  	//            title,     field name     data type
+			  	col.column("Item",       "item",      type.stringType()),
+			  	col.column("Quantity",   "quantity",  type.integerType()),
+			  	col.column("Unit price", "unitprice", type.bigDecimalType()))
+			  .title(cmp.text("Getting started").setStyle(boldCenteredStyle))//shows report title
+			  .pageFooter(cmp.pageXofY().setStyle(boldCenteredStyle))//shows number of page at page footer
+			  .setDataSource(createDataSource())//set datasource
+			  .show();//create and show report
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

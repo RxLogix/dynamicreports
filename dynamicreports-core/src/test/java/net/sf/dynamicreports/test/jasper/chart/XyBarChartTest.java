@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -55,41 +55,41 @@ public class XyBarChartTest extends AbstractJasperChartTest implements Serializa
 		TextColumnBuilder<Integer> column2;
 
 		rb.setLocale(Locale.ENGLISH)
-				.columns(
-						column1 = col.column("Column1", "field1", Integer.class),
-						column2 = col.column("Column2", "field2", Integer.class))
-				.summary(
-						cht.xyBarChart()
-								.setXValue(column1)
-								.series(cht.xySerie(column2))
-								.setShowLabels(true)
+			.columns(
+				column1 = col.column("Column1", "field1", Integer.class),
+				column2 = col.column("Column2", "field2", Integer.class))
+			.summary(
+					cht.xyBarChart()
+						.setXValue(column1)
+						.series(cht.xySerie(column2))
+						.setShowLabels(true)
 						/*.setShowTickLabels(false)
 						.setShowTickMarks(false)*/,
-						cht.xyBarChart()
-								.setXValue(column1)
-								.series(cht.xySerie(column2))
-								.setXAxisFormat(
-										cht.axisFormat()
-												.setLabel("category")
-												.setLabelColor(Color.BLUE)
-												.setLabelFont(stl.fontArialBold())
-												.setTickLabelFont(stl.fontArial().setItalic(true))
-												.setTickLabelColor(Color.CYAN)
-												.setLineColor(Color.LIGHT_GRAY)),
-						cht.xyBarChart()
-								.setXValue(column1)
-								.series(cht.xySerie(column2))
-								.setYAxisFormat(
-										cht.axisFormat()
-												.setLabel("value")
-												.setLabelColor(Color.BLUE)
-												.setLabelFont(stl.fontArialBold())
-												.setTickLabelFont(stl.fontArial().setItalic(true))
-												.setTickLabelColor(Color.CYAN)
-												.setTickLabelMask("#,##0.00")
-												.setLineColor(Color.LIGHT_GRAY)
-												.setRangeMinValueExpression(1)
-												.setRangeMaxValueExpression(15)));
+					cht.xyBarChart()
+						.setXValue(column1)
+						.series(cht.xySerie(column2))
+						.setXAxisFormat(
+								cht.axisFormat()
+											.setLabel("category")
+											.setLabelColor(Color.BLUE)
+											.setLabelFont(stl.fontArialBold())
+											.setTickLabelFont(stl.fontArial().setItalic(true))
+											.setTickLabelColor(Color.CYAN)
+											.setLineColor(Color.LIGHT_GRAY)),
+					cht.xyBarChart()
+						.setXValue(column1)
+						.series(cht.xySerie(column2))
+						.setYAxisFormat(
+								cht.axisFormat()
+											.setLabel("value")
+											.setLabelColor(Color.BLUE)
+											.setLabelFont(stl.fontArialBold())
+											.setTickLabelFont(stl.fontArial().setItalic(true))
+											.setTickLabelColor(Color.CYAN)
+											.setTickLabelMask("#,##0.00")
+											.setLineColor(Color.LIGHT_GRAY)
+											.setRangeMinValueExpression(1)
+											.setRangeMaxValueExpression(15)));
 	}
 
 	@Override
@@ -102,8 +102,8 @@ public class XyBarChartTest extends AbstractJasperChartTest implements Serializa
 		XYPlot plot = chart.getXYPlot();
 		Assert.assertEquals("renderer", XYBarRenderer.class, plot.getRenderer().getClass());
 		Assert.assertTrue("show labels", plot.getRenderer().getBaseItemLabelsVisible());
-		// Assert.assertFalse("show tick labels", plot.getDomainAxis().isTickMarksVisible());
-		// Assert.assertFalse("show tick marks", plot.getDomainAxis().isTickLabelsVisible());
+		//Assert.assertFalse("show tick labels", plot.getDomainAxis().isTickMarksVisible());
+		//Assert.assertFalse("show tick marks", plot.getDomainAxis().isTickLabelsVisible());
 
 		chart = getChart("summary.chart2", 0);
 		Axis axis = chart.getXYPlot().getDomainAxis();

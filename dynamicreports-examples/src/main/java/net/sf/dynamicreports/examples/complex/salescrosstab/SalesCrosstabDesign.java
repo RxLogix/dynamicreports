@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -54,9 +54,9 @@ public class SalesCrosstabDesign {
 		JasperReportBuilder report = report();
 
 		CrosstabRowGroupBuilder<String> rowStateGroup = ctab.rowGroup("state", String.class)
-				.setHeaderWidth(80);
+			.setHeaderWidth(80);
 		CrosstabRowGroupBuilder<String> rowItemGroup = ctab.rowGroup("item", String.class)
-				.setHeaderWidth(80);
+			.setHeaderWidth(80);
 
 		CrosstabColumnGroupBuilder<Integer> columnYearGroup = ctab.columnGroup(new YearExpression());
 		CrosstabColumnGroupBuilder<String> columnQuarterGroup = ctab.columnGroup(new QuarterExpression());
@@ -68,35 +68,35 @@ public class SalesCrosstabDesign {
 		rowStateGroup.orderBy(quantityMeasure);
 
 		ConditionalStyleBuilder condition1 = stl.conditionalStyle(cnd.greater(unitPriceMeasure, 50000))
-				.setForegroundColor(Color.GREEN);
+			.setForegroundColor(Color.GREEN);
 		ConditionalStyleBuilder condition2 = stl.conditionalStyle(cnd.smaller(unitPriceMeasure, 300))
-				.setForegroundColor(Color.RED);
+			.setForegroundColor(Color.RED);
 
 		StyleBuilder unitPriceStyle = stl.style()
-				.setBorder(stl.pen1Point().setLineColor(Color.BLACK))
-				.conditionalStyles(condition1, condition2);
+			.setBorder(stl.pen1Point().setLineColor(Color.BLACK))
+			.conditionalStyles(condition1, condition2);
 		unitPriceMeasure.setStyle(unitPriceStyle);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.setCellWidth(110)
-				.headerCell(cmp.text("State / Date").setStyle(Templates.boldCenteredStyle))
-				.rowGroups(
-						rowStateGroup, rowItemGroup)
-				.columnGroups(
-						columnYearGroup, columnQuarterGroup)
-				.measures(
-						quantityMeasure, unitPriceMeasure);
+			.setCellWidth(110)
+			.headerCell(cmp.text("State / Date").setStyle(Templates.boldCenteredStyle))
+			.rowGroups(
+				rowStateGroup, rowItemGroup)
+			.columnGroups(
+				columnYearGroup, columnQuarterGroup)
+			.measures(
+				quantityMeasure, unitPriceMeasure);
 
 		report
-				.fields(field("orderdate", Date.class))
-				.setPageFormat(PageType.A3, PageOrientation.LANDSCAPE)
-				.setTemplate(Templates.reportTemplate)
-				.title(
-						Templates.createTitleComponent("SalesCrosstab"))
-				.summary(crosstab)
-				.pageFooter(
-						Templates.footerComponent)
-				.setDataSource(data.createDataSource());
+			.fields(field("orderdate", Date.class))
+			.setPageFormat(PageType.A3, PageOrientation.LANDSCAPE)
+			.setTemplate(Templates.reportTemplate)
+			.title(
+				Templates.createTitleComponent("SalesCrosstab"))
+			.summary(crosstab)
+			.pageFooter(
+				Templates.footerComponent)
+			.setDataSource(data.createDataSource());
 
 		return report;
 	}

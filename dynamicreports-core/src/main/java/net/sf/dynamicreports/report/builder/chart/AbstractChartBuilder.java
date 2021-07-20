@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -59,11 +59,11 @@ public abstract class AbstractChartBuilder<T extends AbstractChartBuilder<T>> ex
 		return customizers(customizer);
 	}
 
-	public T addCustomizer(DRIChartCustomizer... customizers) {
+	public T addCustomizer(DRIChartCustomizer ...customizers) {
 		return customizers(customizers);
 	}
 
-	public T customizers(DRIChartCustomizer... customizers) {
+	public T customizers(DRIChartCustomizer ...customizers) {
 		Validate.notNull(customizers, "customizers must not be null");
 		Validate.noNullElements(customizers, "customizers must not contains null customizer");
 		for (DRIChartCustomizer customizer : customizers) {
@@ -72,7 +72,7 @@ public abstract class AbstractChartBuilder<T extends AbstractChartBuilder<T>> ex
 		return (T) this;
 	}
 
-	// title
+	//title
 	public T setTitle(String title) {
 		getObject().getTitle().setTitle(Expressions.text(title));
 		return (T) this;
@@ -99,7 +99,7 @@ public abstract class AbstractChartBuilder<T extends AbstractChartBuilder<T>> ex
 		return (T) this;
 	}
 
-	// subtitle
+	//subtitle
 	public T setSubtitle(String subtitle) {
 		getObject().getSubtitle().setTitle(Expressions.text(subtitle));
 		return (T) this;
@@ -121,7 +121,7 @@ public abstract class AbstractChartBuilder<T extends AbstractChartBuilder<T>> ex
 		return (T) this;
 	}
 
-	// legend
+	//legend
 	public T setLegendColor(Color legendColor) {
 		getObject().getLegend().setColor(legendColor);
 		return (T) this;
@@ -148,7 +148,7 @@ public abstract class AbstractChartBuilder<T extends AbstractChartBuilder<T>> ex
 		return (T) this;
 	}
 
-	// subdataset
+	//subdataset
 	public T setSubDataset(DatasetBuilder subDataset) {
 		Validate.notNull(subDataset, "subDataset must not be null");
 		getObject().getDataset().setSubDataset(subDataset.build());

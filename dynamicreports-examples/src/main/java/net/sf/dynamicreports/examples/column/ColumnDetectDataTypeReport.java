@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -53,11 +53,11 @@ public class ColumnDetectDataTypeReport {
 				report.addColumn(col.column(column.title, column.field, (DRIDataType) type.detectType(column.dataType)));
 			}
 			report
-					.setTemplate(Templates.reportTemplate)
-					.title(Templates.createTitleComponent("ColumnDetectDataTypes"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .title(Templates.createTitleComponent("ColumnDetectDataTypes"))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
@@ -71,14 +71,14 @@ public class ColumnDetectDataTypeReport {
 
 	private List<Column> createColumns() {
 		List<Column> columns = new ArrayList<Column>();
-		columns.add(new Column("Item", "item", "string"));// dataType = "String", "STRING", "java.lang.String", "text"
-		columns.add(new Column("Quantity", "quantity", "integer"));// dataType = "Integer", "INTEGER", "java.lang.Integer"
-		columns.add(new Column("Unit price", "unitprice", "bigDecimal"));// dataType = "bigdecimal", "BIGDECIMAL", "java.math.BigDecimal"
-		columns.add(new Column("Order date", "orderdate", "date"));// dataType = "Date", "DATE", "java.util.Date"
-		columns.add(new Column("Order date", "orderdate", "dateYearToFraction"));// dataType = "dateyeartofraction", "DATEYEARTOFRACTION"
-		columns.add(new Column("Order year", "orderdate", "dateYear"));// dataType = "DateYear", "dateyear", "DATEYEAR"
-		columns.add(new Column("Order month", "orderdate", "dateMonth"));// dataType = "DateMonth", "datemonth", "DATEMONTH"
-		columns.add(new Column("Order day", "orderdate", "dateDay"));// dataType = "DateDay", "dateday", "DATEDAY"
+		columns.add(new Column("Item",        "item",      "string"));//dataType = "String", "STRING", "java.lang.String", "text"
+		columns.add(new Column("Quantity",    "quantity",  "integer"));//dataType = "Integer", "INTEGER", "java.lang.Integer"
+		columns.add(new Column("Unit price",  "unitprice", "bigDecimal"));//dataType = "bigdecimal", "BIGDECIMAL", "java.math.BigDecimal"
+		columns.add(new Column("Order date",  "orderdate", "date"));//dataType = "Date", "DATE", "java.util.Date"
+		columns.add(new Column("Order date",  "orderdate", "dateYearToFraction"));//dataType = "dateyeartofraction", "DATEYEARTOFRACTION"
+		columns.add(new Column("Order year",  "orderdate", "dateYear"));//dataType = "DateYear", "dateyear", "DATEYEAR"
+		columns.add(new Column("Order month", "orderdate", "dateMonth"));//dataType = "DateMonth", "datemonth", "DATEMONTH"
+		columns.add(new Column("Order day",   "orderdate", "dateDay"));//dataType = "DateDay", "dateday", "DATEDAY"
 		return columns;
 	}
 

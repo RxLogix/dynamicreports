@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -42,18 +42,18 @@ public class NoDataReport {
 	}
 
 	private void build() {
-		TextColumnBuilder<String> itemColumn = col.column("Item", "item", type.stringType());
-		TextColumnBuilder<Integer> quantityColumn = col.column("Quantity", "quantity", type.integerType());
-		TextColumnBuilder<BigDecimal> priceColumn = col.column("Unit price", "unitprice", type.bigDecimalType());
+		TextColumnBuilder<String>     itemColumn     = col.column("Item",       "item",      type.stringType());
+		TextColumnBuilder<Integer>    quantityColumn = col.column("Quantity",   "quantity",  type.integerType());
+		TextColumnBuilder<BigDecimal> priceColumn    = col.column("Unit price", "unitprice", type.bigDecimalType());
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(
-							itemColumn, quantityColumn, priceColumn)
-					.noData(Templates.createTitleComponent("NoData"), cmp.text("There is no data"))
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .columns(
+			  	itemColumn, quantityColumn, priceColumn)
+			  .noData(Templates.createTitleComponent("NoData"), cmp.text("There is no data"))
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
@@ -61,7 +61,7 @@ public class NoDataReport {
 
 	private JRDataSource createDataSource() {
 		DRDataSource dataSource = new DRDataSource("item", "quantity", "unitprice");
-		// dataSource.add("Book", 10, new BigDecimal(100));
+		//dataSource.add("Book", 10, new BigDecimal(100));
 		return dataSource;
 	}
 

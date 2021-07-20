@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -43,100 +43,82 @@ public class ComponentColumnBuilder extends ColumnBuilder<ComponentColumnBuilder
 		super(new DRColumn<DRComponent>(component.getComponent()));
 	}
 
-	/**
-	 * Sets the preferred width of a column.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param width
-	 *          the column preferred width >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>width</code> is < 0
-	 * @return a column builder
-	 */
+  /**
+   * Sets the preferred width of a column.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param width the column preferred width >= 0
+   * @exception IllegalArgumentException if <code>width</code> is < 0
+   * @return a column builder
+   */
 	public ComponentColumnBuilder setWidth(Integer width) {
 		getDimensionComponent().setWidth(width);
 		return this;
 	}
 
-	/**
-	 * Sets the fixed width of a column.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param width
-	 *          the column fixed width >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>width</code> is < 0
-	 * @return a column builder
-	 */
+  /**
+   * Sets the fixed width of a column.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param width the column fixed width >= 0
+   * @exception IllegalArgumentException if <code>width</code> is < 0
+   * @return a column builder
+   */
 	public ComponentColumnBuilder setFixedWidth(Integer width) {
 		getDimensionComponent().setWidth(width);
 		getDimensionComponent().setWidthType(ComponentDimensionType.FIXED);
 		return this;
 	}
 
-	/**
-	 * Sets the minimum width of a column.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param width
-	 *          the column minimum width >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>width</code> is < 0
-	 * @return a column builder
-	 */
+  /**
+   * Sets the minimum width of a column.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param width the column minimum width >= 0
+   * @exception IllegalArgumentException if <code>width</code> is < 0
+   * @return a column builder
+   */
 	public ComponentColumnBuilder setMinWidth(Integer width) {
 		getDimensionComponent().setWidth(width);
 		getDimensionComponent().setWidthType(ComponentDimensionType.EXPAND);
 		return this;
 	}
 
-	/**
-	 * Sets the preferred height of a column.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param height
-	 *          the column preferred height >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>height</code> is < 0
-	 * @return a column builder
-	 */
+  /**
+   * Sets the preferred height of a column.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param height the column preferred height >= 0
+   * @exception IllegalArgumentException if <code>height</code> is < 0
+   * @return a column builder
+   */
 	public ComponentColumnBuilder setHeight(Integer height) {
 		getDimensionComponent().setHeight(height);
 		return this;
 	}
 
-	/**
-	 * Sets the fixed height of a column.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param height
-	 *          the column fixed height >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>height</code> is < 0
-	 * @return a column builder
-	 */
+  /**
+   * Sets the fixed height of a column.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param height the column fixed height >= 0
+   * @exception IllegalArgumentException if <code>height</code> is < 0
+   * @return a column builder
+   */
 	public ComponentColumnBuilder setFixedHeight(Integer height) {
 		getDimensionComponent().setHeight(height);
 		getDimensionComponent().setHeightType(ComponentDimensionType.FIXED);
 		return this;
 	}
 
-	/**
-	 * Sets the minimum height of a column.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param height
-	 *          the column minimum height >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>height</code> is < 0
-	 * @return a column builder
-	 */
+  /**
+   * Sets the minimum height of a column.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param height the column minimum height >= 0
+   * @exception IllegalArgumentException if <code>height</code> is < 0
+   * @return a column builder
+   */
 	public ComponentColumnBuilder setMinHeight(Integer height) {
 		getDimensionComponent().setHeight(height);
 		getDimensionComponent().setHeightType(ComponentDimensionType.EXPAND);

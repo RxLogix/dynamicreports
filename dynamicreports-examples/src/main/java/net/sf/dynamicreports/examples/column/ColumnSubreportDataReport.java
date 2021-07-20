@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -51,19 +51,19 @@ public class ColumnSubreportDataReport {
 
 	private void build() {
 		SubreportBuilder subreport = cmp.subreport(new SubreportDesign())
-				.setDataSource(new SubreportData());
+			.setDataSource(new SubreportData());
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.fields(field("comments", List.class))
-					.columns(
-							col.column("Item", "item", type.stringType()),
-							col.column("Quantity", "quantity", type.integerType()),
-							col.componentColumn("Comments", subreport))
-					.title(Templates.createTitleComponent("ColumnSubreportData"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .fields(field("comments", List.class))
+			  .columns(
+			  	col.column("Item", "item", type.stringType()),
+			  	col.column("Quantity", "quantity", type.integerType()),
+			  	col.componentColumn("Comments", subreport))
+			  .title(Templates.createTitleComponent("ColumnSubreportData"))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
@@ -75,7 +75,7 @@ public class ColumnSubreportDataReport {
 		@Override
 		public JasperReportBuilder evaluate(ReportParameters reportParameters) {
 			JasperReportBuilder report = report()
-					.columns(col.column("comment", type.stringType()));
+				.columns(col.column("comment", type.stringType()));
 			return report;
 		}
 	}
@@ -90,37 +90,37 @@ public class ColumnSubreportDataReport {
 		}
 	}
 
-	private JRDataSource createDataSource() {
-		List<ReportData> datasource = new ArrayList<ReportData>();
+  private JRDataSource createDataSource() {
+  	List<ReportData> datasource = new ArrayList<ReportData>();
 
-		ReportData data = new ReportData();
-		List<Map<String, Object>> comments = new ArrayList<Map<String, Object>>();
-		Map<String, Object> values = new HashMap<String, Object>();
-		values.put("comment", "comment1");
-		comments.add(values);
-		values = new HashMap<String, Object>();
-		values.put("comment", "comment2");
-		comments.add(values);
-		values = new HashMap<String, Object>();
-		values.put("comment", "comment3");
-		comments.add(values);
-		data.setItem("Book");
-		data.setQuantity(new Integer(10));
-		data.setComments(comments);
-		datasource.add(data);
+  	ReportData data = new ReportData();
+  	List<Map<String, Object>> comments = new ArrayList<Map<String, Object>>();
+  	Map<String, Object> values = new HashMap<String, Object>();
+  	values.put("comment", "comment1");
+  	comments.add(values);
+  	values = new HashMap<String, Object>();
+  	values.put("comment", "comment2");
+  	comments.add(values);
+  	values = new HashMap<String, Object>();
+  	values.put("comment", "comment3");
+  	comments.add(values);
+  	data.setItem("Book");
+  	data.setQuantity(new Integer(10));
+  	data.setComments(comments);
+  	datasource.add(data);
 
-		data = new ReportData();
-		comments = new ArrayList<Map<String, Object>>();
-		values = new HashMap<String, Object>();
-		values.put("comment", "comment1");
-		comments.add(values);
-		values = new HashMap<String, Object>();
-		values.put("comment", "comment2");
-		comments.add(values);
-		data.setItem("Notebook");
-		data.setQuantity(new Integer(20));
-		data.setComments(comments);
-		datasource.add(data);
+  	data = new ReportData();
+  	comments = new ArrayList<Map<String, Object>>();
+  	values = new HashMap<String, Object>();
+  	values.put("comment", "comment1");
+  	comments.add(values);
+  	values = new HashMap<String, Object>();
+  	values.put("comment", "comment2");
+  	comments.add(values);
+  	data.setItem("Notebook");
+  	data.setQuantity(new Integer(20));
+  	data.setComments(comments);
+  	datasource.add(data);
 
 		return new JRBeanCollectionDataSource(datasource);
 	}

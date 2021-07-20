@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -42,18 +42,18 @@ public class PageNumberPositionTest extends AbstractJasperPositionTest {
 		PageXofYBuilder pageXofYRight = cmp.pageXofY().setStyle(stl.style(style).setHorizontalTextAlignment(HorizontalTextAlignment.RIGHT));
 
 		rb.setWhenNoDataType(WhenNoDataType.ALL_SECTIONS_NO_DETAIL)
-				.pageFooter(
-						cmp.pageXofY(),
-						cmp.pageXofY().setHorizontalTextAlignment(HorizontalTextAlignment.LEFT),
-						cmp.pageXofY().setHorizontalTextAlignment(HorizontalTextAlignment.RIGHT),
-						cmp.pageXofY().setHorizontalTextAlignment(HorizontalTextAlignment.JUSTIFIED),
-						cmp.pageXofY().setHorizontalTextAlignment(HorizontalTextAlignment.CENTER),
-						cmp.horizontalList(pageXofYLeft, pageXofYRight, pageXofYLeft, pageXofYRight),
-						cmp.pageXofY().setPageXFixedWidth(20),
-						cmp.pageXofY().setPageYFixedWidth(25),
-						cmp.pageXslashY().setPageXFixedWidth(30),
-						cmp.pageXslashY().setPageYFixedWidth(35),
-						cmp.pageXofY().setPageXFixedWidth(18).setPageYFixedWidth(22));
+		  .pageFooter(
+					cmp.pageXofY(),
+					cmp.pageXofY().setHorizontalTextAlignment(HorizontalTextAlignment.LEFT),
+					cmp.pageXofY().setHorizontalTextAlignment(HorizontalTextAlignment.RIGHT),
+					cmp.pageXofY().setHorizontalTextAlignment(HorizontalTextAlignment.JUSTIFIED),
+					cmp.pageXofY().setHorizontalTextAlignment(HorizontalTextAlignment.CENTER),
+					cmp.horizontalList(pageXofYLeft, pageXofYRight, pageXofYLeft, pageXofYRight),
+					cmp.pageXofY().setPageXFixedWidth(20),
+					cmp.pageXofY().setPageYFixedWidth(25),
+					cmp.pageXslashY().setPageXFixedWidth(30),
+					cmp.pageXslashY().setPageYFixedWidth(35),
+					cmp.pageXofY().setPageXFixedWidth(18).setPageYFixedWidth(22));
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -82,43 +82,43 @@ public class Subtotal2Test extends AbstractJasperValueTest implements Serializab
 		TextColumnBuilder<Date> column4;
 
 		rb.setLocale(Locale.ENGLISH)
-				.columns(
-						column1 = col.column("Column1", "field1", type.bigDecimalType()),
-						column2 = col.column("Column2", "field2", type.integerType()),
-						column3 = col.column("Column2", "field3", type.stringType()),
-						column4 = col.column("Column3", "field4", type.dateType()))
-				.subtotalsAtSummary(
-						subtotal1 = sbt.sum(column1),
-						subtotal2 = sbt.avg(column1),
-						subtotal3 = sbt.count(column1),
-						subtotal4 = sbt.distinctCount(column1),
-						subtotal5 = sbt.first(column1),
-						subtotal6 = sbt.min(column1),
-						subtotal7 = sbt.max(column1),
-						subtotal8 = sbt.stdDev(column1),
-						subtotal9 = sbt.var(column1),
+			.columns(
+					column1 = col.column("Column1", "field1", type.bigDecimalType()),
+					column2 = col.column("Column2", "field2", type.integerType()),
+					column3 = col.column("Column2", "field3", type.stringType()),
+					column4 = col.column("Column3", "field4", type.dateType()))
+			.subtotalsAtSummary(
+					subtotal1 = sbt.sum(column1),
+					subtotal2 = sbt.avg(column1),
+					subtotal3 = sbt.count(column1),
+					subtotal4 = sbt.distinctCount(column1),
+					subtotal5 = sbt.first(column1),
+					subtotal6 = sbt.min(column1),
+					subtotal7 = sbt.max(column1),
+					subtotal8 = sbt.stdDev(column1),
+					subtotal9 = sbt.var(column1),
 
-						subtotal10 = sbt.sum(column2),
-						subtotal11 = sbt.avg(column2),
-						subtotal12 = sbt.count(column2),
-						subtotal13 = sbt.distinctCount(column2),
-						subtotal14 = sbt.first(column2),
-						subtotal15 = sbt.min(column2),
-						subtotal16 = sbt.max(column2),
-						subtotal17 = sbt.stdDev(column2),
-						subtotal18 = sbt.var(column2),
+					subtotal10 = sbt.sum(column2),
+					subtotal11 = sbt.avg(column2),
+					subtotal12 = sbt.count(column2),
+					subtotal13 = sbt.distinctCount(column2),
+					subtotal14 = sbt.first(column2),
+					subtotal15 = sbt.min(column2),
+					subtotal16 = sbt.max(column2),
+					subtotal17 = sbt.stdDev(column2),
+					subtotal18 = sbt.var(column2),
 
-						subtotal19 = sbt.count(column3),
-						subtotal20 = sbt.distinctCount(column3),
-						subtotal21 = sbt.first(column3),
-						subtotal22 = sbt.min(column3),
-						subtotal23 = sbt.max(column3),
+					subtotal19 = sbt.count(column3),
+					subtotal20 = sbt.distinctCount(column3),
+					subtotal21 = sbt.first(column3),
+					subtotal22 = sbt.min(column3),
+					subtotal23 = sbt.max(column3),
 
-						subtotal24 = sbt.count(column4),
-						subtotal25 = sbt.distinctCount(column4),
-						subtotal26 = sbt.first(column4),
-						subtotal27 = sbt.min(column4),
-						subtotal28 = sbt.max(column4));
+					subtotal24 = sbt.count(column4),
+					subtotal25 = sbt.distinctCount(column4),
+					subtotal26 = sbt.first(column4),
+					subtotal27 = sbt.min(column4),
+					subtotal28 = sbt.max(column4));
 	}
 
 	@Override
@@ -127,7 +127,7 @@ public class Subtotal2Test extends AbstractJasperValueTest implements Serializab
 
 		numberOfPagesTest(1);
 
-		// summary
+		//summary
 		subtotalIndexCountTest(subtotal1, 1, 1);
 		subtotalIndexValueTest(subtotal1, 1, "25.05");
 		subtotalIndexCountTest(subtotal2, 2, 1);

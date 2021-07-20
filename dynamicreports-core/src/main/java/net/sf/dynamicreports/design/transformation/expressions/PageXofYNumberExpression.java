@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -55,11 +55,12 @@ public class PageXofYNumberExpression extends AbstractComplexExpression<String> 
 		int index1 = pattern.indexOf("{0}");
 		if (index == 0) {
 			pattern = pattern.substring(0, index1 + 3);
-		} else {
+		}
+		else {
 			pattern = pattern.substring(index1 + 3);
 		}
 		MessageFormat format = new MessageFormat(pattern, reportParameters.getLocale());
-		String result = format.format(new Object[] { reportParameters.getPageNumber(), reportParameters.getPageNumber() });
+		String result = format.format(new Object[]{reportParameters.getPageNumber(), reportParameters.getPageNumber()});
 		return result;
 	}
 }

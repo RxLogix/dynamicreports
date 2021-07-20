@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,18 +48,18 @@ public class ExpressionColumnReport {
 	private void build() {
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.fields(
-							field("orderdate", Date.class),
-							quantityField = field("quantity", Integer.class),
-							field("unitprice", BigDecimal.class))
-					.columns(
-							col.column("Item", "item", type.stringType()),
-							col.column("Expression column", new ExpressionColumn()))
-					.title(Templates.createTitleComponent("ExpressionColumn"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .fields(
+			  	field("orderdate", Date.class),
+			  	quantityField = field("quantity", Integer.class),
+			  	field("unitprice", BigDecimal.class))
+			  .columns(
+			  	col.column("Item", "item", type.stringType()),
+			  	col.column("Expression column", new ExpressionColumn()))
+			  .title(Templates.createTitleComponent("ExpressionColumn"))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
@@ -80,10 +80,11 @@ public class ExpressionColumnReport {
 
 		@Override
 		public String evaluate(ReportParameters reportParameters) {
-			return "Item = " + reportParameters.getValue("item") + ", " +
-					"Order date = " + type.dateType().valueToString("orderdate", reportParameters) + ", " +
-					"Quantity = " + type.integerType().valueToString(quantityField, reportParameters) + ", " +
-					"Unit price = " + type.bigDecimalType().valueToString("unitprice", reportParameters);
+			return
+				"Item = " + reportParameters.getValue("item") + ", " +
+				"Order date = " + type.dateType().valueToString("orderdate", reportParameters) + ", " +
+				"Quantity = " + type.integerType().valueToString(quantityField, reportParameters) + ", " +
+				"Unit price = " + type.bigDecimalType().valueToString("unitprice", reportParameters);
 		}
 	}
 }

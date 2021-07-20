@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>net.sourceforge.dynamicreports</groupId>
 		<artifactId>dynamicreports-parent</artifactId>
-		<version>5.1.0</version>
+		<version>5.0.1.2-Rx</version>
 	</parent>
 
 	<artifactId>dynamicreports-core</artifactId>
@@ -68,6 +68,11 @@
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.jexcelapi</groupId>
+			<artifactId>jxl</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

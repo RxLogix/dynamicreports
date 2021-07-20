@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,10 +48,10 @@ public class SeriesChart1Test extends AbstractJasperChartTest implements Seriali
 				column1 = col.column("Column1", "field1", String.class),
 				column2 = col.column("Column2", "field2", String.class),
 				column3 = col.column("Column3", "field3", Integer.class))
-				.summary(
-						cht.barChart()
-								.setCategory(column1)
-								.series(cht.serie(column3).setSeries(column2)));
+			.summary(
+					cht.barChart()
+						.setCategory(column1)
+						.series(cht.serie(column3).setSeries(column2)));
 	}
 
 	@Override
@@ -60,13 +60,13 @@ public class SeriesChart1Test extends AbstractJasperChartTest implements Seriali
 
 		numberOfPagesTest(1);
 
-		String[] categories = new String[] { "value1", "value2" };
-		String[] series = new String[] { "value1_1", "value1_2", "value2_1" };
+		String[] categories = new String[]{"value1", "value2"};
+		String[] series = new String[]{"value1_1", "value1_2", "value2_1"};
 
 		chartCountTest("summary.chart1", 1);
 		chartCategoryCountTest("summary.chart1", 0, 2);
 		chartSeriesCountTest("summary.chart1", 0, 3);
-		chartDataTest("summary.chart1", 0, categories, series, new Number[][] { { 5d, 6d, null }, { null, null, 7d } });
+		chartDataTest("summary.chart1", 0, categories, series, new Number[][]{{5d, 6d, null}, {null, null, 7d}});
 	}
 
 	@Override

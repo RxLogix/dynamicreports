@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -82,11 +82,14 @@ public class StyleResolver {
 		int fontStyle;
 		if (bold && italic) {
 			fontStyle = Font.BOLD | Font.ITALIC;
-		} else if (bold) {
+		}
+		else if (bold) {
 			fontStyle = Font.BOLD;
-		} else if (italic) {
+		}
+		else if (italic) {
 			fontStyle = Font.ITALIC;
-		} else {
+		}
+		else {
 			fontStyle = Font.PLAIN;
 		}
 
@@ -373,7 +376,7 @@ public class StyleResolver {
 		int g = (int) (color1.getGreen() * amount + color2.getGreen() * percent);
 		int b = (int) (color1.getBlue() * amount + color2.getBlue() * percent);
 		int a = (int) (color1.getAlpha() * amount + color2.getAlpha() * percent);
-		return new Color(r, g, b, a);
+	  return new Color(r, g, b, a);
 	}
 
 }

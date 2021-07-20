@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -51,36 +51,36 @@ public class BooleanImageExpression extends AbstractComplexExpression<Renderable
 		String fileNameTrue;
 		String fileNameFalse;
 		switch (booleanField.getComponentType()) {
-			case IMAGE_STYLE_1:
-				fileNameTrue = "boolean1_true";
-				fileNameFalse = "boolean1_false";
-				break;
-			case IMAGE_STYLE_2:
-				fileNameTrue = "boolean2_true";
-				fileNameFalse = "boolean2_false";
-				break;
-			case IMAGE_STYLE_3:
-				fileNameTrue = "boolean3_true";
-				fileNameFalse = "boolean3_false";
-				break;
-			case IMAGE_STYLE_4:
-				fileNameTrue = "boolean1_true";
-				fileNameFalse = "boolean4_false";
-				break;
-			case IMAGE_CHECKBOX_1:
-				fileNameTrue = "checkbox1_true";
-				fileNameFalse = "checkbox_false";
-				break;
-			case IMAGE_CHECKBOX_2:
-				fileNameTrue = "checkbox2_true";
-				fileNameFalse = "checkbox_false";
-				break;
-			case IMAGE_BALL:
-				fileNameTrue = "ball_green";
-				fileNameFalse = "ball_red";
-				break;
-			default:
-				throw new DRDesignReportException("BooleanComponentType " + booleanField.getComponentType().name() + " not supported");
+		case IMAGE_STYLE_1:
+			fileNameTrue = "boolean1_true";
+			fileNameFalse = "boolean1_false";
+			break;
+		case IMAGE_STYLE_2:
+			fileNameTrue = "boolean2_true";
+			fileNameFalse = "boolean2_false";
+			break;
+		case IMAGE_STYLE_3:
+			fileNameTrue = "boolean3_true";
+			fileNameFalse = "boolean3_false";
+			break;
+		case IMAGE_STYLE_4:
+			fileNameTrue = "boolean1_true";
+			fileNameFalse = "boolean4_false";
+			break;
+		case IMAGE_CHECKBOX_1:
+			fileNameTrue = "checkbox1_true";
+			fileNameFalse = "checkbox_false";
+			break;
+		case IMAGE_CHECKBOX_2:
+			fileNameTrue = "checkbox2_true";
+			fileNameFalse = "checkbox_false";
+			break;
+		case IMAGE_BALL:
+			fileNameTrue = "ball_green";
+			fileNameFalse = "ball_red";
+			break;
+		default:
+			throw new DRDesignReportException("BooleanComponentType " + booleanField.getComponentType().name() + " not supported");
 		}
 		try {
 			imageTrue = new CustomBatikRenderer(ReportUtils.class.getResource("images/" + fileNameTrue + ".svg"), width, height);

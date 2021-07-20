@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -52,39 +52,39 @@ public class VerticalValuesReport {
 		StyleBuilder nameStyle = stl.style().bold();
 		StyleBuilder valueStyle = stl.style().setHorizontalTextAlignment(HorizontalTextAlignment.LEFT);
 
-		FieldBuilder<String> itemField = field("item", type.stringType());
-		FieldBuilder<Integer> quantityField = field("quantity", type.integerType());
+		FieldBuilder<String>     itemField      = field("item",      type.stringType());
+		FieldBuilder<Integer>    quantityField  = field("quantity",  type.integerType());
 		FieldBuilder<BigDecimal> unitPriceField = field("unitprice", type.bigDecimalType());
-		FieldBuilder<Date> orderDateField = field("orderdate", type.dateType());
+		FieldBuilder<Date>       orderDateField = field("orderdate", type.dateType());
 
 		VerticalListBuilder nameList = cmp.verticalList(
-				cmp.text("Item:").setStyle(nameStyle),
-				cmp.text("Quantity:").setStyle(nameStyle),
-				cmp.text("Unit price:").setStyle(nameStyle),
-				cmp.text("Order date:").setStyle(nameStyle));
+			cmp.text("Item:").setStyle(nameStyle),
+			cmp.text("Quantity:").setStyle(nameStyle),
+			cmp.text("Unit price:").setStyle(nameStyle),
+			cmp.text("Order date:").setStyle(nameStyle));
 		VerticalListBuilder valueList = cmp.verticalList(
-				cmp.text(itemField).setStyle(valueStyle),
-				cmp.text(quantityField).setStyle(valueStyle),
-				cmp.text(unitPriceField).setStyle(valueStyle),
-				cmp.text(orderDateField).setStyle(valueStyle));
+			cmp.text(itemField).setStyle(valueStyle),
+			cmp.text(quantityField).setStyle(valueStyle),
+			cmp.text(unitPriceField).setStyle(valueStyle),
+			cmp.text(orderDateField).setStyle(valueStyle));
 
 		ComponentColumnBuilder nameColumn = col.componentColumn("Name", nameList);
 		ComponentColumnBuilder valueColumn = col.componentColumn("Value", valueList);
 
 		AggregationSubtotalBuilder<BigDecimal> unitPriceSum = sbt.sum(unitPriceField, valueColumn)
-				.setLabel("Unit price sum =");
+		                                                         .setLabel("Unit price sum =");
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.setPageFormat(PageType.A5)
-					.fields(itemField, quantityField, unitPriceField, orderDateField)
-					.columns(nameColumn, valueColumn)
-					.subtotalsAtSummary(unitPriceSum)
-					.title(Templates.createTitleComponent("VerticalValues"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .setPageFormat(PageType.A5)
+			  .fields(itemField, quantityField, unitPriceField, orderDateField)
+			  .columns(nameColumn, valueColumn)
+			  .subtotalsAtSummary(unitPriceSum)
+			  .title(Templates.createTitleComponent("VerticalValues"))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

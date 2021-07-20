@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -31,7 +31,7 @@ import net.sf.dynamicreports.report.definition.expression.DRIExpression;
  */
 public class BarcodeBuilders {
 
-	// codabar
+	//codabar
 	public CodabarBarcodeBuilder codabar(String code) {
 		return Barcodes.codabar(code);
 	}
@@ -40,7 +40,7 @@ public class BarcodeBuilders {
 		return Barcodes.codabar(codeExpression);
 	}
 
-	// code128
+	//code128
 	public Code128BarcodeBuilder code128(String code) {
 		return Barcodes.code128(code);
 	}
@@ -49,7 +49,7 @@ public class BarcodeBuilders {
 		return Barcodes.code128(codeExpression);
 	}
 
-	// ean128
+	//ean128
 	public Ean128BarcodeBuilder ean128(String code) {
 		return Barcodes.ean128(code);
 	}
@@ -58,7 +58,7 @@ public class BarcodeBuilders {
 		return Barcodes.ean128(codeExpression);
 	}
 
-	// dataMatrix
+	//dataMatrix
 	public DataMatrixBarcodeBuilder dataMatrix(String code) {
 		return Barcodes.dataMatrix(code);
 	}
@@ -67,7 +67,7 @@ public class BarcodeBuilders {
 		return Barcodes.dataMatrix(codeExpression);
 	}
 
-	// code39
+	//code39
 	public Code39BarcodeBuilder code39(String code) {
 		return Barcodes.code39(code);
 	}
@@ -76,7 +76,7 @@ public class BarcodeBuilders {
 		return Barcodes.code39(codeExpression);
 	}
 
-	// interleaved2Of5
+	//interleaved2Of5
 	public Interleaved2Of5BarcodeBuilder interleaved2Of5(String code) {
 		return Barcodes.interleaved2Of5(code);
 	}
@@ -85,7 +85,7 @@ public class BarcodeBuilders {
 		return Barcodes.interleaved2Of5(codeExpression);
 	}
 
-	// upca
+	//upca
 	public UpcaBarcodeBuilder upca(String code) {
 		return Barcodes.upca(code);
 	}
@@ -94,7 +94,7 @@ public class BarcodeBuilders {
 		return Barcodes.upca(codeExpression);
 	}
 
-	// upce
+	//upce
 	public UpceBarcodeBuilder upce(String code) {
 		return Barcodes.upce(code);
 	}
@@ -103,7 +103,7 @@ public class BarcodeBuilders {
 		return Barcodes.upce(codeExpression);
 	}
 
-	// ean13
+	//ean13
 	public Ean13BarcodeBuilder ean13(String code) {
 		return Barcodes.ean13(code);
 	}
@@ -112,7 +112,7 @@ public class BarcodeBuilders {
 		return Barcodes.ean13(codeExpression);
 	}
 
-	// ean8
+	//ean8
 	public Ean8BarcodeBuilder ean8(String code) {
 		return Barcodes.ean8(code);
 	}
@@ -121,7 +121,7 @@ public class BarcodeBuilders {
 		return Barcodes.ean8(codeExpression);
 	}
 
-	// uspsIntelligentMail
+	//uspsIntelligentMail
 	public UspsIntelligentMailBarcodeBuilder uspsIntelligentMail(String code) {
 		return Barcodes.uspsIntelligentMail(code);
 	}
@@ -130,7 +130,7 @@ public class BarcodeBuilders {
 		return Barcodes.uspsIntelligentMail(codeExpression);
 	}
 
-	// royalMailCustomer
+	//royalMailCustomer
 	public RoyalMailCustomerBarcodeBuilder royalMailCustomer(String code) {
 		return Barcodes.royalMailCustomer(code);
 	}
@@ -139,7 +139,7 @@ public class BarcodeBuilders {
 		return Barcodes.royalMailCustomer(codeExpression);
 	}
 
-	// postnet
+	//postnet
 	public PostnetBarcodeBuilder postnet(String code) {
 		return Barcodes.postnet(code);
 	}
@@ -148,7 +148,7 @@ public class BarcodeBuilders {
 		return Barcodes.postnet(codeExpression);
 	}
 
-	// pdf417
+	//pdf417
 	public Pdf417BarcodeBuilder pdf417(String code) {
 		return Barcodes.pdf417(code);
 	}
@@ -157,7 +157,7 @@ public class BarcodeBuilders {
 		return Barcodes.pdf417(codeExpression);
 	}
 
-	// qrCode
+	//qrCode
 	public QrCodeBuilder qrCode(String code) {
 		return Barcodes.qrCode(code);
 	}
@@ -166,7 +166,7 @@ public class BarcodeBuilders {
 		return Barcodes.qrCode(codeExpression);
 	}
 
-	// barbecue 2of7
+	//barbecue 2of7
 	public BarbecueBuilder barbecue_2of7(String code) {
 		return Barcodes.barbecue_2of7(code);
 	}
@@ -175,7 +175,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_2of7(codeExpression);
 	}
 
-	// barbecue 3of9
+	//barbecue 3of9
 	public BarbecueBuilder barbecue_3of9(String code) {
 		return Barcodes.barbecue_3of9(code);
 	}
@@ -184,7 +184,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_3of9(codeExpression);
 	}
 
-	// barbecue bookland
+	//barbecue bookland
 	public BarbecueBuilder barbecue_bookland(String code) {
 		return Barcodes.barbecue_bookland(code);
 	}
@@ -193,7 +193,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_bookland(codeExpression);
 	}
 
-	// barbecue codabar
+	//barbecue codabar
 	public BarbecueBuilder barbecue_codabar(String code) {
 		return Barcodes.barbecue_codabar(code);
 	}
@@ -202,7 +202,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_codabar(codeExpression);
 	}
 
-	// barbecue code128
+	//barbecue code128
 	public BarbecueBuilder barbecue_code128(String code) {
 		return Barcodes.barbecue_code128(code);
 	}
@@ -211,7 +211,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_code128(codeExpression);
 	}
 
-	// barbecue code128A
+	//barbecue code128A
 	public BarbecueBuilder barbecue_code128A(String code) {
 		return Barcodes.barbecue_code128A(code);
 	}
@@ -220,7 +220,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_code128A(codeExpression);
 	}
 
-	// barbecue code128B
+	//barbecue code128B
 	public BarbecueBuilder barbecue_code128B(String code) {
 		return Barcodes.barbecue_code128B(code);
 	}
@@ -229,7 +229,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_code128B(codeExpression);
 	}
 
-	// barbecue code128C
+	//barbecue code128C
 	public BarbecueBuilder barbecue_code128C(String code) {
 		return Barcodes.barbecue_code128C(code);
 	}
@@ -238,7 +238,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_code128C(codeExpression);
 	}
 
-	// barbecue code39
+	//barbecue code39
 	public BarbecueBuilder barbecue_code39(String code) {
 		return Barcodes.barbecue_code39(code);
 	}
@@ -247,7 +247,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_code39(codeExpression);
 	}
 
-	// barbecue code39 extended
+	//barbecue code39 extended
 	public BarbecueBuilder barbecue_code39Extended(String code) {
 		return Barcodes.barbecue_code39Extended(code);
 	}
@@ -256,7 +256,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_code39Extended(codeExpression);
 	}
 
-	// barbecue ean128
+	//barbecue ean128
 	public BarbecueBuilder barbecue_ean128(String code) {
 		return Barcodes.barbecue_ean128(code);
 	}
@@ -265,7 +265,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_ean128(codeExpression);
 	}
 
-	// barbecue ean13
+	//barbecue ean13
 	public BarbecueBuilder barbecue_ean13(String code) {
 		return Barcodes.barbecue_ean13(code);
 	}
@@ -274,7 +274,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_ean13(codeExpression);
 	}
 
-	// barbecue global trade item number
+	//barbecue global trade item number
 	public BarbecueBuilder barbecue_globalTradeItemNumber(String code) {
 		return Barcodes.barbecue_globalTradeItemNumber(code);
 	}
@@ -283,7 +283,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_globalTradeItemNumber(codeExpression);
 	}
 
-	// barbecue int2of5
+	//barbecue int2of5
 	public BarbecueBuilder barbecue_int2of5(String code) {
 		return Barcodes.barbecue_int2of5(code);
 	}
@@ -292,7 +292,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_int2of5(codeExpression);
 	}
 
-	// barbecue monarch
+	//barbecue monarch
 	public BarbecueBuilder barbecue_monarch(String code) {
 		return Barcodes.barbecue_monarch(code);
 	}
@@ -301,7 +301,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_monarch(codeExpression);
 	}
 
-	// barbecue nw7
+	//barbecue nw7
 	public BarbecueBuilder barbecue_nw7(String code) {
 		return Barcodes.barbecue_nw7(code);
 	}
@@ -310,7 +310,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_nw7(codeExpression);
 	}
 
-	// barbecue pdf417
+	//barbecue pdf417
 	public BarbecueBuilder barbecue_pdf417(String code) {
 		return Barcodes.barbecue_pdf417(code);
 	}
@@ -319,7 +319,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_pdf417(codeExpression);
 	}
 
-	// barbecue postnet
+	//barbecue postnet
 	public BarbecueBuilder barbecue_postnet(String code) {
 		return Barcodes.barbecue_postnet(code);
 	}
@@ -328,7 +328,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_postnet(codeExpression);
 	}
 
-	// barbecue random weight upca
+	//barbecue random weight upca
 	public BarbecueBuilder barbecue_randomWeightUpca(String code) {
 		return Barcodes.barbecue_randomWeightUpca(code);
 	}
@@ -337,7 +337,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_randomWeightUpca(codeExpression);
 	}
 
-	// barbecue scc14 shipping code
+	//barbecue scc14 shipping code
 	public BarbecueBuilder barbecue_scc14ShippingCode(String code) {
 		return Barcodes.barbecue_scc14ShippingCode(code);
 	}
@@ -346,7 +346,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_scc14ShippingCode(codeExpression);
 	}
 
-	// barbecue shipment identification number
+	//barbecue shipment identification number
 	public BarbecueBuilder barbecue_shipmentIdentificationNumber(String code) {
 		return Barcodes.barbecue_shipmentIdentificationNumber(code);
 	}
@@ -355,7 +355,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_shipmentIdentificationNumber(codeExpression);
 	}
 
-	// barbecue sscc18
+	//barbecue sscc18
 	public BarbecueBuilder barbecue_sscc18(String code) {
 		return Barcodes.barbecue_sscc18(code);
 	}
@@ -364,7 +364,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_sscc18(codeExpression);
 	}
 
-	// barbecue std 2of5
+	//barbecue std 2of5
 	public BarbecueBuilder barbecue_std2of5(String code) {
 		return Barcodes.barbecue_std2of5(code);
 	}
@@ -373,7 +373,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_std2of5(codeExpression);
 	}
 
-	// barbecue ucc128
+	//barbecue ucc128
 	public BarbecueBuilder barbecue_ucc128(String code) {
 		return Barcodes.barbecue_ucc128(code);
 	}
@@ -382,7 +382,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_ucc128(codeExpression);
 	}
 
-	// barbecue upca
+	//barbecue upca
 	public BarbecueBuilder barbecue_upca(String code) {
 		return Barcodes.barbecue_upca(code);
 	}
@@ -391,7 +391,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_upca(codeExpression);
 	}
 
-	// barbecue usd3
+	//barbecue usd3
 	public BarbecueBuilder barbecue_usd3(String code) {
 		return Barcodes.barbecue_usd3(code);
 	}
@@ -400,7 +400,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_usd3(codeExpression);
 	}
 
-	// barbecue usd4
+	//barbecue usd4
 	public BarbecueBuilder barbecue_usd4(String code) {
 		return Barcodes.barbecue_usd4(code);
 	}
@@ -409,7 +409,7 @@ public class BarcodeBuilders {
 		return Barcodes.barbecue_usd4(codeExpression);
 	}
 
-	// barbecue usps
+	//barbecue usps
 	public BarbecueBuilder barbecue_usps(String code) {
 		return Barcodes.barbecue_usps(code);
 	}

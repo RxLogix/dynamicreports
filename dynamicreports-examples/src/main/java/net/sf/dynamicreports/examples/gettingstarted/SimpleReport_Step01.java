@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -41,16 +41,16 @@ public class SimpleReport_Step01 {
 
 	private void build() {
 		try {
-			report()// create new report design
-					.columns(// add columns
-							// title, field name data type
-							col.column("Item", "item", type.stringType()),
-							col.column("Quantity", "quantity", type.integerType()),
-							col.column("Unit price", "unitprice", type.bigDecimalType()))
-					.title(cmp.text("Getting started"))// shows report title
-					.pageFooter(cmp.pageXofY())// shows number of page at page footer
-					.setDataSource(createDataSource())// set datasource
-					.show();// create and show report
+			report()//create new report design
+			  .columns(//add columns
+			  	//            title,     field name     data type
+			  	col.column("Item",       "item",      type.stringType()),
+			  	col.column("Quantity",   "quantity",  type.integerType()),
+			  	col.column("Unit price", "unitprice", type.bigDecimalType()))
+			  .title(cmp.text("Getting started"))//shows report title
+			  .pageFooter(cmp.pageXofY())//shows number of page at page footer
+			  .setDataSource(createDataSource())//set datasource
+			  .show();//create and show report
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

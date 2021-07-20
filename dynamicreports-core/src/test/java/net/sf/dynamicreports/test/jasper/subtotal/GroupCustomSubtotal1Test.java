@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -64,17 +64,17 @@ public class GroupCustomSubtotal1Test extends AbstractJasperValueTest implements
 		TextColumnBuilder<String> column1;
 
 		rb.setLocale(Locale.ENGLISH)
-				.columns(
-						column1 = col.column("Column1", "field1", String.class),
-						column2 = col.column("Column2", "field2", Integer.class))
-				.groupBy(column1)
-				.subtotalsAtFirstGroupFooter(
-						subtotal1 = sbt.sum(column2),
-						subtotal2 = sbt.customValue(new ValueExpression(), column2))
-				.subtotalsAtLastGroupFooter(
-						subtotal3 = sbt.sum(column2),
-						subtotal4 = sbt.customValue(new ValueExpression2(), column2),
-						subtotal5 = sbt.customValue(new ValueExpression3(), column2));
+			.columns(
+					column1 = col.column("Column1", "field1", String.class),
+					column2 = col.column("Column2", "field2", Integer.class))
+			.groupBy(column1)
+			.subtotalsAtFirstGroupFooter(
+					subtotal1 = sbt.sum(column2),
+					subtotal2 = sbt.customValue(new ValueExpression(), column2))
+			.subtotalsAtLastGroupFooter(
+					subtotal3 = sbt.sum(column2),
+					subtotal4 = sbt.customValue(new ValueExpression2(), column2),
+					subtotal5 = sbt.customValue(new ValueExpression3(), column2));
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class GroupCustomSubtotal1Test extends AbstractJasperValueTest implements
 		super.test();
 
 		numberOfPagesTest(1);
-		// groupFooter
+		//groupFooter
 		subtotalIndexCountTest(subtotal1, 1, 2);
 		subtotalIndexValueTest(subtotal1, 1, "6", "15");
 		subtotalIndexCountTest(subtotal2, 2, 2);

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -44,29 +44,29 @@ public class ThermometerChartReport {
 
 	private void build() {
 		ThermometerChartBuilder chart1 = cht.thermometerChart()
-				.setValue(field("value", type.integerType()));
+			.setValue(field("value", type.integerType()));
 
 		ThermometerChartBuilder chart2 = cht.thermometerChart()
-				.setValue(18)
-				.setDataRangeHighExpression(30)
-				.setValueColor(Color.BLACK)
-				.setValueLocation(ValueLocation.BULB)
-				.setLowDataRangeLowExpression(0)
-				.setLowDataRangeHighExpression(10)
-				.setMediumDataRangeLowExpression(10)
-				.setMediumDataRangeHighExpression(20)
-				.setHighDataRangeLowExpression(20)
-				.setHighDataRangeHighExpression(30);
+			.setValue(18)
+			.setDataRangeHighExpression(30)
+			.setValueColor(Color.BLACK)
+			.setValueLocation(ValueLocation.BULB)
+			.setLowDataRangeLowExpression(0)
+			.setLowDataRangeHighExpression(10)
+			.setMediumDataRangeLowExpression(10)
+			.setMediumDataRangeHighExpression(20)
+			.setHighDataRangeLowExpression(20)
+			.setHighDataRangeHighExpression(30);
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.title(Templates.createTitleComponent("ThermometerChart"))
-					.summary(
-							cmp.horizontalList(chart1, chart2))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.title(Templates.createTitleComponent("ThermometerChart"))
+				.summary(
+					cmp.horizontalList(chart1, chart2))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

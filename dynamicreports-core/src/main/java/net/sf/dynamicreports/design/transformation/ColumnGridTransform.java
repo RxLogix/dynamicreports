@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -113,11 +113,14 @@ public class ColumnGridTransform {
 			list.setWidth(accessor.getTemplateTransform().getColumnWidth(column, accessor.getStyleTransform().getDefaultStyle(DefaultStyleType.COLUMN)));
 			columnGrid.addList(column, list);
 			return new GridList(list, null);
-		} else if (columnGridComponent instanceof DRIColumnGridList) {
+		}
+		else if (columnGridComponent instanceof DRIColumnGridList) {
 			return new GridList(columnGridList((DRIColumnGridList) columnGridComponent, columnGrid, titleGroup), null);
-		} else if (columnGridComponent instanceof DRIColumnTitleGroup) {
+		}
+		else if (columnGridComponent instanceof DRIColumnTitleGroup) {
 			return columnGridTitleGroup((DRIColumnTitleGroup) columnGridComponent, columnGrid, titleGroup);
-		} else {
+		}
+		else {
 			throw new DRDesignReportException("Column grid component " + columnGridComponent.getClass().getName() + " not supported");
 		}
 	}
@@ -139,7 +142,8 @@ public class ColumnGridTransform {
 					if (verticalAlignment == null) {
 						verticalAlignment = ConstantTransform.toVerticalCellComponentAlignment(((DRIBooleanColumn) column).getComponent().getHeightType());
 					}
-				} else {
+				}
+				else {
 					DRIComponent columnComponent = accessor.getColumnTransform().getColumnComponent(column);
 					if (columnComponent instanceof DRIDimensionComponent) {
 						if (horizontalAlignment == null) {
@@ -154,7 +158,8 @@ public class ColumnGridTransform {
 			GridList gridList = list(component, columnGrid, titleGroup);
 			if (gridList.getHorizontalCellAlignment() != null) {
 				list.addComponent(gridList.getHorizontalCellAlignment(), cell.getVerticalAlignment(), gridList.getList());
-			} else {
+			}
+			else {
 				list.addComponent(horizontalAlignment, cell.getVerticalAlignment(), gridList.getList());
 			}
 		}
@@ -196,7 +201,8 @@ public class ColumnGridTransform {
 				titleGroupField.setWidth(totalWidth);
 				hCellAlignment = HorizontalCellComponentAlignment.LEFT;
 			}
-		} else {
+		}
+		else {
 			if (columnGridTitleGroup.getTitleWidth() != null) {
 				titleGroupField.setWidth(columnGridTitleGroup.getTitleWidth());
 			}
@@ -230,7 +236,8 @@ public class ColumnGridTransform {
 			list.addComponent(columnList);
 			list.setWidth(designTitleGroupField.getWidth());
 			return new GridList(list, hCellAlignment);
-		} else {
+		}
+		else {
 			list.addComponent(designTitleGroupField);
 			list.addComponent(columnList);
 			return new GridList(list, null);

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -58,22 +58,22 @@ public class GroupCustomSubtotal2Test extends AbstractJasperValueTest implements
 		ColumnGroupBuilder group = grp.group(column1);
 
 		rb.setLocale(Locale.ENGLISH)
-				.columns(
-						column1,
-						column2 = col.column("Column2", "field2", Integer.class))
-				.groupBy(group)
-				.subtotalsAtGroupHeader(group,
-						subtotal1 = sbt.customValue(new ValueExpression(), column2))
-				.subtotalsAtGroupFooter(group,
-						subtotal2 = sbt.customValue(new ValueExpression(), column2))
-				.subtotalsAtFirstGroupHeader(
-						subtotal3 = sbt.customValue(new ValueExpression(), column2))
-				.subtotalsAtFirstGroupFooter(
-						subtotal4 = sbt.customValue(new ValueExpression(), column2))
-				.subtotalsAtLastGroupHeader(
-						subtotal5 = sbt.customValue(new ValueExpression(), column2))
-				.subtotalsAtLastGroupFooter(
-						subtotal6 = sbt.customValue(new ValueExpression(), column2));
+			.columns(
+				column1,
+				column2 = col.column("Column2", "field2", Integer.class))
+			.groupBy(group)
+			.subtotalsAtGroupHeader(group,
+				subtotal1 = sbt.customValue(new ValueExpression(), column2))
+			.subtotalsAtGroupFooter(group,
+				subtotal2 = sbt.customValue(new ValueExpression(), column2))
+			.subtotalsAtFirstGroupHeader(
+				subtotal3 = sbt.customValue(new ValueExpression(), column2))
+			.subtotalsAtFirstGroupFooter(
+				subtotal4 = sbt.customValue(new ValueExpression(), column2))
+			.subtotalsAtLastGroupHeader(
+				subtotal5 = sbt.customValue(new ValueExpression(), column2))
+			.subtotalsAtLastGroupFooter(
+				subtotal6 = sbt.customValue(new ValueExpression(), column2));
 	}
 
 	@Override
@@ -81,22 +81,22 @@ public class GroupCustomSubtotal2Test extends AbstractJasperValueTest implements
 		super.test();
 
 		numberOfPagesTest(1);
-		// groupHeader
+		//groupHeader
 		subtotalIndexCountTest(subtotal1, 1, 2);
 		subtotalIndexValueTest(subtotal1, 1, "3", "6");
-		// groupFooter
+		//groupFooter
 		subtotalIndexCountTest(subtotal2, 1, 2);
 		subtotalIndexValueTest(subtotal2, 1, "3", "6");
-		// first groupHeader
+		//first groupHeader
 		subtotalIndexCountTest(subtotal3, 1, 2);
 		subtotalIndexValueTest(subtotal3, 1, "3", "6");
-		// first groupFooter
+		//first groupFooter
 		subtotalIndexCountTest(subtotal4, 1, 2);
 		subtotalIndexValueTest(subtotal4, 1, "3", "6");
-		// last groupHeader
+		//last groupHeader
 		subtotalIndexCountTest(subtotal5, 1, 2);
 		subtotalIndexValueTest(subtotal5, 1, "3", "6");
-		// last groupFooter
+		//last groupFooter
 		subtotalIndexCountTest(subtotal6, 1, 2);
 		subtotalIndexValueTest(subtotal6, 1, "3", "6");
 	}

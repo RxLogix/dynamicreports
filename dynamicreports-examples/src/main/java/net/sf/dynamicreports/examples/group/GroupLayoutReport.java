@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -56,27 +56,27 @@ public class GroupLayoutReport {
 		TextColumnBuilder<BigDecimal> unitPriceColumn = col.column("Unit price", "unitprice", type.bigDecimalType());
 
 		CustomGroupBuilder yearGroup = grp.group(new YearExpression())
-				.groupByDataType()
-				.setHeaderLayout(GroupHeaderLayout.EMPTY)
-				.setPadding(0);
+			.groupByDataType()
+			.setHeaderLayout(GroupHeaderLayout.EMPTY)
+			.setPadding(0);
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.setSubtotalStyle(stl.style(Templates.boldStyle))
-					.fields(
-							field("orderdate", type.dateYearType()))
-					.columns(
-							yearColumn, orderDateColumn, itemColumn, quantityColumn, unitPriceColumn)
-					.groupBy(yearGroup)
-					.subtotalsAtGroupHeader(yearGroup,
-							sbt.first(new YearExpression(), yearColumn), sbt.sum(quantityColumn), sbt.sum(unitPriceColumn))
-					.subtotalsAtSummary(
-							sbt.aggregate(exp.text("Total"), yearColumn, Calculation.NOTHING), sbt.sum(quantityColumn), sbt.sum(unitPriceColumn))
-					.title(Templates.createTitleComponent("GroupLayout"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.setSubtotalStyle(stl.style(Templates.boldStyle))
+				.fields(
+					field("orderdate", type.dateYearType()))
+				.columns(
+					yearColumn,	orderDateColumn, itemColumn, quantityColumn, unitPriceColumn)
+				.groupBy(yearGroup)
+				.subtotalsAtGroupHeader(yearGroup,
+					sbt.first(new YearExpression(), yearColumn), sbt.sum(quantityColumn), sbt.sum(unitPriceColumn))
+				.subtotalsAtSummary(
+					sbt.aggregate(exp.text("Total"), yearColumn, Calculation.NOTHING), sbt.sum(quantityColumn), sbt.sum(unitPriceColumn))
+				.title(Templates.createTitleComponent("GroupLayout"))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

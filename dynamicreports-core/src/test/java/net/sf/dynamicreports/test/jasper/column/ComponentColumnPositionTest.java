@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -47,13 +47,13 @@ public class ComponentColumnPositionTest extends AbstractJasperPositionTest impl
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.columns(
-				column1 = col.column("Column1", "field1", type.stringType()),
-				col.componentColumn(cmp.filler().setFixedWidth(5)),
-				col.componentColumn(cmp.filler()).setFixedWidth(5),
+		  	column1 = col.column("Column1", "field1", type.stringType()),
+		  	col.componentColumn(cmp.filler().setFixedWidth(5)),
+		  	col.componentColumn(cmp.filler()).setFixedWidth(5),
 				column3 = col.componentColumn("Column3",
 						cmp.verticalList(cmp.horizontalList(cmp.text("aa"), cmp.text("cc")), cmp.text("aa"))))
-				.subtotalsAtSummary(
-						subtotal1 = sbt.customValue(exp.text("subtotal"), column3));
+			.subtotalsAtSummary(
+					subtotal1 = sbt.customValue(exp.text("subtotal"), column3));
 	}
 
 	@Override
@@ -65,15 +65,15 @@ public class ComponentColumnPositionTest extends AbstractJasperPositionTest impl
 		elementPositionTest("detail.list1", 0, 10, 26, 575, 32);
 		elementPositionTest("detail.list1", 1, 10, 58, 575, 32);
 
-		// column1
+		//column1
 		columnTitlePositionTest(column1, 0, 0, 0, 188, 16);
 		columnDetailPositionTest(column1, 0, 0, 0, 188, 32);
 		columnDetailPositionTest(column1, 1, 0, 0, 188, 32);
 
-		// column3
+		//column3
 		columnTitlePositionTest(column3, 0, 198, 0, 377, 16);
-		// columnDetailPositionTest(column3, 0, 198, 0, 377, 32);
-		// columnDetailPositionTest(column3, 1, 198, 0, 377, 32);
+		//columnDetailPositionTest(column3, 0, 198, 0, 377, 32);
+		//columnDetailPositionTest(column3, 1, 198, 0, 377, 32);
 
 		elementPositionTest("detail.list2", 0, 198, 0, 377, 16);
 		elementPositionTest("detail.list2", 1, 198, 0, 377, 16);
@@ -87,7 +87,7 @@ public class ComponentColumnPositionTest extends AbstractJasperPositionTest impl
 		elementPositionTest("detail.textField3", 0, 198, 16, 377, 16);
 		elementPositionTest("detail.textField3", 1, 198, 16, 377, 16);
 
-		// summary
+		//summary
 		elementPositionTest("summary.list1", 0, 10, 90, 575, 16);
 		subtotalPositionTest(subtotal1, 0, 198, 0, 377, 16);
 	}

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -40,15 +40,14 @@ import org.apache.commons.lang3.Validate;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 @SuppressWarnings("unchecked")
-public abstract class AbstractHighLowChartBuilder<T extends AbstractHighLowChartBuilder<T, U>, U extends DRAxisPlot>
-		extends AbstractBaseChartBuilder<AbstractHighLowChartBuilder<T, U>, U, DRHighLowDataset> {
+public abstract class AbstractHighLowChartBuilder<T extends AbstractHighLowChartBuilder<T, U>, U extends DRAxisPlot> extends AbstractBaseChartBuilder<AbstractHighLowChartBuilder<T, U>, U, DRHighLowDataset> {
 	private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
 
 	protected AbstractHighLowChartBuilder(ChartType chartType) {
 		super(chartType);
 	}
 
-	// series
+	//series
 	public T setSeries(ValueColumnBuilder<?, String> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setSeriesExpression(column.getColumn());
@@ -66,7 +65,7 @@ public abstract class AbstractHighLowChartBuilder<T extends AbstractHighLowChart
 		return (T) this;
 	}
 
-	// date
+	//date
 	public T setDate(ValueColumnBuilder<?, Date> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setDateExpression(column.getColumn());
@@ -84,7 +83,7 @@ public abstract class AbstractHighLowChartBuilder<T extends AbstractHighLowChart
 		return (T) this;
 	}
 
-	// hight
+	//hight
 	public T setHigh(ValueColumnBuilder<?, ? extends Number> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setHighExpression(column.getColumn());
@@ -108,7 +107,7 @@ public abstract class AbstractHighLowChartBuilder<T extends AbstractHighLowChart
 		return (T) this;
 	}
 
-	// low
+	//low
 	public T setLow(ValueColumnBuilder<?, ? extends Number> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setLowExpression(column.getColumn());
@@ -132,7 +131,7 @@ public abstract class AbstractHighLowChartBuilder<T extends AbstractHighLowChart
 		return (T) this;
 	}
 
-	// open
+	//open
 	public T setOpen(ValueColumnBuilder<?, ? extends Number> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setOpenExpression(column.getColumn());
@@ -156,7 +155,7 @@ public abstract class AbstractHighLowChartBuilder<T extends AbstractHighLowChart
 		return (T) this;
 	}
 
-	// close
+	//close
 	public T setClose(ValueColumnBuilder<?, ? extends Number> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setCloseExpression(column.getColumn());
@@ -180,7 +179,7 @@ public abstract class AbstractHighLowChartBuilder<T extends AbstractHighLowChart
 		return (T) this;
 	}
 
-	// volume
+	//volume
 	public T setVolume(ValueColumnBuilder<?, ? extends Number> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setVolumeExpression(column.getColumn());
@@ -210,7 +209,7 @@ public abstract class AbstractHighLowChartBuilder<T extends AbstractHighLowChart
 		return (T) this;
 	}
 
-	// plot
+	//plot
 	public T setTimeAxisFormat(AxisFormatBuilder timeAxisFormat) {
 		Validate.notNull(timeAxisFormat, "timeAxisFormat must not be null");
 		getPlot().setXAxisFormat(timeAxisFormat.build());

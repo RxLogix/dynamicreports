@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -43,32 +43,32 @@ public class BreakTest extends AbstractJasperPositionTest implements Serializabl
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.setPageColumnsPerPage(2)
-				.columns(
-						col.componentColumn("Column1",
-								cmp.verticalList(
-										cmp.text("value"),
-										cmp.pageBreak().setPrintWhenExpression(new Expression1()),
-										cmp.columnBreak().setPrintWhenExpression(new Expression2()))))
-				.title(
-						cmp.text("text1"), cmp.pageBreak(), cmp.text("text1"));
+			.columns(				
+				col.componentColumn("Column1", 
+						cmp.verticalList(
+								cmp.text("value"), 
+								cmp.pageBreak().setPrintWhenExpression(new Expression1()),
+								cmp.columnBreak().setPrintWhenExpression(new Expression2()))))
+		  .title(
+		  	cmp.text("text1"), cmp.pageBreak(), cmp.text("text1"));
 	}
 
 	@Override
 	public void test() {
 		super.test();
-
+		
 		numberOfPagesTest(3);
-
+				
 		elementPositionTest("title.textField1", 0, 10, 10, 575, 16);
 		elementPositionTest("title.textField2", 0, 10, 10, 575, 16);
-		elementPositionTest("detail.textField1", 0, 10, 42, 287, 16);
+		elementPositionTest("detail.textField1", 0, 10, 42, 287, 16);		
 		elementPositionTest("detail.textField1", 1, 10, 26, 287, 16);
 		elementPositionTest("detail.textField1", 2, 297, 26, 287, 16);
 	}
 
 	public class Expression1 extends AbstractSimpleExpression<Boolean> {
 		private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
-
+		
 		@Override
 		public Boolean evaluate(ReportParameters reportParameters) {
 			return reportParameters.getReportRowNumber() == 1;
@@ -77,13 +77,13 @@ public class BreakTest extends AbstractJasperPositionTest implements Serializabl
 
 	public class Expression2 extends AbstractSimpleExpression<Boolean> {
 		private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
-
+		
 		@Override
 		public Boolean evaluate(ReportParameters reportParameters) {
 			return reportParameters.getReportRowNumber() == 2;
 		}
 	}
-
+	
 	@Override
 	protected JRDataSource createDataSource() {
 		return new JREmptyDataSource(3);

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -52,28 +52,28 @@ public class XyBlockChartReport {
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(xColumn, yColumn, zColumn)
-					.title(Templates.createTitleComponent("XYBlockChart"))
-					.summary(
-							cht.xyBlockChart(0, 5, Color.WHITE)
-									.setTitle("XY block chart")
-									.setTitleFont(boldFont)
-									.setBlockAnchor(RectangleAnchor.BOTTOM_LEFT)
-									.paintScales(
-											cht.paintScale("Value 1", 1, Color.RED),
-											cht.paintScale("Value 2", 2, Color.GREEN),
-											cht.paintScale("Value 3", 3, Color.BLUE))
-									.setXValue(xColumn)
-									.series(
-											cht.xyzSerie().setYValue(yColumn).setZValue(zColumn))
-									.setXAxisFormat(
-											cht.axisFormat().setLabel("X"))
-									.setYAxisFormat(
-											cht.axisFormat().setLabel("Y")))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.columns(xColumn, yColumn, zColumn)
+				.title(Templates.createTitleComponent("XYBlockChart"))
+				.summary(
+					cht.xyBlockChart(0, 5, Color.WHITE)
+						.setTitle("XY block chart")
+						.setTitleFont(boldFont)
+						.setBlockAnchor(RectangleAnchor.BOTTOM_LEFT)
+						.paintScales(
+							cht.paintScale("Value 1", 1, Color.RED),
+							cht.paintScale("Value 2", 2, Color.GREEN),
+							cht.paintScale("Value 3", 3, Color.BLUE))
+						.setXValue(xColumn)
+						.series(
+							cht.xyzSerie().setYValue(yColumn).setZValue(zColumn))
+						.setXAxisFormat(
+							cht.axisFormat().setLabel("X"))
+						.setYAxisFormat(
+							cht.axisFormat().setLabel("Y")))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

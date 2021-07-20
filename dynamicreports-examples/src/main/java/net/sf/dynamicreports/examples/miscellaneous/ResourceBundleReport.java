@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,29 +49,29 @@ public class ResourceBundleReport {
 
 	private void build() {
 		try {
-			TextColumnBuilder<String> itemColumn = col.column("item", type.stringType())
-					.setTitle(exp.message("item_title"));
-			TextColumnBuilder<Integer> quantityColumn = col.column("quantity", type.integerType())
-					.setTitle(exp.message("quantity_title"));
-			TextColumnBuilder<BigDecimal> priceColumn = col.column("unitprice", type.bigDecimalType())
-					.setTitle(exp.message("unitprice_title"));
+			TextColumnBuilder<String>     itemColumn     = col.column("item",      type.stringType())
+			                                                  .setTitle(exp.message("item_title"));
+			TextColumnBuilder<Integer>    quantityColumn = col.column("quantity",  type.integerType())
+			                                                  .setTitle(exp.message("quantity_title"));
+			TextColumnBuilder<BigDecimal> priceColumn    = col.column("unitprice", type.bigDecimalType())
+			                                                  .setTitle(exp.message("unitprice_title"));
 
 			TextFieldBuilder<String> title = cmp.text(exp.message("report_title"))
-					.setStyle(Templates.bold12CenteredStyle);
+			                                     .setStyle(Templates.bold12CenteredStyle);
 			TextFieldBuilder<String> subtitle = cmp.text(new SubtitleExpression())
-					.setStyle(Templates.bold12CenteredStyle);
+			                                       .setStyle(Templates.bold12CenteredStyle);
 
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.setResourceBundle(ResourceBundleReport.class.getName())
-					.columns(
-							itemColumn, quantityColumn, priceColumn)
-					.title(
-							Templates.createTitleComponent("ResourceBundle"),
-							title, subtitle)
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .setResourceBundle(ResourceBundleReport.class.getName())
+			  .columns(
+			  	itemColumn, quantityColumn, priceColumn)
+			  .title(
+			  	Templates.createTitleComponent("ResourceBundle"),
+			  	title, subtitle)
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
@@ -99,7 +99,7 @@ public class ResourceBundleReport {
 
 		@Override
 		public String evaluate(List<?> values, ReportParameters reportParameters) {
-			return reportParameters.getMessage("report_subtitle", new Object[] { values.get(0), values.get(1) });
+			return reportParameters.getMessage("report_subtitle", new Object[]{values.get(0), values.get(1)});
 		}
 	}
 }

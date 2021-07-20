@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -40,9 +40,9 @@ public class TextField5Test extends AbstractJasperValueTest implements Serializa
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.detail(
-				cmp.horizontalList(
-						cmp.text(field("field1", type.stringType())).setPrintRepeatedValues(false).setPrintInFirstWholeBand(true),
-						cmp.text(field("field2", type.integerType()))));
+			cmp.horizontalList(
+				cmp.text(field("field1", type.stringType())).setPrintRepeatedValues(false).setPrintInFirstWholeBand(true),
+				cmp.text(field("field2", type.integerType()))));
 	}
 
 	@Override
@@ -50,10 +50,10 @@ public class TextField5Test extends AbstractJasperValueTest implements Serializa
 		super.test();
 
 		numberOfPagesTest(2);
-		// textField1
+		//textField1
 		elementCountTest("detail.textField1", 3);
 		elementValueTest("detail.textField1", "test1", "test2", "test2");
-		// textField2
+		//textField2
 		elementCountTest("detail.textField2", 60);
 		elementValueTest("detail.textField2", 0, "0");
 	}

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -84,24 +84,24 @@ public class DynamicReportData {
 
 		report.setTitle("Sales");
 
-		report.addColumn(new DynamicColumn("State", "state", "string"));
-		report.addColumn(new DynamicColumn("Item", "item", "string"));
-		DynamicColumn column = new DynamicColumn("Order date", "orderdate", "date");
-		column.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
-		report.addColumn(column);
+    report.addColumn(new DynamicColumn("State", "state", "string"));
+    report.addColumn(new DynamicColumn("Item", "item", "string"));
+    DynamicColumn column = new DynamicColumn("Order date", "orderdate", "date");
+    column.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
+    report.addColumn(column);
 		report.addColumn(new DynamicColumn("Quantity", "quantity", "integer"));
-		column = new DynamicColumn("Unit price", "unitprice", "bigDecimal");
-		column.setPattern("#,###.0");
+    column = new DynamicColumn("Unit price", "unitprice", "bigDecimal");
+    column.setPattern("#,###.0");
 		report.addColumn(column);
 
-		report.addGroup("state");
+    report.addGroup("state");
 
-		report.addSubtotal("quantity");
-		report.addSubtotal("unitprice");
+    report.addSubtotal("quantity");
+    report.addSubtotal("unitprice");
 
-		report.setShowPageNumber(true);
+    report.setShowPageNumber(true);
 
-		return report;
+    return report;
 	}
 
 }

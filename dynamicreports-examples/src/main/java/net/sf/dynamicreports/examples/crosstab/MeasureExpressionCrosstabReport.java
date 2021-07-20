@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -55,40 +55,40 @@ public class MeasureExpressionCrosstabReport {
 
 	private void build() {
 		CrosstabRowGroupBuilder<String> rowGroup = ctab.rowGroup("state", String.class)
-				.setTotalHeader("Total for state");
+		                                               .setTotalHeader("Total for state");
 
 		CrosstabColumnGroupBuilder<String> columnGroup = ctab.columnGroup("item", String.class);
 
 		unitPriceVariable = ctab.variable("unitprice", BigDecimal.class, Calculation.SUM);
 		priceVariable = ctab.variable(new PriceExpression(), Calculation.SUM);
 		quantityMeasure = ctab.measure("Quantity", "quantity", Integer.class, Calculation.SUM);
-		// price1 = sum(unitprice) * sum(quantity)
+		//price1 = sum(unitprice) * sum(quantity)
 		CrosstabMeasureBuilder<BigDecimal> priceMeasure1 = ctab.measure("Price1", new PriceMeasure1Expression());
 		priceMeasure1.setDataType(type.bigDecimalType());
-		// price2 = sum(unitprice * quantity)
+		//price2 = sum(unitprice * quantity)
 		CrosstabMeasureBuilder<BigDecimal> priceMeasure2 = ctab.measure("Price2", new PriceMeasure2Expression());
 		priceMeasure2.setDataType(type.bigDecimalType());
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.headerCell(cmp.text("State / Item").setStyle(Templates.boldCenteredStyle))
-				.setCellWidth(180)
-				.rowGroups(rowGroup)
-				.columnGroups(columnGroup)
-				.variables(unitPriceVariable, priceVariable)
-				.measures(quantityMeasure, priceMeasure1, priceMeasure2);
+			.headerCell(cmp.text("State / Item").setStyle(Templates.boldCenteredStyle))
+			.setCellWidth(180)
+			.rowGroups(rowGroup)
+			.columnGroups(columnGroup)
+			.variables(unitPriceVariable, priceVariable)
+			.measures(quantityMeasure, priceMeasure1, priceMeasure2);
 
 		try {
 			report()
-					.setPageFormat(PageType.A4, PageOrientation.LANDSCAPE)
-					.setTemplate(Templates.reportTemplate)
-					.title(
-							Templates.createTitleComponent("MeasureExpressionCrosstab"),
-							cmp.text("Price1 = SUM(quantity) * SUM(unitPrice)").setStyle(Templates.boldStyle),
-							cmp.text("Price2 = SUM(quantity * unitPrice)").setStyle(Templates.boldStyle))
-					.summary(crosstab)
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setPageFormat(PageType.A4, PageOrientation.LANDSCAPE)
+			  .setTemplate(Templates.reportTemplate)
+			  .title(
+			  	Templates.createTitleComponent("MeasureExpressionCrosstab"),
+			  	cmp.text("Price1 = SUM(quantity) * SUM(unitPrice)").setStyle(Templates.boldStyle),
+			  	cmp.text("Price2 = SUM(quantity * unitPrice)").setStyle(Templates.boldStyle))
+			  .summary(crosstab)
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

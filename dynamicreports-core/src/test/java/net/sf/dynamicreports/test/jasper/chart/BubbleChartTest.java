@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -54,40 +54,40 @@ public class BubbleChartTest extends AbstractJasperChartTest {
 		TextColumnBuilder<Double> column3;
 
 		rb.setLocale(Locale.ENGLISH)
-				.columns(
-						column1 = col.column("Column1", "field1", Integer.class),
-						column2 = col.column("Column2", "field2", Integer.class),
-						column3 = col.column("Column3", "field3", Double.class))
-				.summary(
-						cht.bubbleChart()
-								.setXValue(column1)
-								.series(
-										cht.xyzSerie().setYValue(column2).setZValue(column3).setSeries(exp.text("a")),
-										cht.xyzSerie().setXValue(column2).setYValue(column1).setZValue(column3))
-								.setScaleType(ScaleType.ON_BOTH_AXES),
-						cht.bubbleChart()
-								.setXValue(column1)
-								.series(cht.xyzSerie().setYValue(column2).setZValue(column3))
-								.setXAxisFormat(
-										cht.axisFormat()
-												.setLabel("category")
-												.setLabelColor(Color.BLUE)
-												.setLabelFont(stl.fontArialBold())
-												.setTickLabelFont(stl.fontArial().setItalic(true))
-												.setTickLabelColor(Color.CYAN)
-												.setLineColor(Color.LIGHT_GRAY)),
-						cht.bubbleChart()
-								.setXValue(column1)
-								.series(cht.xyzSerie().setYValue(column2).setZValue(column3))
-								.setYAxisFormat(
-										cht.axisFormat()
-												.setLabel("value")
-												.setLabelColor(Color.BLUE)
-												.setLabelFont(stl.fontArialBold())
-												.setTickLabelFont(stl.fontArial().setItalic(true))
-												.setTickLabelColor(Color.CYAN)
-												.setTickLabelMask("#,##0.00")
-												.setLineColor(Color.LIGHT_GRAY)));
+			.columns(
+				column1 = col.column("Column1", "field1", Integer.class),
+				column2 = col.column("Column2", "field2", Integer.class),
+				column3 = col.column("Column3", "field3", Double.class))
+			.summary(
+					cht.bubbleChart()
+						.setXValue(column1)
+						.series(
+							cht.xyzSerie().setYValue(column2).setZValue(column3).setSeries(exp.text("a")),
+							cht.xyzSerie().setXValue(column2).setYValue(column1).setZValue(column3))
+						.setScaleType(ScaleType.ON_BOTH_AXES),
+					cht.bubbleChart()
+						.setXValue(column1)
+						.series(cht.xyzSerie().setYValue(column2).setZValue(column3))
+						.setXAxisFormat(
+								cht.axisFormat()
+											.setLabel("category")
+											.setLabelColor(Color.BLUE)
+											.setLabelFont(stl.fontArialBold())
+											.setTickLabelFont(stl.fontArial().setItalic(true))
+											.setTickLabelColor(Color.CYAN)
+											.setLineColor(Color.LIGHT_GRAY)),
+					cht.bubbleChart()
+						.setXValue(column1)
+						.series(cht.xyzSerie().setYValue(column2).setZValue(column3))
+						.setYAxisFormat(
+								cht.axisFormat()
+											.setLabel("value")
+											.setLabelColor(Color.BLUE)
+											.setLabelFont(stl.fontArialBold())
+											.setTickLabelFont(stl.fontArial().setItalic(true))
+											.setTickLabelColor(Color.CYAN)
+											.setTickLabelMask("#,##0.00")
+											.setLineColor(Color.LIGHT_GRAY)));
 	}
 
 	@Override
@@ -100,8 +100,8 @@ public class BubbleChartTest extends AbstractJasperChartTest {
 		XYItemRenderer renderer = chart.getXYPlot().getRenderer();
 		Assert.assertEquals("renderer", XYBubbleRenderer.class, renderer.getClass());
 		Assert.assertEquals("scale type", XYBubbleRenderer.SCALE_ON_BOTH_AXES, ((XYBubbleRenderer) renderer).getScaleType());
-		xyzChartDataTest(chart, 0, "a", new Number[][] { { 1d, 2d, 0.25 }, { 2d, 3d, 0.5 }, { 3d, 4d, 0.75 }, { 4d, 5d, 1d } });
-		xyzChartDataTest(chart, 1, "serie1", new Number[][] { { 2d, 1d, 0.25 }, { 3d, 2d, 0.5 }, { 4d, 3d, 0.75 }, { 5d, 4d, 1d } });
+		xyzChartDataTest(chart, 0, "a", new Number[][] {{1d, 2d, 0.25}, {2d, 3d, 0.5}, {3d, 4d, 0.75}, {4d, 5d, 1d}});
+		xyzChartDataTest(chart, 1, "serie1", new Number[][] {{2d, 1d, 0.25}, {3d, 2d, 0.5}, {4d, 3d, 0.75}, {5d, 4d, 1d}});
 
 		chart = getChart("summary.chart2", 0);
 		Axis axis = chart.getXYPlot().getDomainAxis();

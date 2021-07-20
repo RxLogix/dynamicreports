@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -51,42 +51,42 @@ public class ChartShowValuesReport {
 		TextColumnBuilder<Integer> stock3Column = col.column("Stock 3", "stock3", type.integerType());
 
 		BarChartBuilder barChart = cht.barChart()
-				.setShowValues(true)
-				.setCategory(itemColumn)
-				.series(cht.serie(stock1Column), cht.serie(stock2Column), cht.serie(stock3Column));
+			.setShowValues(true)
+			.setCategory(itemColumn)
+			.series(cht.serie(stock1Column), cht.serie(stock2Column), cht.serie(stock3Column));
 		StackedBarChartBuilder stackedBarChart = cht.stackedBarChart()
-				.setShowValues(true)
-				.setCategory(itemColumn)
-				.series(cht.serie(stock1Column), cht.serie(stock2Column), cht.serie(stock3Column));
+			.setShowValues(true)
+			.setCategory(itemColumn)
+			.series(cht.serie(stock1Column), cht.serie(stock2Column), cht.serie(stock3Column));
 		LineChartBuilder lineChart = cht.lineChart()
-				.setShowValues(true)
-				.setCategory(itemColumn)
-				.series(cht.serie(stock1Column), cht.serie(stock2Column), cht.serie(stock3Column));
+			.setShowValues(true)
+			.setCategory(itemColumn)
+			.series(cht.serie(stock1Column), cht.serie(stock2Column), cht.serie(stock3Column));
 		AreaChartBuilder areaChart = cht.areaChart()
-				.setShowValues(true)
-				.setCategory(itemColumn)
-				.series(cht.serie(stock1Column), cht.serie(stock2Column), cht.serie(stock3Column));
+			.setShowValues(true)
+			.setCategory(itemColumn)
+			.series(cht.serie(stock1Column), cht.serie(stock2Column), cht.serie(stock3Column));
 		StackedBar3DChartBuilder stackedBar3DChart = cht.stackedBar3DChart()
-				.setShowValues(true)
-				.setCategory(itemColumn)
-				.series(cht.serie(stock1Column), cht.serie(stock2Column), cht.serie(stock3Column));
+			.setShowValues(true)
+			.setCategory(itemColumn)
+			.series(cht.serie(stock1Column), cht.serie(stock2Column), cht.serie(stock3Column));
 		PieChartBuilder pieChart = cht.pieChart()
-				.setShowValues(true)
-				.setKey(itemColumn)
-				.series(cht.serie(stock1Column));
+			.setShowValues(true)
+			.setKey(itemColumn)
+			.series(cht.serie(stock1Column));
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(itemColumn, stock1Column, stock2Column, stock3Column)
-					.title(Templates.createTitleComponent("ChartShowValues"))
-					.summary(
-							cmp.horizontalList(barChart, stackedBarChart),
-							cmp.horizontalList(lineChart, areaChart),
-							cmp.horizontalList(stackedBar3DChart, pieChart))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.columns(itemColumn, stock1Column, stock2Column, stock3Column)
+				.title(Templates.createTitleComponent("ChartShowValues"))
+				.summary(
+					cmp.horizontalList(barChart, stackedBarChart),
+					cmp.horizontalList(lineChart, areaChart),
+					cmp.horizontalList(stackedBar3DChart, pieChart))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

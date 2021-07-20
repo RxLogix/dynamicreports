@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -58,11 +58,11 @@ public class GeoMapBuilder extends DimensionComponentBuilder<GeoMapBuilder, DRGe
 		return this;
 	}
 
-	public GeoMapBuilder colors(Color... colors) {
+	public GeoMapBuilder colors(Color ...colors) {
 		return addColor(colors);
 	}
 
-	public GeoMapBuilder addColor(Color... colors) {
+	public GeoMapBuilder addColor(Color ...colors) {
 		Validate.notNull(colors, "colors must not be null");
 		Validate.noNullElements(colors, "colors must not contains null color");
 		for (Color color : colors) {
@@ -71,7 +71,7 @@ public class GeoMapBuilder extends DimensionComponentBuilder<GeoMapBuilder, DRGe
 		return this;
 	}
 
-	// region
+	//region
 	public GeoMapBuilder setRegion(String region) {
 		getObject().setRegionExpression(Expressions.text(region));
 		return this;
@@ -82,7 +82,7 @@ public class GeoMapBuilder extends DimensionComponentBuilder<GeoMapBuilder, DRGe
 		return this;
 	}
 
-	// value label
+	//value label
 	public GeoMapBuilder setValueLabel(String valueLabel) {
 		getObject().setValueLabelExpression(Expressions.text(valueLabel));
 		return this;
@@ -93,7 +93,7 @@ public class GeoMapBuilder extends DimensionComponentBuilder<GeoMapBuilder, DRGe
 		return this;
 	}
 
-	// location
+	//location
 	public GeoMapBuilder setLocation(ValueColumnBuilder<?, String> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setLocationExpression(column.getColumn());
@@ -115,7 +115,7 @@ public class GeoMapBuilder extends DimensionComponentBuilder<GeoMapBuilder, DRGe
 		return this;
 	}
 
-	// value
+	//value
 	public GeoMapBuilder setValue(ValueColumnBuilder<?, ? extends Number> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setValueExpression(column.getColumn());
@@ -143,7 +143,7 @@ public class GeoMapBuilder extends DimensionComponentBuilder<GeoMapBuilder, DRGe
 		return this;
 	}
 
-	// label
+	//label
 	public GeoMapBuilder setLabel(ValueColumnBuilder<?, String> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setLabelExpression(column.getColumn());
@@ -165,7 +165,7 @@ public class GeoMapBuilder extends DimensionComponentBuilder<GeoMapBuilder, DRGe
 		return this;
 	}
 
-	// subdataset
+	//subdataset
 	public GeoMapBuilder setSubDataset(DatasetBuilder subDataset) {
 		Validate.notNull(subDataset, "subDataset must not be null");
 		getObject().getDataset().setSubDataset(subDataset.build());

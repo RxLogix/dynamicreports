@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -54,13 +54,13 @@ public class Style3Test extends AbstractJasperStyleTest implements Serializable 
 		StyleBuilder columnStyle = stl.style().setForegroundColor(Color.BLUE);
 
 		rb.setColumnTitleStyle(titleStyle)
-				.setColumnStyle(columnStyle)
-				.columns(
-						column1 = col.column("Column1", "field1", type.stringType()).setStyle(stl.style().italic()).setTitleStyle(stl.style().bold()),
-						column2 = col.column("Column2", "field2", type.stringType()),
-						column3 = col.column("Column3", "field3", type.stringType()).setStyle(stl.style().bold()),
-						column4 = col.column("Column4", "field4", type.stringType()).setStyle(stl.style(columnStyle).bold()).setTitleStyle(stl.style().italic()))
-				.groupBy(group1 = grp.group(column1).setHeaderLayout(GroupHeaderLayout.TITLE_AND_VALUE));
+			.setColumnStyle(columnStyle)
+			.columns(
+					column1 = col.column("Column1", "field1", type.stringType()).setStyle(stl.style().italic()).setTitleStyle(stl.style().bold()),
+					column2 = col.column("Column2", "field2", type.stringType()),
+					column3 = col.column("Column3", "field3", type.stringType()).setStyle(stl.style().bold()),
+					column4 = col.column("Column4", "field4", type.stringType()).setStyle(stl.style(columnStyle).bold()).setTitleStyle(stl.style().italic()))
+			.groupBy(group1 = grp.group(column1).setHeaderLayout(GroupHeaderLayout.TITLE_AND_VALUE));
 	}
 
 	@Override
@@ -69,19 +69,19 @@ public class Style3Test extends AbstractJasperStyleTest implements Serializable 
 
 		numberOfPagesTest(1);
 
-		// column2
+		//column2
 		columnTitleStyleTest(column2, 0, Color.RED, null, "Arial", 10f, null, null);
 		columnDetailStyleTest(column2, 0, Color.BLUE, null, "Arial", 10f, null, null);
 
-		// column3
+		//column3
 		columnTitleStyleTest(column3, 0, Color.RED, null, "Arial", 10f, null, null);
 		columnDetailStyleTest(column3, 0, null, null, "Arial", 10f, true, null);
 
-		// column4
+		//column4
 		columnTitleStyleTest(column4, 0, null, null, "Arial", 10f, null, true);
 		columnDetailStyleTest(column4, 0, Color.BLUE, null, "Arial", 10f, true, null);
 
-		// group1
+		//group1
 		groupHeaderTitleStyleTest(group1, 0, null, null, "Arial", 10f, true, null);
 		groupHeaderStyleTest(group1, 0, null, null, "Arial", 10f, null, true);
 	}

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -135,13 +135,12 @@ public class ExpressionBuilders {
 		return Expressions.message(key, arguments);
 	}
 
-	// jasper
+	//jasper
 	/**
 	 * Creates a new jasper string expression, useful only for showing a static text.<br/>
 	 * This method escapes the characters in a {@code String} using Java String rules.
 	 *
-	 * @param text
-	 *          text to be shown
+	 * @param text text to be shown
 	 * @return the expression
 	 */
 	public JasperExpression<String> jasperSyntaxText(String text) {
@@ -152,10 +151,8 @@ public class ExpressionBuilders {
 	 * Creates a new jasper expression.<br/>
 	 * This expression allows declaring an expression in a Jasper native syntax. Knowledge of the jasper syntax is also required for proper use.
 	 *
-	 * @param expression
-	 *          the jasper expression
-	 * @param valueClass
-	 *          the expression class
+	 * @param expression the jasper expression
+	 * @param valueClass the expression class
 	 * @return the expression
 	 */
 	public <T> JasperExpression<T> jasperSyntax(String expression, Class<? super T> valueClass) {
@@ -166,8 +163,7 @@ public class ExpressionBuilders {
 	 * Creates a new jasper expression.<br/>
 	 * This expression allows declaring an expression in a Jasper native syntax. Knowledge of the jasper syntax is also required for proper use.
 	 *
-	 * @param expression
-	 *          the jasper expression
+	 * @param expression the jasper expression
 	 * @return the expression
 	 */
 	@SuppressWarnings("rawtypes")
@@ -175,7 +171,7 @@ public class ExpressionBuilders {
 		return Expressions.jasperSyntax(expression);
 	}
 
-	// property
+	//property
 	public PropertyExpression property(String name, DRISimpleExpression<String> valueExpression) {
 		return Expressions.property(name, valueExpression);
 	}
@@ -184,7 +180,7 @@ public class ExpressionBuilders {
 		return Expressions.property(name, value);
 	}
 
-	// parameter
+	//parameter
 	public ParameterExpression parameter(String name, DRISimpleExpression<?> valueExpression) {
 		return Expressions.parameter(name, valueExpression);
 	}
@@ -201,7 +197,7 @@ public class ExpressionBuilders {
 		return Expressions.printInEvenRow();
 	}
 
-	// subdatasource
+	//subdatasource
 	public BeanCollectionSubDatasourceExpression subDatasourceBeanCollection(String fieldName) {
 		return Expressions.subDatasourceBeanCollection(fieldName);
 	}
@@ -234,7 +230,7 @@ public class ExpressionBuilders {
 		return Expressions.subDatasourceMapArray(expression);
 	}
 
-	// crosstab
+	//crosstab
 	public OrderByExpression orderBy(CrosstabMeasureBuilder<? extends Comparable<?>> measure) {
 		return Expressions.orderBy(measure);
 	}
@@ -251,8 +247,7 @@ public class ExpressionBuilders {
 		return Expressions.crosstabValue(measure, group);
 	}
 
-	public <T> CrosstabValueExpression<T> crosstabValue(DRICrosstabValue<T> measure, CrosstabRowGroupBuilder<?> rowGroup,
-			CrosstabColumnGroupBuilder<?> columnGroup) {
+	public <T> CrosstabValueExpression<T> crosstabValue(DRICrosstabValue<T> measure, CrosstabRowGroupBuilder<?> rowGroup, CrosstabColumnGroupBuilder<?> columnGroup) {
 		return Expressions.crosstabValue(measure, rowGroup, columnGroup);
 	}
 }

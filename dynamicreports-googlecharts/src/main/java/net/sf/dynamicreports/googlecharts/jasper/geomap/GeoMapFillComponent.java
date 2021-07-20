@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -71,8 +71,8 @@ public class GeoMapFillComponent extends BaseFillComponent {
 	private void evaluateGeoMap(byte evaluation) throws JRException {
 		showLegend = geoMapComponent.getShowLegend();
 		dataMode = geoMapComponent.getDataMode();
-		region = JRStringUtil.getString(fillContext.evaluate(geoMapComponent.getRegionExpression(), evaluation));
-		valueLabel = JRStringUtil.getString(fillContext.evaluate(geoMapComponent.getValueLabelExpression(), evaluation));
+		region = JRStringUtil.getString(fillContext.evaluate(geoMapComponent.getRegionExpression(),	evaluation));
+		valueLabel = JRStringUtil.getString(fillContext.evaluate(geoMapComponent.getValueLabelExpression(),	evaluation));
 		colors = geoMapComponent.getColors();
 
 		dataset.evaluateDatasetRun(evaluation);

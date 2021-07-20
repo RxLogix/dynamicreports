@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,7 +48,7 @@ public class Subreport5Test extends AbstractJasperValueTest implements Serializa
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		SubreportBuilder subreport = Components.subreport(new SubreportExpression())
-				.setDataSource(new SubreportDataSourceExpression());
+			.setDataSource(new SubreportDataSourceExpression());
 
 		rb.detail(subreport);
 	}
@@ -63,7 +63,7 @@ public class Subreport5Test extends AbstractJasperValueTest implements Serializa
 		elementValueTest("title.textField1", "Subreport text1", "Subreport text2", "Subreport text3");
 
 		columnDetailCountTest(column1, 6);
-		columnDetailValueTest(column1, "text1a", "text1b", "text2a", "text2b", "text3a", "text3b");
+		columnDetailValueTest(column1,	"text1a", "text1b", "text2a", "text2b", "text3a", "text3b");
 	}
 
 	private class SubreportExpression extends AbstractComplexExpression<JasperReportBuilder> {
@@ -77,8 +77,8 @@ public class Subreport5Test extends AbstractJasperValueTest implements Serializa
 		public JasperReportBuilder evaluate(List<?> values, ReportParameters reportParameters) {
 			JasperReportBuilder report = report();
 			report
-					.title(cmp.text("Subreport " + values.get(0)))
-					.columns(column1);
+			  .title(cmp.text("Subreport " + values.get(0)))
+			  .columns(column1);
 
 			return report;
 		}

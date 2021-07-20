@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -64,24 +64,22 @@ public class CustomChartReport {
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.scriptlets(new ReportScriptlet())
-					.columns(seriesColumn, categoryColumn, meanColumn, medianColumn, q1Column, q3Column, minRegularValueColumn, maxRegularValueColumn, minOutlierColumn,
-							maxOutlierColumn)
-					.title(Templates.createTitleComponent("CustomChart"))
-					.summary(
-							cmp.image(new ChartExpression()).setFixedHeight(300))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.scriptlets(new ReportScriptlet())
+				.columns(seriesColumn, categoryColumn, meanColumn, medianColumn, q1Column, q3Column, minRegularValueColumn, maxRegularValueColumn, minOutlierColumn, maxOutlierColumn)
+				.title(Templates.createTitleComponent("CustomChart"))
+				.summary(
+					cmp.image(new ChartExpression()).setFixedHeight(300))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
 	}
 
 	private JRDataSource createDataSource() {
-		DRDataSource dataSource = new DRDataSource("series", "category", "mean", "median", "q1", "q3", "minregularvalue", "maxregularvalue", "minoutlier",
-				"maxoutlier");
+		DRDataSource dataSource = new DRDataSource("series", "category", "mean", "median", "q1", "q3", "minregularvalue", "maxregularvalue", "minoutlier", "maxoutlier");
 		dataSource.add("Series 0", "Category 0", 10.55d, 10.75d, 6.05d, 14.76d, 1.93d, 18.51d, 1.93d, 18.51d);
 		dataSource.add("Series 0", "Category 1", 8.92d, 7.78d, 4.32d, 13.07d, 1.01d, 19.89d, 1.01d, 19.89d);
 		dataSource.add("Series 0", "Category 2", 12.88d, 14.19d, 8.72d, 17.23d, 2.48d, 19.74d, 2.48d, 19.74d);

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,13 +49,13 @@ public class JasperSubreport2Test extends AbstractJasperValueTest implements Ser
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		SubreportBuilder detailSubreport = cmp.subreport(detailSubreport())
-				.setDataSource(new SubreportDataSourceExpression());
+    .setDataSource(new SubreportDataSourceExpression());
 
 		SubreportBuilder titleSubreport = cmp.subreport(titleSubreport())
-				.setDataSource(titleSubreportDataSource());
+		.setDataSource(titleSubreportDataSource());
 
 		rb.title(titleSubreport)
-				.detail(detailSubreport);
+		  .detail(detailSubreport);
 	}
 
 	@Override
@@ -64,16 +64,16 @@ public class JasperSubreport2Test extends AbstractJasperValueTest implements Ser
 
 		numberOfPagesTest(1);
 
-		// title subreport
+		//title subreport
 		elementCountTest("detail.column_field11", 3);
-		elementValueTest("detail.column_field11", "value1", "value2", "value3");
+		elementValueTest("detail.column_field11",	"value1", "value2", "value3");
 
-		// detail subreport
+		//detail subreport
 		elementCountTest("title.textField1", 3);
 		elementValueTest("title.textField1", "Subreport1", "Subreport2", "Subreport3");
 
 		elementCountTest("detail.column_simpleExpression_0_1", 6);
-		elementValueTest("detail.column_simpleExpression_0_1", "1_1", "1_2", "2_1", "2_2", "3_1", "3_2");
+		elementValueTest("detail.column_simpleExpression_0_1",	"1_1", "1_2", "2_1", "2_2", "3_1", "3_2");
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -45,12 +45,12 @@ public class SubreportPositionTest extends AbstractJasperPositionTest implements
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		SubreportBuilder subreport = Components.subreport(new SubreportExpression())
-				.setDataSource(new SubreportDataSourceExpression());
+    .setDataSource(new SubreportDataSourceExpression());
 
 		rb.detail(
-				subreport,
-				cmp.filler().setFixedHeight(20))
-				.summary(cmp.subreport(subreport2()));
+			 	subreport,
+			 	cmp.filler().setFixedHeight(20))
+			.summary(cmp.subreport(subreport2()));
 	}
 
 	@Override
@@ -59,21 +59,21 @@ public class SubreportPositionTest extends AbstractJasperPositionTest implements
 
 		numberOfPagesTest(1);
 
-		// elementPositionTest("detail.list1", 0, 10, 10, 575, 68);
-		// elementPositionTest("detail.subreport1", 0, 10, 10, 575, 48);
+		//elementPositionTest("detail.list1", 0, 10, 10, 575, 68);
+		//elementPositionTest("detail.subreport1", 0, 10, 10, 575, 48);
 
-		// elementPositionTest("detail.list1", 1, 10, 78, 575, 84);
-		// elementPositionTest("detail.subreport1", 1, 10, 78, 575, 64);
+		//elementPositionTest("detail.list1", 1, 10, 78, 575, 84);
+		//elementPositionTest("detail.subreport1", 1, 10, 78, 575, 64);
 
-		// elementPositionTest("detail.list1", 4, 10, 162, 575, 100);
-		// elementPositionTest("detail.subreport1", 2, 10, 162, 575, 80);
+		//elementPositionTest("detail.list1", 4, 10, 162, 575, 100);
+		//elementPositionTest("detail.subreport1", 2, 10, 162, 575, 80);
 
-		// title
+		//title
 		elementPositionTest("title.textField1", 0, 10, 10, 575, 16);
 		elementPositionTest("title.textField1", 1, 10, 78, 575, 16);
 		elementPositionTest("title.textField1", 2, 10, 162, 575, 16);
 
-		// column title
+		//column title
 		elementPositionTest("columnHeader.column_column1.title1", 0, 10, 26, 575, 16);
 
 		elementPositionTest("columnHeader.list1", 0, 10, 94, 575, 16);
@@ -85,7 +85,7 @@ public class SubreportPositionTest extends AbstractJasperPositionTest implements
 		elementPositionTest("columnHeader.column_column2.title1", 1, 191, 0, 192, 16);
 		elementPositionTest("columnHeader.column_column3.title1", 0, 383, 0, 192, 16);
 
-		// column detail
+		//column detail
 		elementPositionTest("detail.column_column11", 0, 10, 42, 575, 16);
 
 		elementPositionTest("detail.list1", 0, 10, 110, 575, 16);
@@ -111,7 +111,7 @@ public class SubreportPositionTest extends AbstractJasperPositionTest implements
 		elementPositionTest("detail.column_column21", 4, 191, 0, 192, 16);
 		elementPositionTest("detail.column_column31", 2, 383, 0, 192, 16);
 
-		// summary
+		//summary
 		elementPositionTest("summary.textField1", 0, 20, 272, 555, 16);
 	}
 
@@ -128,10 +128,10 @@ public class SubreportPositionTest extends AbstractJasperPositionTest implements
 			int masterRowNumber = reportParameters.getReportRowNumber();
 			JasperReportBuilder report = report();
 			report
-					.title(cmp.text("Subreport" + masterRowNumber));
+			  .title(cmp.text("Subreport" + masterRowNumber));
 
 			for (int i = 1; i <= masterRowNumber; i++) {
-				report.addColumn(col.column("Column" + i, "column" + i, type.stringType()));
+			  report.addColumn(col.column("Column" + i, "column" + i, type.stringType()));
 			}
 
 			return report;

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -58,47 +58,48 @@ public class ValueChartDataTest extends AbstractJasperChartTest implements Seria
 		Locale.setDefault(Locale.ENGLISH);
 
 		rb.addProperty("net.sf.jasperreports.chart.pie.ignore.duplicated.key", "true")
-				.setPageFormat(PageType.A2, PageOrientation.PORTRAIT)
-				.setTemplate(template().setChartValuePattern("#,##0.#").setChartPercentValuePattern("#,##0.###"))
-				.columns(
-						column1 = col.column("Column1", "field1", String.class),
-						column2 = col.column("Column2", "field2", Integer.class),
-						column3 = col.column("Column3", "field3", Integer.class))
-				.summary(
-						cmp.horizontalList(
-								cht.barChart()
-										.setShowValues(true)
-										.setShowPercentages(true)
-										.setPercentValuePattern("#,##0.##")
-										.setCategory(column1)
-										.series(cht.serie(column2), cht.serie(column3)),
-								cht.bar3DChart()
-										.setShowValues(true)
-										.setShowPercentages(true)
-										.setCategory(column1)
-										.series(cht.serie(column2), cht.serie(column3)),
-								cht.barChart()
-										.setShowValues(true)
-										.setValuePattern("#,##0.##")
-										.setCategory(column1)
-										.series(cht.serie(column2), cht.serie(column3)),
-								cht.bar3DChart()
-										.setShowValues(true)
-										.setCategory(column1)
-										.series(cht.serie(column2), cht.serie(column3))),
-						cmp.horizontalList(
-								cht.pieChart()
-										.setShowValues(true)
-										.setValuePattern("#,##0.##")
-										.setShowPercentages(true)
-										.setPercentValuePattern("#,##0.##")
-										.setKey(column1)
-										.series(cht.serie(column2)),
-								cht.pieChart()
-										.setShowValues(true)
-										.setShowPercentages(true)
-										.setKey(column1)
-										.series(cht.serie(column2))));
+			.setPageFormat(PageType.A2, PageOrientation.PORTRAIT)
+			.setTemplate(template().setChartValuePattern("#,##0.#").setChartPercentValuePattern("#,##0.###"))
+			.columns(
+				column1 = col.column("Column1", "field1", String.class),
+				column2 = col.column("Column2", "field2", Integer.class),
+				column3 = col.column("Column3", "field3", Integer.class))
+			.summary(
+				cmp.horizontalList(
+					cht.barChart()
+						.setShowValues(true)
+						.setShowPercentages(true)
+						.setPercentValuePattern("#,##0.##")
+						.setCategory(column1)
+						.series(cht.serie(column2), cht.serie(column3)),
+					cht.bar3DChart()
+						.setShowValues(true)
+						.setShowPercentages(true)
+						.setCategory(column1)
+						.series(cht.serie(column2), cht.serie(column3)),
+					cht.barChart()
+						.setShowValues(true)
+						.setValuePattern("#,##0.##")
+						.setCategory(column1)
+						.series(cht.serie(column2), cht.serie(column3)),
+					cht.bar3DChart()
+						.setShowValues(true)
+						.setCategory(column1)
+						.series(cht.serie(column2), cht.serie(column3))),
+				cmp.horizontalList(
+					cht.pieChart()
+						.setShowValues(true)
+						.setValuePattern("#,##0.##")
+						.setShowPercentages(true)
+						.setPercentValuePattern("#,##0.##")
+						.setKey(column1)
+						.series(cht.serie(column2)),
+					cht.pieChart()
+						.setShowValues(true)
+						.setShowPercentages(true)
+						.setKey(column1)
+						.series(cht.serie(column2))
+						));
 	}
 
 	@Override

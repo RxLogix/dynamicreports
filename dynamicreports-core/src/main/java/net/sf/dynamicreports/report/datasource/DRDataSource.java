@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -45,12 +45,12 @@ public class DRDataSource implements JRRewindableDataSource, Serializable {
 	private Iterator<Map<String, Object>> iterator;
 	private Map<String, Object> currentRecord;
 
-	public DRDataSource(String... columns) {
+	public DRDataSource(String ...columns) {
 		this.columns = columns;
 		this.values = new ArrayList<Map<String, Object>>();
 	}
 
-	public void add(Object... values) {
+	public void add(Object ...values) {
 		Map<String, Object> row = new HashMap<String, Object>();
 		for (int i = 0; i < values.length; i++) {
 			row.put(columns[i], values[i]);

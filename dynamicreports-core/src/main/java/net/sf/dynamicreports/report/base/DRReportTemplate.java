@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -70,7 +70,7 @@ public class DRReportTemplate implements DRIReportTemplate {
 	private RunDirection columnDirection;
 	private String language;
 	private Boolean useFieldNameAsDescription;
-	// style
+	//style
 	private Boolean highlightDetailOddRows;
 	private DRSimpleStyle detailOddRowStyle;
 	private Boolean highlightDetailEvenRows;
@@ -85,7 +85,7 @@ public class DRReportTemplate implements DRIReportTemplate {
 	private DRIReportStyle imageStyle;
 	private DRIReportStyle chartStyle;
 	private DRIReportStyle barcodeStyle;
-	// page
+	//page
 	private Integer pageWidth;
 	private Integer pageHeight;
 	private PageOrientation pageOrientation;
@@ -93,10 +93,10 @@ public class DRReportTemplate implements DRIReportTemplate {
 	private Integer pageColumnsPerPage;
 	private Integer pageColumnSpace;
 	private Boolean ignorePageWidth;
-	// column
+	//column
 	private Boolean columnPrintRepeatedDetailValues;
 	private Integer columnWidth;
-	// group
+	//group
 	private GroupHeaderLayout groupHeaderLayout;
 	private Boolean groupHideColumn;
 	private Boolean groupShowColumnHeaderAndFooter;
@@ -108,35 +108,35 @@ public class DRReportTemplate implements DRIReportTemplate {
 	private GroupFooterPosition groupFooterPosition;
 	private Boolean groupKeepTogether;
 	private Boolean groupHeaderWithSubtotal;
-	// subtotal
+	//subtotal
 	private Position subtotalLabelPosition;
-	// table of contents
+	//table of contents
 	public Boolean tableOfContents;
 	public DRITableOfContentsCustomizer tableOfContentsCustomizer;
-	// text field
+	//text field
 	private Integer textFieldWidth;
-	// image
+	//image
 	private Integer imageWidth;
 	private Integer imageHeight;
-	// list
+	//list
 	private Integer listgap;
-	// multi page list
+	//multi page list
 	private Integer multiPageListWidth;
 	private Integer multiPageListHeight;
-	// chart
+	//chart
 	private Integer chartWidth;
 	private Integer chartHeight;
 	private List<Color> chartSeriesColors;
 	private String chartValuePattern;
 	private String chartPercentValuePattern;
 	private String chartTheme;
-	// barcode
+	//barcode
 	private Integer barcodeWidth;
 	private Integer barcodeHeight;
-	// subreport
+	//subreport
 	private Integer subreportWidth;
 	private Integer subreportHeight;
-	// crosstab
+	//crosstab
 	private Integer crosstabWidth;
 	private Integer crosstabHeight;
 	private Boolean crosstabHighlightOddRows;
@@ -148,13 +148,13 @@ public class DRReportTemplate implements DRIReportTemplate {
 	private DRIReportStyle crosstabGrandTotalStyle;
 	private DRIReportStyle crosstabCellStyle;
 	private DRIReportStyle crosstabMeasureTitleStyle;
-	// boolean
+	//boolean
 	private BooleanComponentType booleanComponentType;
 	private Boolean booleanEmptyWhenNullValue;
 	private Integer booleanImageWidth;
 	private Integer booleanImageHeight;
 	private DRIReportStyle booleanColumnStyle;
-	// split
+	//split
 	private SplitType defaultSplitType;
 	private SplitType titleSplitType;
 	private SplitType pageHeaderSplitType;
@@ -170,7 +170,7 @@ public class DRReportTemplate implements DRIReportTemplate {
 	private SplitType summarySplitType;
 	private SplitType noDataSplitType;
 	private SplitType backgroundSplitType;
-	// band style
+	//band style
 	private DRIReportStyle titleStyle;
 	private DRIReportStyle pageHeaderStyle;
 	private DRIReportStyle pageFooterStyle;
@@ -185,7 +185,7 @@ public class DRReportTemplate implements DRIReportTemplate {
 	private DRIReportStyle summaryStyle;
 	private DRIReportStyle noDataStyle;
 	private DRIReportStyle backgroundStyle;
-	// band background component
+	//band background component
 	private DRComponent titleBackgroundComponent;
 	private DRComponent pageHeaderBackgroundComponent;
 	private DRComponent pageFooterBackgroundComponent;
@@ -479,7 +479,8 @@ public class DRReportTemplate implements DRIReportTemplate {
 		if (orientation.equals(PageOrientation.PORTRAIT)) {
 			setPageWidth(pageType.getWidth());
 			setPageHeight(pageType.getHeight());
-		} else {
+		}
+		else {
 			setPageWidth(pageType.getHeight());
 			setPageHeight(pageType.getWidth());
 		}

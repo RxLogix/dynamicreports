@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -55,15 +55,15 @@ public class Crosstab3Test extends AbstractJasperCrosstabValueTest implements Se
 		measure1.setValueFormatter(new ValueFormatter1());
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.rowGroups(
-						rowGroup = ctab.rowGroup("field1", String.class).setHeaderValueFormatter(new ValueFormatter2()))
-				.columnGroups(
-						columnGroup = ctab.columnGroup("field2", String.class).setHeaderValueFormatter(new ValueFormatter2()))
-				.measures(
-						measure1);
+			.rowGroups(
+				rowGroup = ctab.rowGroup("field1", String.class).setHeaderValueFormatter(new ValueFormatter2()))
+			.columnGroups(
+				columnGroup = ctab.columnGroup("field2", String.class).setHeaderValueFormatter(new ValueFormatter2()))
+			.measures(
+				measure1);
 
 		rb.setLocale(Locale.ENGLISH)
-				.summary(crosstab);
+			.summary(crosstab);
 	}
 
 	@Override
@@ -74,19 +74,19 @@ public class Crosstab3Test extends AbstractJasperCrosstabValueTest implements Se
 
 		setCrosstabBand("summary");
 
-		// column group
+		//column group
 		crosstabGroupHeaderCountTest(columnGroup, 2);
 		crosstabGroupHeaderValueTest(columnGroup, "value = c", "value = d");
 		crosstabGroupTotalHeaderCountTest(columnGroup, 1);
 		crosstabGroupTotalHeaderValueTest(columnGroup, "Total");
 
-		// row group
+		//row group
 		crosstabGroupHeaderCountTest(rowGroup, 2);
 		crosstabGroupHeaderValueTest(rowGroup, "value = a", "value = b");
 		crosstabGroupTotalHeaderCountTest(rowGroup, 1);
 		crosstabGroupTotalHeaderValueTest(rowGroup, "Total");
 
-		// measure1
+		//measure1
 		crosstabCellCountTest(measure1, null, null, 4);
 		crosstabCellValueTest(measure1, null, null, "value = 3", "value = 7", "value = 11", "value = 15");
 		crosstabCellCountTest(measure1, null, columnGroup, 2);

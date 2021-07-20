@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -34,12 +34,12 @@ import org.json.JSONObject;
 public class PieChart implements ChartGenerator {
 	private String title;
 	private String backgroundColor = "ffffff";
-	private String[] valueColors = { "fadf12", "ed262a", "006f3c", "fa6112", "409dcf", "e5018c", "eaab35" };
+	private String[] valueColors = {"fadf12", "ed262a", "006f3c", "fa6112", "409dcf", "e5018c", "eaab35"};
 	private JSONArray values = new JSONArray();
 
 	@Override
-	public String generateChart() {
-		try {
+	public String generateChart()	{
+		try	{
 			JSONObject chart = new JSONObject();
 			if (backgroundColor != null) {
 				chart.put("bg_colour", backgroundColor);
@@ -58,7 +58,7 @@ public class PieChart implements ChartGenerator {
 
 			if (valueColors != null) {
 				JSONArray colors = new JSONArray();
-				for (int i = 0; i < valueColors.length; i++) {
+				for (int i = 0; i < valueColors.length; i++)	{
 					colors.put(valueColors[i]);
 				}
 				pie.put("colours", colors);
@@ -70,7 +70,8 @@ public class PieChart implements ChartGenerator {
 			chart.put("elements", elements);
 
 			return chart.toString();
-		} catch (JSONException e) {
+		}
+		catch (JSONException e)	{
 			throw new JRRuntimeException(e);
 		}
 	}

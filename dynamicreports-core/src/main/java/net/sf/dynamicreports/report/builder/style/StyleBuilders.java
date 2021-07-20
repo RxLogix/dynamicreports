@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -37,7 +37,7 @@ import net.sf.dynamicreports.report.exception.DRException;
  */
 public class StyleBuilders {
 
-	// font
+	//font
 	public FontBuilder font() {
 		return Styles.font();
 	}
@@ -70,7 +70,7 @@ public class StyleBuilders {
 		return Styles.fontCourierNewBold();
 	}
 
-	// pen
+	//pen
 	public PenBuilder pen() {
 		return Styles.pen();
 	}
@@ -103,7 +103,7 @@ public class StyleBuilders {
 		return Styles.penDouble();
 	}
 
-	// border
+	//border
 	public BorderBuilder border() {
 		return Styles.border();
 	}
@@ -112,7 +112,7 @@ public class StyleBuilders {
 		return Styles.border(pen);
 	}
 
-	// padding
+	//padding
 	public PaddingBuilder padding() {
 		return Styles.padding();
 	}
@@ -121,7 +121,7 @@ public class StyleBuilders {
 		return Styles.padding(padding);
 	}
 
-	// style
+	//style
 	public StyleBuilder style() {
 		return Styles.style();
 	}

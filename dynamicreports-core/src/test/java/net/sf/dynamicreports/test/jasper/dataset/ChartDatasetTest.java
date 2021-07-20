@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -65,27 +65,27 @@ public class ChartDatasetTest extends AbstractJasperChartTest implements Seriali
 		dataset3.setDataSource(new Datasource3Expression());
 
 		rb.addParameter("parameter", "parameter_value")
-				.title(
-						cht.barChart()
-								.setSubDataset(dataset1)
-								.setTitle(new TitleExpression())
-								.setCategory("field1", String.class)
-								.series(
-										cht.serie("field3", Integer.class).setLabel("f3"),
-										cht.serie(new ValueExpression()).setLabel("exp")),
-						cht.barChart()
-								.setSubDataset(dataset2)
-								.customizers(new Customizer())
-								.setCategory(new CategoryExpression())
-								.series(
-										cht.serie(col.column("Column2", "field2", Integer.class)),
-										cht.serie("field3", Integer.class).setLabel("f3"),
-										cht.serie(new ValueExpression()).setLabel("exp")),
-						cht.barChart()
-								.setSubDataset(dataset3)
-								.setCategory("field1", String.class)
-								.series(
-										cht.serie(variable).setLabel("exp")));
+			.title(
+				cht.barChart()
+					.setSubDataset(dataset1)
+					.setTitle(new TitleExpression())
+					.setCategory("field1", String.class)
+					.series(
+						cht.serie("field3", Integer.class).setLabel("f3"),
+						cht.serie(new ValueExpression()).setLabel("exp")),
+				cht.barChart()
+					.setSubDataset(dataset2)
+					.customizers(new Customizer())
+					.setCategory(new CategoryExpression())
+					.series(
+						cht.serie(col.column("Column2", "field2", Integer.class)),
+						cht.serie("field3", Integer.class).setLabel("f3"),
+						cht.serie(new ValueExpression()).setLabel("exp")),
+				cht.barChart()
+					.setSubDataset(dataset3)
+					.setCategory("field1", String.class)
+					.series(
+						cht.serie(variable).setLabel("exp")));
 	}
 
 	@Override
@@ -94,9 +94,9 @@ public class ChartDatasetTest extends AbstractJasperChartTest implements Seriali
 
 		numberOfPagesTest(1);
 
-		String[] categories = new String[] { "value1", "value2", "value3", "value4" };
-		String[] series = new String[] { "f3", "exp" };
-		Number[][] values = new Number[][] { { 4d, 6d }, { 6d, 10d }, { 8d, 14d }, { 10d, 18d } };
+		String[] categories = new String[]{"value1", "value2", "value3", "value4"};
+		String[] series = new String[]{"f3", "exp"};
+		Number[][] values = new Number[][]{{4d, 6d}, {6d, 10d}, {8d, 14d}, {10d, 18d}};
 
 		chartCountTest("title.chart1", 1);
 		chartTitleTest("title.chart1", 0, "Title");
@@ -104,9 +104,9 @@ public class ChartDatasetTest extends AbstractJasperChartTest implements Seriali
 		chartSeriesCountTest("title.chart1", 0, 2);
 		chartDataTest("title.chart1", 0, categories, series, values);
 
-		categories = new String[] { "value1_exp", "value2_exp", "value3_exp", "value4_exp" };
-		series = new String[] { "Column2", "f3", "exp" };
-		values = new Number[][] { { 2d, 4d, 6d }, { 4d, 6d, 10d }, { 6d, 8d, 14d }, { 8d, 10d, 18d } };
+		categories = new String[]{"value1_exp", "value2_exp", "value3_exp", "value4_exp"};
+		series = new String[]{"Column2", "f3", "exp"};
+		values = new Number[][]{{2d, 4d, 6d}, {4d, 6d, 10d}, {6d, 8d, 14d}, {8d, 10d, 18d}};
 
 		chartCountTest("title.chart2", 1);
 		chartTitleTest("title.chart2", 0, "customizer1");
@@ -114,9 +114,9 @@ public class ChartDatasetTest extends AbstractJasperChartTest implements Seriali
 		chartSeriesCountTest("title.chart2", 0, 3);
 		chartDataTest("title.chart2", 0, categories, series, values);
 
-		categories = new String[] { "value1", "value2", "value3", "value4" };
-		series = new String[] { "exp" };
-		values = new Number[][] { { 2 }, { 6 }, { 12 }, { 20 } };
+		categories = new String[]{"value1", "value2", "value3", "value4"};
+		series = new String[]{"exp"};
+		values = new Number[][]{{2}, {6}, {12}, {20}};
 
 		chartCountTest("title.chart3", 1);
 		chartTitleTest("title.chart3", 0, null);

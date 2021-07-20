@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -46,38 +46,38 @@ public class BandReport {
 
 	private void build() {
 		boldCenteredStyle = stl.style()
-				.bold()
-				.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
+		                       .bold()
+		                       .setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
 		StyleBuilder backgroundStyle = stl.style(boldCenteredStyle)
-				.setVerticalTextAlignment(VerticalTextAlignment.MIDDLE)
-				.setRotation(Rotation.LEFT);
+		                                  .setVerticalTextAlignment(VerticalTextAlignment.MIDDLE)
+		                                  .setRotation(Rotation.LEFT);
 
 		TextColumnBuilder<String> column1 = col.column("Column1", "column1", type.stringType());
 		TextColumnBuilder<String> column2 = col.column("Column2", "column2", type.stringType());
 		ColumnGroupBuilder columnGroup = grp.group(column1);
 
 		try {
-			report()// create new report design
-					.setPageColumnsPerPage(2)
-					.columns(column1, column2)
-					.groupBy(columnGroup)
+			report()//create new report design
+			  .setPageColumnsPerPage(2)
+			  .columns(column1, column2)
+			  .groupBy(columnGroup)
 
-					// bands
-					.title(createTextField("This is a title band"))
-					.pageHeader(createTextField("This is a page header band"))
-					.pageFooter(createTextField("This is a page footer band"))
-					.columnHeader(createTextField("This is a column header band"))
-					.columnFooter(createTextField("This is a column footer band"))
-					.lastPageFooter(createTextField("This is a last page footer band"))
-					.summary(createTextField("This is a summary band"))
-					// .detailHeader(createTextField("This is a detail header band"))
-					// .detailFooter(createTextField("This is a detail footer band"))
-					.groupHeader(columnGroup, createTextField("This is a group header band"))
-					.groupFooter(columnGroup, createTextField("This is a group footer band"))
-					.background(createTextField("This is a background band").setHeight(800).setStyle(backgroundStyle))
+			  //bands
+			  .title(createTextField("This is a title band"))
+			  .pageHeader(createTextField("This is a page header band"))
+			  .pageFooter(createTextField("This is a page footer band"))
+			  .columnHeader(createTextField("This is a column header band"))
+			  .columnFooter(createTextField("This is a column footer band"))
+			  .lastPageFooter(createTextField("This is a last page footer band"))
+			  .summary(createTextField("This is a summary band"))
+			  //.detailHeader(createTextField("This is a detail header band"))
+			  //.detailFooter(createTextField("This is a detail footer band"))
+			  .groupHeader(columnGroup, createTextField("This is a group header band"))
+			  .groupFooter(columnGroup, createTextField("This is a group footer band"))
+			  .background(createTextField("This is a background band").setHeight(800).setStyle(backgroundStyle))
 
-					.setDataSource(createDataSource())// set datasource
-					.show();// create and show report
+			  .setDataSource(createDataSource())//set datasource
+			  .show();//create and show report
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

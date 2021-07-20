@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -96,9 +96,9 @@ public abstract class AbstractJasperTest {
 		oos.flush();
 		oos.close();
 
-		InputStream stream = new ByteArrayInputStream(bos.toByteArray());
-		ObjectInputStream ois = new ObjectInputStream(stream);
-		return (JasperReportBuilder) ois.readObject();
+    InputStream stream = new ByteArrayInputStream(bos.toByteArray());
+    ObjectInputStream ois = new ObjectInputStream(stream);
+    return (JasperReportBuilder) ois.readObject();
 	}
 
 	public JasperReportBuilder getReportBuilder() {
@@ -158,7 +158,7 @@ public abstract class AbstractJasperTest {
 		Assert.assertEquals("element value " + name, value, getElementValue(name, index));
 	}
 
-	protected void elementValueTest(String name, String... values) {
+	protected void elementValueTest(String name, String ...values) {
 		List<JRPrintElement> elements = findElement(name);
 		Assert.assertTrue(values.length <= elements.size());
 		for (int i = 0; i < values.length; i++) {

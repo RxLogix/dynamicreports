@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -45,16 +45,16 @@ import net.sf.jasperreports.renderers.Renderable;
  */
 public class Components {
 
-	// horizontal list
+	//horizontal list
 	public static HorizontalListBuilder horizontalList() {
 		return new HorizontalListBuilder();
 	}
 
-	public static HorizontalListBuilder horizontalList(ComponentBuilder<?, ?>... components) {
+	public static HorizontalListBuilder horizontalList(ComponentBuilder<?, ?> ...components) {
 		return new HorizontalListBuilder().add(components);
 	}
 
-	public static HorizontalListBuilder horizontalList(HorizontalListCellBuilder... cells) {
+	public static HorizontalListBuilder horizontalList(HorizontalListCellBuilder ...cells) {
 		return new HorizontalListBuilder().add(cells);
 	}
 
@@ -63,29 +63,29 @@ public class Components {
 		return new HorizontalListCellBuilder(component);
 	}
 
-	// horizontal flow list
+	//horizontal flow list
 	public static HorizontalListBuilder horizontalFlowList() {
 		return new HorizontalFlowListBuilder();
 	}
 
-	public static HorizontalListBuilder horizontalFlowList(ComponentBuilder<?, ?>... components) {
+	public static HorizontalListBuilder horizontalFlowList(ComponentBuilder<?, ?> ...components) {
 		return new HorizontalFlowListBuilder().add(components);
 	}
 
-	public static HorizontalListBuilder horizontalFlowList(HorizontalListCellBuilder... cells) {
+	public static HorizontalListBuilder horizontalFlowList(HorizontalListCellBuilder ...cells) {
 		return new HorizontalFlowListBuilder().add(cells);
 	}
 
-	// vertical list
+	//vertical list
 	public static VerticalListBuilder verticalList() {
 		return new VerticalListBuilder();
 	}
 
-	public static VerticalListBuilder verticalList(ComponentBuilder<?, ?>... components) {
+	public static VerticalListBuilder verticalList(ComponentBuilder<?, ?> ...components) {
 		return new VerticalListBuilder().add(components);
 	}
 
-	public static VerticalListBuilder verticalList(VerticalListCellBuilder... cells) {
+	public static VerticalListBuilder verticalList(VerticalListCellBuilder ...cells) {
 		return new VerticalListBuilder().add(cells);
 	}
 
@@ -94,12 +94,12 @@ public class Components {
 		return new VerticalListCellBuilder(component);
 	}
 
-	// xy list
+	//xy list
 	public static XyListBuilder xyList() {
 		return new XyListBuilder();
 	}
 
-	public static XyListBuilder xyList(XyListCellBuilder... cells) {
+	public static XyListBuilder xyList(XyListCellBuilder ...cells) {
 		return new XyListBuilder().add(cells);
 	}
 
@@ -113,12 +113,12 @@ public class Components {
 		return new XyListCellBuilder(x, y, width, height, component);
 	}
 
-	// multi page list
+	//multi page list
 	public static MultiPageListBuilder multiPageList() {
 		return new MultiPageListBuilder();
 	}
 
-	public static MultiPageListBuilder multiPageList(ComponentBuilder<?, ?>... components) {
+	public static MultiPageListBuilder multiPageList(ComponentBuilder<?, ?> ...components) {
 		return new MultiPageListBuilder().add(components);
 	}
 
@@ -142,7 +142,7 @@ public class Components {
 		return new TotalPagesBuilder();
 	}
 
-	// text
+	//text
 	public static TextFieldBuilder<String> text(String text) {
 		return new TextFieldBuilder<String>().setText(text);
 	}
@@ -167,7 +167,7 @@ public class Components {
 		return new TextFieldBuilder<T>().setText(textExpression);
 	}
 
-	// filler
+	//filler
 	public static FillerBuilder filler() {
 		return new FillerBuilder();
 	}
@@ -184,7 +184,7 @@ public class Components {
 		return new FillerBuilder().setFixedDimension(width, height);
 	}
 
-	// image
+	//image
 	public static ImageBuilder image(DRIExpression<?> imageExpression) {
 		return new ImageBuilder().setImage(imageExpression);
 	}
@@ -217,7 +217,7 @@ public class Components {
 		return new ImageBuilder().setImage(Expressions.value(image, net.sf.jasperreports.engine.Renderable.class));
 	}
 
-	// subreport
+	//subreport
 	public static SubreportBuilder subreport(JasperReportBuilder reportBuilder) {
 		SubreportBuilder subreport = new SubreportBuilder();
 		subreport.setReport(reportBuilder);
@@ -238,12 +238,12 @@ public class Components {
 		return new SubreportBuilder().setReport(reportExpression);
 	}
 
-	// line
+	//line
 	public static LineBuilder line() {
 		return new LineBuilder();
 	}
 
-	// break
+	//break
 	public static BreakBuilder pageBreak() {
 		return new BreakBuilder().setType(BreakType.PAGE);
 	}
@@ -252,12 +252,12 @@ public class Components {
 		return new BreakBuilder().setType(BreakType.COLUMN);
 	}
 
-	// generic element
+	//generic element
 	public static GenericElementBuilder genericElement(String namespace, String name) {
 		return new GenericElementBuilder(namespace, name);
 	}
 
-	// boolean
+	//boolean
 	public static BooleanFieldBuilder booleanField(Boolean value) {
 		return new BooleanFieldBuilder().setValue(value);
 	}
@@ -270,12 +270,12 @@ public class Components {
 		return new BooleanFieldBuilder().setValue(valueExpression);
 	}
 
-	// ellipse
+	//ellipse
 	public static EllipseBuilder ellipse() {
 		return new EllipseBuilder();
 	}
 
-	// rectangle
+	//rectangle
 	public static RectangleBuilder rectangle() {
 		return new RectangleBuilder();
 	}
@@ -288,7 +288,7 @@ public class Components {
 		return new RectangleBuilder().setRadius(radius);
 	}
 
-	// map
+	//map
 	public static MapBuilder map() {
 		return new MapBuilder();
 	}
@@ -301,7 +301,7 @@ public class Components {
 		return mapBuilder;
 	}
 
-	// alignment
+	//alignment
 	public static HorizontalListBuilder centerHorizontal(ComponentBuilder<?, ?> component) {
 		HorizontalListBuilder list = horizontalList();
 		list.add(filler().setWidth(1));

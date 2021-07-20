@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -38,8 +38,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
-
-import org.apache.commons.lang3.Validate;
 
 import net.sf.dynamicreports.design.base.DRDesignReport;
 import net.sf.dynamicreports.design.definition.DRIDesignReport;
@@ -99,6 +97,8 @@ import net.sf.jasperreports.export.SimpleGraphics2DReportConfiguration;
 import net.sf.jasperreports.view.JasperDesignViewer;
 import net.sf.jasperreports.view.JasperViewer;
 
+import org.apache.commons.lang3.Validate;
+
 /**
  * The most used report builder for creating reports. It allows constructing and customizing the whole report content.
  * A report consists of bands, columns, subtotals, groups, and other parts.
@@ -142,8 +142,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 	 * Sets a data source object.
 	 * Creates a new JRBeanCollectionDataSource data source object.
 	 *
-	 * @param collection
-	 *          - the collection values
+	 * @param collection - the collection values
 	 * @return a report builder
 	 */
 	public JasperReportBuilder setDataSource(Collection<?> collection) {
@@ -154,8 +153,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 	 * Sets a database data source.
 	 * In this type of data source, data are retrieved from a database.
 	 *
-	 * @param resultSet
-	 *          - the resultSet object
+	 * @param resultSet - the resultSet object
 	 * @return a report builder
 	 */
 	public JasperReportBuilder setDataSource(ResultSet resultSet) {
@@ -166,10 +164,8 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 	 * Sets a database data source.
 	 * In this type of data source, data are retrieved from a database.
 	 *
-	 * @param sql
-	 *          - the sql query
-	 * @param connection
-	 *          - the database connection
+	 * @param sql - the sql query
+	 * @param connection - the database connection
 	 * @return a report builder
 	 */
 	public JasperReportBuilder setDataSource(String sql, Connection connection) {
@@ -181,10 +177,8 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 	 * Sets a database data source.
 	 * In this type of data source, data are retrieved from a database.
 	 *
-	 * @param query
-	 *          - the query definition
-	 * @param connection
-	 *          - the database connection
+	 * @param query - the query definition
+	 * @param connection - the database connection
 	 * @return a report builder
 	 */
 	public JasperReportBuilder setDataSource(QueryBuilder query, Connection connection) {
@@ -199,8 +193,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 	/**
 	 * Sets a data source object.
 	 *
-	 * @param dataSource
-	 *          - the JRDataSource object
+	 * @param dataSource - the JRDataSource object
 	 * @return a report builder
 	 */
 	public JasperReportBuilder setDataSource(JRDataSource dataSource) {
@@ -209,7 +202,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		return this;
 	}
 
-	// template design
+	//template design
 	public JasperReportBuilder setTemplateDesign(InputStream inputStream) throws DRException {
 		return setTemplateDesign(new JasperTemplateDesign(inputStream));
 	}
@@ -289,7 +282,8 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		if (jasperReport == null) {
 			try {
 				jasperReport = JasperCompileManager.compileReport(toJasperDesign());
-			} catch (JRException e) {
+			}
+			catch (JRException e) {
 				throw new DRException(e);
 			}
 		}
@@ -298,7 +292,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 
 	public Map<String, Object> getJasperParameters() throws DRException {
 		if (parameters == null) {
-			parameters = new HashMap<>();
+			parameters = new HashMap<String, Object>();
 			JasperReportDesign jasperReportDesign = toJasperReportDesign();
 			parameters.putAll(jasperReportDesign.getParameters());
 			if (getReport().getParameterValues() != null) {
@@ -318,16 +312,19 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 			try {
 				if (connection != null && toJasperReport().getQuery() != null) {
 					jasperPrint = JasperFillManager.fillReport(toJasperReport(), parameters, connection);
-				} else if (dataSource != null) {
+				}
+				else if (dataSource != null) {
 					jasperPrint = JasperFillManager.fillReport(toJasperReport(), parameters, dataSource);
-				} else {
+				}
+				else {
 					jasperPrint = JasperFillManager.fillReport(toJasperReport(), parameters);
 				}
 
 				if (toJasperReportDesign().isTableOfContents()) {
 					JasperTocReport.createTocReport(toJasperReportDesign(), jasperPrint, parameters);
 				}
-			} catch (JRException e) {
+			}
+			catch (JRException e) {
 				throw new DRException(e);
 			}
 
@@ -382,7 +379,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		return this;
 	}
 
-	// image
+	//image
 	public JasperReportBuilder toImage(OutputStream outputStream, ImageType imageType) throws DRException {
 		return toImage(Exporters.imageExporter(outputStream, imageType));
 	}
@@ -417,7 +414,8 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		if (imageExporter.getPageIndex() != null && imageExporter.getPageIndex() >= 0) {
 			fromPage = imageExporter.getPageIndex();
 			toPage = imageExporter.getPageIndex() + 1;
-		} else {
+		}
+		else {
 			if (imageExporter.getStartPageIndex() != null) {
 				fromPage = imageExporter.getStartPageIndex();
 			}
@@ -436,7 +434,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 
 		int pageWidth = (int) (jasperPrint.getPageWidth() * zoom);
 		int pageHeight = (int) (jasperPrint.getPageHeight() * zoom);
-		int width = pageWidth * pages + pages - 1 + offsetX * 2;
+		int width = pageWidth * pages + (pages - 1) + offsetX * 2;
 		int height = (int) (jasperPrint.getPageHeight() * zoom) + offsetY * 2;
 		Image image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
@@ -469,11 +467,14 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		try {
 			if (imageExporter.getOutputStream() != null) {
 				ImageIO.write((RenderedImage) image, imageType, imageExporter.getOutputStream());
-			} else if (imageExporter.getOutputFileName() != null) {
+			}
+			else if (imageExporter.getOutputFileName() != null) {
 				ImageIO.write((RenderedImage) image, imageType, new File(imageExporter.getOutputFileName()));
-			} else if (imageExporter.getOutputFile() != null) {
+			}
+			else if (imageExporter.getOutputFile() != null) {
 				ImageIO.write((RenderedImage) image, imageType, imageExporter.getOutputFile());
-			} else {
+			}
+			else {
 				throw new JasperDesignException("ImageExporter output not supported");
 			}
 		} catch (IOException e) {
@@ -482,7 +483,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		return this;
 	}
 
-	// csv
+	//csv
 	public JasperReportBuilder toCsv(OutputStream outputStream) throws DRException {
 		return toCsv(Exporters.csvExporter(outputStream));
 	}
@@ -491,7 +492,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		return export(csvExporterBuilder);
 	}
 
-	// docx
+	//docx
 	public JasperReportBuilder toDocx(OutputStream outputStream) throws DRException {
 		return toDocx(Exporters.docxExporter(outputStream));
 	}
@@ -500,7 +501,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		return export(docxExporterBuilder);
 	}
 
-	// html
+	//html
 	public JasperReportBuilder toHtml(OutputStream outputStream) throws DRException {
 		return toHtml(Exporters.htmlExporter(outputStream));
 	}
@@ -509,7 +510,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		return export(htmlExporterBuilder);
 	}
 
-	// ods
+	//ods
 	public JasperReportBuilder toOds(OutputStream outputStream) throws DRException {
 		return toOds(Exporters.odsExporter(outputStream));
 	}
@@ -518,7 +519,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		return export(odsExporterBuilder);
 	}
 
-	// odt
+	//odt
 	public JasperReportBuilder toOdt(OutputStream outputStream) throws DRException {
 		return toOdt(Exporters.odtExporter(outputStream));
 	}
@@ -527,7 +528,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		return export(odtExporterBuilder);
 	}
 
-	// pdf
+	//pdf
 	public JasperReportBuilder toPdf(OutputStream outputStream) throws DRException {
 		return toPdf(Exporters.pdfExporter(outputStream));
 	}
@@ -536,7 +537,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		return export(pdfExporterBuilder);
 	}
 
-	// rtf
+	//rtf
 	public JasperReportBuilder toRtf(OutputStream outputStream) throws DRException {
 		return toRtf(Exporters.rtfExporter(outputStream));
 	}
@@ -545,7 +546,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		return export(rtfExporterBuilder);
 	}
 
-	// text
+	//text
 	public JasperReportBuilder toText(OutputStream outputStream) throws DRException {
 		return toText(Exporters.textExporter(outputStream));
 	}
@@ -554,7 +555,41 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		return export(textExporterBuilder);
 	}
 
-	// xls
+	//xhtml
+	/**
+	 * @deprecated To be removed. Use toHtml instead
+	 */
+	@Deprecated
+	public JasperReportBuilder toXhtml(OutputStream outputStream) throws DRException {
+		return toXhtml(Exporters.xhtmlExporter(outputStream));
+	}
+
+	/**
+	 * @deprecated To be removed. Use toHtml instead
+	 */
+	@Deprecated
+	public JasperReportBuilder toXhtml(net.sf.dynamicreports.jasper.builder.export.JasperXhtmlExporterBuilder xhtmlExporterBuilder) throws DRException {
+		return export(xhtmlExporterBuilder);
+	}
+
+	//excelApiXls
+	/**
+	 * @deprecated To be removed. Use toXls or toXlsx instead
+	 */
+	@Deprecated
+	public JasperReportBuilder toExcelApiXls(OutputStream outputStream) throws DRException {
+		return toExcelApiXls(Exporters.excelApiXlsExporter(outputStream));
+	}
+
+	/**
+	 * @deprecated To be removed. Use toXls or toXlsx instead
+	 */
+	@Deprecated
+	public JasperReportBuilder toExcelApiXls(net.sf.dynamicreports.jasper.builder.export.JasperExcelApiXlsExporterBuilder excelApiXlsExporterBuilder) throws DRException {
+		return export(excelApiXlsExporterBuilder);
+	}
+
+	//xls
 	public JasperReportBuilder toXls(OutputStream outputStream) throws DRException {
 		return toXls(Exporters.xlsExporter(outputStream));
 	}
@@ -563,7 +598,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		return export(xlsExporterBuilder);
 	}
 
-	// xlsx
+	//xlsx
 	public JasperReportBuilder toXlsx(OutputStream outputStream) throws DRException {
 		return toXlsx(Exporters.xlsxExporter(outputStream));
 	}
@@ -572,7 +607,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		return export(xlsxExporterBuilder);
 	}
 
-	// xml
+	//xml
 	public JasperReportBuilder toXml(OutputStream outputStream) throws DRException {
 		return toXml(Exporters.xmlExporter(outputStream));
 	}
@@ -581,7 +616,7 @@ public class JasperReportBuilder extends ReportBuilder<JasperReportBuilder> {
 		return export(xmlExporterBuilder);
 	}
 
-	// pptx
+	//pptx
 	public JasperReportBuilder toPptx(OutputStream outputStream) throws DRException {
 		return toPptx(Exporters.pptxExporter(outputStream));
 	}

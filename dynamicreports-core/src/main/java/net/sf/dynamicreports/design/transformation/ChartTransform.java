@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -61,7 +61,6 @@ import net.sf.dynamicreports.design.base.chart.plot.DRDesignPie3DPlot;
 import net.sf.dynamicreports.design.base.chart.plot.DRDesignPiePlot;
 import net.sf.dynamicreports.design.base.chart.plot.DRDesignSpiderPlot;
 import net.sf.dynamicreports.design.base.chart.plot.DRDesignThermometerPlot;
-import net.sf.dynamicreports.design.constant.DefaultStyleType;
 import net.sf.dynamicreports.design.constant.ResetType;
 import net.sf.dynamicreports.design.definition.DRIDesignHyperLink;
 import net.sf.dynamicreports.design.definition.DRIDesignVariable;
@@ -139,7 +138,7 @@ public class ChartTransform {
 		this.accessor = accessor;
 	}
 
-	// chart
+	//chart
 	protected DRDesignChart transform(DRIChart chart, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		return transform(chart, null, resetType, resetGroup);
 	}
@@ -165,50 +164,68 @@ public class ChartTransform {
 		return designChart;
 	}
 
-	// plot
-	private DRIDesignPlot plot(DRIPlot plot, List<DRIChartCustomizer> chartCustomizers, DRIDataset subDataset, ResetType resetType, DRDesignGroup resetGroup)
-			throws DRException {
+	//plot
+	private DRIDesignPlot plot(DRIPlot plot, List<DRIChartCustomizer> chartCustomizers, DRIDataset subDataset, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		DRIDesignPlot designPlot;
 
 		if (plot instanceof DRIBar3DPlot) {
 			designPlot = bar3DPlot((DRIBar3DPlot) plot, chartCustomizers);
-		} else if (plot instanceof DRILayeredBarPlot) {
+		}
+		else if (plot instanceof DRILayeredBarPlot) {
 			designPlot = layeredBarPlot((DRILayeredBarPlot) plot, chartCustomizers);
-		} else if (plot instanceof DRIWaterfallBarPlot) {
+		}
+		else if (plot instanceof DRIWaterfallBarPlot) {
 			designPlot = waterfallBarPlot((DRIWaterfallBarPlot) plot, chartCustomizers);
-		} else if (plot instanceof DRIGroupedStackedBarPlot) {
+		}
+		else if (plot instanceof DRIGroupedStackedBarPlot) {
 			designPlot = groupedStackedBarPlot((DRIGroupedStackedBarPlot) plot, chartCustomizers);
-		} else if (plot instanceof DRIBarPlot) {
+		}
+		else if (plot instanceof DRIBarPlot) {
 			designPlot = barPlot((DRIBarPlot) plot, chartCustomizers);
-		} else if (plot instanceof DRIDifferencePlot) {
+		}
+		else if (plot instanceof DRIDifferencePlot) {
 			designPlot = differencePlot((DRIDifferencePlot) plot, chartCustomizers);
-		} else if (plot instanceof DRIXyStepPlot) {
+		}
+		else if (plot instanceof DRIXyStepPlot) {
 			designPlot = xyStepPlot((DRIXyStepPlot) plot, chartCustomizers);
-		} else if (plot instanceof DRILinePlot) {
+		}
+		else if (plot instanceof DRILinePlot) {
 			designPlot = linePlot((DRILinePlot) plot, chartCustomizers);
-		} else if (plot instanceof DRIMultiAxisPlot) {
+		}
+		else if (plot instanceof DRIMultiAxisPlot) {
 			designPlot = multiAxisPlot((DRIMultiAxisPlot) plot, chartCustomizers, subDataset, resetType, resetGroup);
-		} else if (plot instanceof DRIPie3DPlot) {
+		}
+		else if (plot instanceof DRIPie3DPlot) {
 			designPlot = pie3DPlot((DRIPie3DPlot) plot, chartCustomizers);
-		} else if (plot instanceof DRIPiePlot) {
+		}
+		else if (plot instanceof DRIPiePlot) {
 			designPlot = piePlot((DRIPiePlot) plot, chartCustomizers);
-		} else if (plot instanceof DRISpiderPlot) {
+		}
+		else if (plot instanceof DRISpiderPlot) {
 			designPlot = spiderPlot((DRISpiderPlot) plot);
-		} else if (plot instanceof DRIXyBlockPlot) {
+		}
+		else if (plot instanceof DRIXyBlockPlot) {
 			designPlot = xyBlockPlot((DRIXyBlockPlot) plot, chartCustomizers);
-		} else if (plot instanceof DRIBubblePlot) {
+		}
+		else if (plot instanceof DRIBubblePlot) {
 			designPlot = bubblePlot((DRIBubblePlot) plot, chartCustomizers);
-		} else if (plot instanceof DRICandlestickPlot) {
+		}
+		else if (plot instanceof DRICandlestickPlot) {
 			designPlot = candlestickPlot((DRICandlestickPlot) plot, chartCustomizers);
-		} else if (plot instanceof DRIHighLowPlot) {
+		}
+		else if (plot instanceof DRIHighLowPlot) {
 			designPlot = highLowPlot((DRIHighLowPlot) plot, chartCustomizers);
-		} else if (plot instanceof DRIMeterPlot) {
+		}
+		else if (plot instanceof DRIMeterPlot) {
 			designPlot = meterPlot((DRIMeterPlot) plot);
-		} else if (plot instanceof DRIThermometerPlot) {
+		}
+		else if (plot instanceof DRIThermometerPlot) {
 			designPlot = thermometerPlot((DRIThermometerPlot) plot);
-		} else if (plot instanceof DRIAxisPlot) {
+		}
+		else if (plot instanceof DRIAxisPlot) {
 			designPlot = axisPlot((DRIAxisPlot) plot, chartCustomizers);
-		} else {
+		}
+		else {
 			throw new DRDesignReportException("Chart plot " + plot.getClass().getName() + " not supported");
 		}
 
@@ -286,15 +303,13 @@ public class ChartTransform {
 		return designLinePlot;
 	}
 
-	private DRDesignMultiAxisPlot multiAxisPlot(DRIMultiAxisPlot multiAxisPlot, List<DRIChartCustomizer> chartCustomizers, DRIDataset subDataset,
-			ResetType resetType, DRDesignGroup resetGroup) throws DRException {
+	private DRDesignMultiAxisPlot multiAxisPlot(DRIMultiAxisPlot multiAxisPlot, List<DRIChartCustomizer> chartCustomizers, DRIDataset subDataset, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		DRDesignMultiAxisPlot designMultiAxisPlot = new DRDesignMultiAxisPlot();
 		axisPlot(designMultiAxisPlot, multiAxisPlot, chartCustomizers);
 		for (DRIChartAxis axis : multiAxisPlot.getAxes()) {
 			DRDesignChartAxis designAxis = new DRDesignChartAxis();
 			designAxis.setPosition(axis.getPosition());
 			DRDesignChart chart = transform(axis.getChart(), subDataset, resetType, resetGroup);
-			chart.setStyle(accessor.getStyleTransform().transformStyle(axis.getChart().getStyle(), false, DefaultStyleType.CHART));
 			chart.setUniqueName(ReportUtils.generateUniqueName("chart"));
 			designAxis.setChart(chart);
 			designMultiAxisPlot.getAxes().add(designAxis);
@@ -321,7 +336,8 @@ public class ChartTransform {
 		designPiePlot.setLegendLabelFormat(piePlot.getLegendLabelFormat());
 		if (piePlot.getShowLabels() != null && !piePlot.getShowLabels()) {
 			chartCustomizers.add(new PieChartLabelFormatCustomizer(null, null, null));
-		} else {
+		}
+		else {
 			String labelFormat = piePlot.getLabelFormat();
 			if (labelFormat == null) {
 				labelFormat = "{0}";
@@ -416,13 +432,10 @@ public class ChartTransform {
 		designThermometerPlot.setMercuryColor(thermometerPlot.getMercuryColor());
 		designThermometerPlot.setLowDataRangeLowExpression(accessor.getExpressionTransform().transformExpression(thermometerPlot.getLowDataRangeLowExpression()));
 		designThermometerPlot.setLowDataRangeHighExpression(accessor.getExpressionTransform().transformExpression(thermometerPlot.getLowDataRangeHighExpression()));
-		designThermometerPlot
-				.setMediumDataRangeLowExpression(accessor.getExpressionTransform().transformExpression(thermometerPlot.getMediumDataRangeLowExpression()));
-		designThermometerPlot
-				.setMediumDataRangeHighExpression(accessor.getExpressionTransform().transformExpression(thermometerPlot.getMediumDataRangeHighExpression()));
+		designThermometerPlot.setMediumDataRangeLowExpression(accessor.getExpressionTransform().transformExpression(thermometerPlot.getMediumDataRangeLowExpression()));
+		designThermometerPlot.setMediumDataRangeHighExpression(accessor.getExpressionTransform().transformExpression(thermometerPlot.getMediumDataRangeHighExpression()));
 		designThermometerPlot.setHighDataRangeLowExpression(accessor.getExpressionTransform().transformExpression(thermometerPlot.getHighDataRangeLowExpression()));
-		designThermometerPlot
-				.setHighDataRangeHighExpression(accessor.getExpressionTransform().transformExpression(thermometerPlot.getHighDataRangeHighExpression()));
+		designThermometerPlot.setHighDataRangeHighExpression(accessor.getExpressionTransform().transformExpression(thermometerPlot.getHighDataRangeHighExpression()));
 		return designThermometerPlot;
 	}
 
@@ -457,7 +470,8 @@ public class ChartTransform {
 			String valuePattern;
 			if (axisPlot.getShowPercentages() != null && axisPlot.getShowPercentages()) {
 				valuePattern = accessor.getTemplateTransform().getChartPercentValuePattern(axisPlot);
-			} else {
+			}
+			else {
 				valuePattern = accessor.getTemplateTransform().getChartValuePattern(axisPlot);
 			}
 			boolean customRangeMaxValue = false;
@@ -468,7 +482,7 @@ public class ChartTransform {
 		}
 	}
 
-	// axis format
+	//axis format
 	private DRDesignAxisFormat axisFormat(DRIAxisFormat axisFormat) throws DRException {
 		DRDesignAxisFormat designAxisFormat = new DRDesignAxisFormat();
 		designAxisFormat.setLabelExpression(accessor.getExpressionTransform().transformExpression(axisFormat.getLabelExpression()));
@@ -485,7 +499,7 @@ public class ChartTransform {
 		return designAxisFormat;
 	}
 
-	// title
+	//title
 	private DRDesignChartTitle title(DRIChartTitle title) throws DRException {
 		DRDesignChartTitle designTitle = new DRDesignChartTitle();
 		subtitle(designTitle, title);
@@ -493,7 +507,7 @@ public class ChartTransform {
 		return designTitle;
 	}
 
-	// subtitle
+	//subtitle
 	private DRDesignChartSubtitle subtitle(DRIChartSubtitle subtitle) throws DRException {
 		DRDesignChartSubtitle designSubtitle = new DRDesignChartSubtitle();
 		subtitle(designSubtitle, subtitle);
@@ -506,7 +520,7 @@ public class ChartTransform {
 		designSubtitle.setTitle(accessor.getExpressionTransform().transformExpression(subtitle.getTitle()));
 	}
 
-	// legend
+	//legend
 	private DRDesignChartLegend legend(DRIChartLegend legend) {
 		DRDesignChartLegend designLegend = new DRDesignChartLegend();
 		designLegend.setColor(legend.getColor());
@@ -517,13 +531,14 @@ public class ChartTransform {
 		return designLegend;
 	}
 
-	// dataset
+	//dataset
 	private DRDesignChartDataset dataset(DRIChartDataset dataset, DRIDataset subDataset, ResetType resetType, DRDesignGroup resetGroup) throws DRException {
 		DRDesignDataset designSubDataset = null;
 		if (dataset.getSubDataset() != null) {
 			designSubDataset = accessor.getDatasetTransform().transform(dataset.getSubDataset());
 			accessor.transformToDataset(dataset.getSubDataset());
-		} else {
+		}
+		else {
 			designSubDataset = accessor.getDatasetTransform().transform(subDataset);
 			accessor.transformToDataset(subDataset);
 		}
@@ -531,22 +546,28 @@ public class ChartTransform {
 		DRDesignChartDataset designDataset;
 		if (dataset instanceof DRICategoryDataset) {
 			designDataset = categoryDataset((DRICategoryDataset) dataset, resetType, resetGroup);
-		} else if (dataset instanceof DRITimeSeriesDataset) {
+		}
+		else if (dataset instanceof DRITimeSeriesDataset) {
 			designDataset = timeSeriesDataset((DRITimeSeriesDataset) dataset, resetType, resetGroup);
-		} else if (dataset instanceof DRISeriesDataset) {
+		}
+		else if (dataset instanceof DRISeriesDataset) {
 			designDataset = seriesDataset((DRISeriesDataset) dataset, resetType, resetGroup);
-		} else if (dataset instanceof DRIHighLowDataset) {
+		}
+		else if (dataset instanceof DRIHighLowDataset) {
 			designDataset = highLowDataset((DRIHighLowDataset) dataset);
-		} else if (dataset instanceof DRIValueDataset) {
+		}
+		else if (dataset instanceof DRIValueDataset) {
 			designDataset = valueDataset((DRIValueDataset) dataset);
-		} else {
+		}
+		else {
 			throw new DRDesignReportException("Dataset " + dataset.getClass().getName() + " not supported");
 		}
 
 		designDataset.setSubDataset(designSubDataset);
 		if (resetType != null && resetType.equals(ResetType.NONE)) {
 			designDataset.setResetType(ResetType.REPORT);
-		} else {
+		}
+		else {
 			designDataset.setResetType(resetType);
 		}
 		designDataset.setResetGroup(resetGroup);
@@ -564,15 +585,20 @@ public class ChartTransform {
 			DRDesignChartSerie designSerie;
 			if (serie instanceof DRIGroupedCategoryChartSerie) {
 				designSerie = groupedCategorySerie(dataset.getSubDataset(), (DRIGroupedCategoryChartSerie) serie, valueExpression, resetType, resetGroup, index++);
-			} else if (serie instanceof DRICategoryChartSerie) {
+			}
+			else if (serie instanceof DRICategoryChartSerie) {
 				designSerie = categorySerie(dataset.getSubDataset(), (DRICategoryChartSerie) serie, valueExpression, resetType, resetGroup, index++);
-			} else if (serie instanceof DRIXyChartSerie) {
+			}
+			else if (serie instanceof DRIXyChartSerie) {
 				designSerie = xySerie(dataset.getSubDataset(), (DRIXyChartSerie) serie, valueExpression, resetType, resetGroup, index++);
-			} else if (serie instanceof DRIXyzChartSerie) {
+			}
+			else if (serie instanceof DRIXyzChartSerie) {
 				designSerie = xyzSerie(dataset.getSubDataset(), (DRIXyzChartSerie) serie, valueExpression, resetType, resetGroup, index++);
-			} else if (serie instanceof DRIGanttChartSerie) {
+			}
+			else if (serie instanceof DRIGanttChartSerie) {
 				designSerie = ganttSerie(dataset.getSubDataset(), (DRIGanttChartSerie) serie, valueExpression, resetType, resetGroup, index++);
-			} else {
+			}
+			else {
 				throw new DRDesignReportException("Chart serie " + serie.getClass().getName() + " not supported");
 			}
 			DRIDesignHyperLink itemHyperLink = accessor.getReportTransform().hyperlink(serie.getItemHyperLink());
@@ -626,9 +652,8 @@ public class ChartTransform {
 		return designDataset;
 	}
 
-	// design serie
-	private DRDesignCategoryChartSerie categorySerie(DRIDataset dataset, DRICategoryChartSerie serie, DRIDesignExpression valueExpression, ResetType resetType,
-			DRDesignGroup resetGroup, int index) throws DRException {
+	//design serie
+	private DRDesignCategoryChartSerie categorySerie(DRIDataset dataset, DRICategoryChartSerie serie, DRIDesignExpression valueExpression, ResetType resetType, DRDesignGroup resetGroup, int index) throws DRException {
 		DRDesignCategoryChartSerie designSerie = new DRDesignCategoryChartSerie();
 
 		AbstractExpressionTransform expressionTransform = accessor.getExpressionTransform();
@@ -637,13 +662,13 @@ public class ChartTransform {
 		DRIDesignExpression serieValueExpression = expressionTransform.transformExpression(serie.getValueExpression());
 		if (serieValueExpression instanceof DRIDesignVariable) {
 			designSerie.setValueExpression(serieValueExpression);
-		} else {
+		}
+		else {
 			if (seriesExpression == null) {
-				designSerie.setValueExpression(
-						expressionTransform.transformExpression(new SerieValueExpression(valueExpression, serieValueExpression, resetType, resetGroup, null)));
-			} else {
-				designSerie.setValueExpression(expressionTransform
-						.transformExpression(new SerieValueExpression(valueExpression, serieValueExpression, resetType, resetGroup, seriesExpression.getName())));
+				designSerie.setValueExpression(expressionTransform.transformExpression(new SerieValueExpression(valueExpression, serieValueExpression, resetType, resetGroup, null)));
+			}
+			else {
+				designSerie.setValueExpression(expressionTransform.transformExpression(new SerieValueExpression(valueExpression, serieValueExpression, resetType, resetGroup, seriesExpression.getName())));
 			}
 		}
 		DRIExpression<?> labelExpression = serie.getLabelExpression();
@@ -655,21 +680,19 @@ public class ChartTransform {
 		return designSerie;
 	}
 
-	private DRDesignCategoryChartSerie groupedCategorySerie(DRIDataset dataset, DRIGroupedCategoryChartSerie serie, DRIDesignExpression valueExpression,
-			ResetType resetType, DRDesignGroup resetGroup, int index) throws DRException {
+	private DRDesignCategoryChartSerie groupedCategorySerie(DRIDataset dataset, DRIGroupedCategoryChartSerie serie, DRIDesignExpression valueExpression, ResetType resetType, DRDesignGroup resetGroup, int index) throws DRException {
 		DRDesignCategoryChartSerie designSerie = new DRDesignCategoryChartSerie();
 
 		AbstractExpressionTransform expressionTransform = accessor.getExpressionTransform();
-		GroupedSeriesExpression groupedSeriesExpression = new GroupedSeriesExpression(serie.getGroupExpression(), serie.getSeriesExpression(),
-				serie.getLabelExpression(), index);
+		GroupedSeriesExpression groupedSeriesExpression = new GroupedSeriesExpression(serie.getGroupExpression(), serie.getSeriesExpression(), serie.getLabelExpression(), index);
 		DRIDesignExpression seriesExpression = expressionTransform.transformExpression(groupedSeriesExpression);
 		designSerie.setSeriesExpression(seriesExpression);
 		DRIDesignExpression serieValueExpression = expressionTransform.transformExpression(serie.getValueExpression());
 		if (serieValueExpression instanceof DRIDesignVariable) {
 			designSerie.setValueExpression(serieValueExpression);
-		} else {
-			designSerie.setValueExpression(expressionTransform
-					.transformExpression(new SerieValueExpression(valueExpression, serieValueExpression, resetType, resetGroup, seriesExpression.getName())));
+		}
+		else {
+			designSerie.setValueExpression(expressionTransform.transformExpression(new SerieValueExpression(valueExpression, serieValueExpression, resetType, resetGroup, seriesExpression.getName())));
 		}
 		DRIExpression<?> labelExpression = serie.getLabelExpression();
 		if (labelExpression == null) {
@@ -680,9 +703,8 @@ public class ChartTransform {
 		return designSerie;
 	}
 
-	// xy serie
-	private DRDesignXyChartSerie xySerie(DRIDataset dataset, DRIXyChartSerie serie, DRIDesignExpression valueExpression, ResetType resetType,
-			DRDesignGroup resetGroup, int index) throws DRException {
+	//xy serie
+	private DRDesignXyChartSerie xySerie(DRIDataset dataset, DRIXyChartSerie serie, DRIDesignExpression valueExpression, ResetType resetType, DRDesignGroup resetGroup, int index) throws DRException {
 		DRDesignXyChartSerie designSerie = new DRDesignXyChartSerie();
 
 		AbstractExpressionTransform expressionTransform = accessor.getExpressionTransform();
@@ -698,9 +720,8 @@ public class ChartTransform {
 		return designSerie;
 	}
 
-	// xyz serie
-	private DRDesignXyzChartSerie xyzSerie(DRIDataset dataset, DRIXyzChartSerie serie, DRIDesignExpression valueExpression, ResetType resetType,
-			DRDesignGroup resetGroup, int index) throws DRException {
+	//xyz serie
+	private DRDesignXyzChartSerie xyzSerie(DRIDataset dataset, DRIXyzChartSerie serie, DRIDesignExpression valueExpression, ResetType resetType, DRDesignGroup resetGroup, int index) throws DRException {
 		DRDesignXyzChartSerie designSerie = new DRDesignXyzChartSerie();
 		AbstractExpressionTransform expressionTransform = accessor.getExpressionTransform();
 		DRIExpression<?> seriesExpression = serie.getSeriesExpression();
@@ -714,9 +735,8 @@ public class ChartTransform {
 		return designSerie;
 	}
 
-	// gantt serie
-	private DRDesignGanttChartSerie ganttSerie(DRIDataset dataset, DRIGanttChartSerie serie, DRIDesignExpression valueExpression, ResetType resetType,
-			DRDesignGroup resetGroup, int index) throws DRException {
+	//gantt serie
+	private DRDesignGanttChartSerie ganttSerie(DRIDataset dataset, DRIGanttChartSerie serie, DRIDesignExpression valueExpression, ResetType resetType, DRDesignGroup resetGroup, int index) throws DRException {
 		DRDesignGanttChartSerie designSerie = new DRDesignGanttChartSerie();
 		AbstractExpressionTransform expressionTransform = accessor.getExpressionTransform();
 		designSerie.setSeriesExpression(expressionTransform.transformExpression(serie.getSeriesExpression()));

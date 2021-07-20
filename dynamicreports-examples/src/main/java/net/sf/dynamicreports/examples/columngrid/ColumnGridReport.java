@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -45,36 +45,36 @@ public class ColumnGridReport {
 
 	private void build() {
 		StyleBuilder textStyle = stl.style(Templates.columnStyle)
-				.setBorder(stl.pen1Point());
+		                            .setBorder(stl.pen1Point());
 
-		TextColumnBuilder<String> itemColumn = col.column("Item", "item", type.stringType());
-		TextColumnBuilder<Integer> quantityColumn = col.column("Quantity", "quantity", type.integerType());
-		TextColumnBuilder<BigDecimal> unitPriceColumn = col.column("Unit price", "unitprice", type.bigDecimalType());
-		TextColumnBuilder<Date> orderDateColumn = col.column("Order date", "orderdate", type.dateType());
-		TextColumnBuilder<Date> orderDateFColumn = col.column("Order date", "orderdate", type.dateYearToFractionType());
-		TextColumnBuilder<Date> orderYearColumn = col.column("Order year", "orderdate", type.dateYearType());
-		TextColumnBuilder<Date> orderMonthColumn = col.column("Order month", "orderdate", type.dateMonthType());
-		TextColumnBuilder<Date> orderDayColumn = col.column("Order day", "orderdate", type.dateDayType());
+		TextColumnBuilder<String>     itemColumn       = col.column("Item",        "item",      type.stringType());
+		TextColumnBuilder<Integer>    quantityColumn   = col.column("Quantity",    "quantity",  type.integerType());
+		TextColumnBuilder<BigDecimal> unitPriceColumn  = col.column("Unit price",  "unitprice", type.bigDecimalType());
+		TextColumnBuilder<Date>       orderDateColumn  = col.column("Order date",  "orderdate", type.dateType());
+		TextColumnBuilder<Date>       orderDateFColumn = col.column("Order date",  "orderdate", type.dateYearToFractionType());
+		TextColumnBuilder<Date>       orderYearColumn  = col.column("Order year",  "orderdate", type.dateYearType());
+		TextColumnBuilder<Date>       orderMonthColumn = col.column("Order month", "orderdate", type.dateMonthType());
+		TextColumnBuilder<Date>       orderDayColumn   = col.column("Order day",   "orderdate", type.dateDayType());
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.setColumnStyle(textStyle)
-					.columns(
-							itemColumn, quantityColumn, unitPriceColumn, orderDateColumn,
-							orderDateFColumn, orderYearColumn, orderMonthColumn, orderDayColumn)
-					.columnGrid(
-							grid.verticalColumnGridList(
-									itemColumn,
-									grid.horizontalColumnGridList(quantityColumn, unitPriceColumn)),
-							grid.verticalColumnGridList(
-									orderDateColumn,
-									grid.horizontalColumnGridList(orderDateFColumn, orderYearColumn),
-									grid.horizontalColumnGridList(orderMonthColumn, orderDayColumn)))
-					.title(Templates.createTitleComponent("ColumnGrid"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .setColumnStyle(textStyle)
+			  .columns(
+			  	itemColumn,	quantityColumn,	unitPriceColumn, orderDateColumn,
+			  	orderDateFColumn, orderYearColumn,	orderMonthColumn,	orderDayColumn)
+			  .columnGrid(
+			  	grid.verticalColumnGridList(
+			  		itemColumn,
+			  		grid.horizontalColumnGridList(quantityColumn,	unitPriceColumn)),
+			  	grid.verticalColumnGridList(
+			  		orderDateColumn,
+			  		grid.horizontalColumnGridList(orderDateFColumn, orderYearColumn),
+			  		grid.horizontalColumnGridList(orderMonthColumn,	orderDayColumn)))
+			  .title(Templates.createTitleComponent("ColumnGrid"))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

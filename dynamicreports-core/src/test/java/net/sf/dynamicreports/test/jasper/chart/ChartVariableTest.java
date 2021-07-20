@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -47,19 +47,20 @@ public class ChartVariableTest extends AbstractJasperChartTest implements Serial
 
 		VariableBuilder<Integer> variable = variable(column2, Calculation.SUM);
 		rb.columns(column1, column2)
-				.summary(
-						cht.barChart()
-								.setCategory(exp.text("category"))
-								.series(
-										cht.serie(column2),
-										cht.serie(variable),
-										cht.serie(variable)),
-						cht.barChart()
-								.setCategory(exp.text("category")).setUseSeriesAsCategory(true)
-								.series(
-										cht.serie(column2),
-										cht.serie(variable),
-										cht.serie(variable)));
+			.summary(
+					cht.barChart()
+						.setCategory(exp.text("category"))
+						.series(
+							cht.serie(column2),
+							cht.serie(variable),
+							cht.serie(variable)),
+					cht.barChart()
+						.setCategory(exp.text("category")).setUseSeriesAsCategory(true)
+						.series(
+							cht.serie(column2),
+							cht.serie(variable),
+							cht.serie(variable))
+					);
 	}
 
 	@Override
@@ -68,18 +69,18 @@ public class ChartVariableTest extends AbstractJasperChartTest implements Serial
 
 		numberOfPagesTest(1);
 
-		String[] categories = new String[] { "category" };
-		String[] series = new String[] { "Column2", "serie1", "serie2" };
+		String[] categories = new String[]{"category"};
+		String[] series = new String[]{"Column2", "serie1", "serie2"};
 
 		chartCountTest("summary.chart1", 1);
 		chartCategoryCountTest("summary.chart1", 0, 1);
 		chartSeriesCountTest("summary.chart1", 0, 3);
-		chartDataTest("summary.chart1", 0, categories, series, new Number[][] { { 10d, 10, 10 } });
+		chartDataTest("summary.chart1", 0, categories, series, new Number[][]{{10d, 10, 10}});
 
 		chartCountTest("summary.chart2", 1);
 		chartCategoryCountTest("summary.chart2", 0, 3);
 		chartSeriesCountTest("summary.chart2", 0, 1);
-		chartDataTest("summary.chart2", 0, series, categories, new Number[][] { { 10d }, { 10 }, { 10 } });
+		chartDataTest("summary.chart2", 0, series, categories, new Number[][]{{10d}, {10}, {10}});
 	}
 
 	@Override

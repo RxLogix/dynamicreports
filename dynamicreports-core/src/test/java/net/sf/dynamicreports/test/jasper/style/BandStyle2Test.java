@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -63,50 +63,50 @@ public class BandStyle2Test extends AbstractJasperStyleTest implements Serializa
 		ColumnGroupBuilder group1;
 
 		ReportTemplateBuilder template = template()
-				.setTitleStyle(stl.style().setBackgroundColor(color1))
-				.setPageHeaderStyle(stl.style().setBackgroundColor(color2))
-				.setPageFooterStyle(stl.style().setBackgroundColor(color3))
-				.setColumnHeaderStyle(stl.style().setBackgroundColor(color4))
-				.setColumnFooterStyle(stl.style().setBackgroundColor(color5))
-				.setGroupHeaderStyle(stl.style().setBackgroundColor(color6))
-				.setGroupFooterStyle(stl.style().setBackgroundColor(color7))
-				.setDetailHeaderStyle(stl.style().setBackgroundColor(color8))
-				.setDetailStyle(stl.style().setBackgroundColor(color9))
-				.setDetailFooterStyle(stl.style().setBackgroundColor(color10))
-				.setLastPageFooterStyle(stl.style().setBackgroundColor(color11))
-				.setSummaryStyle(stl.style().setBackgroundColor(color12))
-				.setBackgroundStyle(stl.style().setBackgroundColor(color13));
+			.setTitleStyle(stl.style().setBackgroundColor(color1))
+			.setPageHeaderStyle(stl.style().setBackgroundColor(color2))
+			.setPageFooterStyle(stl.style().setBackgroundColor(color3))
+			.setColumnHeaderStyle(stl.style().setBackgroundColor(color4))
+			.setColumnFooterStyle(stl.style().setBackgroundColor(color5))
+			.setGroupHeaderStyle(stl.style().setBackgroundColor(color6))
+			.setGroupFooterStyle(stl.style().setBackgroundColor(color7))
+			.setDetailHeaderStyle(stl.style().setBackgroundColor(color8))
+			.setDetailStyle(stl.style().setBackgroundColor(color9))
+			.setDetailFooterStyle(stl.style().setBackgroundColor(color10))
+			.setLastPageFooterStyle(stl.style().setBackgroundColor(color11))
+			.setSummaryStyle(stl.style().setBackgroundColor(color12))
+			.setBackgroundStyle(stl.style().setBackgroundColor(color13));
 
 		rb.setPageColumnsPerPage(2)
-				.setTemplate(template)
-				.columns(
-						column1 = col.column("Column1", "field1", String.class),
-						column2 = col.column("Column2", "field2", Integer.class))
-				.groupBy(
-						group1 = grp.group(column1).setHeaderLayout(GroupHeaderLayout.TITLE_AND_VALUE))
+			.setTemplate(template)
+			.columns(
+				column1 = col.column("Column1", "field1", String.class),
+				column2 = col.column("Column2", "field2", Integer.class))
+			.groupBy(
+				group1 = grp.group(column1).setHeaderLayout(GroupHeaderLayout.TITLE_AND_VALUE))
 
-				.subtotalsAtTitle(sbt.sum(column2))
-				.subtotalsAtPageHeader(sbt.sum(column2))
-				.subtotalsAtPageFooter(sbt.sum(column2))
-				.subtotalsAtColumnHeader(sbt.sum(column2))
-				.subtotalsAtColumnFooter(sbt.sum(column2))
-				.subtotalsAtGroupHeader(group1, sbt.sum(column2))
-				.subtotalsAtGroupFooter(group1, sbt.sum(column2))
-				.subtotalsAtLastPageFooter(sbt.sum(column2))
-				.subtotalsAtSummary(sbt.sum(column2))
-				.title(cmp.text("title"))
-				.pageHeader(cmp.text("pageHeader"))
-				.pageFooter(cmp.text("pageFooter"))
-				.columnHeader(cmp.text("columnHeader"))
-				.columnFooter(cmp.text("columnFooter"))
-				.groupHeader(group1, cmp.text("groupHeader"))
-				.groupFooter(group1, cmp.text("groupFooter"))
-				.detailHeader(cmp.text("detailHeader"))
-				.detail(cmp.text("detail"))
-				.detailFooter(cmp.text("detailFooter"))
-				.lastPageFooter(cmp.text("lastPageFooter"))
-				.summary(cmp.text("summary"))
-				.background(cmp.text("background"));
+			.subtotalsAtTitle(sbt.sum(column2))
+			.subtotalsAtPageHeader(sbt.sum(column2))
+			.subtotalsAtPageFooter(sbt.sum(column2))
+			.subtotalsAtColumnHeader(sbt.sum(column2))
+			.subtotalsAtColumnFooter(sbt.sum(column2))
+			.subtotalsAtGroupHeader(group1, sbt.sum(column2))
+			.subtotalsAtGroupFooter(group1, sbt.sum(column2))
+			.subtotalsAtLastPageFooter(sbt.sum(column2))
+			.subtotalsAtSummary(sbt.sum(column2))
+			.title(cmp.text("title"))
+			.pageHeader(cmp.text("pageHeader"))
+			.pageFooter(cmp.text("pageFooter"))
+			.columnHeader(cmp.text("columnHeader"))
+			.columnFooter(cmp.text("columnFooter"))
+			.groupHeader(group1, cmp.text("groupHeader"))
+			.groupFooter(group1, cmp.text("groupFooter"))
+			.detailHeader(cmp.text("detailHeader"))
+			.detail(cmp.text("detail"))
+			.detailFooter(cmp.text("detailFooter"))
+			.lastPageFooter(cmp.text("lastPageFooter"))
+			.summary(cmp.text("summary"))
+			.background(cmp.text("background"));
 	}
 
 	@Override

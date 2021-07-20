@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -67,8 +67,7 @@ public class PercentageColumnBuilder extends ValueColumnBuilder<PercentageColumn
 	/**
 	 * Sets the total type. Has effect only when the report contains at least one group.
 	 *
-	 * @param totalType
-	 *          the total type
+	 * @param totalType the total type
 	 * @return a column builder
 	 */
 	public PercentageColumnBuilder setTotalType(PercentageTotalType totalType) {
@@ -79,15 +78,15 @@ public class PercentageColumnBuilder extends ValueColumnBuilder<PercentageColumn
 	/**
 	 * Sets the total group. Has effect only when the report contains at least one group.
 	 *
-	 * @param totalGroup
-	 *          the total group
+	 * @param totalGroup the total group
 	 * @return a column builder
 	 */
 	public PercentageColumnBuilder setTotalGroup(GroupBuilder<?> totalGroup) {
 		if (totalGroup != null) {
 			this.totalGroup = totalGroup.getGroup();
 			setTotalType(PercentageTotalType.GROUP);
-		} else {
+		}
+		else {
 			this.totalGroup = null;
 		}
 
@@ -103,22 +102,23 @@ public class PercentageColumnBuilder extends ValueColumnBuilder<PercentageColumn
 		DRVariable<Number> totalExpression = new DRVariable<Number>(actualExpression, Calculation.SUM);
 		if (totalType != null) {
 			switch (totalType) {
-				case REPORT:
-					totalExpression.setResetType(Evaluation.REPORT);
-					break;
-				case GROUP:
-					totalExpression.setResetType(Evaluation.GROUP);
-					break;
-				case FIRST_GROUP:
-					totalExpression.setResetType(Evaluation.FIRST_GROUP);
-					break;
-				case LAST_GROUP:
-					totalExpression.setResetType(Evaluation.LAST_GROUP);
-					break;
-				default:
-					throw new DRReportException("Percentage total type " + totalType.name() + " not supported.");
+			case REPORT:
+				totalExpression.setResetType(Evaluation.REPORT);
+				break;
+			case GROUP:
+				totalExpression.setResetType(Evaluation.GROUP);
+				break;
+			case FIRST_GROUP:
+				totalExpression.setResetType(Evaluation.FIRST_GROUP);
+				break;
+			case LAST_GROUP:
+				totalExpression.setResetType(Evaluation.LAST_GROUP);
+				break;
+			default:
+				throw new DRReportException("Percentage total type " + totalType.name() + " not supported.");
 			}
-		} else {
+		}
+		else {
 			totalExpression.setResetType(Evaluation.LAST_GROUP);
 		}
 		totalExpression.setResetGroup(totalGroup);

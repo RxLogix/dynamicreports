@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -38,7 +38,7 @@ public class CrosstabBuilders {
 		return Crosstabs.crosstab();
 	}
 
-	// column group
+	//column group
 	public <T> CrosstabColumnGroupBuilder<T> columnGroup(ValueColumnBuilder<?, T> column) {
 		return Crosstabs.columnGroup(column);
 	}
@@ -55,7 +55,7 @@ public class CrosstabBuilders {
 		return Crosstabs.columnGroup(expression);
 	}
 
-	// row group
+	//row group
 	public <T> CrosstabRowGroupBuilder<T> rowGroup(ValueColumnBuilder<?, T> column) {
 		return Crosstabs.rowGroup(column);
 	}
@@ -72,7 +72,7 @@ public class CrosstabBuilders {
 		return Crosstabs.rowGroup(expression);
 	}
 
-	// variable
+	//variable
 	public <T> CrosstabVariableBuilder<T> variable(ValueColumnBuilder<?, ?> column, Calculation calculation) {
 		return Crosstabs.variable(column, calculation);
 	}
@@ -89,7 +89,7 @@ public class CrosstabBuilders {
 		return Crosstabs.variable(expression, calculation);
 	}
 
-	// measure
+	//measure
 	public <T> CrosstabMeasureBuilder<T> measure(ValueColumnBuilder<?, ?> column, Calculation calculation) {
 		return Crosstabs.measure(column, calculation);
 	}

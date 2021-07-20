@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -50,29 +50,29 @@ public class PercentageCrosstabReport {
 
 	private void build() {
 		CrosstabRowGroupBuilder<String> rowGroup = ctab.rowGroup("state", String.class)
-				.setTotalHeader("Total for state");
+			 .setTotalHeader("Total for state");
 
 		CrosstabColumnGroupBuilder<String> columnGroup = ctab.columnGroup("item", String.class);
 
 		FieldBuilder<BigDecimal> unitPriceField = field("unitprice", BigDecimal.class);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.headerCell(cmp.text("State / Item").setStyle(Templates.boldCenteredStyle))
-				.rowGroups(rowGroup)
-				.columnGroups(columnGroup)
-				.measures(
-						ctab.measure("Unit price", unitPriceField, Calculation.SUM),
-						ctab.measure("%", unitPriceField, Calculation.SUM).setPercentageType(CrosstabPercentageType.GRAND_TOTAL));
+			.headerCell(cmp.text("State / Item").setStyle(Templates.boldCenteredStyle))
+			.rowGroups(rowGroup)
+			.columnGroups(columnGroup)
+			.measures(
+				ctab.measure("Unit price", unitPriceField, Calculation.SUM),
+				ctab.measure("%", unitPriceField, Calculation.SUM).setPercentageType(CrosstabPercentageType.GRAND_TOTAL));
 
 		try {
 			report()
-					.setPageFormat(PageType.A4, PageOrientation.LANDSCAPE)
-					.setTemplate(Templates.reportTemplate)
-					.title(Templates.createTitleComponent("PercentageCrosstab"))
-					.summary(crosstab)
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setPageFormat(PageType.A4, PageOrientation.LANDSCAPE)
+				.setTemplate(Templates.reportTemplate)
+				.title(Templates.createTitleComponent("PercentageCrosstab"))
+				.summary(crosstab)
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -62,19 +62,19 @@ public class Crosstab2Test extends AbstractJasperCrosstabValueTest {
 		measure2 = ctab.measure("measure2", column5, Calculation.SUM);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.headerCell(cmp.text("Header"))
-				.setCellWidth(20)
-				.rowGroups(
-						rowGroup1 = ctab.rowGroup(column1), rowGroup2 = ctab.rowGroup(column2))
-				.columnGroups(
-						columnGroup1 = ctab.columnGroup(column3), columnGroup2 = ctab.columnGroup(column4))
-				.measures(
-						measure1, measure2);
+			.headerCell(cmp.text("Header"))
+			.setCellWidth(20)
+			.rowGroups(
+				rowGroup1 = ctab.rowGroup(column1), rowGroup2 = ctab.rowGroup(column2))
+			.columnGroups(
+				columnGroup1 = ctab.columnGroup(column3), columnGroup2 = ctab.columnGroup(column4))
+			.measures(
+				 measure1, measure2);
 
 		rb.setLocale(Locale.ENGLISH)
-				.setPageFormat(PageType.A3, PageOrientation.LANDSCAPE)
-				.columns(column1, column2, column3, column4, column5)
-				.summary(crosstab);
+			.setPageFormat(PageType.A3, PageOrientation.LANDSCAPE)
+			.columns(column1, column2, column3, column4, column5)
+			.summary(crosstab);
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class Crosstab2Test extends AbstractJasperCrosstabValueTest {
 		crosstabHeaderElementCountTest("textField1", 1);
 		crosstabHeaderElementValueTest("textField1", "Header");
 
-		// column group
+		//column group
 		crosstabGroupHeaderCountTest(columnGroup1, 2);
 		crosstabGroupHeaderValueTest(columnGroup1, "g", "h");
 		crosstabGroupTotalHeaderCountTest(columnGroup1, 1);
@@ -98,7 +98,7 @@ public class Crosstab2Test extends AbstractJasperCrosstabValueTest {
 		crosstabGroupTotalHeaderCountTest(columnGroup2, 2);
 		crosstabGroupTotalHeaderValueTest(columnGroup2, "Total", "Total");
 
-		// column group title
+		//column group title
 		crosstabGroupTitleHeaderCountTest(columnGroup1, measure1, 0);
 		crosstabGroupTitleTotalHeaderCountTest(columnGroup1, measure1, 1);
 		crosstabGroupTitleTotalHeaderValueTest(columnGroup1, measure1, "measure1");
@@ -115,7 +115,7 @@ public class Crosstab2Test extends AbstractJasperCrosstabValueTest {
 		crosstabGroupTitleTotalHeaderCountTest(columnGroup2, measure2, 2);
 		crosstabGroupTitleTotalHeaderValueTest(columnGroup2, measure2, "measure2", "measure2");
 
-		// row group
+		//row group
 		crosstabGroupHeaderCountTest(rowGroup1, 2);
 		crosstabGroupHeaderValueTest(rowGroup1, "a", "b");
 		crosstabGroupTotalHeaderCountTest(rowGroup1, 1);
@@ -125,7 +125,7 @@ public class Crosstab2Test extends AbstractJasperCrosstabValueTest {
 		crosstabGroupTotalHeaderCountTest(rowGroup2, 2);
 		crosstabGroupTotalHeaderValueTest(rowGroup2, "Total", "Total");
 
-		// measure1
+		//measure1
 		crosstabCellCountTest(measure1, null, null, 16);
 		crosstabCellValueTest(measure1, null, null, "1", "2", "0", "0", "3", "4", "0", "0", "0", "0", "5", "6", "0", "0", "7", "8");
 		crosstabCellCountTest(measure1, null, columnGroup1, 4);

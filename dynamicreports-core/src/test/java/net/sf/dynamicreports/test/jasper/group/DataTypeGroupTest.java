@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -45,12 +45,12 @@ public class DataTypeGroupTest extends AbstractJasperValueTest {
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.setLocale(Locale.ENGLISH)
-				.columns(
-						column1 = col.column("Column1", "field1", type.dateMonthType()),
-						column2 = col.column("Column2", "field1", type.dateType()))
-				.groupBy(
-						group1 = grp.group(column1)
-								.groupByDataType());
+		  .columns(
+		  	column1 = col.column("Column1", "field1", type.dateMonthType()),
+				column2 = col.column("Column2", "field1", type.dateType()))
+			.groupBy(
+					group1 = grp.group(column1)
+					            .groupByDataType());
 	}
 
 	@Override
@@ -59,13 +59,13 @@ public class DataTypeGroupTest extends AbstractJasperValueTest {
 
 		numberOfPagesTest(1);
 
-		// column2
+		//column2
 		columnTitleCountTest(column2, 1);
 		columnTitleValueTest(column2, "Column2");
 		columnDetailCountTest(column2, 2);
 		columnDetailValueTest(column2, "01/01/2010", "02/01/2010");
 
-		// group1
+		//group1
 		groupHeaderTitleCountTest(group1, 0);
 		groupHeaderCountTest(group1, 2);
 		groupHeaderValueTest(group1, "January", "February");

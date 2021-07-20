@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -41,11 +41,11 @@ public class StyleBuilder extends BaseStyleBuilder<StyleBuilder, DRStyle> implem
 		super(style);
 	}
 
-	public StyleBuilder conditionalStyles(ConditionalStyleBuilder... conditionalStyles) {
+	public StyleBuilder conditionalStyles(ConditionalStyleBuilder ...conditionalStyles) {
 		return addConditionalStyle(conditionalStyles);
 	}
 
-	public StyleBuilder addConditionalStyle(ConditionalStyleBuilder... conditionalStyles) {
+	public StyleBuilder addConditionalStyle(ConditionalStyleBuilder ...conditionalStyles) {
 		Validate.notNull(conditionalStyles, "conditionalStyles must not be null");
 		Validate.noNullElements(conditionalStyles, "conditionalStyles must not contains null conditionalStyle");
 		for (ConditionalStyleBuilder conditionalStyle : conditionalStyles) {
@@ -62,7 +62,8 @@ public class StyleBuilder extends BaseStyleBuilder<StyleBuilder, DRStyle> implem
 	public StyleBuilder setParentStyle(ReportStyleBuilder parentStyle) {
 		if (parentStyle != null) {
 			getObject().setParentStyle(parentStyle.build());
-		} else {
+		}
+		else {
 			getObject().setParentStyle(null);
 		}
 		return this;

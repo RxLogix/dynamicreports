@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,13 +49,13 @@ public class EmptyColumnTest extends AbstractJasperValueTest implements Serializ
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.columns(
-				column1 = col.column("Column1", "field1", String.class),
-				column2 = col.emptyColumn(),
-				column3 = col.column("Column3", "field3", String.class),
-				column4 = col.emptyColumn(false, true),
-				column5 = col.emptyColumn(true, false),
-				column6 = col.emptyColumn(true, true),
-				column7 = col.column("Column7", "field7", String.class));
+					column1 = col.column("Column1", "field1", String.class),
+					column2 = col.emptyColumn(),
+					column3 = col.column("Column3", "field3", String.class),
+					column4 = col.emptyColumn(false, true),
+					column5 = col.emptyColumn(true, false),
+					column6 = col.emptyColumn(true, true),
+					column7 = col.column("Column7", "field7", String.class));
 	}
 
 	@Override
@@ -64,39 +64,39 @@ public class EmptyColumnTest extends AbstractJasperValueTest implements Serializ
 
 		numberOfPagesTest(1);
 
-		// column1
+		//column1
 		columnDetailCountTest(column1, 1);
 		columnDetailValueTest(column1, "test1");
 		columnTitleCountTest(column1, 1);
 		columnTitleValueTest(column1, "Column1");
 
-		// column2
+		//column2
 		columnDetailCountTest(column2, 0);
 		columnTitleCountTest(column2, 0);
 
-		// column3
+		//column3
 		columnDetailCountTest(column3, 1);
 		columnDetailValueTest(column3, "test3");
 		columnTitleCountTest(column3, 1);
 		columnTitleValueTest(column3, "Column3");
 
-		// column4
+		//column4
 		columnDetailCountTest(column4, 1);
 		columnDetailValueTest(column4, "");
 		columnTitleCountTest(column4, 0);
 
-		// column5
+		//column5
 		columnDetailCountTest(column5, 0);
 		columnTitleCountTest(column5, 1);
 		columnTitleValueTest(column5, "");
 
-		// column6
+		//column6
 		columnDetailCountTest(column6, 1);
 		columnDetailValueTest(column6, "");
 		columnTitleCountTest(column6, 1);
 		columnTitleValueTest(column6, "");
 
-		// column7
+		//column7
 		columnDetailCountTest(column7, 1);
 		columnDetailValueTest(column7, "test7");
 		columnTitleCountTest(column7, 1);

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,50 +49,50 @@ public class ListBackgroundReport {
 
 	private void build() {
 		StyleBuilder style1 = stl.style()
-				.setRadius(10)
-				.setBackgroundColor(new Color(230, 230, 230))
-				.setLinePen(stl.pen().setLineColor(Color.LIGHT_GRAY));
+			.setRadius(10)
+			.setBackgroundColor(new Color(230, 230, 230))
+			.setLinePen(stl.pen().setLineColor(Color.LIGHT_GRAY));
 		StyleBuilder style2 = stl.style()
-				.setRadius(5);
+			.setRadius(5);
 
 		ImageBuilder background1 = cmp.image(Templates.class.getResource("images/background.gif"))
-				.setImageScale(ImageScale.CLIP)
-				.setStyle(style1);
+			.setImageScale(ImageScale.CLIP)
+			.setStyle(style1);
 		RectangleBuilder background2 = cmp.rectangle()
-				.setStyle(style2);
+			.setStyle(style2);
 		RectangleBuilder background3 = cmp.rectangle()
-				.setStyle(style1)
-				.setPrintWhenExpression(exp.printInOddRow());
+			.setStyle(style1)
+			.setPrintWhenExpression(exp.printInOddRow());
 
 		HorizontalListBuilder title1 = cmp.horizontalList()
-				.add(cmp.text("title1"))
-				.setBackgroundComponent(background2);
+			.add(cmp.text("title1"))
+			.setBackgroundComponent(background2);
 		HorizontalListBuilder title2 = cmp.horizontalList()
-				.add(cmp.text("title2"))
-				.setBackgroundComponent(background2);
+			.add(cmp.text("title2"))
+			.setBackgroundComponent(background2);
 		HorizontalListBuilder title = cmp.horizontalList()
-				.add(title1, cmp.horizontalGap(20), title2)
-				.setStyle(stl.style(10));
+			.add(title1, cmp.horizontalGap(20), title2)
+			.setStyle(stl.style(10));
 
 		try {
 			report()
-					.setColumnStyle(Templates.columnStyle)
-					.setColumnTitleStyle(Templates.boldCenteredStyle)
-					.setTitleBackgroundComponent(background1)
-					.setColumnHeaderBackgroundComponent(background2)
-					.setPageFooterBackgroundComponent(background1)
-					.setDetailBackgroundComponent(background3)
-					.columns(
-							col.column("Item", "item", type.stringType()),
-							col.column("Quantity", "quantity", type.integerType()),
-							col.column("Unit price", "unitprice", type.bigDecimalType()),
-							col.column("Order date", "orderdate", type.dateType()))
-					.title(
-							Templates.createTitleComponent("ListBackground"),
-							title)
-					.pageFooter(cmp.pageXofY().setStyle(Templates.boldCenteredStyle))
-					.setDataSource(createDataSource())
-					.show();
+				.setColumnStyle(Templates.columnStyle)
+				.setColumnTitleStyle(Templates.boldCenteredStyle)
+				.setTitleBackgroundComponent(background1)
+				.setColumnHeaderBackgroundComponent(background2)
+				.setPageFooterBackgroundComponent(background1)
+				.setDetailBackgroundComponent(background3)
+				.columns(
+					col.column("Item",  "item", type.stringType()),
+					col.column("Quantity", "quantity", type.integerType()),
+					col.column("Unit price", "unitprice", type.bigDecimalType()),
+					col.column("Order date", "orderdate", type.dateType()))
+				.title(
+					Templates.createTitleComponent("ListBackground"),
+					title)
+				.pageFooter(cmp.pageXofY().setStyle(Templates.boldCenteredStyle))
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

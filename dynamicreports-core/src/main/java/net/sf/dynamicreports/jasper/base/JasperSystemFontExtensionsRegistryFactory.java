@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -39,12 +39,13 @@ import net.sf.jasperreports.extensions.ExtensionsRegistryFactory;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 public class JasperSystemFontExtensionsRegistryFactory implements ExtensionsRegistryFactory {
-	public final static String SYSTEM_FONT_FAMILIES_PROPERTY_PREFIX = DefaultExtensionsRegistry.PROPERTY_REGISTRY_PREFIX + "system.font.families.";
-	public final static String PROPERTY_SYSTEM_FONT_FAMILIES_REGISTRY_FACTORY = DefaultExtensionsRegistry.PROPERTY_REGISTRY_FACTORY_PREFIX
-			+ "system.font.families";
+	public final static String SYSTEM_FONT_FAMILIES_PROPERTY_PREFIX =
+		DefaultExtensionsRegistry.PROPERTY_REGISTRY_PREFIX + "system.font.families.";
+	public final static String PROPERTY_SYSTEM_FONT_FAMILIES_REGISTRY_FACTORY =
+		DefaultExtensionsRegistry.PROPERTY_REGISTRY_FACTORY_PREFIX + "system.font.families";
 
 	@Override
-	public ExtensionsRegistry createRegistry(String registryId, JRPropertiesMap properties) {
+	public ExtensionsRegistry createRegistry(String registryId, JRPropertiesMap properties)	{
 		List<PropertySuffix> fontFamiliesProperties = JRPropertiesUtil.getProperties(properties, SYSTEM_FONT_FAMILIES_PROPERTY_PREFIX);
 		List<String> fontFamiliesLocations = new ArrayList<String>();
 		if (Defaults.getDefaults().isLoadSystemFonts()) {

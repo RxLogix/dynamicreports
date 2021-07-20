@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -53,15 +53,15 @@ public class OrderCrosstabTest extends AbstractJasperCrosstabValueTest implement
 		measure1 = ctab.measure("field3", Integer.class, Calculation.SUM);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.rowGroups(
-						rowGroup = ctab.rowGroup("field1", String.class).setOrderType(OrderType.DESCENDING).setShowTotal(false))
-				.columnGroups(
-						columnGroup = ctab.columnGroup("field2", String.class).setShowTotal(false).orderBy(measure1).setOrderType(OrderType.DESCENDING))
-				.measures(
-						measure1);
+			.rowGroups(
+				rowGroup = ctab.rowGroup("field1", String.class).setOrderType(OrderType.DESCENDING).setShowTotal(false))
+			.columnGroups(
+				columnGroup = ctab.columnGroup("field2", String.class).setShowTotal(false).orderBy(measure1).setOrderType(OrderType.DESCENDING))
+			.measures(
+				measure1);
 
 		rb.setLocale(Locale.ENGLISH)
-				.summary(crosstab);
+			.summary(crosstab);
 	}
 
 	@Override
@@ -72,17 +72,17 @@ public class OrderCrosstabTest extends AbstractJasperCrosstabValueTest implement
 
 		setCrosstabBand("summary");
 
-		// column group
+		//column group
 		crosstabGroupHeaderCountTest(columnGroup, 2);
 		crosstabGroupHeaderValueTest(columnGroup, "c", "d");
 		crosstabGroupTotalHeaderCountTest(columnGroup, 0);
 
-		// row group
+		//row group
 		crosstabGroupHeaderCountTest(rowGroup, 2);
 		crosstabGroupHeaderValueTest(rowGroup, "b", "a");
 		crosstabGroupTotalHeaderCountTest(rowGroup, 0);
 
-		// measure1
+		//measure1
 		crosstabCellCountTest(measure1, null, null, 4);
 		crosstabCellValueTest(measure1, null, null, "7", "3", "15", "11");
 		crosstabCellCountTest(measure1, null, columnGroup, 0);

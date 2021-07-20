@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -65,47 +65,47 @@ public class DifferenceChartTest extends AbstractJasperChartTest implements Seri
 		TextColumnBuilder<Integer> column4;
 
 		rb.setLocale(Locale.ENGLISH)
-				.columns(
-						column1 = col.column("Column1", "field1", Date.class),
-						column2 = col.column("Column2", "field2", Timestamp.class),
-						column3 = col.column("Column3", "field3", Integer.class),
-						column4 = col.column("Column4", "field4", Integer.class))
-				.summary(
-						cht.differenceChart()
-								.customizers(new ChartCustomizer())
-								.setTimePeriod(column1)
-								.series(cht.serie(column3), cht.serie(column4))
-								.setTimePeriodType(TimePeriod.DAY)
-								.setShowShapes(false)
-								.setPositiveColor(Color.BLUE)
-								.setNegativeColor(Color.MAGENTA),
-						cht.differenceChart()
-								.setTimePeriod(column1)
-								.series(cht.serie(column3))
-								.setTimeAxisFormat(
-										cht.axisFormat()
-												.setLabel("time")
-												.setLabelColor(Color.BLUE)
-												.setLabelFont(stl.fontArialBold())
-												.setTickLabelFont(stl.fontArial().setItalic(true))
-												.setTickLabelColor(Color.CYAN)
-												.setLineColor(Color.LIGHT_GRAY)
-												.setVerticalTickLabels(true)),
-						cht.differenceChart()
-								.setTimePeriod(column2)
-								.series(cht.serie(column3))
-								.setValueAxisFormat(
-										cht.axisFormat()
-												.setLabel("value")
-												.setLabelColor(Color.BLUE)
-												.setLabelFont(stl.fontArialBold())
-												.setTickLabelFont(stl.fontArial().setItalic(true))
-												.setTickLabelColor(Color.CYAN)
-												.setTickLabelMask("#,##0.00")
-												.setLineColor(Color.LIGHT_GRAY)
-												.setRangeMinValueExpression(1)
-												.setRangeMaxValueExpression(15)
-												.setVerticalTickLabels(true)));
+			.columns(
+				column1 = col.column("Column1", "field1", Date.class),
+				column2 = col.column("Column2", "field2", Timestamp.class),
+				column3 = col.column("Column3", "field3", Integer.class),
+				column4 = col.column("Column4", "field4", Integer.class))
+			.summary(
+					cht.differenceChart()
+						.customizers(new ChartCustomizer())
+						.setTimePeriod(column1)
+						.series(cht.serie(column3), cht.serie(column4))
+						.setTimePeriodType(TimePeriod.DAY)
+						.setShowShapes(false)
+						.setPositiveColor(Color.BLUE)
+						.setNegativeColor(Color.MAGENTA),
+					cht.differenceChart()
+						.setTimePeriod(column1)
+						.series(cht.serie(column3))
+						.setTimeAxisFormat(
+								cht.axisFormat()
+											.setLabel("time")
+											.setLabelColor(Color.BLUE)
+											.setLabelFont(stl.fontArialBold())
+											.setTickLabelFont(stl.fontArial().setItalic(true))
+											.setTickLabelColor(Color.CYAN)
+											.setLineColor(Color.LIGHT_GRAY)
+											.setVerticalTickLabels(true)),
+					cht.differenceChart()
+						.setTimePeriod(column2)
+						.series(cht.serie(column3))
+						.setValueAxisFormat(
+								cht.axisFormat()
+											.setLabel("value")
+											.setLabelColor(Color.BLUE)
+											.setLabelFont(stl.fontArialBold())
+											.setTickLabelFont(stl.fontArial().setItalic(true))
+											.setTickLabelColor(Color.CYAN)
+											.setTickLabelMask("#,##0.00")
+											.setLineColor(Color.LIGHT_GRAY)
+											.setRangeMinValueExpression(1)
+											.setRangeMaxValueExpression(15)
+											.setVerticalTickLabels(true)));
 	}
 
 	@Override
@@ -139,7 +139,7 @@ public class DifferenceChartTest extends AbstractJasperChartTest implements Seri
 		Assert.assertEquals("tick label color", Color.CYAN, axis.getTickLabelPaint());
 		Assert.assertEquals("tick label font", new Font("Arial", Font.ITALIC, 10), axis.getTickLabelFont());
 		Assert.assertEquals("tick label mask", "10.00", ((NumberAxis) axis).getNumberFormatOverride().format(10));
-		// Assert.assertEquals("line color", Color.LIGHT_GRAY, axis.getAxisLinePaint());
+		//Assert.assertEquals("line color", Color.LIGHT_GRAY, axis.getAxisLinePaint());
 		Assert.assertEquals("range min value", 1d, ((ValueAxis) axis).getLowerBound());
 		Assert.assertEquals("range max value", 15d, ((ValueAxis) axis).getUpperBound());
 		Assert.assertTrue("vertical tick labels", ((ValueAxis) axis).isVerticalTickLabels());
@@ -164,6 +164,6 @@ public class DifferenceChartTest extends AbstractJasperChartTest implements Seri
 		public void customize(JFreeChart chart, ReportParameters reportParameters) {
 			XYPlot xyPlot = chart.getXYPlot();
 			Assert.assertEquals("renderer", XYDifferenceRenderer.class, xyPlot.getRenderer().getClass());
-		}
+	  }
 	}
 }

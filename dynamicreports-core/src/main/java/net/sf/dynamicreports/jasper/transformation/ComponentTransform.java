@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -99,51 +99,67 @@ public class ComponentTransform {
 		if (component instanceof DRIDesignChart) {
 			JRDesignElement jrElement = accessor.getChartTransform().transform((DRIDesignChart) component);
 			jrElements = component(jrElement, component, listType);
-		} else if (component instanceof DRIDesignBarcode) {
+		}
+		else if (component instanceof DRIDesignBarcode) {
 			JRDesignElement jrElement = accessor.getBarcodeTransform().transform((DRIDesignBarcode) component);
 			jrElements = component(jrElement, component, listType);
-		} else if (component instanceof DRIDesignBarbecue) {
+		}
+		else if (component instanceof DRIDesignBarbecue) {
 			JRDesignElement jrElement = accessor.getBarcodeTransform().transform((DRIDesignBarbecue) component);
 			jrElements = component(jrElement, component, listType);
-		} else if (component instanceof DRIDesignList) {
+		}
+		else if (component instanceof DRIDesignList) {
 			jrElements = list((DRIDesignList) component);
-		} else if (component instanceof DRIDesignTextField) {
+		}
+		else if (component instanceof DRIDesignTextField) {
 			JRDesignElement jrElement = textField((DRIDesignTextField) component);
 			jrElements = component(jrElement, component, listType);
-		} else if (component instanceof DRIDesignFiller) {
+		}
+		else if (component instanceof DRIDesignFiller) {
 			JRDesignElement jrElement = filler((DRIDesignFiller) component);
 			jrElements = component(jrElement, component, listType);
-		} else if (component instanceof DRIDesignImage) {
+		}
+		else if (component instanceof DRIDesignImage) {
 			JRDesignElement jrElement = image((DRIDesignImage) component);
 			jrElements = component(jrElement, component, listType);
-		} else if (component instanceof DRIDesignSubreport) {
+		}
+		else if (component instanceof DRIDesignSubreport) {
 			JRDesignElement jrElement = subreport((DRIDesignSubreport) component, component.getWidth());
 			jrElements = component(jrElement, component, listType);
-		} else if (component instanceof DRIDesignLine) {
+		}
+		else if (component instanceof DRIDesignLine) {
 			JRDesignElement jrElement = line((DRIDesignLine) component);
 			jrElements = component(jrElement, component, listType);
-		} else if (component instanceof DRIDesignEllipse) {
+		}
+		else if (component instanceof DRIDesignEllipse) {
 			JRDesignElement jrElement = ellipse((DRIDesignEllipse) component);
 			jrElements = component(jrElement, component, listType);
-		} else if (component instanceof DRIDesignRectangle) {
+		}
+		else if (component instanceof DRIDesignRectangle) {
 			JRDesignElement jrElement = rectangle((DRIDesignRectangle) component);
 			jrElements = component(jrElement, component, listType);
-		} else if (component instanceof DRIDesignBreak) {
+		}
+		else if (component instanceof DRIDesignBreak) {
 			JRDesignElement jrElement = breakComponent((DRIDesignBreak) component);
 			jrElements = component(jrElement, component, listType);
-		} else if (component instanceof DRIDesignGenericElement) {
+		}
+		else if (component instanceof DRIDesignGenericElement) {
 			JRDesignElement jrElement = genericElement((DRIDesignGenericElement) component);
 			jrElements = component(jrElement, component, listType);
-		} else if (component instanceof DRIDesignCrosstab) {
+		}
+		else if (component instanceof DRIDesignCrosstab) {
 			JRDesignElement jrElement = accessor.getCrosstabTransform().transform((DRIDesignCrosstab) component);
 			jrElements = component(jrElement, component, listType);
-		} else if (component instanceof DRIDesignMap) {
+		}
+		else if (component instanceof DRIDesignMap) {
 			JRDesignElement jrElement = map((DRIDesignMap) component);
 			jrElements = component(jrElement, component, listType);
-		} else if (component instanceof DRIDesignCustomComponent) {
+		}
+		else if (component instanceof DRIDesignCustomComponent) {
 			JRDesignElement jrElement = customComponent(component);
 			jrElements = component(jrElement, component, listType);
-		} else {
+		}
+		else {
 			throw new JasperDesignException("Component " + component.getClass().getName() + " not supported");
 		}
 
@@ -159,7 +175,8 @@ public class ComponentTransform {
 					component instanceof DRIDesignCrosstab ||
 					component instanceof DRIDesignList) {
 				stretchType = StretchType.NO_STRETCH;
-			} else {
+			}
+			else {
 				stretchType = detectStretchType(listType);
 			}
 		}
@@ -199,9 +216,10 @@ public class ComponentTransform {
 			referenceField.setY(component.getY());
 			JRDesignElement jrReferenceElement = textField(referenceField);
 			component(jrReferenceElement, referenceField, listType);
-			return new JRDesignElement[] { jrReferenceElement, jrElement };
-		} else {
-			return new JRDesignElement[] { jrElement };
+			return new JRDesignElement[] {jrReferenceElement, jrElement};
+		}
+		else {
+			return new JRDesignElement[] {jrElement};
 		}
 	}
 
@@ -213,41 +231,41 @@ public class ComponentTransform {
 		return StretchType.ELEMENT_GROUP_HEIGHT;
 	}
 
-	// list
+	//list
 	private JRDesignElement[] list(DRIDesignList list) {
 		switch (list.getComponentGroupType()) {
-			case FRAME:
-				JRDesignFrame frame = new JRDesignFrame();
-				JRDesignElement[] jrElems = component(frame, list, list.getType());
+		case FRAME:
+			JRDesignFrame frame = new JRDesignFrame();
+			JRDesignElement[] jrElems = component(frame, list, list.getType());
 
-				DRDesignComponent background = (DRDesignComponent) list.getBackgroundComponent();
-				if (background != null) {
-					JRDesignElement jrBackground = component(background, list.getType())[0];
-					frame.addElement(jrBackground);
-				}
+			DRDesignComponent background = (DRDesignComponent) list.getBackgroundComponent();
+			if (background != null) {
+				JRDesignElement jrBackground = component(background, list.getType())[0];
+				frame.addElement(jrBackground);
+			}
 
-				for (DRIDesignComponent element : list.getComponents()) {
-					JRDesignElement[] jrElements = component(element, list.getType());
-					for (JRDesignElement jrElement : jrElements) {
-						frame.addElement(jrElement);
-					}
+			for (DRIDesignComponent element : list.getComponents()) {
+				JRDesignElement[] jrElements = component(element, list.getType());
+				for (JRDesignElement jrElement : jrElements) {
+					frame.addElement(jrElement);
 				}
-				return jrElems;
-			case NONE:
-				List<JRDesignElement> jrElementList = new ArrayList<JRDesignElement>();
-				for (DRIDesignComponent element : list.getComponents()) {
-					JRDesignElement[] jrElements = component(element, list.getType());
-					for (JRDesignElement jrElement : jrElements) {
-						jrElementList.add(jrElement);
-					}
+			}
+			return jrElems;
+		case NONE:
+			List<JRDesignElement> jrElementList = new ArrayList<JRDesignElement>();
+			for (DRIDesignComponent element : list.getComponents()) {
+				JRDesignElement[] jrElements = component(element, list.getType());
+				for (JRDesignElement jrElement : jrElements) {
+					jrElementList.add(jrElement);
 				}
-				return jrElementList.toArray(new JRDesignElement[jrElementList.size()]);
-			default:
-				throw new JasperDesignException("ComponentGroupType " + list.getComponentGroupType().getClass().getName() + " not supported");
+			}
+			return jrElementList.toArray(new JRDesignElement[jrElementList.size()]);
+		default:
+			throw new JasperDesignException("ComponentGroupType " + list.getComponentGroupType().getClass().getName() + " not supported");
 		}
 	}
 
-	// textField
+	//textField
 	private JRDesignElement textField(DRIDesignTextField textField) {
 		JRDesignTextField jrTextField = new JRDesignTextField();
 
@@ -266,7 +284,8 @@ public class ComponentTransform {
 				HyperlinkTypeEnum hyperLinkType = ConstantTransform.hyperLinkType(hyperLink.getType());
 				if (hyperLinkType != null) {
 					jrTextField.setHyperlinkType(hyperLinkType);
-				} else {
+				}
+				else {
 					jrTextField.setLinkType(hyperLink.getType());
 				}
 			}
@@ -274,7 +293,8 @@ public class ComponentTransform {
 				HyperlinkTargetEnum hyperLinkTarget = ConstantTransform.hyperLinkTarget(hyperLink.getTarget());
 				if (hyperLinkTarget != null) {
 					jrTextField.setHyperlinkTarget(hyperLinkTarget);
-				} else {
+				}
+				else {
 					jrTextField.setLinkTarget(hyperLink.getTarget());
 				}
 			}
@@ -302,13 +322,13 @@ public class ComponentTransform {
 		return jrTextField;
 	}
 
-	// filler
+	//filler
 	private JRDesignElement filler(DRIDesignFiller filler) {
 		JRDesignStaticText jrDesignStaticText = new JRDesignStaticText();
 		return jrDesignStaticText;
 	}
 
-	// image
+	//image
 	private JRDesignElement image(DRIDesignImage image) {
 		JRDesignImage jrImage = new JRDesignImage(new JRDesignStyle().getDefaultStyleProvider());
 
@@ -327,7 +347,8 @@ public class ComponentTransform {
 				HyperlinkTypeEnum hyperLinkType = ConstantTransform.hyperLinkType(hyperLink.getType());
 				if (hyperLinkType != null) {
 					jrImage.setHyperlinkType(hyperLinkType);
-				} else {
+				}
+				else {
 					jrImage.setLinkType(hyperLink.getType());
 				}
 			}
@@ -335,7 +356,8 @@ public class ComponentTransform {
 				HyperlinkTargetEnum hyperLinkTarget = ConstantTransform.hyperLinkTarget(hyperLink.getTarget());
 				if (hyperLinkTarget != null) {
 					jrImage.setHyperlinkTarget(hyperLinkTarget);
-				} else {
+				}
+				else {
 					jrImage.setLinkTarget(hyperLink.getTarget());
 				}
 			}
@@ -355,7 +377,7 @@ public class ComponentTransform {
 		return jrImage;
 	}
 
-	// subreport
+	//subreport
 	private JRDesignElement subreport(DRIDesignSubreport subreport, Integer width) {
 		JRDesignSubreport jrSubreport = new JRDesignSubreport(new JRDesignStyle().getDefaultStyleProvider());
 		jrSubreport.setConnectionExpression(accessor.getExpressionTransform().getExpression(subreport.getConnectionExpression()));
@@ -372,7 +394,8 @@ public class ComponentTransform {
 			SubreportParametersExpression parametersExpression = new SubreportParametersExpression(subreportExpression, subreport.getParametersExpression());
 			accessor.getExpressionTransform().addComplexExpression(parametersExpression);
 			jrSubreport.setParametersMapExpression(accessor.getExpressionTransform().getExpression(parametersExpression));
-		} else {
+		}
+		else {
 			jrSubreport.setExpression(accessor.getExpressionTransform().getExpression(subreport.getReportExpression()));
 
 			JasperSubreportParametersExpression parametersExpression = new JasperSubreportParametersExpression(subreport.getParametersExpression());
@@ -383,7 +406,7 @@ public class ComponentTransform {
 		return jrSubreport;
 	}
 
-	// line
+	//line
 	private JRDesignElement line(DRIDesignLine line) {
 		JRDesignLine jrDesignLine = new JRDesignLine();
 		jrDesignLine.setDirection(ConstantTransform.lineDirection(line.getDirection()));
@@ -391,14 +414,14 @@ public class ComponentTransform {
 		return jrDesignLine;
 	}
 
-	// ellipse
+	//ellipse
 	private JRDesignElement ellipse(DRIDesignEllipse ellipse) {
-		JRDesignEllipse jrDesignEllipse = new JRDesignEllipse(new JRDesignStyle().getDefaultStyleProvider());
+		JRDesignEllipse jrDesignEllipse= new JRDesignEllipse(new JRDesignStyle().getDefaultStyleProvider());
 		accessor.getStyleTransform().pen(jrDesignEllipse.getLinePen(), ellipse.getPen());
 		return jrDesignEllipse;
 	}
 
-	// rectangle
+	//rectangle
 	private JRDesignElement rectangle(DRIDesignRectangle rectangle) {
 		JRDesignRectangle jrDesignRectangle = new JRDesignRectangle();
 		jrDesignRectangle.setRadius(rectangle.getRadius());
@@ -406,14 +429,14 @@ public class ComponentTransform {
 		return jrDesignRectangle;
 	}
 
-	// break
+	//break
 	private JRDesignElement breakComponent(DRIDesignBreak breakComponent) {
 		JRDesignBreak jrDesignBreak = new JRDesignBreak();
 		jrDesignBreak.setType(ConstantTransform.breakType(breakComponent.getType()));
 		return jrDesignBreak;
 	}
 
-	// generic element
+	//generic element
 	private JRDesignElement genericElement(DRIDesignGenericElement genericElement) {
 		JRDesignGenericElement jrDesignGenericElement = new JRDesignGenericElement(new JRDesignStyle().getDefaultStyleProvider());
 		JRGenericElementType genericType = new JRGenericElementType(genericElement.getGenericElementNamespace(), genericElement.getGenericElementName());
@@ -429,7 +452,7 @@ public class ComponentTransform {
 		return jrDesignGenericElement;
 	}
 
-	// map
+	//map
 	private JRDesignElement map(DRIDesignMap map) {
 		StandardMapComponent jrMap = new StandardMapComponent();
 		EvaluationTime evaluationTime = map.getEvaluationTime();
@@ -448,7 +471,7 @@ public class ComponentTransform {
 		return jrComponent;
 	}
 
-	// custom component
+	//custom component
 	private JRDesignElement customComponent(DRIDesignComponent component) {
 		@SuppressWarnings("rawtypes")
 		CustomComponentTransform componentTransfom = CustomComponents.getComponentTransform(component);

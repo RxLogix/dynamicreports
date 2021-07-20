@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -44,25 +44,25 @@ public class ColumnTitleGroupReport {
 	}
 
 	private void build() {
-		TextColumnBuilder<String> itemColumn = col.column("Item", "item", type.stringType());
-		TextColumnBuilder<Date> orderDateColumn = col.column("Order date", "orderdate", type.dateType());
-		TextColumnBuilder<Integer> quantityColumn = col.column("Quantity", "quantity", type.integerType()).setFixedWidth(50);
-		TextColumnBuilder<BigDecimal> unitPriceColumn = col.column("Unit price", "unitprice", type.bigDecimalType());
+  	TextColumnBuilder<String>     itemColumn      = col.column("Item",        "item",      type.stringType());
+  	TextColumnBuilder<Date>       orderDateColumn = col.column("Order date",  "orderdate", type.dateType());
+  	TextColumnBuilder<Integer>    quantityColumn  = col.column("Quantity",    "quantity",  type.integerType()).setFixedWidth(50);
+  	TextColumnBuilder<BigDecimal> unitPriceColumn = col.column("Unit price",  "unitprice", type.bigDecimalType());
 
 		ColumnTitleGroupBuilder titleGroup2 = grid.titleGroup("Group 2", quantityColumn, unitPriceColumn);
-		ColumnTitleGroupBuilder titleGroup1 = grid.titleGroup("Group 1", orderDateColumn, titleGroup2).setTitleFixedWidth(450);
+		ColumnTitleGroupBuilder titleGroup1 = grid.titleGroup("Group 1", orderDateColumn,	titleGroup2).setTitleFixedWidth(450);
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columnGrid(
-							itemColumn, titleGroup1)
-					.columns(
-							itemColumn, orderDateColumn, quantityColumn, unitPriceColumn)
-					.title(Templates.createTitleComponent("ColumnTitleGroup"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .columnGrid(
+			  	itemColumn,	titleGroup1)
+			  .columns(
+			  	itemColumn, orderDateColumn, quantityColumn, unitPriceColumn)
+			  .title(Templates.createTitleComponent("ColumnTitleGroup"))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

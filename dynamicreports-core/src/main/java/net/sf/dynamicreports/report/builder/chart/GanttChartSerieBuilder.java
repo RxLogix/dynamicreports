@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -44,7 +44,7 @@ public class GanttChartSerieBuilder extends AbstractChartSerieBuilder<GanttChart
 		super(new DRGanttChartSerie());
 	}
 
-	// start date
+	//start date
 	public GanttChartSerieBuilder setStartDate(ValueColumnBuilder<?, Date> column) {
 		Validate.notNull(column, "column must not be null");
 		getObject().setStartDateExpression(column.getColumn());
@@ -62,7 +62,7 @@ public class GanttChartSerieBuilder extends AbstractChartSerieBuilder<GanttChart
 		return this;
 	}
 
-	// end date
+	//end date
 	public GanttChartSerieBuilder setEndDate(ValueColumnBuilder<?, Date> column) {
 		Validate.notNull(column, "column must not be null");
 		getObject().setEndDateExpression(column.getColumn());
@@ -80,7 +80,7 @@ public class GanttChartSerieBuilder extends AbstractChartSerieBuilder<GanttChart
 		return this;
 	}
 
-	// percent
+	//percent
 	public GanttChartSerieBuilder setPercent(ValueColumnBuilder<?, ? extends Number> column) {
 		Validate.notNull(column, "column must not be null");
 		getObject().setPercentExpression(column.getColumn());
@@ -104,7 +104,7 @@ public class GanttChartSerieBuilder extends AbstractChartSerieBuilder<GanttChart
 		return this;
 	}
 
-	// label
+	//label
 	public GanttChartSerieBuilder setLabel(String label) {
 		getObject().setLabelExpression(Expressions.text(label));
 		return this;

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -63,9 +63,9 @@ public class ShowValuesCustomizer implements DRIChartCustomizer, Serializable {
 			CategoryItemRenderer renderer = chart.getCategoryPlot().getRenderer();
 			if (StringUtils.isBlank(valuePattern)) {
 				renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());
-			} else {
-				renderer.setBaseItemLabelGenerator(
-						new StandardCategoryItemLabelGenerator(StandardCategoryItemLabelGenerator.DEFAULT_LABEL_FORMAT_STRING, new DecimalFormat(valuePattern)));
+			}
+			else {
+				renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator(StandardCategoryItemLabelGenerator.DEFAULT_LABEL_FORMAT_STRING, new DecimalFormat(valuePattern)));
 			}
 			renderer.setBaseItemLabelsVisible(Boolean.TRUE);
 			if (!customRangeMaxValue) {
@@ -75,13 +75,14 @@ public class ShowValuesCustomizer implements DRIChartCustomizer, Serializable {
 				((BarRenderer3D) renderer).setItemLabelAnchorOffset(10D);
 				renderer.setBasePositiveItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.OUTSIDE12, TextAnchor.BASELINE_LEFT));
 			}
-		} else if (chart.getPlot() instanceof XYPlot) {
+		}
+		else if (chart.getPlot() instanceof XYPlot) {
 			XYItemRenderer renderer = chart.getXYPlot().getRenderer();
 			if (StringUtils.isBlank(valuePattern)) {
 				renderer.setBaseItemLabelGenerator(new StandardXYItemLabelGenerator());
-			} else {
-				renderer.setBaseItemLabelGenerator(new StandardXYItemLabelGenerator(StandardXYItemLabelGenerator.DEFAULT_ITEM_LABEL_FORMAT,
-						NumberFormat.getNumberInstance(), new DecimalFormat(valuePattern)));
+			}
+			else {
+				renderer.setBaseItemLabelGenerator(new StandardXYItemLabelGenerator(StandardXYItemLabelGenerator.DEFAULT_ITEM_LABEL_FORMAT, NumberFormat.getNumberInstance(), new DecimalFormat(valuePattern)));
 			}
 			renderer.setBaseItemLabelsVisible(Boolean.TRUE);
 			chart.getXYPlot().getRangeAxis().zoomRange(0, 1.1);

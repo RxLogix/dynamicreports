@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -45,21 +45,21 @@ public class JasperExpressionReport {
 	private void build() {
 		try {
 			TextColumnBuilder<String> itemColumn = col.column("item", type.stringType())
-					.setTitle(exp.jasperSyntaxText("Item"));
+				.setTitle(exp.jasperSyntaxText("Item"));
 			JasperExpression<BigDecimal> priceExpression = exp.jasperSyntax("new BigDecimal($F{quantity}).multiply($F{unitprice})", BigDecimal.class);
 			TextColumnBuilder<BigDecimal> priceColumn = col.column(priceExpression)
-					.setTitle(exp.jasperSyntaxText("Price"));
+				.setTitle(exp.jasperSyntaxText("Price"));
 
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.fields(
-							field("quantity", Integer.class),
-							field("unitprice", BigDecimal.class))
-					.columns(itemColumn, priceColumn)
-					.title(Templates.createTitleComponent("JasperExpression"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .fields(
+			  	field("quantity", Integer.class),
+			  	field("unitprice", BigDecimal.class))
+			  .columns(itemColumn, priceColumn)
+			  .title(Templates.createTitleComponent("JasperExpression"))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

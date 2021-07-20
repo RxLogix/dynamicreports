@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -77,8 +77,7 @@ public class GoogleChartsHandler implements XmlDigesterConfigurer, ComponentXmlW
 			JRXmlWriteHelper writer = reportWriter.getXmlWriteHelper();
 
 			String namespaceURI = componentElement.getComponentKey().getNamespace();
-			String schemaLocation = ComponentsEnvironment.getInstance(DefaultJasperReportsContext.getInstance()).getBundle(namespaceURI).getXmlParser()
-					.getPublicSchemaLocation();
+			String schemaLocation = ComponentsEnvironment.getInstance(DefaultJasperReportsContext.getInstance()).getBundle(namespaceURI).getXmlParser().getPublicSchemaLocation();
 			XmlNamespace namespace = new XmlNamespace(namespaceURI, componentElement.getComponentKey().getNamespacePrefix(), schemaLocation);
 
 			writer.startElement(componentElement.getComponentKey().getName(), namespace);

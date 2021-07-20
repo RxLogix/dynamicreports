@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -58,8 +58,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class JasperTocReport {
 
-	public static void createTocReport(JasperReportDesign jasperReportDesign, JasperPrint jasperPrint, Map<String, Object> parameters)
-			throws DRException, JRException {
+	public static void createTocReport(JasperReportDesign jasperReportDesign, JasperPrint jasperPrint, Map<String, Object> parameters) throws DRException, JRException {
 		JasperCustomValues customValues = jasperReportDesign.getCustomValues();
 		Map<String, JasperTocHeading> headings = customValues.getTocHeadings();
 		if (headings != null && !headings.isEmpty()) {
@@ -111,14 +110,14 @@ public class JasperTocReport {
 			for (int i = 0; i < tocJasperPrint.getPages().size(); i++) {
 				JRPrintPage page = tocJasperPrint.getPages().get(i);
 				switch (tableOfContentsPosition) {
-					case TOP:
-						jasperPrint.addPage(i, page);
-						break;
-					case BOTTOM:
-						jasperPrint.addPage(page);
-						break;
-					default:
-						throw new JasperDesignException("Table of contents position " + tableOfContentsPosition.name() + " not supported");
+				case TOP:
+					jasperPrint.addPage(i, page);
+					break;
+				case BOTTOM:
+					jasperPrint.addPage(page);
+					break;
+				default:
+					throw new JasperDesignException("Table of contents position " + tableOfContentsPosition.name() + " not supported");
 				}
 			}
 			for (JRStyle style : tocJasperPrint.getStyles()) {

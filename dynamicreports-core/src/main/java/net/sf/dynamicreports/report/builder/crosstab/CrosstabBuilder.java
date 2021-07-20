@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -94,7 +94,8 @@ public class CrosstabBuilder extends DimensionComponentBuilder<CrosstabBuilder, 
 	public CrosstabBuilder setOddRowStyle(SimpleStyleBuilder oddRowStyle) {
 		if (oddRowStyle != null) {
 			getObject().setOddRowStyle(oddRowStyle.build());
-		} else {
+		}
+		else {
 			getObject().setOddRowStyle(null);
 		}
 		return this;
@@ -103,7 +104,8 @@ public class CrosstabBuilder extends DimensionComponentBuilder<CrosstabBuilder, 
 	public CrosstabBuilder setGroupStyle(ReportStyleBuilder groupStyle) {
 		if (groupStyle != null) {
 			getObject().setGroupStyle(groupStyle.build());
-		} else {
+		}
+		else {
 			getObject().setGroupStyle(null);
 		}
 		return this;
@@ -112,7 +114,8 @@ public class CrosstabBuilder extends DimensionComponentBuilder<CrosstabBuilder, 
 	public CrosstabBuilder setGroupTotalStyle(ReportStyleBuilder groupTotalStyle) {
 		if (groupTotalStyle != null) {
 			getObject().setGroupTotalStyle(groupTotalStyle.build());
-		} else {
+		}
+		else {
 			getObject().setGroupTotalStyle(null);
 		}
 		return this;
@@ -121,7 +124,8 @@ public class CrosstabBuilder extends DimensionComponentBuilder<CrosstabBuilder, 
 	public CrosstabBuilder setGrandTotalStyle(ReportStyleBuilder grandTotalStyle) {
 		if (grandTotalStyle != null) {
 			getObject().setGrandTotalStyle(grandTotalStyle.build());
-		} else {
+		}
+		else {
 			getObject().setGrandTotalStyle(null);
 		}
 		return this;
@@ -130,7 +134,8 @@ public class CrosstabBuilder extends DimensionComponentBuilder<CrosstabBuilder, 
 	public CrosstabBuilder setCellStyle(ReportStyleBuilder cellStyle) {
 		if (cellStyle != null) {
 			getObject().setCellStyle(cellStyle.build());
-		} else {
+		}
+		else {
 			getObject().setCellStyle(null);
 		}
 		return this;
@@ -139,7 +144,8 @@ public class CrosstabBuilder extends DimensionComponentBuilder<CrosstabBuilder, 
 	public CrosstabBuilder setMeasureTitleStyle(ReportStyleBuilder measureTitleStyle) {
 		if (measureTitleStyle != null) {
 			getObject().setMeasureTitleStyle(measureTitleStyle.build());
-		} else {
+		}
+		else {
 			getObject().setMeasureTitleStyle(null);
 		}
 		return this;
@@ -157,17 +163,18 @@ public class CrosstabBuilder extends DimensionComponentBuilder<CrosstabBuilder, 
 	public CrosstabBuilder setEvenRowStyle(SimpleStyleBuilder evenRowStyle) {
 		if (evenRowStyle != null) {
 			getObject().setEvenRowStyle(evenRowStyle.build());
-		} else {
+		}
+		else {
 			getObject().setEvenRowStyle(null);
 		}
 		return this;
 	}
 
-	public CrosstabBuilder whenNoDataCell(ComponentBuilder<?, ?>... components) {
+	public CrosstabBuilder whenNoDataCell(ComponentBuilder<?, ?> ...components) {
 		return addWhenNoDataCell(components);
 	}
 
-	public CrosstabBuilder addWhenNoDataCell(ComponentBuilder<?, ?>... components) {
+	public CrosstabBuilder addWhenNoDataCell(ComponentBuilder<?, ?> ...components) {
 		Validate.notNull(components, "components must not be null");
 		Validate.noNullElements(components, "components must not contains null component");
 		for (ComponentBuilder<?, ?> component : components) {
@@ -176,11 +183,11 @@ public class CrosstabBuilder extends DimensionComponentBuilder<CrosstabBuilder, 
 		return this;
 	}
 
-	public CrosstabBuilder headerCell(ComponentBuilder<?, ?>... components) {
+	public CrosstabBuilder headerCell(ComponentBuilder<?, ?> ...components) {
 		return addHeaderCell(components);
 	}
 
-	public CrosstabBuilder addHeaderCell(ComponentBuilder<?, ?>... components) {
+	public CrosstabBuilder addHeaderCell(ComponentBuilder<?, ?> ...components) {
 		Validate.notNull(components, "components must not be null");
 		Validate.noNullElements(components, "components must not contains null component");
 		for (ComponentBuilder<?, ?> component : components) {
@@ -189,11 +196,11 @@ public class CrosstabBuilder extends DimensionComponentBuilder<CrosstabBuilder, 
 		return this;
 	}
 
-	public CrosstabBuilder columnGroups(CrosstabColumnGroupBuilder<?>... columnGroups) {
+	public CrosstabBuilder columnGroups(CrosstabColumnGroupBuilder<?> ...columnGroups) {
 		return addColumnGroup(columnGroups);
 	}
 
-	public CrosstabBuilder addColumnGroup(CrosstabColumnGroupBuilder<?>... columnGroups) {
+	public CrosstabBuilder addColumnGroup(CrosstabColumnGroupBuilder<?> ...columnGroups) {
 		Validate.notNull(columnGroups, "columnGroups must not be null");
 		Validate.noNullElements(columnGroups, "columnGroups must not contains null columnGroup");
 		for (CrosstabColumnGroupBuilder<?> columnGroup : columnGroups) {
@@ -202,11 +209,11 @@ public class CrosstabBuilder extends DimensionComponentBuilder<CrosstabBuilder, 
 		return this;
 	}
 
-	public CrosstabBuilder rowGroups(CrosstabRowGroupBuilder<?>... rowGroups) {
+	public CrosstabBuilder rowGroups(CrosstabRowGroupBuilder<?> ...rowGroups) {
 		return addRowGroup(rowGroups);
 	}
 
-	public CrosstabBuilder addRowGroup(CrosstabRowGroupBuilder<?>... rowGroups) {
+	public CrosstabBuilder addRowGroup(CrosstabRowGroupBuilder<?> ...rowGroups) {
 		Validate.notNull(rowGroups, "rowGroups must not be null");
 		Validate.noNullElements(rowGroups, "rowGroups must not contains null rowGroup");
 		for (CrosstabRowGroupBuilder<?> rowGroup : rowGroups) {
@@ -215,11 +222,11 @@ public class CrosstabBuilder extends DimensionComponentBuilder<CrosstabBuilder, 
 		return this;
 	}
 
-	public CrosstabBuilder variables(CrosstabVariableBuilder<?>... variables) {
+	public CrosstabBuilder variables(CrosstabVariableBuilder<?> ...variables) {
 		return addVariable(variables);
 	}
 
-	public CrosstabBuilder addVariable(CrosstabVariableBuilder<?>... variables) {
+	public CrosstabBuilder addVariable(CrosstabVariableBuilder<?> ...variables) {
 		Validate.notNull(variables, "variables must not be null");
 		Validate.noNullElements(variables, "variables must not contains null measure");
 		for (CrosstabVariableBuilder<?> variable : variables) {
@@ -228,11 +235,11 @@ public class CrosstabBuilder extends DimensionComponentBuilder<CrosstabBuilder, 
 		return this;
 	}
 
-	public CrosstabBuilder measures(CrosstabMeasureBuilder<?>... measures) {
+	public CrosstabBuilder measures(CrosstabMeasureBuilder<?> ...measures) {
 		return addMeasure(measures);
 	}
 
-	public CrosstabBuilder addMeasure(CrosstabMeasureBuilder<?>... measures) {
+	public CrosstabBuilder addMeasure(CrosstabMeasureBuilder<?> ...measures) {
 		Validate.notNull(measures, "measures must not be null");
 		Validate.noNullElements(measures, "measures must not contains null measure");
 		for (CrosstabMeasureBuilder<?> measure : measures) {
@@ -241,7 +248,7 @@ public class CrosstabBuilder extends DimensionComponentBuilder<CrosstabBuilder, 
 		return this;
 	}
 
-	// subdataset
+	//subdataset
 	public CrosstabBuilder setSubDataset(DatasetBuilder subDataset) {
 		Validate.notNull(subDataset, "subDataset must not be null");
 		getObject().getDataset().setSubDataset(subDataset.build());

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -57,30 +57,30 @@ public class GroupChartReport2 {
 		TextColumnBuilder<Integer> quantityColumn = col.column("Quantity", "quantity", type.integerType());
 
 		BarChartBuilder chart1 = cht.barChart()
-				.setTitle(new ChartTitleExpression(stockColumn))
-				.setTitleFont(boldFont)
-				.setCategory(yearColumn)
-				.series(
-						cht.serie(quantityColumn).setSeries(itemColumn));
+			.setTitle(new ChartTitleExpression(stockColumn))
+			.setTitleFont(boldFont)
+			.setCategory(yearColumn)
+			.series(
+				cht.serie(quantityColumn).setSeries(itemColumn));
 
 		ColumnGroupBuilder stockGroup = grp.group(stockColumn)
-				.setHeaderLayout(GroupHeaderLayout.EMPTY)
-				.footer(chart1);
+			.setHeaderLayout(GroupHeaderLayout.EMPTY)
+			.footer(chart1);
 
 		JasperReportBuilder subReport = report()
-				.sortBy(stockColumn)
-				.groupBy(stockGroup)
-				.setDataSource(createDataSource());
+			.sortBy(stockColumn)
+			.groupBy(stockGroup)
+			.setDataSource(createDataSource());
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(yearColumn, stockColumn, itemColumn, quantityColumn)
-					.title(Templates.createTitleComponent("GroupChart2"))
-					.summary(cmp.subreport(subReport))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.columns(yearColumn, stockColumn, itemColumn, quantityColumn)
+				.title(Templates.createTitleComponent("GroupChart2"))
+				.summary(cmp.subreport(subReport))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

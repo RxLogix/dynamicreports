@@ -1,13 +1,6 @@
 DynamicReports Change Log
 =========================
 
-Changes in version 5.1.0 (2018-01-25)
----------------------------------------------------
- - upgrade to JasperReports 6.5.1
- - removed xhtml and excelapi exporter
- - removed thread safety in JasperCustomValues due to problems with memory leak   
- - fixed problem with chart styles in multi axis chart
- 
 Changes in version 5.0.0 (2017-01-27)
 ---------------------------------------------------
  - upgrade to JasperReports 6.4.0

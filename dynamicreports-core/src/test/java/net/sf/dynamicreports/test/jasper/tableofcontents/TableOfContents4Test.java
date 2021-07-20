@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -50,12 +50,12 @@ public class TableOfContents4Test extends AbstractJasperValueTest implements Ser
 		TextColumnBuilder<String> column1;
 
 		rb.tableOfContents()
-				.pageHeader(cmp.text(new PageHeaderExpression()))
-				.columns(
-						column1 = col.column("Column1", "field1", type.stringType()),
-						col.column("Column2", "field2", type.stringType()))
-				.groupBy(
-						column1);
+			.pageHeader(cmp.text(new PageHeaderExpression()))
+	  	.columns(
+	  		column1 = col.column("Column1", "field1", type.stringType()),
+	  		col.column("Column2", "field2", type.stringType()))
+		  .groupBy(
+		  	column1);
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class TableOfContents4Test extends AbstractJasperValueTest implements Ser
 
 	@Override
 	protected JRDataSource createDataSource() {
-		String[] values = new String[] { "value1", "value2", "value3", "value4", "value5", "value6" };
+		String[] values = new String[]{"value1", "value2", "value3", "value4", "value5", "value6"};
 		DRDataSource dataSource = new DRDataSource("field1", "field2");
 		for (String value : values) {
 			for (int i = 0; i < 20; i++) {
@@ -79,6 +79,7 @@ public class TableOfContents4Test extends AbstractJasperValueTest implements Ser
 		}
 		return dataSource;
 	}
+
 
 	private class PageHeaderExpression extends AbstractSimpleExpression<String> {
 		private static final long serialVersionUID = 1L;

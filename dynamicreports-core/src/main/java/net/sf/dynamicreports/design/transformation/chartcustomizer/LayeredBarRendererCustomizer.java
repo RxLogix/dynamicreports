@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -51,16 +51,16 @@ public class LayeredBarRendererCustomizer implements DRIChartCustomizer, Seriali
 	@Override
 	public void customize(JFreeChart chart, ReportParameters reportParameters) {
 		BarRenderer categoryRenderer = (BarRenderer) chart.getCategoryPlot().getRenderer();
-		LayeredBarRenderer renderer = new LayeredBarRenderer();
+    LayeredBarRenderer renderer = new LayeredBarRenderer();
 
-		renderer.setBaseItemLabelsVisible(categoryRenderer.getBaseItemLabelsVisible());
-		renderer.setBaseItemLabelFont(categoryRenderer.getBaseItemLabelFont());
-		renderer.setBaseItemLabelPaint(categoryRenderer.getBaseItemLabelPaint());
-		renderer.setBaseItemLabelGenerator(categoryRenderer.getBaseItemLabelGenerator());
+    renderer.setBaseItemLabelsVisible(categoryRenderer.getBaseItemLabelsVisible());
+    renderer.setBaseItemLabelFont(categoryRenderer.getBaseItemLabelFont());
+    renderer.setBaseItemLabelPaint(categoryRenderer.getBaseItemLabelPaint());
+    renderer.setBaseItemLabelGenerator(categoryRenderer.getBaseItemLabelGenerator());
 		renderer.setShadowVisible(categoryRenderer.getShadowsVisible());
 		CategoryDataset categoryDataset = chart.getCategoryPlot().getDataset();
-		if (categoryDataset != null) {
-			for (int i = 0; i < categoryDataset.getRowCount(); i++) {
+		if(categoryDataset != null)	{
+			for(int i = 0; i < categoryDataset.getRowCount(); i++) {
 				Paint seriesOutlinePaint = categoryRenderer.getSeriesOutlinePaint(i);
 				if (seriesOutlinePaint != null) {
 					renderer.setSeriesOutlinePaint(i, seriesOutlinePaint);
@@ -77,12 +77,12 @@ public class LayeredBarRendererCustomizer implements DRIChartCustomizer, Seriali
 			renderer.setGradientPaintTransformer(gradientPaintTransformer);
 		}
 
-		if (seriesBarWidths != null) {
-			for (int i = 0; i < seriesBarWidths.size(); i++) {
-				renderer.setSeriesBarWidth(i, seriesBarWidths.get(i));
+    if (seriesBarWidths != null) {
+    	for (int i = 0; i < seriesBarWidths.size(); i++) {
+    		renderer.setSeriesBarWidth(i, seriesBarWidths.get(i));
 			}
-		}
+    }
 
-		chart.getCategoryPlot().setRenderer(renderer);
-	}
+    chart.getCategoryPlot().setRenderer(renderer);
+  }
 }

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -50,7 +50,7 @@ public abstract class AbstractJasperValueTest extends AbstractJasperTest {
 		Assert.assertEquals("element value " + name, value, getElementFullValue(name, index));
 	}
 
-	protected void elementValueTest(String name, String... values) {
+	protected void elementValueTest(String name, String ...values) {
 		List<JRPrintElement> elements = findElement(name);
 		Assert.assertTrue(values.length <= elements.size());
 		for (int i = 0; i < values.length; i++) {
@@ -60,7 +60,7 @@ public abstract class AbstractJasperValueTest extends AbstractJasperTest {
 		}
 	}
 
-	protected void elementFullValueTest(String name, String... values) {
+	protected void elementFullValueTest(String name, String ...values) {
 		List<JRPrintElement> elements = findElement(name);
 		Assert.assertTrue(values.length <= elements.size());
 		for (int i = 0; i < values.length; i++) {
@@ -79,7 +79,7 @@ public abstract class AbstractJasperValueTest extends AbstractJasperTest {
 		return ((JRPrintText) getElementAt(key, index)).getFullText();
 	}
 
-	// column detail
+	//column detail
 	protected void columnDetailCountTest(ColumnBuilder<?, ?> column, int expectedNumberOfElements) {
 		elementCountTest(JasperTestUtils.getColumnDetailName(column), expectedNumberOfElements);
 	}
@@ -92,7 +92,7 @@ public abstract class AbstractJasperValueTest extends AbstractJasperTest {
 		elementFullValueTest(JasperTestUtils.getColumnDetailName(column), index, value);
 	}
 
-	protected void columnDetailValueTest(ColumnBuilder<?, ?> column, String... values) {
+	protected void columnDetailValueTest(ColumnBuilder<?, ?> column, String ...values) {
 		elementValueTest(JasperTestUtils.getColumnDetailName(column), values);
 	}
 
@@ -100,7 +100,7 @@ public abstract class AbstractJasperValueTest extends AbstractJasperTest {
 		containsElement(JasperTestUtils.getColumnDetailName(column), pageIndex);
 	}
 
-	// column title
+	//column title
 	protected void columnTitleCountTest(ColumnBuilder<?, ?> column, int expectedNumberOfElements) {
 		elementCountTest(JasperTestUtils.getColumnTitleName(column), expectedNumberOfElements);
 	}
@@ -113,11 +113,11 @@ public abstract class AbstractJasperValueTest extends AbstractJasperTest {
 		elementFullValueTest(JasperTestUtils.getColumnTitleName(column), index, value);
 	}
 
-	protected void columnTitleValueTest(ColumnBuilder<?, ?> column, String... values) {
+	protected void columnTitleValueTest(ColumnBuilder<?, ?> column, String ...values) {
 		elementValueTest(JasperTestUtils.getColumnTitleName(column), values);
 	}
 
-	// subtotal label
+	//subtotal label
 	protected void subtotalLabelCountTest(BaseSubtotalBuilder<?, ?> subtotal, int expectedNumberOfElements) {
 		elementCountTest(JasperTestUtils.getSubtotalLabelName(subtotal, 1), expectedNumberOfElements);
 	}
@@ -126,7 +126,7 @@ public abstract class AbstractJasperValueTest extends AbstractJasperTest {
 		elementValueTest(JasperTestUtils.getSubtotalLabelName(subtotal, 1), index, value);
 	}
 
-	protected void subtotalLabelValueTest(BaseSubtotalBuilder<?, ?> subtotal, String... values) {
+	protected void subtotalLabelValueTest(BaseSubtotalBuilder<?, ?> subtotal, String ...values) {
 		elementValueTest(JasperTestUtils.getSubtotalLabelName(subtotal, 1), values);
 	}
 
@@ -138,11 +138,11 @@ public abstract class AbstractJasperValueTest extends AbstractJasperTest {
 		elementValueTest(JasperTestUtils.getSubtotalLabelName(subtotal, subtotalIndex), index, value);
 	}
 
-	protected void subtotalLabelIndexValueTest(BaseSubtotalBuilder<?, ?> subtotal, int subtotalIndex, String... values) {
+	protected void subtotalLabelIndexValueTest(BaseSubtotalBuilder<?, ?> subtotal, int subtotalIndex, String ...values) {
 		elementValueTest(JasperTestUtils.getSubtotalLabelName(subtotal, subtotalIndex), values);
 	}
 
-	// subtotal
+	//subtotal
 	protected void subtotalCountTest(BaseSubtotalBuilder<?, ?> subtotal, int expectedNumberOfElements) {
 		elementCountTest(JasperTestUtils.getSubtotalName(subtotal, 1), expectedNumberOfElements);
 	}
@@ -151,7 +151,7 @@ public abstract class AbstractJasperValueTest extends AbstractJasperTest {
 		elementValueTest(JasperTestUtils.getSubtotalName(subtotal, 1), index, value);
 	}
 
-	protected void subtotalValueTest(BaseSubtotalBuilder<?, ?> subtotal, String... values) {
+	protected void subtotalValueTest(BaseSubtotalBuilder<?, ?> subtotal, String ...values) {
 		elementValueTest(JasperTestUtils.getSubtotalName(subtotal, 1), values);
 	}
 
@@ -163,11 +163,11 @@ public abstract class AbstractJasperValueTest extends AbstractJasperTest {
 		elementValueTest(JasperTestUtils.getSubtotalName(subtotal, subtotalIndex), index, value);
 	}
 
-	protected void subtotalIndexValueTest(BaseSubtotalBuilder<?, ?> subtotal, int subtotalIndex, String... values) {
+	protected void subtotalIndexValueTest(BaseSubtotalBuilder<?, ?> subtotal, int subtotalIndex, String ...values) {
 		elementValueTest(JasperTestUtils.getSubtotalName(subtotal, subtotalIndex), values);
 	}
 
-	// group header title
+	//group header title
 	protected void groupHeaderTitleCountTest(GroupBuilder<?> group, int expectedNumberOfElements) {
 		elementCountTest(JasperTestUtils.getHeaderTitleGroupName(group), expectedNumberOfElements);
 	}
@@ -176,11 +176,11 @@ public abstract class AbstractJasperValueTest extends AbstractJasperTest {
 		elementValueTest(JasperTestUtils.getHeaderTitleGroupName(group), index, value);
 	}
 
-	protected void groupHeaderTitleValueTest(GroupBuilder<?> group, String... values) {
+	protected void groupHeaderTitleValueTest(GroupBuilder<?> group, String ...values) {
 		elementValueTest(JasperTestUtils.getHeaderTitleGroupName(group), values);
 	}
 
-	// group header
+	//group header
 	protected void groupHeaderCountTest(GroupBuilder<?> group, int expectedNumberOfElements) {
 		elementCountTest(JasperTestUtils.getHeaderGroupName(group), expectedNumberOfElements);
 	}
@@ -189,7 +189,7 @@ public abstract class AbstractJasperValueTest extends AbstractJasperTest {
 		elementValueTest(JasperTestUtils.getHeaderGroupName(group), index, value);
 	}
 
-	protected void groupHeaderValueTest(GroupBuilder<?> group, String... values) {
+	protected void groupHeaderValueTest(GroupBuilder<?> group, String ...values) {
 		elementValueTest(JasperTestUtils.getHeaderGroupName(group), values);
 	}
 }

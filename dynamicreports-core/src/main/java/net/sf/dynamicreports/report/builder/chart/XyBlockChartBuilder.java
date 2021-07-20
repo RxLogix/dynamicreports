@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -51,7 +51,7 @@ public class XyBlockChartBuilder extends AbstractBaseChartBuilder<XyBlockChartBu
 		getPlot().setDefaultPaint(defaultPaint);
 	}
 
-	// dataset
+	//dataset
 	public XyBlockChartBuilder setXValue(ValueColumnBuilder<?, ? extends Number> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setValueExpression(column.getColumn());
@@ -73,11 +73,11 @@ public class XyBlockChartBuilder extends AbstractBaseChartBuilder<XyBlockChartBu
 		return this;
 	}
 
-	public XyBlockChartBuilder series(XyzChartSerieBuilder... chartSeries) {
+	public XyBlockChartBuilder series(XyzChartSerieBuilder ...chartSeries) {
 		return addSerie(chartSeries);
 	}
 
-	public XyBlockChartBuilder addSerie(XyzChartSerieBuilder... chartSeries) {
+	public XyBlockChartBuilder addSerie(XyzChartSerieBuilder ...chartSeries) {
 		Validate.notNull(chartSeries, "chartSeries must not be null");
 		Validate.noNullElements(chartSeries, "chartSeries must not contains null chartSerie");
 		for (XyzChartSerieBuilder chartSerie : chartSeries) {
@@ -92,7 +92,7 @@ public class XyBlockChartBuilder extends AbstractBaseChartBuilder<XyBlockChartBu
 		return this;
 	}
 
-	// plot
+	//plot
 	public XyBlockChartBuilder setXAxisFormat(AxisFormatBuilder xAxisFormat) {
 		Validate.notNull(xAxisFormat, "xAxisFormat must not be null");
 		getPlot().setXAxisFormat(xAxisFormat.build());
@@ -120,11 +120,11 @@ public class XyBlockChartBuilder extends AbstractBaseChartBuilder<XyBlockChartBu
 		return this;
 	}
 
-	public XyBlockChartBuilder paintScales(PaintScaleBuilder... paintScales) {
+	public XyBlockChartBuilder paintScales(PaintScaleBuilder ...paintScales) {
 		return addPaintScale(paintScales);
 	}
 
-	public XyBlockChartBuilder addPaintScale(PaintScaleBuilder... paintScales) {
+	public XyBlockChartBuilder addPaintScale(PaintScaleBuilder ...paintScales) {
 		Validate.notNull(paintScales, "paintScales must not be null");
 		Validate.noNullElements(paintScales, "paintScales must not contains null paintScale");
 		for (PaintScaleBuilder paintScale : paintScales) {

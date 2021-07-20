@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -64,30 +64,30 @@ public class Subtotal1Test extends AbstractJasperValueTest implements Serializab
 		TextColumnBuilder<String> column2;
 
 		rb.setLocale(Locale.ENGLISH)
-				.setPageColumnsPerPage(2)
-				.columns(
-						column1 = col.column("Column1", "field1", type.bigDecimalType()),
-						column2 = col.column("Column2", "field2", String.class)
-								.setValueFormatter(new ColumnValueFormatter()))
-				.subtotalsAtTitle(
-						subtotal1 = sbt.sum(column1).setLabel("title sum"))
-				.subtotalsAtPageHeader(
-						subtotal2 = sbt.sum(column1).setLabel("page header sum"))
-				.subtotalsAtPageFooter(
-						subtotal3 = sbt.sum(column1).setLabel("page footer sum"))
-				.subtotalsAtColumnHeader(
-						subtotal4 = sbt.sum(column1).setLabel("column header sum"))
-				.subtotalsAtColumnFooter(
-						subtotal5 = sbt.sum(column1).setLabel("column footer sum"))
-				.subtotalsAtLastPageFooter(
-						subtotal6 = sbt.sum(column1).setLabel("last page footer sum"))
-				.subtotalsAtSummary(
-						subtotal7 = sbt.sum(column1).setLabel("summary sum"),
-						(subtotal8 = sbt.aggregate(column1, Calculation.LOWEST)).setLabel("summary lowest"),
-						subtotal9 = sbt.sum(new ColumnCalculationExpression(), column2).setLabel("summary sum").setValueFormatter(new ColumnValueFormatter2()),
-						subtotal10 = sbt.aggregate(column1, Calculation.COUNT),
-						subtotal11 = sbt.aggregate(column2, Calculation.COUNT),
-						subtotal12 = sbt.text("total", column1));
+			.setPageColumnsPerPage(2)
+			.columns(
+					column1 = col.column("Column1", "field1", type.bigDecimalType()),
+					column2 = col.column("Column2", "field2", String.class)
+						.setValueFormatter(new ColumnValueFormatter()))
+			.subtotalsAtTitle(
+					subtotal1 = sbt.sum(column1).setLabel("title sum"))
+			.subtotalsAtPageHeader(
+					subtotal2 = sbt.sum(column1).setLabel("page header sum"))
+			.subtotalsAtPageFooter(
+					subtotal3 = sbt.sum(column1).setLabel("page footer sum"))
+			.subtotalsAtColumnHeader(
+					subtotal4 = sbt.sum(column1).setLabel("column header sum"))
+			.subtotalsAtColumnFooter(
+					subtotal5 = sbt.sum(column1).setLabel("column footer sum"))
+			.subtotalsAtLastPageFooter(
+					subtotal6 = sbt.sum(column1).setLabel("last page footer sum"))
+			.subtotalsAtSummary(
+					subtotal7 = sbt.sum(column1).setLabel("summary sum"),
+					(subtotal8 = sbt.aggregate(column1, Calculation.LOWEST)).setLabel("summary lowest"),
+					subtotal9 = sbt.sum(new ColumnCalculationExpression(), column2).setLabel("summary sum").setValueFormatter(new ColumnValueFormatter2()),
+					subtotal10 = sbt.aggregate(column1, Calculation.COUNT),
+					subtotal11 = sbt.aggregate(column2, Calculation.COUNT),
+					subtotal12 = sbt.text("total", column1));
 	}
 
 	@Override
@@ -95,37 +95,37 @@ public class Subtotal1Test extends AbstractJasperValueTest implements Serializab
 		super.test();
 
 		numberOfPagesTest(2);
-		// title
+		//title
 		subtotalLabelCountTest(subtotal1, 1);
 		subtotalLabelValueTest(subtotal1, "title sum");
 		subtotalCountTest(subtotal1, 1);
 		subtotalValueTest(subtotal1, "101.00");
-		// pageHeader
+		//pageHeader
 		subtotalLabelCountTest(subtotal2, 2);
 		subtotalLabelValueTest(subtotal2, "page header sum", "page header sum");
 		subtotalCountTest(subtotal2, 2);
 		subtotalValueTest(subtotal2, "80.80", "20.20");
-		// pageFooter
+		//pageFooter
 		subtotalLabelCountTest(subtotal3, 1);
 		subtotalLabelValueTest(subtotal3, "page footer sum");
 		subtotalCountTest(subtotal3, 1);
 		subtotalValueTest(subtotal3, "80.80");
-		// columnHeader
+		//columnHeader
 		subtotalLabelCountTest(subtotal4, 3);
 		subtotalLabelValueTest(subtotal4, "column header sum", "column header sum", "column header sum");
 		subtotalCountTest(subtotal4, 3);
 		subtotalValueTest(subtotal4, "40.40", "40.40", "20.20");
-		// columnFooter
+		//columnFooter
 		subtotalLabelCountTest(subtotal5, 3);
 		subtotalLabelValueTest(subtotal5, "column footer sum", "column footer sum", "column footer sum");
 		subtotalCountTest(subtotal5, 3);
 		subtotalValueTest(subtotal5, "40.40", "40.40", "20.20");
-		// lastPageFooter
+		//lastPageFooter
 		subtotalLabelCountTest(subtotal6, 1);
 		subtotalLabelValueTest(subtotal6, "last page footer sum");
 		subtotalCountTest(subtotal6, 1);
 		subtotalValueTest(subtotal6, "101.00");
-		// summary
+		//summary
 		subtotalLabelCountTest(subtotal7, 1);
 		subtotalLabelValueTest(subtotal7, "summary sum");
 		subtotalCountTest(subtotal7, 1);

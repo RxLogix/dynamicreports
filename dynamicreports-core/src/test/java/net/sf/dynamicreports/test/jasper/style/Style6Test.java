@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -54,10 +54,10 @@ public class Style6Test extends AbstractJasperStyleTest implements Serializable 
 		style.conditionalStyles(conditionalStyle);
 
 		rb.highlightDetailEvenRows()
-				.columns(
-						column1 = col.column("Column1", "field1", type.stringType()).setStyle(stl.style().setBackgroundColor(Color.BLUE)),
-						column2 = col.column("Column2", "field2", type.stringType()),
-						column3 = col.column("Column3", "field3", type.stringType()).setStyle(style));
+			.columns(
+					column1 = col.column("Column1", "field1", type.stringType()).setStyle(stl.style().setBackgroundColor(Color.BLUE)),
+					column2 = col.column("Column2", "field2", type.stringType()),
+					column3 = col.column("Column3", "field3", type.stringType()).setStyle(style));
 	}
 
 	@Override
@@ -70,17 +70,17 @@ public class Style6Test extends AbstractJasperStyleTest implements Serializable 
 		Color color2 = new Color(240, 240, 240);
 		Color color3 = new Color(251, 251, 251);
 
-		// column1
+		//column1
 		columnDetailStyleTest(column1, 0, null, color1, "Arial", 10f, null, null);
 		columnDetailStyleTest(column1, 1, null, Color.BLUE, "Arial", 10f, null, null);
 		columnDetailStyleTest(column1, 2, null, color1, "Arial", 10f, null, null);
 
-		// column2
+		//column2
 		columnDetailStyleTest(column2, 0, Color.BLACK, color2, "Arial", 10f, null, null);
 		columnDetailStyleTest(column2, 1, Color.BLACK, null, "Arial", 10f, null, null);
 		columnDetailStyleTest(column2, 2, Color.BLACK, color2, "Arial", 10f, null, null);
 
-		// column3
+		//column3
 		columnDetailStyleTest(column3, 0, null, color3, "Arial", 10f, null, null);
 		columnDetailStyleTest(column3, 1, Color.BLUE, Color.WHITE, "Arial", 10f, null, null);
 		columnDetailStyleTest(column3, 2, null, color3, "Arial", 10f, null, null);

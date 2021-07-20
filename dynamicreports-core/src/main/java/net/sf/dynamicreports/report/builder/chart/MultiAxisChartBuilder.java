@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -40,11 +40,11 @@ public class MultiAxisChartBuilder extends AbstractBaseChartBuilder<MultiAxisCha
 		super(ChartType.MULTI_AXIS);
 	}
 
-	public MultiAxisChartBuilder charts(AbstractBaseChartBuilder<?, ?, ?>... charts) {
+	public MultiAxisChartBuilder charts(AbstractBaseChartBuilder<?, ?, ?> ...charts) {
 		return addChart(charts);
 	}
 
-	public MultiAxisChartBuilder addChart(AbstractBaseChartBuilder<?, ?, ?>... charts) {
+	public MultiAxisChartBuilder addChart(AbstractBaseChartBuilder<?, ?, ?> ...charts) {
 		Validate.notNull(charts, "charts must not be null");
 		Validate.noNullElements(charts, "charts must not contains null chart");
 		for (AbstractBaseChartBuilder<?, ?, ?> chart : charts) {
@@ -59,7 +59,7 @@ public class MultiAxisChartBuilder extends AbstractBaseChartBuilder<MultiAxisCha
 		return this;
 	}
 
-	// plot
+	//plot
 	public MultiAxisChartBuilder setXAxisFormat(AxisFormatBuilder xAxisFormat) {
 		Validate.notNull(xAxisFormat, "xAxisFormat must not be null");
 		getPlot().setXAxisFormat(xAxisFormat.build());

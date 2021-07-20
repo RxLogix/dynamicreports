@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -38,7 +38,7 @@ abstract class CalculationExpression extends AbstractComplexExpression<BigDecima
 	private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
 
 	@SafeVarargs
-	protected CalculationExpression(DRIExpression<? extends Number>... expressions) {
+	protected CalculationExpression(DRIExpression<? extends Number> ...expressions) {
 		Validate.notNull(expressions, "expressions must not be null");
 		Validate.noNullElements(expressions, "expressions must not contains null expression");
 		for (DRIExpression<? extends Number> expression : expressions) {
@@ -53,12 +53,14 @@ abstract class CalculationExpression extends AbstractComplexExpression<BigDecima
 			BigDecimal bigDecimalValue;
 			if (value instanceof BigDecimal) {
 				bigDecimalValue = (BigDecimal) value;
-			} else {
+			}
+			else {
 				bigDecimalValue = new BigDecimal(((Number) value).doubleValue());
 			}
 			if (result == null) {
 				result = bigDecimalValue;
-			} else {
+			}
+			else {
 				result = calculate(result, bigDecimalValue);
 			}
 		}

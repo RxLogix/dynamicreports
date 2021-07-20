@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -43,7 +43,7 @@ public class SubreportBuilder extends DimensionComponentBuilder<SubreportBuilder
 		super(new DRSubreport());
 	}
 
-	// report
+	//report
 	public SubreportBuilder setReport(ReportBuilder<?> reportBuilder) {
 		getObject().setReportExpression(Expressions.value(reportBuilder));
 		return this;
@@ -59,7 +59,7 @@ public class SubreportBuilder extends DimensionComponentBuilder<SubreportBuilder
 		return this;
 	}
 
-	// parameters
+	//parameters
 	public SubreportBuilder setParameters(Map<String, Object> parameters) {
 		getObject().setParametersExpression(Expressions.value(parameters));
 		return this;
@@ -70,7 +70,7 @@ public class SubreportBuilder extends DimensionComponentBuilder<SubreportBuilder
 		return this;
 	}
 
-	// connection
+	//connection
 	public SubreportBuilder setConnection(Connection connection) {
 		getObject().setConnectionExpression(Expressions.value(connection));
 		return this;
@@ -81,7 +81,7 @@ public class SubreportBuilder extends DimensionComponentBuilder<SubreportBuilder
 		return this;
 	}
 
-	// datasource
+	//datasource
 	public SubreportBuilder setDataSource(JRDataSource dataSource) {
 		getObject().setDataSourceExpression(Expressions.dataSource(dataSource));
 		return this;

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -61,7 +61,8 @@ public abstract class BaseStyleBuilder<T extends BaseStyleBuilder<T, U>, U exten
 	public T setBorder(BorderBuilder border) {
 		if (border != null) {
 			getObject().setBorder(border.build());
-		} else {
+		}
+		else {
 			getObject().setBorder(null);
 		}
 		return (T) this;
@@ -74,7 +75,8 @@ public abstract class BaseStyleBuilder<T extends BaseStyleBuilder<T, U>, U exten
 	public T setTopBorder(PenBuilder topPen) {
 		if (topPen != null) {
 			getObject().getBorder().setTopPen(topPen.build());
-		} else {
+		}
+		else {
 			getObject().getBorder().setTopPen(null);
 		}
 		return (T) this;
@@ -83,7 +85,8 @@ public abstract class BaseStyleBuilder<T extends BaseStyleBuilder<T, U>, U exten
 	public T setLeftBorder(PenBuilder leftPen) {
 		if (leftPen != null) {
 			getObject().getBorder().setLeftPen(leftPen.build());
-		} else {
+		}
+		else {
 			getObject().getBorder().setLeftPen(null);
 		}
 		return (T) this;
@@ -92,7 +95,8 @@ public abstract class BaseStyleBuilder<T extends BaseStyleBuilder<T, U>, U exten
 	public T setBottomBorder(PenBuilder bottomPen) {
 		if (bottomPen != null) {
 			getObject().getBorder().setBottomPen(bottomPen.build());
-		} else {
+		}
+		else {
 			getObject().getBorder().setBottomPen(null);
 		}
 		return (T) this;
@@ -101,7 +105,8 @@ public abstract class BaseStyleBuilder<T extends BaseStyleBuilder<T, U>, U exten
 	public T setRightBorder(PenBuilder rightPen) {
 		if (rightPen != null) {
 			getObject().getBorder().setRightPen(rightPen.build());
-		} else {
+		}
+		else {
 			getObject().getBorder().setRightPen(null);
 		}
 		return (T) this;
@@ -110,7 +115,8 @@ public abstract class BaseStyleBuilder<T extends BaseStyleBuilder<T, U>, U exten
 	public T setFont(FontBuilder font) {
 		if (font != null) {
 			getObject().setFont(font.build());
-		} else {
+		}
+		else {
 			getObject().setFont(null);
 		}
 		return (T) this;
@@ -206,7 +212,8 @@ public abstract class BaseStyleBuilder<T extends BaseStyleBuilder<T, U>, U exten
 	public T setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
 		if (horizontalAlignment != null) {
 			getObject().setHorizontalTextAlignment(HorizontalTextAlignment.valueOf(horizontalAlignment.name()));
-		} else {
+		}
+		else {
 			getObject().setHorizontalTextAlignment(null);
 		}
 		return (T) this;
@@ -230,7 +237,8 @@ public abstract class BaseStyleBuilder<T extends BaseStyleBuilder<T, U>, U exten
 	public T setPadding(PaddingBuilder padding) {
 		if (padding != null) {
 			getObject().setPadding(padding.build());
-		} else {
+		}
+		else {
 			getObject().setPadding(null);
 		}
 		return (T) this;
@@ -282,12 +290,14 @@ public abstract class BaseStyleBuilder<T extends BaseStyleBuilder<T, U>, U exten
 	public T setAlignment(HorizontalAlignment horizontalAlignment, VerticalAlignment verticalAlignment) {
 		if (horizontalAlignment != null) {
 			getObject().setHorizontalTextAlignment(HorizontalTextAlignment.valueOf(horizontalAlignment.name()));
-		} else {
+		}
+		else {
 			getObject().setHorizontalTextAlignment(null);
 		}
 		if (verticalAlignment != null) {
 			getObject().setVerticalTextAlignment(VerticalTextAlignment.valueOf(verticalAlignment.name()));
-		} else {
+		}
+		else {
 			getObject().setVerticalTextAlignment(null);
 		}
 		return (T) this;
@@ -312,7 +322,8 @@ public abstract class BaseStyleBuilder<T extends BaseStyleBuilder<T, U>, U exten
 	public T setVerticalAlignment(VerticalAlignment verticalAlignment) {
 		if (verticalAlignment != null) {
 			getObject().setVerticalTextAlignment(VerticalTextAlignment.valueOf(verticalAlignment.name()));
-		} else {
+		}
+		else {
 			getObject().setVerticalTextAlignment(null);
 		}
 		return (T) this;
@@ -385,7 +396,8 @@ public abstract class BaseStyleBuilder<T extends BaseStyleBuilder<T, U>, U exten
 	public T setLinePen(PenBuilder linePen) {
 		if (linePen != null) {
 			getObject().setLinePen(linePen.build());
-		} else {
+		}
+		else {
 			getObject().setLinePen(null);
 		}
 		return (T) this;

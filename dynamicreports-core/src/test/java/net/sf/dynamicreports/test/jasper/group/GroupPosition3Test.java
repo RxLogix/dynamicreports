@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -51,12 +51,12 @@ public class GroupPosition3Test extends AbstractJasperPositionTest {
 		rb.columns(
 				column1 = col.column("Column1", "field1", String.class),
 				column2 = col.column("Column2", "field2", Integer.class))
-				.groupBy(
-						group1 = grp.group(column1)
-								.setFooterPosition(GroupFooterPosition.FORCE_AT_BOTTOM)
-								.keepTogether()
-								.setMinHeightToStartNewPage(100))
-				.subtotalsAtFirstGroupFooter(subtotal1 = sbt.sum(column2));
+			.groupBy(
+				group1 = grp.group(column1)
+					.setFooterPosition(GroupFooterPosition.FORCE_AT_BOTTOM)
+					.keepTogether()
+					.setMinHeightToStartNewPage(100))
+			.subtotalsAtFirstGroupFooter(subtotal1 = sbt.sum(column2));
 	}
 
 	@Override
@@ -69,13 +69,13 @@ public class GroupPosition3Test extends AbstractJasperPositionTest {
 		elementPositionTest("detail.list1", 0, 10, 42, 575, 16);
 		elementPositionTest("detail.list1", 1, 10, 58, 575, 16);
 
-		// group1
+		//group1
 		groupHeaderPositionTest(group1, 0, 10, 26, 575, 16);
-		// column2
+		//column2
 		columnTitlePositionTest(column2, 0, 10, 0, 565, 16);
 		columnDetailPositionTest(column2, 0, 10, 0, 565, 16);
 		columnDetailPositionTest(column2, 1, 10, 0, 565, 16);
-		// summary
+		//summary
 		elementPositionTest("subtotalGroupFooter.list1", 0, 10, 816, 575, 16);
 		subtotalPositionTest(subtotal1, 0, 10, 0, 565, 16);
 

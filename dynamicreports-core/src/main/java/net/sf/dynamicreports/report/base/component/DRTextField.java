@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -109,26 +109,24 @@ public class DRTextField<T> extends DRHyperLinkComponent implements DRITextField
 		this.dataType = dataType;
 	}
 
-	/**
-	 * Returns the number of columns.
-	 *
-	 * @return the number of columns >= 0
-	 */
+  /**
+   * Returns the number of columns.
+   *
+   * @return the number of columns >= 0
+   */
 	@Override
 	public Integer getColumns() {
 		return columns;
 	}
 
-	/**
-	 * This method is used to define the width of a column.
-	 * The width is set to the <code>columns</code> multiplied by width of the
-	 * character <em>m</em> for the font used
-	 *
-	 * @param columns
-	 *          the number of columns >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>columns</code> is < 0
-	 */
+  /**
+   * This method is used to define the width of a column.
+   * The width is set to the <code>columns</code> multiplied by width of the
+   * character <em>m</em> for the font used
+   *
+   * @param columns the number of columns >= 0
+   * @exception IllegalArgumentException if <code>columns</code> is < 0
+   */
 	public void setColumns(Integer columns) {
 		if (columns != null) {
 			Validate.isTrue(columns >= 0, "columns must be >= 0");
@@ -136,25 +134,23 @@ public class DRTextField<T> extends DRHyperLinkComponent implements DRITextField
 		this.columns = columns;
 	}
 
-	/**
-	 * Returns the number of rows.
-	 *
-	 * @return the number of rows >= 0
-	 */
+  /**
+   * Returns the number of rows.
+   *
+   * @return the number of rows >= 0
+   */
 	@Override
 	public Integer getRows() {
 		return rows;
 	}
 
-	/**
-	 * This method is used to define the height of a column.
-	 * The height is set to the <code>rows</code> multiplied by height of the font
-	 *
-	 * @param rows
-	 *          the number of rows >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>rows</code> is < 0
-	 */
+  /**
+   * This method is used to define the height of a column.
+   * The height is set to the <code>rows</code> multiplied by height of the font
+   *
+   * @param rows the number of rows >= 0
+   * @exception IllegalArgumentException if <code>rows</code> is < 0
+   */
 	public void setRows(Integer rows) {
 		if (rows != null) {
 			Validate.isTrue(rows >= 0, "rows must be >= 0");
@@ -207,3 +203,4 @@ public class DRTextField<T> extends DRHyperLinkComponent implements DRITextField
 		this.printRepeatedValues = printRepeatedValues;
 	}
 }
+

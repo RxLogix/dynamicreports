@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -54,7 +54,7 @@ import net.sf.jasperreports.export.XlsReportConfiguration;
  */
 public class JasperProperty {
 
-	// chart
+	//chart
 	/**
 	 * @see JRChart#PROPERTY_CHART_RENDER_TYPE
 	 */
@@ -64,7 +64,7 @@ public class JasperProperty {
 	 */
 	public static final String CHART_THEME = JRChart.PROPERTY_CHART_THEME;
 
-	// export
+	//export
 	/**
 	 * @see WriterExporterOutput#PROPERTY_CHARACTER_ENCODING
 	 */
@@ -92,7 +92,7 @@ public class JasperProperty {
 	 */
 	public static final String EXPORT_DEFAULT_FILTER_FACTORY = JRAbstractExporter.PROPERTY_DEFAULT_FILTER_FACTORY;
 
-	// text
+	//text
 	/**
 	 * @see JRTextElement#PROPERTY_PRINT_KEEP_FULL_TEXT
 	 */
@@ -130,7 +130,7 @@ public class JasperProperty {
 	 */
 	public static final String EXPORT_TEXT_PAGE_HEIGHT = TextReportConfiguration.PROPERTY_PAGE_HEIGHT;
 
-	// pdf
+	//pdf
 	/**
 	 * @see JRPdfExporterTagHelper#PROPERTY_TAG_TABLE
 	 */
@@ -228,7 +228,7 @@ public class JasperProperty {
 	 */
 	public static final String EXPORT_PDF_PDFA_ICC_PROFILE_PATH = PdfExporterConfiguration.PROPERTY_PDFA_ICC_PROFILE_PATH;
 
-	// html
+	//html
 	/**
 	 * @see HtmlExporter#PROPERTY_HTML_CLASS
 	 */
@@ -250,6 +250,12 @@ public class JasperProperty {
 	 */
 	public static final String EXPORT_HTML_WHITE_PAGE_BACKGROUND = HtmlReportConfiguration.PROPERTY_WHITE_PAGE_BACKGROUND;
 	/**
+	 * @see JRHtmlExporterConfiguration#PROPERTY_USING_IMAGES_TO_ALIGN
+	 * @deprecated To be removed.
+	 */
+	@Deprecated
+	public static final String EXPORT_HTML_USING_IMAGES_TO_ALIGN = net.sf.jasperreports.engine.export.JRHtmlExporterConfiguration.PROPERTY_USING_IMAGES_TO_ALIGN;
+	/**
 	 * @see HtmlReportConfiguration#PROPERTY_WRAP_BREAK_WORD
 	 */
 	public static final String EXPORT_HTML_WRAP_BREAK_WORD = HtmlReportConfiguration.PROPERTY_WRAP_BREAK_WORD;
@@ -258,11 +264,17 @@ public class JasperProperty {
 	 */
 	public static final String EXPORT_HTML_SIZE_UNIT = HtmlReportConfiguration.PROPERTY_SIZE_UNIT;
 	/**
+	 * @see JRHtmlReportConfiguration#PROPERTY_FRAMES_AS_NESTED_TABLES
+	 * @deprecated To be removed.
+	 */
+	@Deprecated
+	public static final String EXPORT_HTML_FRAMES_AS_NESTED_TABLES = net.sf.jasperreports.engine.export.JRHtmlReportConfiguration.PROPERTY_FRAMES_AS_NESTED_TABLES;
+	/**
 	 * @see HtmlExporterConfiguration#PROPERTY_FLUSH_OUTPUT
 	 */
 	public static final String EXPORT_HTML_FLUSH_OUTPUT = HtmlExporterConfiguration.PROPERTY_FLUSH_OUTPUT;
 
-	// xls
+	//xls
 	/**
 	 * @see XlsReportConfiguration#PROPERTY_ONE_PAGE_PER_SHEET
 	 */
@@ -270,7 +282,7 @@ public class JasperProperty {
 	/**
 	 * @see XlsReportConfiguration#PROPERTY_REMOVE_EMPTY_SPACE_BETWEEN_ROWS
 	 */
-	public static final String EXPORT_XLS_REMOVE_EMPTY_SPACE_BETWEEN_ROWS = XlsReportConfiguration.PROPERTY_REMOVE_EMPTY_SPACE_BETWEEN_ROWS;
+	public static final String EXPORT_XLS_REMOVE_EMPTY_SPACE_BETWEEN_ROWS = XlsReportConfiguration.PROPERTY_REMOVE_EMPTY_SPACE_BETWEEN_ROWS ;
 	/**
 	 * @see XlsReportConfiguration#PROPERTY_REMOVE_EMPTY_SPACE_BETWEEN_COLUMNS
 	 */
@@ -404,7 +416,7 @@ public class JasperProperty {
 	 */
 	public static final String EXPORT_XLS_BREAK_AFTER_ROW = JRXlsAbstractExporter.PROPERTY_BREAK_AFTER_ROW;
 
-	// xls metadata
+	//xls metadata
 	/**
 	 * @see XlsMetadataReportConfiguration#PROPERTY_COLUMN_NAMES_PREFIX
 	 */
@@ -426,13 +438,27 @@ public class JasperProperty {
 	 */
 	public static final String EXPORT_XLSMETADATA_DATA = JRXlsAbstractMetadataExporter.PROPERTY_DATA;
 
-	// xml
+	//jxl
+	/**
+	 * @see JxlExporterConfiguration#PROPERTY_USE_TEMP_FILE
+	 * @deprecated To be removed.
+	 */
+	@Deprecated
+	public static final String EXPORT_JXL_USE_TEMP_FILE = net.sf.jasperreports.export.JxlExporterConfiguration.PROPERTY_USE_TEMP_FILE;
+	/**
+	 * @see JxlReportConfiguration#PROPERTY_COMPLEX_FORMAT
+	 * @deprecated To be removed.
+	 */
+	@Deprecated
+	public static final String EXPORT_JXL_COMPLEX_FORMAT = net.sf.jasperreports.export.JxlReportConfiguration.PROPERTY_COMPLEX_FORMAT;
+
+	//xml
 	/**
 	 * @see PrintSaxParserFactory#EXPORT_XML_VALIDATION
 	 */
 	public static final String EXPORT_XML_VALIDATION = PrintSaxParserFactory.EXPORT_XML_VALIDATION;
 
-	// csv
+	//csv
 	/**
 	 * @see CsvExporterConfiguration#PROPERTY_FIELD_DELIMITER
 	 */
@@ -442,7 +468,7 @@ public class JasperProperty {
 	 */
 	public static final String EXPORT_CSV_RECORD_DELIMITER = CsvExporterConfiguration.PROPERTY_RECORD_DELIMITER;
 
-	// csv metadata
+	//csv metadata
 	/**
 	 * @see CsvMetadataReportConfiguration#PROPERTY_COLUMN_NAMES_PREFIX
 	 */
@@ -464,7 +490,7 @@ public class JasperProperty {
 	 */
 	public static final String EXPORT_CSVMETADATA_DATA = JRCsvMetadataExporter.PROPERTY_DATA;
 
-	// docx
+	//docx
 	/**
 	 * @see JRDocxExporter#PROPERTY_HIDDEN_TEXT
 	 */

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -51,14 +51,14 @@ public class GroupChartTest extends AbstractJasperChartTest implements Serializa
 		column2Variable.setResetType(Evaluation.FIRST_GROUP);
 
 		rb.columns(column1, column2, column3)
-				.groupBy(column1)
-				.summary(
-						cht.barChart()
-								.setCategory(column1)
-								.series(cht.serie(exp.number(1)).setLabel("")),
-						cht.barChart()
-								.setCategory(column1)
-								.series(cht.serie(column2Variable).setLabel("")));
+			.groupBy(column1)
+			.summary(
+					cht.barChart()
+						.setCategory(column1)
+						.series(cht.serie(exp.number(1)).setLabel("")),
+					cht.barChart()
+						.setCategory(column1)
+						.series(cht.serie(column2Variable).setLabel("")));
 	}
 
 	@Override
@@ -67,18 +67,18 @@ public class GroupChartTest extends AbstractJasperChartTest implements Serializa
 
 		numberOfPagesTest(1);
 
-		String[] categories = new String[] { "value1", "value2" };
-		String[] series = new String[] { "" };
+		String[] categories = new String[]{"value1", "value2"};
+		String[] series = new String[]{""};
 
 		chartCountTest("summary.chart1", 1);
 		chartCategoryCountTest("summary.chart1", 0, 2);
 		chartSeriesCountTest("summary.chart1", 0, 1);
-		chartDataTest("summary.chart1", 0, categories, series, new Number[][] { { 3d }, { 2d } });
+		chartDataTest("summary.chart1", 0, categories, series, new Number[][]{{3d}, {2d}});
 
 		chartCountTest("summary.chart2", 1);
 		chartCategoryCountTest("summary.chart2", 0, 2);
 		chartSeriesCountTest("summary.chart2", 0, 1);
-		chartDataTest("summary.chart2", 0, categories, series, new Number[][] { { 2l }, { 2l } });
+		chartDataTest("summary.chart2", 0, categories, series, new Number[][]{{2l}, {2l}});
 	}
 
 	@Override

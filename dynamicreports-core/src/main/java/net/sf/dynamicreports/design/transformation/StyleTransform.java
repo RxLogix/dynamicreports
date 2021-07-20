@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -149,12 +149,12 @@ public class StyleTransform {
 	}
 
 	private DRDesignStyle style(DRIStyle style, boolean textStyle, DefaultStyleType defaultStyleType) throws DRException {
-		final DRDesignStyle designStyle;
-		if (StringUtils.isBlank(style.getName())) {
-			designStyle = new DRDesignStyle();
-		} else {
-			designStyle = new DRDesignStyle(style.getName());
-		}
+	  final DRDesignStyle designStyle;
+	  if (StringUtils.isBlank(style.getName())) {
+      designStyle = new DRDesignStyle();
+	  } else {
+	    designStyle = new DRDesignStyle(style.getName());
+	  }
 		baseStyle(designStyle, style);
 		if (style.getParentStyle() != null) {
 			designStyle.setParentStyle(transformStyle(style.getParentStyle(), textStyle, defaultStyleType));
@@ -272,28 +272,28 @@ public class StyleTransform {
 	protected DRDesignStyle getDefaultStyle(DefaultStyleType defaultStyleType) throws DRException {
 		TemplateTransform templateTransform = accessor.getTemplateTransform();
 		switch (defaultStyleType) {
-			case NONE:
-				return null;
-			case TEXT:
-				return transformStyle(templateTransform.getTextStyle(), true);
-			case COLUMN:
-				return transformStyle(templateTransform.getColumnStyle(true), true);
-			case COLUMN_TITLE:
-				return transformStyle(templateTransform.getColumnTitleStyle(), true);
-			case GROUP:
-				return transformStyle(templateTransform.getGroupStyle(), true);
-			case GROUP_TITLE:
-				return transformStyle(templateTransform.getGroupTitleStyle(), true);
-			case SUBTOTAL:
-				return transformStyle(templateTransform.getSubtotalStyle(), true);
-			case IMAGE:
-				return transformStyle(templateTransform.getImageStyle(), false);
-			case CHART:
-				return transformStyle(templateTransform.getChartStyle(), false);
-			case BARCODE:
-				return transformStyle(templateTransform.getBarcodeStyle(), false);
-			default:
-				throw new DRDesignReportException("Default style type " + defaultStyleType.name() + " not supported");
+		case NONE:
+			return null;
+		case TEXT:
+			return transformStyle(templateTransform.getTextStyle(), true);
+		case COLUMN:
+			return transformStyle(templateTransform.getColumnStyle(true), true);
+		case COLUMN_TITLE:
+			return transformStyle(templateTransform.getColumnTitleStyle(), true);
+		case GROUP:
+			return transformStyle(templateTransform.getGroupStyle(), true);
+		case GROUP_TITLE:
+			return transformStyle(templateTransform.getGroupTitleStyle(), true);
+		case SUBTOTAL:
+			return transformStyle(templateTransform.getSubtotalStyle(), true);
+		case IMAGE:
+			return transformStyle(templateTransform.getImageStyle(), false);
+		case CHART:
+			return transformStyle(templateTransform.getChartStyle(), false);
+		case BARCODE:
+			return transformStyle(templateTransform.getBarcodeStyle(), false);
+		default:
+			throw new DRDesignReportException("Default style type " + defaultStyleType.name() + " not supported");
 		}
 	}
 

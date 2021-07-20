@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -46,7 +46,7 @@ public class Subreport3Test extends AbstractJasperValueTest implements Serializa
 		subreport1.setDataSource(createSubreport1DataSource());
 
 		rb.fields(field("f1", Integer.class))
-				.detail(subreport1);
+		  .detail(subreport1);
 	}
 
 	@Override
@@ -72,9 +72,9 @@ public class Subreport3Test extends AbstractJasperValueTest implements Serializa
 
 		JasperReportBuilder report = report();
 		report
-				.fields(field("f2", Integer.class))
-				.setPageMargin(margin(0))
-				.detail(subreport2);
+			.fields(field("f2", Integer.class))
+		  .setPageMargin(margin(0))
+		  .detail(subreport2);
 		return report;
 	}
 
@@ -89,9 +89,9 @@ public class Subreport3Test extends AbstractJasperValueTest implements Serializa
 	private JasperReportBuilder subreport2() {
 		JasperReportBuilder report = report();
 		report
-				.setPageMargin(margin(0))
-				.title(
-						cmp.text(new SubreportTitle()));
+		  .setPageMargin(margin(0))
+		  .title(
+		  	cmp.text(new SubreportTitle()));
 		return report;
 	}
 

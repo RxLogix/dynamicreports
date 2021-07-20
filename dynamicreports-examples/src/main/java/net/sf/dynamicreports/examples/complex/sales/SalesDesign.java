@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,82 +49,82 @@ public class SalesDesign {
 	public JasperReportBuilder build() throws DRException {
 		JasperReportBuilder report = report();
 
-		// init styles
-		FontBuilder boldFont = stl.fontArialBold();
+		//init styles
+		FontBuilder  boldFont = stl.fontArialBold();
 
-		// init columns
+		//init columns
 		TextColumnBuilder<String> stateColumn = col.column("State", "state", type.stringType());
 		TextColumnBuilder<String> itemColumn = col.column("Item", "item", type.stringType()).setPrintRepeatedDetailValues(false);
 		TextColumnBuilder<Date> orderDateColumn = col.column("Order date", "orderdate", type.dateType());
 		TextColumnBuilder<Integer> quantityColumn = col.column("Quantity", "quantity", type.integerType());
 		TextColumnBuilder<BigDecimal> unitPriceColumn = col.column("Unit price", "unitprice", Templates.currencyType);
-		// price = unitPrice * quantity
+		//price = unitPrice * quantity
 		TextColumnBuilder<BigDecimal> priceColumn = unitPriceColumn.multiply(quantityColumn).setTitle("Price")
-				.setDataType(Templates.currencyType);
+			.setDataType(Templates.currencyType);
 		PercentageColumnBuilder pricePercColumn = col.percentageColumn("Price %", priceColumn);
 
-		// init groups
+		//init groups
 		ColumnGroupBuilder stateGroup = grp.group(stateColumn);
 
-		// init subtotals
+		//init subtotals
 		AggregationSubtotalBuilder<Number> priceAvg = sbt.avg(priceColumn)
-				.setValueFormatter(Templates.createCurrencyValueFormatter("avg = "));
+			.setValueFormatter(Templates.createCurrencyValueFormatter("avg = "));
 		AggregationSubtotalBuilder<BigDecimal> unitPriceSum = sbt.sum(unitPriceColumn)
-				.setLabel("Total:")
-				.setLabelStyle(Templates.boldStyle);
+			.setLabel("Total:")
+			.setLabelStyle(Templates.boldStyle);
 		AggregationSubtotalBuilder<BigDecimal> priceSum = sbt.sum(priceColumn)
-				.setLabel("")
-				.setLabelStyle(Templates.boldStyle);
+			.setLabel("")
+			.setLabelStyle(Templates.boldStyle);
 
-		// init charts
+		//init charts
 		Bar3DChartBuilder itemChart = cht.bar3DChart()
-				.setTitle("Sales by item")
-				.setTitleFont(boldFont)
-				.setOrientation(Orientation.HORIZONTAL)
-				.setCategory(itemColumn)
-				.addSerie(
-						cht.serie(unitPriceColumn), cht.serie(priceColumn));
+			.setTitle("Sales by item")
+			.setTitleFont(boldFont)
+			.setOrientation(Orientation.HORIZONTAL)
+			.setCategory(itemColumn)
+			.addSerie(
+				cht.serie(unitPriceColumn), cht.serie(priceColumn));
 		TimeSeriesChartBuilder dateChart = cht.timeSeriesChart()
-				.setTitle("Sales by date")
-				.setTitleFont(boldFont)
-				.setFixedHeight(150)
-				.setTimePeriod(orderDateColumn)
-				.addSerie(
-						cht.serie(unitPriceColumn), cht.serie(priceColumn));
+			.setTitle("Sales by date")
+			.setTitleFont(boldFont)
+			.setFixedHeight(150)
+			.setTimePeriod(orderDateColumn)
+			.addSerie(
+				cht.serie(unitPriceColumn), cht.serie(priceColumn));
 		PieChartBuilder stateChart = cht.pieChart()
-				.setTitle("Sales by state")
-				.setTitleFont(boldFont)
-				.setFixedHeight(100)
-				.setShowLegend(false)
-				.setKey(stateColumn)
-				.addSerie(
-						cht.serie(priceColumn));
+			.setTitle("Sales by state")
+			.setTitleFont(boldFont)
+			.setFixedHeight(100)
+			.setShowLegend(false)
+			.setKey(stateColumn)
+			.addSerie(
+				cht.serie(priceColumn));
 
-		// configure report
+		//configure report
 		report
-				.addProperty("net.sf.jasperreports.chart.pie.ignore.duplicated.key", "true")
-				.setTemplate(Templates.reportTemplate)
-				// columns
-				.columns(
-						stateColumn, itemColumn, orderDateColumn, quantityColumn, unitPriceColumn, priceColumn, pricePercColumn)
-				// groups
-				.groupBy(stateGroup)
-				// subtotals
-				.subtotalsAtFirstGroupFooter(
-						sbt.sum(unitPriceColumn), sbt.sum(priceColumn))
-				.subtotalsOfPercentageAtGroupFooter(stateGroup,
-						sbt.percentage(priceColumn).setShowInColumn(pricePercColumn))
-				.subtotalsAtSummary(
-						unitPriceSum, priceSum, priceAvg)
-				// band components
-				.title(
-						Templates.createTitleComponent("Sales"),
-						cmp.horizontalList(
-								itemChart, cmp.verticalList(dateChart, stateChart)),
-						cmp.verticalGap(10))
-				.pageFooter(
-						Templates.footerComponent)
-				.setDataSource(data.createDataSource());
+			.addProperty("net.sf.jasperreports.chart.pie.ignore.duplicated.key", "true")
+			.setTemplate(Templates.reportTemplate)
+			//columns
+			.columns(
+				stateColumn, itemColumn, orderDateColumn, quantityColumn, unitPriceColumn, priceColumn, pricePercColumn)
+			//groups
+			.groupBy(stateGroup)
+			//subtotals
+			.subtotalsAtFirstGroupFooter(
+				sbt.sum(unitPriceColumn), sbt.sum(priceColumn))
+			.subtotalsOfPercentageAtGroupFooter(stateGroup,
+				sbt.percentage(priceColumn).setShowInColumn(pricePercColumn))
+			.subtotalsAtSummary(
+				unitPriceSum, priceSum, priceAvg)
+			//band components
+			.title(
+				Templates.createTitleComponent("Sales"),
+				cmp.horizontalList(
+					itemChart, cmp.verticalList(dateChart, stateChart)),
+				cmp.verticalGap(10))
+			.pageFooter(
+				Templates.footerComponent)
+			.setDataSource(data.createDataSource());
 
 		return report;
 	}

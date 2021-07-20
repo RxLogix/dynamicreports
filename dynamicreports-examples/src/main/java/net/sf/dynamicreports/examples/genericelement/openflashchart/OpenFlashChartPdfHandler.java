@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -52,7 +52,7 @@ import com.lowagie.text.pdf.PdfWriter;
 @SuppressWarnings("deprecation")
 public class OpenFlashChartPdfHandler implements GenericElementPdfHandler {
 
-	private final ReferenceMap existingContexts = new ReferenceMap(ReferenceMap.WEAK, ReferenceMap.HARD);
+	private final ReferenceMap existingContexts = new ReferenceMap(ReferenceMap.WEAK,	ReferenceMap.HARD);
 
 	@Override
 	public boolean toExport(JRGenericPrintElement element) {
@@ -60,8 +60,8 @@ public class OpenFlashChartPdfHandler implements GenericElementPdfHandler {
 	}
 
 	@Override
-	public void exportElement(JRPdfExporterContext exporterContext, JRGenericPrintElement element) {
-		try {
+	public void exportElement(JRPdfExporterContext exporterContext,	JRGenericPrintElement element) {
+		try	{
 			PdfWriter writer = exporterContext.getPdfWriter();
 			PdfIndirectObject swfRef;
 			boolean newContext = !existingContexts.containsKey(exporterContext);
@@ -77,7 +77,8 @@ public class OpenFlashChartPdfHandler implements GenericElementPdfHandler {
 				PdfFileSpecification swfFile = PdfFileSpecification.fileEmbedded(writer, null, "Open Flash Chart", swfData);
 				swfRef = writer.addToBody(swfFile);
 				existingContexts.put(exporterContext, swfRef);
-			} else {
+			}
+			else {
 				swfRef = (PdfIndirectObject) existingContexts.get(exporterContext);
 			}
 
@@ -125,7 +126,8 @@ public class OpenFlashChartPdfHandler implements GenericElementPdfHandler {
 			ann.put(new PdfName("RichMediaContent"), content);
 
 			writer.addAnnotation(ann);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
@@ -138,7 +140,7 @@ public class OpenFlashChartPdfHandler implements GenericElementPdfHandler {
 		byte[] data = new byte[16384];
 
 		while ((nRead = is.read(data, 0, data.length)) != -1) {
-			buffer.write(data, 0, nRead);
+		  buffer.write(data, 0, nRead);
 		}
 
 		buffer.flush();

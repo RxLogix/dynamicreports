@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,22 +49,22 @@ public class Crosstab6Test extends AbstractJasperCrosstabValueTest {
 		measure1.setStretchWithOverflow(false);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.setCellWidth(18)
-				.rowGroups(
-						rowGroup = ctab.rowGroup("field1", String.class)
-								.addHeaderProperty(JasperProperty.PRINT_KEEP_FULL_TEXT, "true")
-								.addTotalHeaderProperty(JasperProperty.PRINT_KEEP_FULL_TEXT, "true")
-								.setHeaderStretchWithOverflow(false)
-								.setTotalHeaderStretchWithOverflow(false)
-								.setHeaderWidth(18))
-				.columnGroups(
-						columnGroup = ctab.columnGroup("field2", String.class)
-								.addHeaderProperty(JasperProperty.PRINT_KEEP_FULL_TEXT, "true")
-								.addTotalHeaderProperty(JasperProperty.PRINT_KEEP_FULL_TEXT, "true")
-								.setHeaderStretchWithOverflow(false)
-								.setTotalHeaderStretchWithOverflow(false))
-				.measures(
-						measure1);
+			.setCellWidth(18)
+			.rowGroups(
+				rowGroup = ctab.rowGroup("field1", String.class)
+					.addHeaderProperty(JasperProperty.PRINT_KEEP_FULL_TEXT, "true")
+					.addTotalHeaderProperty(JasperProperty.PRINT_KEEP_FULL_TEXT, "true")
+					.setHeaderStretchWithOverflow(false)
+					.setTotalHeaderStretchWithOverflow(false)
+					.setHeaderWidth(18))
+			.columnGroups(
+				columnGroup = ctab.columnGroup("field2", String.class)
+						.addHeaderProperty(JasperProperty.PRINT_KEEP_FULL_TEXT, "true")
+						.addTotalHeaderProperty(JasperProperty.PRINT_KEEP_FULL_TEXT, "true")
+						.setHeaderStretchWithOverflow(false)
+						.setTotalHeaderStretchWithOverflow(false))
+			.measures(
+				measure1);
 
 		rb.summary(crosstab);
 	}
@@ -77,7 +77,7 @@ public class Crosstab6Test extends AbstractJasperCrosstabValueTest {
 
 		setCrosstabBand("summary");
 
-		// column group
+		//column group
 		crosstabGroupHeaderCountTest(columnGroup, 2);
 		crosstabGroupHeaderValueTest(columnGroup, "c ", "d ");
 		crosstabGroupHeaderFullValueTest(columnGroup, "c test test", "d test test");
@@ -85,7 +85,7 @@ public class Crosstab6Test extends AbstractJasperCrosstabValueTest {
 		crosstabGroupTotalHeaderValueTest(columnGroup, "To");
 		crosstabGroupTotalHeaderFullValueTest(columnGroup, "Total");
 
-		// row group
+		//row group
 		crosstabGroupHeaderCountTest(rowGroup, 2);
 		crosstabGroupHeaderValueTest(rowGroup, "a ", "b ");
 		crosstabGroupHeaderFullValueTest(rowGroup, "a test test", "b test test");
@@ -93,7 +93,7 @@ public class Crosstab6Test extends AbstractJasperCrosstabValueTest {
 		crosstabGroupTotalHeaderValueTest(rowGroup, "To");
 		crosstabGroupTotalHeaderFullValueTest(rowGroup, "Total");
 
-		// measure1
+		//measure1
 		crosstabCellCountTest(measure1, null, null, 4);
 		crosstabCellValueTest(measure1, null, null, "30", "70", "11", "15");
 		crosstabCellFullValueTest(measure1, null, null, "30", "70", "110", "150");

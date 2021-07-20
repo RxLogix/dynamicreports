@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -56,14 +56,14 @@ public class CrosstabPosition8Test extends AbstractJasperCrosstabPositionTest {
 		measure2 = ctab.measure("measure2", column3, Calculation.SUM);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.setCellWidth(100)
-				.rowGroups(rowGroup1)
-				.columnGroups(
-						columnGroup1 = ctab.columnGroup(column2))
-				.measures(measure1, measure2);
+			.setCellWidth(100)
+			.rowGroups(rowGroup1)
+			.columnGroups(
+				columnGroup1 = ctab.columnGroup(column2))
+			.measures(measure1, measure2);
 
 		rb.setPageFormat(PageType.A4, PageOrientation.LANDSCAPE)
-				.summary(crosstab);
+			.summary(crosstab);
 	}
 
 	@Override
@@ -74,15 +74,15 @@ public class CrosstabPosition8Test extends AbstractJasperCrosstabPositionTest {
 
 		setCrosstabBand("summary");
 
-		// column group 1
+		//column group 1
 		crosstabGroupHeaderPositionTest(columnGroup1, 0, 0, 0, 100, 16);
 		crosstabGroupTotalHeaderPositionTest(columnGroup1, 0, 0, 0, 100, 16);
 
-		// row group 1
+		//row group 1
 		crosstabGroupHeaderPositionTest(rowGroup1, 0, 0, 0, 22, 26);
 		crosstabGroupTotalHeaderPositionTest(rowGroup1, 0, 0, 0, 22, 26);
 
-		// measures
+		//measures
 		crosstabCellPositionTest(measure1, null, null, 0, 0, 0, 50, 26);
 		crosstabCellPositionTest(measure1, rowGroup1, null, 0, 0, 0, 50, 26);
 		crosstabCellPositionTest(measure1, null, columnGroup1, 0, 0, 0, 50, 26);

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -46,18 +46,18 @@ public class Style7Test extends AbstractJasperStyleTest implements Serializable 
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		StyleBuilder style = stl.style()
-				.setLineSpacing(LineSpacing.DOUBLE)
-				.setLineSpacingSize(2f)
-				.setFirstLineIndent(10)
-				.setLeftIndent(15)
-				.setRightIndent(20)
-				.setSpacingBefore(5)
-				.setSpacingAfter(6)
-				.setTabStopWidth(9)
-				.addTabStop(12, TabStopAlignment.CENTER);
+			.setLineSpacing(LineSpacing.DOUBLE)
+			.setLineSpacingSize(2f)
+			.setFirstLineIndent(10)
+			.setLeftIndent(15)
+			.setRightIndent(20)
+			.setSpacingBefore(5)
+			.setSpacingAfter(6)
+			.setTabStopWidth(9)
+			.addTabStop(12, TabStopAlignment.CENTER);
 
 		rb.setTextStyle(style)
-				.title(cmp.text(""));
+		  .title(cmp.text(""));
 	}
 
 	@Override

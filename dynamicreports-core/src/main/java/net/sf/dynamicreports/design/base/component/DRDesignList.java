@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -79,14 +79,12 @@ public class DRDesignList extends DRDesignComponent implements DRIDesignList {
 		listCells.add(index, new DRDesignListCell(component));
 	}
 
-	public void addComponent(int index, HorizontalCellComponentAlignment horizontalAlignment, VerticalCellComponentAlignment verticalAlignment,
-			DRDesignComponent component) {
+	public void addComponent(int index, HorizontalCellComponentAlignment horizontalAlignment, VerticalCellComponentAlignment verticalAlignment, DRDesignComponent component) {
 		components.add(index, component);
 		listCells.add(index, new DRDesignListCell(horizontalAlignment, verticalAlignment, component));
 	}
 
-	public void addComponent(HorizontalCellComponentAlignment horizontalAlignment, VerticalCellComponentAlignment verticalAlignment,
-			DRDesignComponent component) {
+	public void addComponent(HorizontalCellComponentAlignment horizontalAlignment, VerticalCellComponentAlignment verticalAlignment, DRDesignComponent component) {
 		components.add(component);
 		listCells.add(new DRDesignListCell(horizontalAlignment, verticalAlignment, component));
 	}
@@ -136,7 +134,8 @@ public class DRDesignList extends DRDesignComponent implements DRIDesignList {
 	public boolean isRemovable() {
 		if (removable != null) {
 			return removable;
-		} else {
+		}
+		else {
 			return ListType.VERTICAL.equals(type);
 		}
 	}

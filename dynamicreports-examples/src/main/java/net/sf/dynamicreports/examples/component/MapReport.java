@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -39,15 +39,15 @@ public class MapReport {
 	private void build() {
 		try {
 			JasperHtmlExporterBuilder htmlExporter = export.htmlExporter("c:/report.html")
-					.setImagesDirName("c:/images")
-					.setOutputImagesToDir(true);
+				.setImagesDirName("c:/images")
+				.setOutputImagesToDir(true);
 
 			report()
-					.setTemplate(template())
-					.title(
-							Templates.createTitleComponent("Map"),
-							cmp.map(40.7f, -74f, 12).setFixedHeight(750))
-					.toHtml(htmlExporter);
+			  .setTemplate(template())
+			  .title(
+			  	Templates.createTitleComponent("Map"),
+			  	cmp.map(40.7f, -74f, 12).setFixedHeight(750))
+			  .toHtml(htmlExporter);
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

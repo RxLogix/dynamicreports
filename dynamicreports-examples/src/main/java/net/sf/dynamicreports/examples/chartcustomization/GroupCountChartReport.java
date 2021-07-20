@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,32 +48,32 @@ public class GroupCountChartReport {
 		TextColumnBuilder<Integer> quantityColumn = col.column("Quantity", "quantity", type.integerType());
 
 		Bar3DChartBuilder chart1 = cht.bar3DChart()
-				.setFixedHeight(180)
-				.setCategory(countryColumn)
-				.series(cht.serie(exp.number(1)).setLabel("Items (group count)"))
-				.setCategoryAxisFormat(
-						cht.axisFormat().setLabel("Country"));
+			.setFixedHeight(180)
+			.setCategory(countryColumn)
+			.series(cht.serie(exp.number(1)).setLabel("Items (group count)"))
+			.setCategoryAxisFormat(
+				cht.axisFormat().setLabel("Country"));
 
 		VariableBuilder<Integer> itemVariable = variable(itemColumn, Calculation.DISTINCT_COUNT);
 		itemVariable.setResetType(Evaluation.FIRST_GROUP);
 
 		Bar3DChartBuilder chart2 = cht.bar3DChart()
-				.setFixedHeight(180)
-				.setCategory(countryColumn)
-				.series(cht.serie(itemVariable).setLabel("Items (group distinct count)"))
-				.setCategoryAxisFormat(
-						cht.axisFormat().setLabel("Country"));
+			.setFixedHeight(180)
+			.setCategory(countryColumn)
+			.series(cht.serie(itemVariable).setLabel("Items (group distinct count)"))
+			.setCategoryAxisFormat(
+				cht.axisFormat().setLabel("Country"));
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.columns(countryColumn, itemColumn, quantityColumn)
-					.title(Templates.createTitleComponent("GroupCountChart"))
-					.groupBy(grp.group(countryColumn))
-					.summary(cmp.horizontalList(chart1, chart2))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.columns(countryColumn, itemColumn, quantityColumn)
+				.title(Templates.createTitleComponent("GroupCountChart"))
+				.groupBy(grp.group(countryColumn))
+				.summary(cmp.horizontalList(chart1, chart2))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

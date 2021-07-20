@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -46,7 +46,7 @@ public class ColumnTitleGroupPosition6Test extends AbstractJasperPositionTest {
 		column4 = col.column("field4", String.class);
 
 		rb.columnGrid(column1, grid.titleGroup("Group 1", column2), grid.titleGroup("Group 2", column3, column4))
-				.columns(column1, column2, column3, column4);
+			.columns(column1, column2, column3, column4);
 	}
 
 	@Override
@@ -58,13 +58,13 @@ public class ColumnTitleGroupPosition6Test extends AbstractJasperPositionTest {
 		elementPositionTest("columnHeader.list1", 0, 10, 10, 575, 16);
 		elementPositionTest("columnHeader.columngroup.title1", 0, 164, 0, 164, 16);
 		elementPositionTest("columnHeader.columngroup.title2", 0, 328, 0, 247, 16);
-		// column1
+		//column1
 		columnDetailPositionTest(column1, 0, 0, 0, 164, 16);
-		// column2
+		//column2
 		columnDetailPositionTest(column2, 0, 164, 0, 164, 16);
-		// column3
+		//column3
 		columnDetailPositionTest(column3, 0, 328, 0, 50, 16);
-		// column4
+		//column4
 		columnDetailPositionTest(column4, 0, 378, 0, 197, 16);
 	}
 

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -56,45 +56,45 @@ public class XyBlockChartTest extends AbstractJasperChartTest {
 		TextColumnBuilder<Integer> column3;
 
 		rb.setLocale(Locale.ENGLISH)
-				.columns(
-						column1 = col.column("Column1", "field1", Integer.class),
-						column2 = col.column("Column2", "field2", Integer.class),
-						column3 = col.column("Column3", "field3", Integer.class))
-				.summary(
-						cht.xyBlockChart(0.1, 5, Color.WHITE)
-								.setXValue(column1)
-								.series(
-										cht.xyzSerie().setYValue(column2).setZValue(column3))
-								.setBlockWidth(1.1)
-								.setBlockHeight(0.9)
-								.setBlockAnchor(RectangleAnchor.BOTTOM_LEFT)
-								.paintScales(
-										cht.paintScale("1", 1, Color.RED),
-										cht.paintScale("2", 2, Color.GREEN),
-										cht.paintScale("3", 3, Color.BLUE)),
-						cht.xyBlockChart(0, 5, Color.WHITE)
-								.setXValue(column1)
-								.series(cht.xyzSerie().setYValue(column2).setZValue(column3))
-								.setXAxisFormat(
-										cht.axisFormat()
-												.setLabel("category")
-												.setLabelColor(Color.BLUE)
-												.setLabelFont(stl.fontArialBold())
-												.setTickLabelFont(stl.fontArial().setItalic(true))
-												.setTickLabelColor(Color.CYAN)
-												.setLineColor(Color.LIGHT_GRAY)),
-						cht.xyBlockChart(0, 5, Color.WHITE)
-								.setXValue(column1)
-								.series(cht.xyzSerie().setYValue(column2).setZValue(column3))
-								.setYAxisFormat(
-										cht.axisFormat()
-												.setLabel("value")
-												.setLabelColor(Color.BLUE)
-												.setLabelFont(stl.fontArialBold())
-												.setTickLabelFont(stl.fontArial().setItalic(true))
-												.setTickLabelColor(Color.CYAN)
-												.setTickLabelMask("#,##0.00")
-												.setLineColor(Color.LIGHT_GRAY)));
+			.columns(
+				column1 = col.column("Column1", "field1", Integer.class),
+				column2 = col.column("Column2", "field2", Integer.class),
+				column3 = col.column("Column3", "field3", Integer.class))
+			.summary(
+					cht.xyBlockChart(0.1, 5, Color.WHITE)
+						.setXValue(column1)
+						.series(
+							cht.xyzSerie().setYValue(column2).setZValue(column3))
+						.setBlockWidth(1.1)
+						.setBlockHeight(0.9)
+						.setBlockAnchor(RectangleAnchor.BOTTOM_LEFT)
+						.paintScales(
+							cht.paintScale("1", 1, Color.RED),
+							cht.paintScale("2", 2, Color.GREEN),
+							cht.paintScale("3", 3, Color.BLUE)),
+					cht.xyBlockChart(0, 5, Color.WHITE)
+						.setXValue(column1)
+						.series(cht.xyzSerie().setYValue(column2).setZValue(column3))
+						.setXAxisFormat(
+								cht.axisFormat()
+											.setLabel("category")
+											.setLabelColor(Color.BLUE)
+											.setLabelFont(stl.fontArialBold())
+											.setTickLabelFont(stl.fontArial().setItalic(true))
+											.setTickLabelColor(Color.CYAN)
+											.setLineColor(Color.LIGHT_GRAY)),
+					cht.xyBlockChart(0, 5, Color.WHITE)
+						.setXValue(column1)
+						.series(cht.xyzSerie().setYValue(column2).setZValue(column3))
+						.setYAxisFormat(
+								cht.axisFormat()
+											.setLabel("value")
+											.setLabelColor(Color.BLUE)
+											.setLabelFont(stl.fontArialBold())
+											.setTickLabelFont(stl.fontArial().setItalic(true))
+											.setTickLabelColor(Color.CYAN)
+											.setTickLabelMask("#,##0.00")
+											.setLineColor(Color.LIGHT_GRAY)));
 	}
 
 	@Override
@@ -127,7 +127,7 @@ public class XyBlockChartTest extends AbstractJasperChartTest {
 		Assert.assertEquals("legend item 3 label", "3", legendItems.get(2).getLabel());
 		Assert.assertEquals("legend item 3 paint", Color.BLUE, legendItems.get(2).getFillPaint());
 
-		xyzChartDataTest(chart, 0, "serie0", new Number[][] { { 1d, 2d, 0d }, { 2d, 3d, 1d }, { 3d, 4d, 2d }, { 4d, 5d, 3d } });
+		xyzChartDataTest(chart, 0, "serie0", new Number[][] {{1d, 2d, 0d}, {2d, 3d, 1d}, {3d, 4d, 2d}, {4d, 5d, 3d}});
 
 		chart = getChart("summary.chart2", 0);
 		Axis axis = chart.getXYPlot().getDomainAxis();

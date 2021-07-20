@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -45,18 +45,18 @@ public class XyListTest extends AbstractJasperPositionTest {
 		XyListBuilder list2 = cmp.xyList().setStyle(style);
 		list2.add(10, 10, cmp.text(""));
 		list2.add(50, 15, cmp.text(""));
-		list2.add(200, 5, cmp.horizontalList(cmp.text(""), cmp.text("")).setWidth(100));
+		list2.add(200, 5, cmp.horizontalList(cmp.text(""),cmp.text("")).setWidth(100));
 		list2.add(350, 5, cmp.verticalList(cmp.text(""), cmp.text("")).setWidth(150));
 
 		XyListBuilder list3 = cmp.xyList();
 		list3.add(10, 10, cmp.horizontalList(cmp.text("").setWidth(50), cmp.text("")).newRow().add(cmp.text("")));
-		list3.add(200, 10, cmp.xyList().add(5, 5, cmp.horizontalList(cmp.text(""), cmp.text(""))));
+		list3.add(200, 10, cmp.xyList().add(5, 5, cmp.horizontalList(cmp.text(""),cmp.text(""))));
 
 		XyListBuilder list4 = cmp.xyList().setStyle(style).setFixedWidth(250);
-		list4.add(100, 10, cmp.xyList().setStyle(style).add(5, 5, cmp.verticalList(cmp.text(""), cmp.text(""))));
+		list4.add(100, 10, cmp.xyList().setStyle(style).add(5, 5, cmp.verticalList(cmp.text(""),cmp.text(""))));
 
 		rb.title(
-				list1, list2, list3, list4);
+			list1, list2, list3, list4);
 	}
 
 	@Override

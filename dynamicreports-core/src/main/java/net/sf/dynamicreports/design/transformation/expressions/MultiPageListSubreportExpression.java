@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -52,8 +52,7 @@ public class MultiPageListSubreportExpression extends AbstractSimpleExpression<J
 	private List<DRIComponent> detailComponents;
 	private Map<String, DRIStyle> templateStyles;
 
-	public MultiPageListSubreportExpression(Locale locale, ResourceBundle resourceBundle, String resourceBundleName,
-			WhenResourceMissingType whenResourceMissingType, List<DRIComponent> detailComponents, Map<String, DRIStyle> templateStyles) {
+	public MultiPageListSubreportExpression(Locale locale, ResourceBundle resourceBundle, String resourceBundleName, WhenResourceMissingType whenResourceMissingType, List<DRIComponent> detailComponents, Map<String, DRIStyle> templateStyles) {
 		this.locale = locale;
 		this.resourceBundle = resourceBundle;
 		this.resourceBundleName = resourceBundleName;
@@ -64,17 +63,17 @@ public class MultiPageListSubreportExpression extends AbstractSimpleExpression<J
 
 	@Override
 	public JasperReportBuilder evaluate(ReportParameters reportParameters) {
-		JasperReportBuilder report = report();
-		report.setLocale(locale);
-		report.setResourceBundle(resourceBundle);
-		report.setResourceBundle(resourceBundleName);
-		report.setWhenResourceMissingType(whenResourceMissingType);
-		for (DRIStyle style : templateStyles.values()) {
-			report.getReport().addTemplateStyle(style);
-		}
-		DRBand titleBand = report.getReport().getTitleBand();
-		DRComponent detailComponent = (DRComponent) detailComponents.get(reportParameters.getReportRowNumber() - 1);
-		titleBand.addComponent(detailComponent);
+    JasperReportBuilder report = report();
+    report.setLocale(locale);
+    report.setResourceBundle(resourceBundle);
+    report.setResourceBundle(resourceBundleName);
+    report.setWhenResourceMissingType(whenResourceMissingType);
+    for (DRIStyle style : templateStyles.values()) {
+  	  report.getReport().addTemplateStyle(style);
+    }
+    DRBand titleBand = report.getReport().getTitleBand();
+    DRComponent detailComponent = (DRComponent) detailComponents.get(reportParameters.getReportRowNumber() - 1);
+    titleBand.addComponent(detailComponent);
 		return report;
 	}
 }

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -50,7 +50,7 @@ public class SpiderChartBuilder extends AbstractChartBuilder<SpiderChartBuilder>
 		super(ChartType.SPIDER);
 	}
 
-	// dataset
+	//dataset
 	public SpiderChartBuilder setCategory(ValueColumnBuilder<?, String> column) {
 		Validate.notNull(column, "column must not be null");
 		getDataset().setValueExpression(column.getColumn());
@@ -72,11 +72,11 @@ public class SpiderChartBuilder extends AbstractChartBuilder<SpiderChartBuilder>
 		return this;
 	}
 
-	public SpiderChartBuilder series(CategoryChartSerieBuilder... chartSeries) {
+	public SpiderChartBuilder series(CategoryChartSerieBuilder ...chartSeries) {
 		return addSerie(chartSeries);
 	}
 
-	public SpiderChartBuilder addSerie(CategoryChartSerieBuilder... chartSeries) {
+	public SpiderChartBuilder addSerie(CategoryChartSerieBuilder ...chartSeries) {
 		Validate.notNull(chartSeries, "chartSeries must not be null");
 		Validate.noNullElements(chartSeries, "chartSeries must not contains null chartSerie");
 		for (CategoryChartSerieBuilder chartSerie : chartSeries) {
@@ -91,7 +91,7 @@ public class SpiderChartBuilder extends AbstractChartBuilder<SpiderChartBuilder>
 		return this;
 	}
 
-	// plot
+	//plot
 	public SpiderChartBuilder setMaxValue(Double maxValue) {
 		getPlot().setMaxValueExpression(Expressions.value(maxValue));
 		return this;

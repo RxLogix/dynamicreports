@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -54,21 +54,21 @@ public class TemplateStyle4Test extends AbstractJasperStyleTest implements Seria
 		StyleBuilder textFieldStyle2 = stl.style(stl.templateStyle("boldStyle")).setFontSize(10);
 
 		ReportTemplateBuilder template = template()
-				.addTemplateStyle(textFieldStyle1)
-				.templateStyles(stl.loadStyles(TemplateStyle4Test.class.getResource("StyleTemplate2.jrtx")));
+			.addTemplateStyle(textFieldStyle1)
+			.templateStyles(stl.loadStyles(TemplateStyle4Test.class.getResource("StyleTemplate2.jrtx")));
 
 		rb.setTemplate(template)
-				.setTextStyle(stl.templateStyle("textStyle"))
-				.setColumnTitleStyle(stl.templateStyle("titleStyle"))
-				.setSubtotalStyle(stl.templateStyle("subtotalStyle"))
-				.columns(
-						column1 = col.column("Column1", "field1", type.integerType()),
-						column2 = col.column("Column2", "field2", type.stringType()).setStyle(stl.templateStyle("boldStyle")))
-				.title(
-						cmp.text("text").setStyle(stl.templateStyle("textFieldStyle1")),
-						cmp.text("text").setStyle(textFieldStyle2))
-				.groupBy(group1 = grp.group(column2))
-				.subtotalsAtSummary(subtotal1 = sbt.sum(column1).setLabel("total").setLabelStyle(stl.templateStyle("boldStyle")));
+			.setTextStyle(stl.templateStyle("textStyle"))
+			.setColumnTitleStyle(stl.templateStyle("titleStyle"))
+			.setSubtotalStyle(stl.templateStyle("subtotalStyle"))
+			.columns(
+					column1 = col.column("Column1", "field1", type.integerType()),
+					column2 = col.column("Column2", "field2", type.stringType()).setStyle(stl.templateStyle("boldStyle")))
+			.title(
+				cmp.text("text").setStyle(stl.templateStyle("textFieldStyle1")),
+				cmp.text("text").setStyle(textFieldStyle2))
+			.groupBy(group1 = grp.group(column2))
+			.subtotalsAtSummary(subtotal1 = sbt.sum(column1).setLabel("total").setLabelStyle(stl.templateStyle("boldStyle")));
 	}
 
 	@Override
@@ -77,22 +77,21 @@ public class TemplateStyle4Test extends AbstractJasperStyleTest implements Seria
 
 		numberOfPagesTest(1);
 
-		// column1
+		//column1
 		columnTitleStyleTest(column1, 0, null, null, "Arial", 10f, true, null);
 		columnTitlePaddingTest(column1, 0, 2, 2, 2, 2);
 
 		columnDetailStyleTest(column1, 0, null, null, "Arial", 10f, null, null);
 		columnDetailPaddingTest(column1, 0, 2, 2, 2, 2);
 
-		// column2
+		//column2
 		groupHeaderStyleTest(group1, 0, null, null, "Arial", 10f, true, null);
 
-		// subtotal
+		//subtotal
 		subtotalLabelStyleTest(subtotal1, 0, null, null, "Arial", 10f, true, null);
-		subtotalLabelBorderTest(subtotal1, 0, null, LineStyleEnum.SOLID, 0, null, LineStyleEnum.SOLID, 0, null, LineStyleEnum.SOLID, 0, null, LineStyleEnum.SOLID,
-				0);
+		subtotalLabelBorderTest(subtotal1, 0, null, LineStyleEnum.SOLID, 0, null, LineStyleEnum.SOLID, 0, null, LineStyleEnum.SOLID, 0, null, LineStyleEnum.SOLID, 0);
 
-		// title
+		//title
 		styleTest("title.textField1", 0, null, null, "Arial", 15f, true, null);
 		styleTest("title.textField2", 0, null, null, "Arial", 10f, true, null);
 	}

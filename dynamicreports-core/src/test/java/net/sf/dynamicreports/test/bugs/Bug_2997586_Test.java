@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -31,23 +31,23 @@ import org.junit.Test;
 /**
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  * 
- *         The height in setDimension(Integer width, Integer height) of the DimensionComponentBuilder class is set with the width.
+ * The height in setDimension(Integer width, Integer height) of the DimensionComponentBuilder class is set with the width.
  */
 public class Bug_2997586_Test {
 
 	@Test
 	public void test() {
 		Integer width = 150;
-		Integer height = 200;
-
+		Integer height = 200;		
+		
 		TextFieldBuilder<String> textField = cmp.text("").setDimension(width, height);
 		Assert.assertEquals("Component width", width, textField.getComponent().getWidth());
 		Assert.assertEquals("Component height", height, textField.getComponent().getHeight());
-
+		
 		textField = cmp.text("").setFixedDimension(width, height);
 		Assert.assertEquals("Component fixed width", width, textField.getComponent().getWidth());
 		Assert.assertEquals("Component fixed height", height, textField.getComponent().getHeight());
-
+		
 		textField = cmp.text("").setMinDimension(width, height);
 		Assert.assertEquals("Component min width", width, textField.getComponent().getWidth());
 		Assert.assertEquals("Component min height", height, textField.getComponent().getHeight());

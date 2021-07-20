@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -69,80 +69,80 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 		colors.put("d", Color.MAGENTA);
 
 		rb.setPageFormat(PageType.A3, PageOrientation.PORTRAIT)
-				.columns(
-						column1 = col.column("Column1", "field1", String.class),
-						column2 = col.column("Column2", "field2", String.class),
-						column3 = col.column("Column3", "field3", Integer.class),
-						column4 = col.column("Column4", "field4", String.class))
-				.summary(
-						cmp.horizontalList(
-								cht.barChart()
-										.seriesColorsByName(colors)
-										.setSeriesOrderType(OrderType.ASCENDING)
-										.setCategory(column1)
-										.series(
-												cht.serie(column3).setSeries(column2)),
-								cht.groupedStackedBarChart()
-										.seriesColorsByName(colors)
-										.setSeriesOrderType(OrderType.ASCENDING)
-										.setCategory(column1)
-										.series(
-												cht.groupedSerie(column3).setSeries(column2).setGroup(column4))),
-						cmp.horizontalList(
-								cht.barChart()
-										.seriesColorsByName(colors)
-										.setSeriesOrderType(OrderType.DESCENDING)
-										.setCategory(column1)
-										.series(
-												cht.serie(column3).setSeries(column2)),
-								cht.groupedStackedBarChart()
-										.seriesColorsByName(colors)
-										.setSeriesOrderType(OrderType.DESCENDING)
-										.setCategory(column1)
-										.series(
-												cht.groupedSerie(column3).setSeries(column2).setGroup(column4))),
-						cmp.horizontalList(
-								cht.barChart()
-										.seriesColorsByName(colors)
-										.setSeriesOrderBy(Arrays.asList("c", "b", "a", "d"))
-										.setCategory(column1)
-										.series(
-												cht.serie(column3).setSeries(column2)),
-								cht.groupedStackedBarChart()
-										.seriesColorsByName(colors)
-										.setSeriesOrderBy(Arrays.asList("c", "b", "a", "d"))
-										.setCategory(column1)
-										.series(
-												cht.groupedSerie(column3).setSeries(column2).setGroup(column4))),
-						cmp.horizontalList(
-								cht.barChart()
-										.seriesColorsByName(colors)
-										.seriesOrderBy("c", "b", "a", "d")
-										.setSeriesOrderType(OrderType.DESCENDING)
-										.setCategory(column1)
-										.series(
-												cht.serie(column3).setSeries(column2)),
-								cht.groupedStackedBarChart()
-										.seriesColorsByName(colors)
-										.seriesOrderBy("c", "b", "a", "d")
-										.setSeriesOrderType(OrderType.DESCENDING)
-										.setCategory(column1)
-										.series(
-												cht.groupedSerie(column3).setSeries(column2).setGroup(column4))),
-						cmp.horizontalList(
-								cht.barChart()
-										.seriesColorsByName(colors)
-										.seriesOrderBy("c", "e", "d")
-										.setCategory(column1)
-										.series(
-												cht.serie(column3).setSeries(column2)),
-								cht.barChart()
-										.seriesColorsByName(colors)
-										.seriesOrderBy("g", "e", "d")
-										.setSeriesOrderType(OrderType.DESCENDING)
-										.setCategory(column1)
-										.series(
-												cht.serie(column3).setSeries(column2))));
+			.columns(
+				column1 = col.column("Column1", "field1", String.class),
+				column2 = col.column("Column2", "field2", String.class),
+				column3 = col.column("Column3", "field3", Integer.class),
+				column4 = col.column("Column4", "field4", String.class))
+			.summary(
+				cmp.horizontalList(
+					cht.barChart()
+						.seriesColorsByName(colors)
+						.setSeriesOrderType(OrderType.ASCENDING)
+						.setCategory(column1)
+						.series(
+							cht.serie(column3).setSeries(column2)),
+					cht.groupedStackedBarChart()
+						.seriesColorsByName(colors)
+						.setSeriesOrderType(OrderType.ASCENDING)
+						.setCategory(column1)
+						.series(
+							cht.groupedSerie(column3).setSeries(column2).setGroup(column4))),
+				cmp.horizontalList(
+					cht.barChart()
+						.seriesColorsByName(colors)
+						.setSeriesOrderType(OrderType.DESCENDING)
+						.setCategory(column1)
+						.series(
+							cht.serie(column3).setSeries(column2)),
+					cht.groupedStackedBarChart()
+						.seriesColorsByName(colors)
+						.setSeriesOrderType(OrderType.DESCENDING)
+						.setCategory(column1)
+						.series(
+							cht.groupedSerie(column3).setSeries(column2).setGroup(column4))),
+				cmp.horizontalList(
+					cht.barChart()
+						.seriesColorsByName(colors)
+						.setSeriesOrderBy(Arrays.asList("c", "b", "a", "d"))
+						.setCategory(column1)
+						.series(
+							cht.serie(column3).setSeries(column2)),
+					cht.groupedStackedBarChart()
+						.seriesColorsByName(colors)
+						.setSeriesOrderBy(Arrays.asList("c", "b", "a", "d"))
+						.setCategory(column1)
+						.series(
+							cht.groupedSerie(column3).setSeries(column2).setGroup(column4))),
+				cmp.horizontalList(
+					cht.barChart()
+						.seriesColorsByName(colors)
+						.seriesOrderBy("c", "b", "a", "d")
+						.setSeriesOrderType(OrderType.DESCENDING)
+						.setCategory(column1)
+						.series(
+							cht.serie(column3).setSeries(column2)),
+					cht.groupedStackedBarChart()
+						.seriesColorsByName(colors)
+						.seriesOrderBy("c", "b", "a", "d")
+						.setSeriesOrderType(OrderType.DESCENDING)
+						.setCategory(column1)
+						.series(
+							cht.groupedSerie(column3).setSeries(column2).setGroup(column4))),
+				cmp.horizontalList(
+					cht.barChart()
+						.seriesColorsByName(colors)
+						.seriesOrderBy("c", "e", "d")
+						.setCategory(column1)
+						.series(
+							cht.serie(column3).setSeries(column2)),
+					cht.barChart()
+						.seriesColorsByName(colors)
+						.seriesOrderBy("g", "e", "d")
+						.setSeriesOrderType(OrderType.DESCENDING)
+						.setCategory(column1)
+						.series(
+							cht.serie(column3).setSeries(column2))));
 	}
 
 	@Override
@@ -161,9 +161,9 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 			Assert.assertEquals("series color", colors.get(key), renderer1.getSeriesPaint(i));
 		}
 
-		String[] categories = new String[] { "value1", "value2" };
-		String[] series = new String[] { "a", "b", "c", "d" };
-		Number[][] values = new Number[][] { { 5d, 2d, 4d, 2d }, { 3d, null, 2d, 4d } };
+		String[] categories = new String[]{"value1", "value2"};
+		String[] series = new String[]{"a", "b", "c", "d"};
+		Number[][] values =  new Number[][]{{5d, 2d, 4d, 2d}, {3d, null, 2d, 4d}};
 
 		chartCategoryCountTest("summary.chart1", 0, 2);
 		chartSeriesCountTest("summary.chart1", 0, 4);
@@ -185,7 +185,7 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 			Assert.assertEquals("series color", colors.get(legendItem.getLabel()), legendItem.getFillPaint());
 		}
 
-		series = new String[] {
+		series = new String[]{
 				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "a",
 				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "b",
 				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "c",
@@ -193,8 +193,8 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "a",
 				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "b",
 				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "c",
-				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "d" };
-		values = new Number[][] { { 1d, 2d, 3d, 0d, 4d, 0d, 1d, 2d }, { null, null, null, 0d, 3d, 0d, 2d, 4d } };
+				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "d"};
+		values =  new Number[][]{{1d, 2d, 3d, 0d, 4d, 0d, 1d, 2d}, {null, null, null, 0d, 3d, 0d, 2d, 4d}};
 		chartCategoryCountTest("summary.chart2", 0, 2);
 		chartSeriesCountTest("summary.chart2", 0, 8);
 		chartDataTest("summary.chart2", 0, categories, series, values);
@@ -209,9 +209,9 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 			Assert.assertEquals("series color", colors.get(key), renderer1.getSeriesPaint(i));
 		}
 
-		categories = new String[] { "value1", "value2" };
-		series = new String[] { "d", "c", "b", "a" };
-		values = new Number[][] { { 2d, 4d, 2d, 5d }, { 4d, 2d, null, 3d } };
+		categories = new String[]{"value1", "value2"};
+		series = new String[]{"d", "c", "b", "a"};
+		values =  new Number[][]{{2d, 4d, 2d, 5d}, {4d, 2d, null, 3d}};
 
 		chartCategoryCountTest("summary.chart3", 0, 2);
 		chartSeriesCountTest("summary.chart3", 0, 4);
@@ -233,7 +233,7 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 			Assert.assertEquals("series color", colors.get(legendItem.getLabel()), legendItem.getFillPaint());
 		}
 
-		series = new String[] {
+		series = new String[]{
 				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "d",
 				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "c",
 				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "b",
@@ -241,9 +241,9 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "d",
 				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "c",
 				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "b",
-				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "a" };
+				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "a"};
 
-		values = new Number[][] { { 2d, 1d, 0d, 4d, 0d, 3d, 2d, 1d }, { 4d, 2d, 0d, 3d, 0d, null, null, null } };
+		values =  new Number[][]{{2d, 1d, 0d, 4d, 0d, 3d, 2d, 1d}, {4d, 2d, 0d, 3d, 0d, null, null, null}};
 		chartCategoryCountTest("summary.chart4", 0, 2);
 		chartSeriesCountTest("summary.chart4", 0, 8);
 		chartDataTest("summary.chart4", 0, categories, series, values);
@@ -258,9 +258,9 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 			Assert.assertEquals("series color", colors.get(key), renderer1.getSeriesPaint(i));
 		}
 
-		categories = new String[] { "value1", "value2" };
-		series = new String[] { "c", "b", "a", "d" };
-		values = new Number[][] { { 4d, 2d, 5d, 2d }, { 2d, null, 3d, 4d } };
+		categories = new String[]{"value1", "value2"};
+		series = new String[]{"c", "b", "a", "d"};
+		values =  new Number[][]{{4d, 2d, 5d, 2d}, {2d, null, 3d, 4d}};
 
 		chartCategoryCountTest("summary.chart5", 0, 2);
 		chartSeriesCountTest("summary.chart5", 0, 4);
@@ -282,7 +282,7 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 			Assert.assertEquals("series color", colors.get(legendItem.getLabel()), legendItem.getFillPaint());
 		}
 
-		series = new String[] {
+		series = new String[]{
 				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "c",
 				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "b",
 				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "a",
@@ -290,8 +290,8 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "c",
 				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "b",
 				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "a",
-				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "d" };
-		values = new Number[][] { { 3d, 2d, 1d, 0d, 1d, 0d, 4d, 2d }, { null, null, null, 0d, 2d, 0d, 3d, 4d } };
+				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "d"};
+		values =  new Number[][]{{3d, 2d, 1d, 0d, 1d, 0d, 4d, 2d}, {null, null, null, 0d, 2d, 0d, 3d, 4d}};
 		chartCategoryCountTest("summary.chart6", 0, 2);
 		chartSeriesCountTest("summary.chart6", 0, 8);
 		chartDataTest("summary.chart6", 0, categories, series, values);
@@ -306,9 +306,9 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 			Assert.assertEquals("series color", colors.get(key), renderer1.getSeriesPaint(i));
 		}
 
-		categories = new String[] { "value1", "value2" };
-		series = new String[] { "d", "c", "b", "a" };
-		values = new Number[][] { { 2d, 5d, 2d, 4d }, { 4d, 3d, null, 2d } };
+		categories = new String[]{"value1", "value2"};
+		series = new String[]{"d", "c", "b", "a"};
+		values =  new Number[][]{{2d, 5d, 2d, 4d}, {4d, 3d, null, 2d}};
 
 		chartCategoryCountTest("summary.chart7", 0, 2);
 		chartSeriesCountTest("summary.chart7", 0, 4);
@@ -330,7 +330,7 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 			Assert.assertEquals("series color", colors.get(legendItem.getLabel()), legendItem.getFillPaint());
 		}
 
-		series = new String[] {
+		series = new String[]{
 				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "d",
 				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "a",
 				"2" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "b",
@@ -338,9 +338,9 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "d",
 				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "a",
 				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "b",
-				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "c" };
+				"1" + GroupedStackedBarRendererCustomizer.GROUP_SERIES_KEY + "c"};
 
-		values = new Number[][] { { 2d, 4d, 0d, 1d, 0d, 1d, 2d, 3d }, { 4d, 3d, 0d, 2d, 0d, null, null, null } };
+		values =  new Number[][]{{2d, 4d, 0d, 1d, 0d, 1d, 2d, 3d}, {4d, 3d, 0d, 2d, 0d, null, null, null}};
 		chartCategoryCountTest("summary.chart8", 0, 2);
 		chartSeriesCountTest("summary.chart8", 0, 8);
 		chartDataTest("summary.chart8", 0, categories, series, values);
@@ -355,9 +355,9 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 			Assert.assertEquals("series color", colors.get(key), renderer1.getSeriesPaint(i));
 		}
 
-		categories = new String[] { "value1", "value2" };
-		series = new String[] { "c", "d", "a", "b" };
-		values = new Number[][] { { 4d, 2d, 5d, 2d }, { 2d, 4d, 3d, null } };
+		categories = new String[]{"value1", "value2"};
+		series = new String[]{"c", "d", "a", "b"};
+		values =  new Number[][]{{4d, 2d, 5d, 2d}, {2d, 4d, 3d, null}};
 
 		chartCategoryCountTest("summary.chart9", 0, 2);
 		chartSeriesCountTest("summary.chart9", 0, 4);
@@ -373,9 +373,9 @@ public class ChartSeriesOrderTest extends AbstractJasperChartTest implements Ser
 			Assert.assertEquals("series color", colors.get(key), renderer1.getSeriesPaint(i));
 		}
 
-		categories = new String[] { "value1", "value2" };
-		series = new String[] { "c", "b", "a", "d" };
-		values = new Number[][] { { 4d, 2d, 5d, 2d }, { 2d, null, 3d, 4d } };
+		categories = new String[]{"value1", "value2"};
+		series = new String[]{"c", "b", "a", "d"};
+		values =  new Number[][]{{4d, 2d, 5d, 2d}, {2d, null, 3d, 4d}};
 
 		chartCategoryCountTest("summary.chart10", 0, 2);
 		chartSeriesCountTest("summary.chart10", 0, 4);

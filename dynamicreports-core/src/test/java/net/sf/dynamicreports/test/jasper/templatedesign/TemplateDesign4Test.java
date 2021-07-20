@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -47,11 +47,11 @@ public class TemplateDesign4Test extends AbstractJasperValueTest implements Seri
 	protected void configureReport(JasperReportBuilder rb) throws DRException {
 		InputStream is = TemplateDesign4Test.class.getResourceAsStream("templatedesign1.jrxml");
 		rb.setTemplateDesign(is)
-				.ignorePageWidth()
-				.addParameter("parameter", "parametertest")
-				.columns(
-						column1 = col.column("Column1", "field1", String.class).setFixedWidth(1000),
-						column2 = col.column("Column2", "field2", Integer.class));
+			.ignorePageWidth()
+			.addParameter("parameter", "parametertest")
+		  .columns(
+				column1 = col.column("Column1", "field1", String.class).setFixedWidth(1000),
+				column2 = col.column("Column2", "field2", Integer.class));
 	}
 
 	@Override

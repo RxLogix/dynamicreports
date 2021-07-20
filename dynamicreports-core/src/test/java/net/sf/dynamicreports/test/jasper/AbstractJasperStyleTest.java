@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -58,8 +58,7 @@ public abstract class AbstractJasperStyleTest extends AbstractJasperTest {
 		Assert.assertEquals("italic", italic, style.isItalic());
 	}
 
-	protected void borderTest(String name, int index, Color topColor, LineStyleEnum topLineStyle, float top, Color bottomColor, LineStyleEnum bottomLineStyle,
-			float bottom, Color leftColor, LineStyleEnum leftLineStyle, float left, Color rightColor, LineStyleEnum rightLineStyle, float right) {
+	protected void borderTest(String name, int index, Color topColor, LineStyleEnum topLineStyle, float top, Color bottomColor, LineStyleEnum bottomLineStyle, float bottom, Color leftColor, LineStyleEnum leftLineStyle, float left, Color rightColor, LineStyleEnum rightLineStyle, float right) {
 		JRStyle style = getElementAt(name, index).getStyle();
 
 		JRBoxPen pen = style.getLineBox().getTopPen();
@@ -123,9 +122,8 @@ public abstract class AbstractJasperStyleTest extends AbstractJasperTest {
 		Assert.assertEquals("verticalAlignment", verticalAlignment, element.getVerticalTextAlign());
 	}
 
-	// column detail
-	protected void columnDetailStyleTest(ColumnBuilder<?, ?> column, int index, Color foreColor, Color backColor, String fontName, Float fontSize, Boolean bold,
-			Boolean italic) {
+	//column detail
+	protected void columnDetailStyleTest(ColumnBuilder<?, ?> column, int index, Color foreColor, Color backColor, String fontName, Float fontSize, Boolean bold, Boolean italic) {
 		styleTest(JasperTestUtils.getColumnDetailName(column), index, foreColor, backColor, fontName, fontSize, bold, italic);
 	}
 
@@ -149,27 +147,20 @@ public abstract class AbstractJasperStyleTest extends AbstractJasperTest {
 		verticalAlignmentTest(JasperTestUtils.getColumnDetailName(column), index, verticalAlignment);
 	}
 
-	protected void columnDetailBorderTest(ColumnBuilder<?, ?> column, int index, Color topColor, LineStyleEnum topLineStyle, float top, Color bottomColor,
-			LineStyleEnum bottomLineStyle, float bottom, Color leftColor, LineStyleEnum leftLineStyle, float left, Color rightColor, LineStyleEnum rightLineStyle,
-			float right) {
-		borderTest(JasperTestUtils.getColumnDetailName(column), index, topColor, topLineStyle, top, bottomColor, bottomLineStyle, bottom, leftColor, leftLineStyle,
-				left, rightColor, rightLineStyle, right);
+	protected void columnDetailBorderTest(ColumnBuilder<?, ?> column, int index, Color topColor, LineStyleEnum topLineStyle, float top, Color bottomColor, LineStyleEnum bottomLineStyle, float bottom, Color leftColor, LineStyleEnum leftLineStyle, float left, Color rightColor, LineStyleEnum rightLineStyle, float right) {
+		borderTest(JasperTestUtils.getColumnDetailName(column), index, topColor, topLineStyle, top, bottomColor, bottomLineStyle, bottom, leftColor, leftLineStyle, left, rightColor, rightLineStyle, right);
 	}
 
-	// column title
-	protected void columnTitleBorderTest(ColumnBuilder<?, ?> column, int index, Color topColor, LineStyleEnum topLineStyle, float top, Color bottomColor,
-			LineStyleEnum bottomLineStyle, float bottom, Color leftColor, LineStyleEnum leftLineStyle, float left, Color rightColor, LineStyleEnum rightLineStyle,
-			float right) {
-		borderTest(JasperTestUtils.getColumnTitleName(column), index, topColor, topLineStyle, top, bottomColor, bottomLineStyle, bottom, leftColor, leftLineStyle,
-				left, rightColor, rightLineStyle, right);
+	//column title
+	protected void columnTitleBorderTest(ColumnBuilder<?, ?> column, int index, Color topColor, LineStyleEnum topLineStyle, float top, Color bottomColor, LineStyleEnum bottomLineStyle, float bottom, Color leftColor, LineStyleEnum leftLineStyle, float left, Color rightColor, LineStyleEnum rightLineStyle, float right) {
+		borderTest(JasperTestUtils.getColumnTitleName(column), index, topColor, topLineStyle, top, bottomColor, bottomLineStyle, bottom, leftColor, leftLineStyle, left, rightColor, rightLineStyle, right);
 	}
 
 	protected void columnTitlePaddingTest(ColumnBuilder<?, ?> column, int index, Integer top, Integer bottom, Integer left, Integer right) {
 		paddingTest(JasperTestUtils.getColumnTitleName(column), index, top, bottom, left, right);
 	}
 
-	protected void columnTitleStyleTest(ColumnBuilder<?, ?> column, int index, Color foreColor, Color backColor, String fontName, Float fontSize, Boolean bold,
-			Boolean italic) {
+	protected void columnTitleStyleTest(ColumnBuilder<?, ?> column, int index, Color foreColor, Color backColor, String fontName, Float fontSize, Boolean bold, Boolean italic) {
 		styleTest(JasperTestUtils.getColumnTitleName(column), index, foreColor, backColor, fontName, fontSize, bold, italic);
 	}
 
@@ -177,45 +168,35 @@ public abstract class AbstractJasperStyleTest extends AbstractJasperTest {
 		horizontalAlignmentTest(JasperTestUtils.getColumnTitleName(column), index, horizontalAlignment);
 	}
 
-	// subtotal label
-	protected void subtotalLabelBorderTest(SubtotalBuilder<?, ?> subtotal, int index, Color topColor, LineStyleEnum topLineStyle, float top, Color bottomColor,
-			LineStyleEnum bottomLineStyle, float bottom, Color leftColor, LineStyleEnum leftLineStyle, float left, Color rightColor, LineStyleEnum rightLineStyle,
-			float right) {
-		borderTest(JasperTestUtils.getSubtotalLabelName(subtotal, 1), index, topColor, topLineStyle, top, bottomColor, bottomLineStyle, bottom, leftColor,
-				leftLineStyle, left, rightColor, rightLineStyle, right);
+	//subtotal label
+	protected void subtotalLabelBorderTest(SubtotalBuilder<?, ?> subtotal, int index, Color topColor, LineStyleEnum topLineStyle, float top, Color bottomColor, LineStyleEnum bottomLineStyle, float bottom, Color leftColor, LineStyleEnum leftLineStyle, float left, Color rightColor, LineStyleEnum rightLineStyle, float right) {
+		borderTest(JasperTestUtils.getSubtotalLabelName(subtotal, 1), index, topColor, topLineStyle, top, bottomColor, bottomLineStyle, bottom, leftColor, leftLineStyle, left, rightColor, rightLineStyle, right);
 	}
 
-	protected void subtotalLabelStyleTest(SubtotalBuilder<?, ?> subtotal, int index, Color foreColor, Color backColor, String fontName, Float fontSize,
-			Boolean bold, Boolean italic) {
+	protected void subtotalLabelStyleTest(SubtotalBuilder<?, ?> subtotal, int index, Color foreColor, Color backColor, String fontName, Float fontSize, Boolean bold, Boolean italic) {
 		styleTest(JasperTestUtils.getSubtotalLabelName(subtotal, 1), index, foreColor, backColor, fontName, fontSize, bold, italic);
 	}
 
-	// subtotal
-	protected void subtotalBorderTest(SubtotalBuilder<?, ?> subtotal, int index, Color topColor, LineStyleEnum topLineStyle, float top, Color bottomColor,
-			LineStyleEnum bottomLineStyle, float bottom, Color leftColor, LineStyleEnum leftLineStyle, float left, Color rightColor, LineStyleEnum rightLineStyle,
-			float right) {
-		borderTest(JasperTestUtils.getSubtotalName(subtotal, 1), index, topColor, topLineStyle, top, bottomColor, bottomLineStyle, bottom, leftColor, leftLineStyle,
-				left, rightColor, rightLineStyle, right);
+	//subtotal
+	protected void subtotalBorderTest(SubtotalBuilder<?, ?> subtotal, int index, Color topColor, LineStyleEnum topLineStyle, float top, Color bottomColor, LineStyleEnum bottomLineStyle, float bottom, Color leftColor, LineStyleEnum leftLineStyle, float left, Color rightColor, LineStyleEnum rightLineStyle, float right) {
+		borderTest(JasperTestUtils.getSubtotalName(subtotal, 1), index, topColor, topLineStyle, top, bottomColor, bottomLineStyle, bottom, leftColor, leftLineStyle, left, rightColor, rightLineStyle, right);
 	}
 
 	protected void subtotalPaddingTest(SubtotalBuilder<?, ?> subtotal, int index, Integer top, Integer bottom, Integer left, Integer right) {
 		paddingTest(JasperTestUtils.getSubtotalName(subtotal, 1), index, top, bottom, left, right);
 	}
 
-	protected void subtotalStyleTest(SubtotalBuilder<?, ?> subtotal, int index, Color foreColor, Color backColor, String fontName, Float fontSize, Boolean bold,
-			Boolean italic) {
+	protected void subtotalStyleTest(SubtotalBuilder<?, ?> subtotal, int index, Color foreColor, Color backColor, String fontName, Float fontSize, Boolean bold, Boolean italic) {
 		styleTest(JasperTestUtils.getSubtotalName(subtotal, 1), index, foreColor, backColor, fontName, fontSize, bold, italic);
 	}
 
-	// group header title
-	protected void groupHeaderTitleStyleTest(GroupBuilder<?> group, int index, Color foreColor, Color backColor, String fontName, Float fontSize, Boolean bold,
-			Boolean italic) {
+	//group header title
+	protected void groupHeaderTitleStyleTest(GroupBuilder<?> group, int index, Color foreColor, Color backColor, String fontName, Float fontSize, Boolean bold, Boolean italic) {
 		styleTest(JasperTestUtils.getHeaderTitleGroupName(group), index, foreColor, backColor, fontName, fontSize, bold, italic);
 	}
 
-	// group header
-	protected void groupHeaderStyleTest(GroupBuilder<?> group, int index, Color foreColor, Color backColor, String fontName, Float fontSize, Boolean bold,
-			Boolean italic) {
+	//group header
+	protected void groupHeaderStyleTest(GroupBuilder<?> group, int index, Color foreColor, Color backColor, String fontName, Float fontSize, Boolean bold, Boolean italic) {
 		styleTest(JasperTestUtils.getHeaderGroupName(group), index, foreColor, backColor, fontName, fontSize, bold, italic);
 	}
 

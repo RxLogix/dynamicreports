@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -50,18 +50,18 @@ public class Style4Test extends AbstractJasperStyleTest implements Serializable 
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		StyleBuilder groupStyle = stl.style()
-				.bold()
-				.setHorizontalTextAlignment(HorizontalTextAlignment.LEFT);
+		                             .bold()
+                                 .setHorizontalTextAlignment(HorizontalTextAlignment.LEFT);
 
-		column1 = col.column("field1", type.dateYearType());
+		column1  = col.column("field1", type.dateYearType());
 
-		group1 = grp.group(column1)
-				.setHideColumn(false)
-				.groupByDataType()
-				.setStyle(groupStyle);
+		group1  = grp.group(column1)
+		             .setHideColumn(false)
+                 .groupByDataType()
+                 .setStyle(groupStyle);
 
 		rb.columns(column1)
-				.groupBy(group1);
+		  .groupBy(group1);
 	}
 
 	@Override
@@ -70,11 +70,11 @@ public class Style4Test extends AbstractJasperStyleTest implements Serializable 
 
 		numberOfPagesTest(1);
 
-		// column1
+		//column1
 		columnDetailStyleTest(column1, 0, Color.BLACK, null, "Arial", 10f, null, null);
 		columnDetailAlignmentTest(column1, 0, HorizontalTextAlignEnum.RIGHT);
 
-		// group1
+		//group1
 		groupHeaderStyleTest(group1, 0, null, null, "Arial", 10f, true, null);
 		groupHeaderAlignmentTest(group1, 0, HorizontalTextAlignEnum.LEFT);
 	}

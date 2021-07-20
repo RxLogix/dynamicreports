@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -44,7 +44,7 @@ public class ChartBuilders {
 		return Charts.paintScale(label, value, paint);
 	}
 
-	// category serie
+	//category serie
 	public CategoryChartSerieBuilder serie(ValueColumnBuilder<?, ? extends Number> column) {
 		return Charts.serie(column);
 	}
@@ -65,7 +65,7 @@ public class ChartBuilders {
 		return Charts.serie(variable);
 	}
 
-	// grouped category serie
+	//grouped category serie
 	public GroupedCategoryChartSerieBuilder groupedSerie(ValueColumnBuilder<?, ? extends Number> column) {
 		return Charts.groupedSerie(column);
 	}
@@ -86,7 +86,7 @@ public class ChartBuilders {
 		return Charts.groupedSerie(variable);
 	}
 
-	// xy serie
+	//xy serie
 	public XyChartSerieBuilder xySerie(ValueColumnBuilder<?, ? extends Number> column) {
 		return Charts.xySerie(column);
 	}
@@ -107,17 +107,17 @@ public class ChartBuilders {
 		return Charts.xySerie(variable);
 	}
 
-	// xyz serie
+	//xyz serie
 	public XyzChartSerieBuilder xyzSerie() {
 		return Charts.xyzSerie();
 	}
 
-	// gantt serie
+	//gantt serie
 	public GanttChartSerieBuilder ganttSerie() {
 		return Charts.ganttSerie();
 	}
 
-	// charts
+	//charts
 	public AreaChartBuilder areaChart() {
 		return Charts.areaChart();
 	}
@@ -202,7 +202,7 @@ public class ChartBuilders {
 		return Charts.multiAxisChart();
 	}
 
-	public MultiAxisChartBuilder multiAxisChart(AbstractBaseChartBuilder<?, ?, ?>... charts) {
+	public MultiAxisChartBuilder multiAxisChart(AbstractBaseChartBuilder<?, ?, ?> ...charts) {
 		return Charts.multiAxisChart(charts);
 	}
 

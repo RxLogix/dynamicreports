@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -45,8 +45,8 @@ public class DatasetBuilder extends AbstractBuilder<DatasetBuilder, DRDataset> {
 		super(new DRDataset());
 	}
 
-	// field
-	public DatasetBuilder fields(FieldBuilder<?>... fields) {
+	//field
+	public DatasetBuilder fields(FieldBuilder<?> ...fields) {
 		return addField(fields);
 	}
 
@@ -58,7 +58,7 @@ public class DatasetBuilder extends AbstractBuilder<DatasetBuilder, DRDataset> {
 		return addField(DynamicReports.field(name, dataType));
 	}
 
-	public DatasetBuilder addField(FieldBuilder<?>... fields) {
+	public DatasetBuilder addField(FieldBuilder<?> ...fields) {
 		Validate.notNull(fields, "fields must not be null");
 		Validate.noNullElements(fields, "fields must not contains null field");
 		for (FieldBuilder<?> field : fields) {
@@ -67,12 +67,12 @@ public class DatasetBuilder extends AbstractBuilder<DatasetBuilder, DRDataset> {
 		return this;
 	}
 
-	// variable
-	public DatasetBuilder variables(VariableBuilder<?>... variables) {
+	//variable
+	public DatasetBuilder variables(VariableBuilder<?> ...variables) {
 		return addVariable(variables);
 	}
 
-	public DatasetBuilder addVariable(VariableBuilder<?>... variables) {
+	public DatasetBuilder addVariable(VariableBuilder<?> ...variables) {
 		Validate.notNull(variables, "variables must not be null");
 		Validate.noNullElements(variables, "variables must not contains null variable");
 		for (VariableBuilder<?> variable : variables) {
@@ -81,8 +81,8 @@ public class DatasetBuilder extends AbstractBuilder<DatasetBuilder, DRDataset> {
 		return this;
 	}
 
-	// sort
-	public DatasetBuilder sortBy(TextColumnBuilder<?>... sortColumns) {
+	//sort
+	public DatasetBuilder sortBy(TextColumnBuilder<?> ...sortColumns) {
 		Validate.notNull(sortColumns, "sortColumns must not be null");
 		Validate.noNullElements(sortColumns, "sortColumns must not contains null sortColumn");
 		for (TextColumnBuilder<?> sortColumn : sortColumns) {
@@ -91,11 +91,11 @@ public class DatasetBuilder extends AbstractBuilder<DatasetBuilder, DRDataset> {
 		return this;
 	}
 
-	public DatasetBuilder sortBy(SortBuilder... sorts) {
+	public DatasetBuilder sortBy(SortBuilder ...sorts) {
 		return addSort(sorts);
 	}
 
-	public DatasetBuilder addSort(SortBuilder... sorts) {
+	public DatasetBuilder addSort(SortBuilder ...sorts) {
 		Validate.notNull(sorts, "sorts must not be null");
 		Validate.noNullElements(sorts, "sorts must not contains null sort");
 		for (SortBuilder sort : sorts) {
@@ -104,7 +104,7 @@ public class DatasetBuilder extends AbstractBuilder<DatasetBuilder, DRDataset> {
 		return this;
 	}
 
-	// query
+	//query
 	public DatasetBuilder setQuery(String text, String language) {
 		Validate.notNull(text, "text must not be null");
 		Validate.notNull(language, "language must not be null");
@@ -122,7 +122,7 @@ public class DatasetBuilder extends AbstractBuilder<DatasetBuilder, DRDataset> {
 		return this;
 	}
 
-	// connection
+	//connection
 	public DatasetBuilder setConnection(Connection connection) {
 		getObject().setConnectionExpression(Expressions.value(connection));
 		return this;
@@ -133,7 +133,7 @@ public class DatasetBuilder extends AbstractBuilder<DatasetBuilder, DRDataset> {
 		return this;
 	}
 
-	// datasource
+	//datasource
 	public DatasetBuilder setDataSource(JRDataSource dataSource) {
 		getObject().setDataSourceExpression(Expressions.dataSource(dataSource));
 		return this;
@@ -144,7 +144,7 @@ public class DatasetBuilder extends AbstractBuilder<DatasetBuilder, DRDataset> {
 		return this;
 	}
 
-	// filter
+	//filter
 	public DatasetBuilder setFilterExpression(DRIExpression<Boolean> filterExpression) {
 		getObject().setFilterExpression(filterExpression);
 		return this;

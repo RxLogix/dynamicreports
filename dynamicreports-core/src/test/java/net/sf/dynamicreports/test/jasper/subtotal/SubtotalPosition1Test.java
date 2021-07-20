@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -34,31 +34,31 @@ import net.sf.jasperreports.engine.JRDataSource;
 /**
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
-public class SubtotalPosition1Test extends AbstractJasperPositionTest {
+public class SubtotalPosition1Test extends AbstractJasperPositionTest {	
 	private AggregationSubtotalBuilder<Integer> subtotal1;
 	private AggregationSubtotalBuilder<Double> subtotal2;
-
+	
 	@Override
-	protected void configureReport(JasperReportBuilder rb) {
+	protected void configureReport(JasperReportBuilder rb) {		
 		TextColumnBuilder<Integer> column1;
-
+		
 		rb.columns(
-				column1 = col.column("Column1", "field1", Integer.class).setWidth(600))
-				.subtotalsAtSummary(
-						subtotal1 = sbt.sum(column1),
-						subtotal2 = sbt.aggregate(column1, Calculation.AVERAGE));
+					column1 = col.column("Column1", "field1", Integer.class).setWidth(600))
+			.subtotalsAtSummary(
+				subtotal1 = sbt.sum(column1),
+				subtotal2 = sbt.aggregate(column1, Calculation.AVERAGE));
 	}
 
 	@Override
 	public void test() {
 		super.test();
-
+		
 		numberOfPagesTest(1);
-		// summary
+		//summary
 		subtotalPositionTest(subtotal1, 0, 10, 42, 575, 16);
 		subtotalIndexPositionTest(subtotal2, 2, 0, 10, 58, 575, 16);
 	}
-
+	
 	@Override
 	protected JRDataSource createDataSource() {
 		DRDataSource dataSource = new DRDataSource("field1");

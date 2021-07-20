@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -60,7 +60,7 @@ public class ColumnTransform {
 		this.accessor = accessor;
 	}
 
-	// columns
+	//columns
 	public void transform() throws DRException {
 		columnComponents = getColumnComponents();
 		boolean showColumnTitle = accessor.getTemplateTransform().isShowColumnTitle();
@@ -73,8 +73,7 @@ public class ColumnTransform {
 		}
 		ColumnGrid columnTitleForGroup = null;
 		if (showColumnTitleForGroup) {
-			columnTitleForGroup = accessor.getColumnGridTransform()
-					.createColumnTitleGrid(accessor.getStyleTransform().getDefaultStyle(DefaultStyleType.COLUMN_TITLE));
+			columnTitleForGroup = accessor.getColumnGridTransform().createColumnTitleGrid(accessor.getStyleTransform().getDefaultStyle(DefaultStyleType.COLUMN_TITLE));
 		}
 		ColumnGrid detail = accessor.getColumnGridTransform().createColumnGrid();
 
@@ -91,9 +90,11 @@ public class ColumnTransform {
 				DRDesignComponent detailComponent = null;
 				if (column instanceof DRIValueColumn<?>) {
 					detailComponent = detailValueComponent((DRIValueColumn<?>) column);
-				} else if (column instanceof DRIBooleanColumn) {
+				}
+				else if (column instanceof DRIBooleanColumn) {
 					detailComponent = detailBooleanComponent((DRIBooleanColumn) column);
-				} else {
+				}
+				else {
 					detailComponent = detailComponent(column);
 				}
 				detail.addComponent(column, detailComponent);
@@ -147,7 +148,7 @@ public class ColumnTransform {
 		return booleanField;
 	}
 
-	// title
+	//title
 	@SuppressWarnings("unchecked")
 	private DRDesignComponent titleComponent(DRIColumn<?> column) throws DRException {
 		@SuppressWarnings("rawtypes")
@@ -165,7 +166,7 @@ public class ColumnTransform {
 		return designTitleField;
 	}
 
-	// detail
+	//detail
 	private DRDesignComponent detailValueComponent(DRIValueColumn<?> column) throws DRException {
 		DRDesignComponent detailComponent = detailComponent(column);
 		((DRDesignTextField) detailComponent).setPrintRepeatedValues(accessor.getTemplateTransform().isColumnPrintRepeatedDetailValues(column));
@@ -220,12 +221,14 @@ public class ColumnTransform {
 					Color mergedColor = StyleResolver.mergeColors(backgroundColor, conditionalStyle.getBackgroundColor(), 0.25f);
 					newConditionalStyle.setBackgroundColor(mergedColor);
 					newStyle.addConditionalStyle(newConditionalStyle);
-				} else {
+				}
+				else {
 					newStyle.addConditionalStyle((DRConditionalStyle) conditionalStyle);
 				}
 			}
 			designComponent.setStyle(accessor.getStyleTransform().transformStyle(newStyle, true, DefaultStyleType.COLUMN));
-		} else {
+		}
+		else {
 			if (designComponent.getStyle() == null && !(column instanceof DRIValueColumn<?>)) {
 				DRIReportStyle columnStyle = accessor.getTemplateTransform().getColumnStyle(false);
 				DRStyle newStyle = null;

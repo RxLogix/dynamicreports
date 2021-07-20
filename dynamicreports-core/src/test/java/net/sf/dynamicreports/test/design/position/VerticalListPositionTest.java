@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -36,7 +36,7 @@ import net.sf.dynamicreports.test.design.AbstractBandTest;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 public class VerticalListPositionTest extends AbstractBandTest {
-
+	
 	@Override
 	public void configureReport(ReportBuilder<?> rb) {
 		rb.title(
@@ -52,9 +52,9 @@ public class VerticalListPositionTest extends AbstractBandTest {
 								cmp.vListCell(cmp.text("")).widthFixedOnRight()),
 						cmp.filler().setHeight(200)));
 	}
-
+	
 	@Override
-	protected void titleBandTest(DRDesignBand band) {
+	protected void titleBandTest(DRDesignBand band) {		
 		DRDesignComponent component = band.getBandComponent();
 		Assert.assertTrue(component instanceof DRDesignList);
 		DRDesignList list = (DRDesignList) component;
@@ -62,15 +62,15 @@ public class VerticalListPositionTest extends AbstractBandTest {
 		Assert.assertEquals(1, list.getComponents().size());
 		componentPositionTest(list, 0, 0, 575, 200);
 		Assert.assertTrue(list.getComponents().get(0) instanceof DRDesignList);
-
+		
 		list = (DRDesignList) list.getComponents().get(0);
 		Assert.assertEquals(ListType.VERTICAL, list.getType());
 		Assert.assertEquals(8, list.getComponents().size());
-		componentPositionTest(list, 0, 0, 575, 200);
+		componentPositionTest(list, 0, 0, 575, 200);		
 		for (int i = 0; i < 8; i++) {
-			Assert.assertTrue(list.getComponents().get(i) instanceof DRDesignTextField);
+			Assert.assertTrue(list.getComponents().get(i) instanceof DRDesignTextField);	
 		}
-
+		
 		componentPositionTest(list.getComponents().get(0), 0, 0, 575, 34);
 		componentPositionTest(list.getComponents().get(1), 0, 34, 575, 16);
 		componentPositionTest(list.getComponents().get(2), 0, 50, 100, 16);

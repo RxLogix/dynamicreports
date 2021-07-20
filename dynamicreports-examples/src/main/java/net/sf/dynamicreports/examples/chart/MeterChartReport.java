@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -44,43 +44,43 @@ public class MeterChartReport {
 
 	private void build() {
 		MeterChartBuilder chart1 = cht.meterChart()
-				.setValue(field("value", type.integerType()))
-				.setShape(MeterShape.DIAL);
+			.setValue(field("value", type.integerType()))
+			.setShape(MeterShape.DIAL);
 
 		MeterChartBuilder chart2 = cht.meterChart()
-				.setValue(18)
-				.setDataRangeHighExpression(30)
-				.setTickInterval(5d)
-				.setTickColor(Color.BLACK)
-				.setNeedleColor(Color.BLACK)
-				.setValueColor(Color.BLACK)
-				.setMeterBackgroundColor(Color.LIGHT_GRAY)
-				.intervals(
-						cht.meterInterval()
-								.setLabel("Normal")
-								.setBackgroundColor(new Color(150, 255, 150))
-								.setDataRangeLowExpression(0)
-								.setDataRangeHighExpression(20),
-						cht.meterInterval()
-								.setLabel("Warning")
-								.setBackgroundColor(new Color(255, 255, 150))
-								.setDataRangeLowExpression(20)
-								.setDataRangeHighExpression(25),
-						cht.meterInterval()
-								.setLabel("Critical")
-								.setBackgroundColor(new Color(255, 150, 150))
-								.setDataRangeLowExpression(25)
-								.setDataRangeHighExpression(30));
+			.setValue(18)
+			.setDataRangeHighExpression(30)
+			.setTickInterval(5d)
+			.setTickColor(Color.BLACK)
+			.setNeedleColor(Color.BLACK)
+			.setValueColor(Color.BLACK)
+			.setMeterBackgroundColor(Color.LIGHT_GRAY)
+			.intervals(
+				cht.meterInterval()
+					.setLabel("Normal")
+					.setBackgroundColor(new Color(150, 255, 150))
+					.setDataRangeLowExpression(0)
+					.setDataRangeHighExpression(20),
+				cht.meterInterval()
+					.setLabel("Warning")
+					.setBackgroundColor(new Color(255, 255, 150))
+					.setDataRangeLowExpression(20)
+					.setDataRangeHighExpression(25),
+				cht.meterInterval()
+					.setLabel("Critical")
+					.setBackgroundColor(new Color(255, 150, 150))
+					.setDataRangeLowExpression(25)
+					.setDataRangeHighExpression(30));
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.title(Templates.createTitleComponent("MeterChart"))
-					.summary(
-							cmp.horizontalList(chart1, chart2))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.title(Templates.createTitleComponent("MeterChart"))
+				.summary(
+					cmp.horizontalList(chart1, chart2))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

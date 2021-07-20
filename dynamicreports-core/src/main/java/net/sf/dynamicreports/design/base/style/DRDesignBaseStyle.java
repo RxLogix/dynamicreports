@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -205,34 +205,34 @@ public abstract class DRDesignBaseStyle implements DRIDesignBaseStyle {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+	  if (obj == null) {
 			return false;
 		}
-		if (obj == this) {
+	  if (obj == this) {
 			return true;
 		}
-		if (obj.getClass() != getClass()) {
+	  if (obj.getClass() != getClass()) {
 			return false;
 		}
 
-		DRDesignBaseStyle o = (DRDesignBaseStyle) obj;
+	  DRDesignBaseStyle o = (DRDesignBaseStyle) obj;
 		EqualsBuilder equalsBuilder = new EqualsBuilder()
-				.append(foregroundColor, o.foregroundColor)
-				.append(backgroundColor, o.backgroundColor)
-				.append(radius, o.radius)
-				.append(imageScale, o.imageScale)
-				.append(horizontalTextAlignment, o.horizontalTextAlignment)
-				.append(verticalTextAlignment, o.verticalTextAlignment)
-				.append(horizontalImageAlignment, o.horizontalImageAlignment)
-				.append(verticalImageAlignment, o.verticalImageAlignment)
-				.append(border, o.border)
-				.append(padding, o.padding)
-				.append(font, o.font)
-				.append(rotation, o.rotation)
-				.append(pattern, o.pattern)
-				.append(markup, o.markup)
-				.append(paragraph, o.paragraph)
-				.append(linePen, o.linePen);
+			.append(foregroundColor, o.foregroundColor)
+			.append(backgroundColor, o.backgroundColor)
+			.append(radius, o.radius)
+			.append(imageScale, o.imageScale)
+			.append(horizontalTextAlignment, o.horizontalTextAlignment)
+			.append(verticalTextAlignment, o.verticalTextAlignment)
+			.append(horizontalImageAlignment, o.horizontalImageAlignment)
+			.append(verticalImageAlignment, o.verticalImageAlignment)
+			.append(border, o.border)
+			.append(padding, o.padding)
+			.append(font, o.font)
+			.append(rotation, o.rotation)
+			.append(pattern, o.pattern)
+			.append(markup, o.markup)
+			.append(paragraph, o.paragraph)
+			.append(linePen, o.linePen);
 		return equalsBuilder.isEquals();
 	}
 

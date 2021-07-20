@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,7 +48,7 @@ public class JasperSubreportTest extends AbstractJasperValueTest implements Seri
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		SubreportBuilder subreport = Components.subreport(new SubreportExpression())
-				.setDataSource(new SubreportDataSourceExpression());
+    .setDataSource(new SubreportDataSourceExpression());
 
 		rb.detail(subreport);
 	}
@@ -59,11 +59,11 @@ public class JasperSubreportTest extends AbstractJasperValueTest implements Seri
 
 		numberOfPagesTest(1);
 
-		// title
+		//title
 		elementCountTest("title.textField1", 3);
 		elementValueTest("title.textField1", "Subreport1", "Subreport2", "Subreport3");
 
-		// column title
+		//column title
 		elementCountTest("columnHeader.column_column1.title1", 3);
 		elementValueTest("columnHeader.column_column1.title1", "Column1", "Column1", "Column1");
 
@@ -73,7 +73,7 @@ public class JasperSubreportTest extends AbstractJasperValueTest implements Seri
 		elementCountTest("columnHeader.column_column3.title1", 1);
 		elementValueTest("columnHeader.column_column3.title1", "Column3");
 
-		// column detail
+		//column detail
 		elementCountTest("detail.column_column11", 6);
 		elementValueTest("detail.column_column11",
 				"row1_column1",

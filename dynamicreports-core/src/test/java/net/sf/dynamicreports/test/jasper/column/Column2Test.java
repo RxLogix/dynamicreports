@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -36,21 +36,21 @@ import net.sf.jasperreports.engine.JRDataSource;
 /**
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
-public class Column2Test extends AbstractJasperValueTest {
+public class Column2Test extends AbstractJasperValueTest {	
 	private TextColumnBuilder<Integer> column1;
 	private TextColumnBuilder<Integer> column2;
 	private TextColumnBuilder<Integer> column3;
-
+	
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb
-				.setPageColumnsPerPage(2)
-				.fields(
-						field("field1", Integer.class))
-				.columns(
-						column1 = col.reportRowNumberColumn("Column1").setWidth(50),
-						column2 = col.pageRowNumberColumn("Column2").setWidth(50),
-						column3 = col.columnRowNumberColumn("Column3").setWidth(50));
+			.setPageColumnsPerPage(2)
+			.fields(
+					field("field1", Integer.class))
+			.columns(
+					column1 = col.reportRowNumberColumn("Column1").setWidth(50),
+					column2 = col.pageRowNumberColumn("Column2").setWidth(50),
+					column3 = col.columnRowNumberColumn("Column3").setWidth(50));
 	}
 
 	@Override
@@ -78,31 +78,31 @@ public class Column2Test extends AbstractJasperValueTest {
 		for (int i = 0; i < 10; i++) {
 			columnRows.add(String.valueOf(i + 1));
 		}
-
+		
 		numberOfPagesTest(2);
-		// column1
+		//column1
 		columnDetailCountTest(column1, 110);
-		columnDetailValueTest(column1, rows.toArray(new String[] {}));
+		columnDetailValueTest(column1, rows.toArray(new String[]{}));
 		columnTitleCountTest(column1, 3);
 		columnTitleValueTest(column1, "Column1", "Column1", "Column1");
-		// column2
+		//column2
 		columnDetailCountTest(column2, 110);
-		columnDetailValueTest(column2, pageRows.toArray(new String[] {}));
+		columnDetailValueTest(column2, pageRows.toArray(new String[]{}));
 		columnTitleCountTest(column2, 3);
 		columnTitleValueTest(column2, "Column2", "Column2", "Column2");
-		// column3
+		//column3
 		columnDetailCountTest(column3, 110);
-		columnDetailValueTest(column3, columnRows.toArray(new String[] {}));
+		columnDetailValueTest(column3, columnRows.toArray(new String[]{}));
 		columnTitleCountTest(column3, 3);
 		columnTitleValueTest(column3, "Column3", "Column3", "Column3");
 	}
-
+	
 	@Override
 	protected JRDataSource createDataSource() {
 		DRDataSource dataSource = new DRDataSource("field1");
 		for (int i = 0; i < 110; i++) {
 			dataSource.add(i);
-		}
+		}		
 		return dataSource;
 	}
 }

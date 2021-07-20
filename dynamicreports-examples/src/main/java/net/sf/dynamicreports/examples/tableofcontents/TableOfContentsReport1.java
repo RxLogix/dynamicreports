@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -45,37 +45,36 @@ public class TableOfContentsReport1 {
 
 	private void build() {
 		TextColumnBuilder<String> countryColumn = col.column("Country", "country", type.stringType());
-		TextColumnBuilder<String> itemColumn = col.column("Item", "item", type.stringType());
+		TextColumnBuilder<String> itemColumn    = col.column("Item",    "item",    type.stringType());
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.tableOfContents()
-					.columns(
-							countryColumn,
-							itemColumn,
-							col.column("Order date", "orderdate", type.dateType()),
-							col.column("Quantity", "quantity", type.integerType()),
-							col.column("Unit price", "unitprice", type.bigDecimalType()))
-					.groupBy(countryColumn, itemColumn)
-					.title(Templates.createTitleComponent("TableOfContents1"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .tableOfContents()
+			  .columns(
+			  	countryColumn,
+			  	itemColumn,
+			  	col.column("Order date", "orderdate", type.dateType()),
+			  	col.column("Quantity",   "quantity",  type.integerType()),
+			  	col.column("Unit price", "unitprice", type.bigDecimalType()))
+			  .groupBy(countryColumn, itemColumn)
+			  .title(Templates.createTitleComponent("TableOfContents1"))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
 	}
 
 	private JRDataSource createDataSource() {
-		String[] countries = new String[] { "USA", "Canada", "Mexico" };
-		String[] items = new String[] { "Book", "Notebook", "PDA" };
+		String[] countries = new String[]{"USA", "Canada", "Mexico"};
+		String[] items = new String[]{"Book", "Notebook", "PDA"};
 		DRDataSource dataSource = new DRDataSource("country", "item", "orderdate", "quantity", "unitprice");
 		for (String country : countries) {
 			for (String item : items) {
 				for (int i = 0; i < 8; i++) {
-					dataSource.add(country, item, toDate(2010, 1, (int) (Math.random() * 10) + 1), (int) (Math.random() * 10) + 1,
-							new BigDecimal(Math.random() * 100 + 1));
+					dataSource.add(country, item, toDate(2010, 1, (int) (Math.random() * 10) + 1), (int) (Math.random() * 10) + 1, new BigDecimal(Math.random() * 100 + 1));
 				}
 			}
 		}

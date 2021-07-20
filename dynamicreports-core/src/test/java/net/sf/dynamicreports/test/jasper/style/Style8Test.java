@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -50,14 +50,11 @@ public class Style8Test extends AbstractJasperStyleTest {
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.setColumnStyle(stl.style(stl.pen1Point()).bold())
-				.columns(
-						column1 = col.booleanColumn("field1"),
-						column2 = col.booleanColumn("field2").setComponentType(BooleanComponentType.IMAGE_STYLE_1)
-								.setHorizontalImageAlignment(HorizontalImageAlignment.RIGHT),
-						column3 = col.booleanColumn("field3").setComponentType(BooleanComponentType.IMAGE_STYLE_1)
-								.setStyle(stl.style(stl.pen2Point()).setHorizontalImageAlignment(HorizontalImageAlignment.CENTER)
-										.setVerticalImageAlignment(VerticalImageAlignment.MIDDLE)),
-						column4 = col.column("field4", type.stringType()));
+		  .columns(
+		  	column1 = col.booleanColumn("field1"),
+		  	column2 = col.booleanColumn("field2").setComponentType(BooleanComponentType.IMAGE_STYLE_1).setHorizontalImageAlignment(HorizontalImageAlignment.RIGHT),
+		  	column3 = col.booleanColumn("field3").setComponentType(BooleanComponentType.IMAGE_STYLE_1).setStyle(stl.style(stl.pen2Point()).setHorizontalImageAlignment(HorizontalImageAlignment.CENTER).setVerticalImageAlignment(VerticalImageAlignment.MIDDLE)),
+		  	column4 = col.column("field4", type.stringType()));
 	}
 
 	@Override

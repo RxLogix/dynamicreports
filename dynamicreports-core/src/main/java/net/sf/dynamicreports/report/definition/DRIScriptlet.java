@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -22,63 +22,69 @@
 
 package net.sf.dynamicreports.report.definition;
 
+
 /**
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 public interface DRIScriptlet {
-
+	
 	public String getName();
-
+	
 	/**
 	 * Called before the report is initialized.
 	 */
 	public void beforeReportInit(ReportParameters reportParameters);
+
 
 	/**
 	 * Called after the report is initialized.
 	 */
 	public void afterReportInit(ReportParameters reportParameters);
 
+
 	/**
 	 * Called before each page is initialized.
 	 */
 	public void beforePageInit(ReportParameters reportParameters);
+
 
 	/**
 	 * Called after each page is initialized.
 	 */
 	public void afterPageInit(ReportParameters reportParameters);
 
+
 	/**
 	 * Called before each column is initialized.
 	 */
 	public void beforeColumnInit(ReportParameters reportParameters);
+
 
 	/**
 	 * Called after each column is initialized.
 	 */
 	public void afterColumnInit(ReportParameters reportParameters);
 
+
 	/**
 	 * Called before a group is initialized.
-	 * 
-	 * @param groupName
-	 *          the group name
+	 * @param groupName the group name
 	 */
 	public void beforeGroupInit(String groupName, ReportParameters reportParameters);
 
+
 	/**
 	 * Called after a group is initialized.
-	 * 
-	 * @param groupName
-	 *          the group name
+	 * @param groupName the group name
 	 */
 	public void afterGroupInit(String groupName, ReportParameters reportParameters);
+
 
 	/**
 	 * Called before evaluating each detail.
 	 */
 	public void beforeDetailEval(ReportParameters reportParameters);
+
 
 	/**
 	 * Called after evaluating each detail.

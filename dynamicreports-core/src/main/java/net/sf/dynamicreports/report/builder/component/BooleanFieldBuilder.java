@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -74,10 +74,8 @@ public class BooleanFieldBuilder extends HyperLinkComponentBuilder<BooleanFieldB
 	/**
 	 * Sets the boolean image dimension. Has effect only when the boolean value is presented as an image.
 	 *
-	 * @param width
-	 *          the image width
-	 * @param height
-	 *          the image height
+	 * @param width the image width
+	 * @param height the image height
 	 * @return a column builder
 	 */
 	public BooleanFieldBuilder setImageDimension(Integer width, Integer height) {
@@ -89,8 +87,7 @@ public class BooleanFieldBuilder extends HyperLinkComponentBuilder<BooleanFieldB
 	/**
 	 * Sets the boolean image width. Has effect only when the boolean value is presented as an image.
 	 *
-	 * @param width
-	 *          the image width
+	 * @param width the image width
 	 * @return a column builder
 	 */
 	public BooleanFieldBuilder setImageWidth(Integer width) {
@@ -101,8 +98,7 @@ public class BooleanFieldBuilder extends HyperLinkComponentBuilder<BooleanFieldB
 	/**
 	 * Sets the boolean image height. Has effect only when the boolean value is presented as an image.
 	 *
-	 * @param height
-	 *          the image height
+	 * @param height the image height
 	 * @return a column builder
 	 */
 	public BooleanFieldBuilder setImageHeight(Integer height) {
@@ -122,7 +118,8 @@ public class BooleanFieldBuilder extends HyperLinkComponentBuilder<BooleanFieldB
 	public BooleanFieldBuilder setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
 		if (horizontalAlignment != null) {
 			getObject().setHorizontalImageAlignment(HorizontalImageAlignment.valueOf(horizontalAlignment.name()));
-		} else {
+		}
+		else {
 			getObject().setHorizontalImageAlignment(null);
 		}
 		return this;

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -50,32 +50,32 @@ public class OpenFlashChartReport {
 		pieChart1 = new PieChart();
 		pieChart1.setTitle("Quantity");
 		GenericElementBuilder chart1 = cmp.genericElement("http://www.dynamicreports.org/openflashchart", "openflashchart")
-				.setHeight(200)
-				.addParameter(PieChart.PARAMETER_CHART_GENERATOR, pieChart1);
+			.setHeight(200)
+			.addParameter(PieChart.PARAMETER_CHART_GENERATOR, pieChart1);
 
 		pieChart2 = new PieChart();
 		pieChart2.setTitle("Unit price");
 		GenericElementBuilder chart2 = cmp.genericElement("http://www.dynamicreports.org/openflashchart", "openflashchart")
-				.setHeight(200)
-				.addParameter(PieChart.PARAMETER_CHART_GENERATOR, pieChart2);
+			.setHeight(200)
+			.addParameter(PieChart.PARAMETER_CHART_GENERATOR, pieChart2);
 
 		try {
 			JasperHtmlExporterBuilder htmlExporter = export.htmlExporter("c:/report.html")
-					.setImagesDirName("c:/images")
-					.setOutputImagesToDir(true);
+				.setImagesDirName("c:/images")
+				.setOutputImagesToDir(true);
 
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.scriptlets(new ReportScriptlet())
-					.columns(
-							col.column("Item", "item", type.stringType()),
-							col.column("Quantity", "quantity", type.integerType()),
-							col.column("Unit price", "unitprice", type.bigDecimalType()))
-					.title(Templates.createTitleComponent("OpenFlashChart"))
-					.summary(
-							cmp.horizontalList(chart1, chart2))
-					.setDataSource(createDataSource())
-					.toHtml(htmlExporter);
+				.setTemplate(Templates.reportTemplate)
+				.scriptlets(new ReportScriptlet())
+				.columns(
+					col.column("Item", "item", type.stringType()),
+					col.column("Quantity", "quantity", type.integerType()),
+					col.column("Unit price", "unitprice", type.bigDecimalType()))
+				.title(Templates.createTitleComponent("OpenFlashChart"))
+				.summary(
+					cmp.horizontalList(chart1, chart2))
+				.setDataSource(createDataSource())
+				.toHtml(htmlExporter);
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

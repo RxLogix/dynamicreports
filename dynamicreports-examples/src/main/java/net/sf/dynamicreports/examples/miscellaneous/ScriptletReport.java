@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -59,15 +59,15 @@ public class ScriptletReport {
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.scriptlets(new ReportScriptlet())
-					.columns(itemColumn)
-					.groupBy(group)
-					.subtotalsAtGroupFooter(group, itemSbt)
-					.title(Templates.createTitleComponent("Scriptlet"))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .scriptlets(new ReportScriptlet())
+			  .columns(itemColumn)
+			  .groupBy(group)
+			  .subtotalsAtGroupFooter(group, itemSbt)
+			  .title(Templates.createTitleComponent("Scriptlet"))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
@@ -95,7 +95,8 @@ public class ScriptletReport {
 			Integer count;
 			if (itemsCount.containsKey(item)) {
 				count = itemsCount.get(item);
-			} else {
+			}
+			else {
 				count = 0;
 			}
 			itemsCount.put(item, ++count);

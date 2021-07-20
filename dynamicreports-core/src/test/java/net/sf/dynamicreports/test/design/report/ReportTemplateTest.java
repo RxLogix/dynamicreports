@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -69,91 +69,91 @@ public class ReportTemplateTest {
 		rb.columns(
 				column1 = col.column("Column1", "field1", Integer.class),
 				col.booleanColumn("Column2", "field2"))
-				.groupBy(
-						grp.group(column1)
-								.header(
-										cmp.horizontalList(
-												cmp.hListCell(cmp.text("")).widthFixed())))
-				.title(
-						cmp.horizontalList(
-								cmp.hListCell(cmp.image("")).widthFixed().heightFixedOnTop(),
-								cmp.hListCell(cht.barChart()).widthFixed().heightFixedOnTop(),
-								cmp.hListCell(bcode.ean128("12345678")).widthFixed().heightFixedOnTop(),
-								cmp.hListCell(
-										ctab.crosstab()
-												.rowGroups(ctab.rowGroup("f1", String.class))
-												.columnGroups(ctab.columnGroup("f2", String.class), ctab.columnGroup("f3", String.class))
-												.measures(ctab.measure("f4", "f4", Integer.class, Calculation.SUM)))
-										.widthFixed().heightFixedOnTop()))
-				.setTemplate(
-						template()
-								.setLocale(Locale.ENGLISH)
-								.setShowColumnTitle(false)
-								.setIgnorePagination(true)
-								.setWhenNoDataType(WhenNoDataType.ALL_SECTIONS_NO_DETAIL)
-								.setWhenResourceMissingType(WhenResourceMissingType.KEY)
-								.setTitleOnANewPage(true)
-								.setSummaryOnANewPage(true)
-								.setSummaryWithPageHeaderAndFooter(true)
-								.setFloatColumnFooter(true)
-								.setPrintOrder(Orientation.HORIZONTAL)
-								.setColumnDirection(RunDirection.RIGHT_TO_LEFT)
-								.setLanguage(Language.GROOVY)
+			.groupBy(
+					grp.group(column1)
+						.header(
+								cmp.horizontalList(
+									cmp.hListCell(cmp.text("")).widthFixed())))
+			.title(
+				cmp.horizontalList(
+					cmp.hListCell(cmp.image("")).widthFixed().heightFixedOnTop(),
+					cmp.hListCell(cht.barChart()).widthFixed().heightFixedOnTop(),
+					cmp.hListCell(bcode.ean128("12345678")).widthFixed().heightFixedOnTop(),
+					cmp.hListCell(
+							ctab.crosstab()
+								.rowGroups(ctab.rowGroup("f1", String.class))
+								.columnGroups(ctab.columnGroup("f2", String.class), ctab.columnGroup("f3", String.class))
+								.measures(ctab.measure("f4", "f4", Integer.class, Calculation.SUM))
+							).widthFixed().heightFixedOnTop()))
+			.setTemplate(
+					template()
+						.setLocale(Locale.ENGLISH)
+						.setShowColumnTitle(false)
+						.setIgnorePagination(true)
+						.setWhenNoDataType(WhenNoDataType.ALL_SECTIONS_NO_DETAIL)
+						.setWhenResourceMissingType(WhenResourceMissingType.KEY)
+						.setTitleOnANewPage(true)
+						.setSummaryOnANewPage(true)
+						.setSummaryWithPageHeaderAndFooter(true)
+						.setFloatColumnFooter(true)
+						.setPrintOrder(Orientation.HORIZONTAL)
+						.setColumnDirection(RunDirection.RIGHT_TO_LEFT)
+						.setLanguage(Language.GROOVY)
 
-								.setHighlightDetailOddRows(true)
-								.setDetailOddRowStyle(stl.simpleStyle().setBackgroundColor(Color.BLUE))
-								.setHighlightDetailEvenRows(true)
-								.setDetailEvenRowStyle(stl.simpleStyle().setBackgroundColor(Color.CYAN))
-								.setDefaultFont(stl.font().setFontSize(12))
-								.setTextStyle(stl.style().bold())
+						.setHighlightDetailOddRows(true)
+						.setDetailOddRowStyle(stl.simpleStyle().setBackgroundColor(Color.BLUE))
+						.setHighlightDetailEvenRows(true)
+						.setDetailEvenRowStyle(stl.simpleStyle().setBackgroundColor(Color.CYAN))
+						.setDefaultFont(stl.font().setFontSize(12))
+						.setTextStyle(stl.style().bold())
 
-								.setPageFormat(PageType.A3, PageOrientation.LANDSCAPE)
-								.setPageMargin(margin(3))
-								.setPageColumnsPerPage(3)
-								.setPageColumnSpace(20)
+						.setPageFormat(PageType.A3, PageOrientation.LANDSCAPE)
+						.setPageMargin(margin(3))
+						.setPageColumnsPerPage(3)
+						.setPageColumnSpace(20)
 
-								.setColumnPrintRepeatedDetailValues(false)
-								.setColumnWidth(250)
+						.setColumnPrintRepeatedDetailValues(false)
+						.setColumnWidth(250)
 
-								.setGroupHeaderLayout(GroupHeaderLayout.TITLE_AND_VALUE)
-								.setGroupHideColumn(false)
-								.setGroupShowColumnHeaderAndFooter(true)
-								.setGroupPadding(20)
-								.setGroupStartInNewPage(true)
-								.setGroupStartInNewColumn(true)
-								.setGroupReprintHeaderOnEachPage(true)
-								.setGroupHeaderWithSubtotal(true)
+						.setGroupHeaderLayout(GroupHeaderLayout.TITLE_AND_VALUE)
+						.setGroupHideColumn(false)
+						.setGroupShowColumnHeaderAndFooter(true)
+						.setGroupPadding(20)
+						.setGroupStartInNewPage(true)
+						.setGroupStartInNewColumn(true)
+						.setGroupReprintHeaderOnEachPage(true)
+						.setGroupHeaderWithSubtotal(true)
 
-								.setTextFieldWidth(150)
+						.setTextFieldWidth(150)
 
-								.setImageWidth(110)
-								.setImageHeight(120)
+						.setImageWidth(110)
+						.setImageHeight(120)
 
-								.setListgap(10)
+						.setListgap(10)
 
-								.setChartWidth(210)
-								.setChartHeight(220)
-								.chartSeriesColors(Color.BLUE)
-								.setChartTheme("customTheme")
+						.setChartWidth(210)
+						.setChartHeight(220)
+						.chartSeriesColors(Color.BLUE)
+						.setChartTheme("customTheme")
 
-								.setBarcodeWidth(110)
-								.setBarcodeHeight(120)
+						.setBarcodeWidth(110)
+						.setBarcodeHeight(120)
 
-								.setCrosstabWidth(90)
-								.setCrosstabHeight(101)
-								.setCrosstabHighlightOddRows(true)
-								.setCrosstabOddRowStyle(stl.simpleStyle().setBackgroundColor(Color.ORANGE))
-								.setCrosstabHighlightEvenRows(true)
-								.setCrosstabEvenRowStyle(stl.simpleStyle().setBackgroundColor(Color.MAGENTA))
-								.setCrosstabGroupStyle(stl.style().setBackgroundColor(Color.RED))
-								.setCrosstabGroupTotalStyle(stl.style().setBackgroundColor(Color.ORANGE))
-								.setCrosstabGrandTotalStyle(stl.style().setBackgroundColor(Color.BLUE))
-								.setCrosstabCellStyle(stl.style().setBackgroundColor(Color.CYAN))
-								.setCrosstabMeasureTitleStyle(stl.style().setBackgroundColor(Color.YELLOW))
+						.setCrosstabWidth(90)
+						.setCrosstabHeight(101)
+						.setCrosstabHighlightOddRows(true)
+						.setCrosstabOddRowStyle(stl.simpleStyle().setBackgroundColor(Color.ORANGE))
+						.setCrosstabHighlightEvenRows(true)
+						.setCrosstabEvenRowStyle(stl.simpleStyle().setBackgroundColor(Color.MAGENTA))
+						.setCrosstabGroupStyle(stl.style().setBackgroundColor(Color.RED))
+						.setCrosstabGroupTotalStyle(stl.style().setBackgroundColor(Color.ORANGE))
+						.setCrosstabGrandTotalStyle(stl.style().setBackgroundColor(Color.BLUE))
+						.setCrosstabCellStyle(stl.style().setBackgroundColor(Color.CYAN))
+						.setCrosstabMeasureTitleStyle(stl.style().setBackgroundColor(Color.YELLOW))
 
-								.setBooleanColumnStyle(stl.style(stl.pen1Point()))
+						.setBooleanColumnStyle(stl.style(stl.pen1Point()))
 
-								.setDetailSplitType(SplitType.IMMEDIATE));
+						.setDetailSplitType(SplitType.IMMEDIATE));
 	}
 
 	@Test
@@ -282,22 +282,22 @@ public class ReportTemplateTest {
 		TextColumnBuilder<Integer> column1;
 
 		rb.columns(column1 = col.column("Column1", "field1", Integer.class))
-				.groupBy(
-						grp.group(column1)
-								.setHeaderLayout(GroupHeaderLayout.TITLE_AND_VALUE)
-								.setHideColumn(false))
-				.subtotalsAtSummary(sbt.sum(column1))
-				.title(cmp.image(""), cht.areaChart().setCategory("field2", String.class), bcode.ean128("12345678"))
-				.setTemplate(
-						template()
-								.setColumnStyle(stl.style().setFontSize(1))
-								.setColumnTitleStyle(stl.style().setFontSize(2))
-								.setGroupStyle(stl.style().setFontSize(3))
-								.setGroupTitleStyle(stl.style().setFontSize(4))
-								.setSubtotalStyle(stl.style().setFontSize(5))
-								.setImageStyle(stl.style().setBorder(stl.pen1Point()))
-								.setChartStyle(stl.style().setBorder(stl.pen2Point()))
-								.setBarcodeStyle(stl.style().setBorder(stl.pen().setLineWidth(3f))));
+			.groupBy(
+					grp.group(column1)
+						 .setHeaderLayout(GroupHeaderLayout.TITLE_AND_VALUE)
+						 .setHideColumn(false))
+			.subtotalsAtSummary(sbt.sum(column1))
+			.title(cmp.image(""), cht.areaChart().setCategory("field2", String.class), bcode.ean128("12345678"))
+			.setTemplate(
+					template()
+						.setColumnStyle(stl.style().setFontSize(1))
+						.setColumnTitleStyle(stl.style().setFontSize(2))
+						.setGroupStyle(stl.style().setFontSize(3))
+						.setGroupTitleStyle(stl.style().setFontSize(4))
+						.setSubtotalStyle(stl.style().setFontSize(5))
+						.setImageStyle(stl.style().setBorder(stl.pen1Point()))
+						.setChartStyle(stl.style().setBorder(stl.pen2Point()))
+						.setBarcodeStyle(stl.style().setBorder(stl.pen().setLineWidth(3f))));
 		try {
 			DRDesignReport report = new DRDesignReport(rb.getReport());
 

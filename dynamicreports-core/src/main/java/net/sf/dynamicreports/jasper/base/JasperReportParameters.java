@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -62,20 +62,20 @@ public class JasperReportParameters implements ReportParameters {
 		ValueType type = jasperScriptlet.getValueType(name);
 		if (type != null) {
 			switch (type) {
-				case FIELD:
-					return (T) getFieldValue(name);
-				case VARIABLE:
-					return (T) getVariableValue(name);
-				case PARAMETER:
-					return (T) getParameterValue(name);
-				case SIMPLE_EXPRESSION:
-					return (T) getSimpleExpressionValue(name);
-				case COMPLEX_EXPRESSION:
-					return (T) getComplexExpressionValue(name);
-				case SYSTEM_EXPRESSION:
-					return (T) getSystemExpressionValue(name);
-				default:
-					break;
+			case FIELD:
+				return (T) getFieldValue(name);
+			case VARIABLE:
+				return (T) getVariableValue(name);
+			case PARAMETER:
+				return (T) getParameterValue(name);
+			case SIMPLE_EXPRESSION:
+				return (T) getSimpleExpressionValue(name);
+			case COMPLEX_EXPRESSION:
+				return (T) getComplexExpressionValue(name);
+			case SYSTEM_EXPRESSION:
+				return (T) getSystemExpressionValue(name);
+			default:
+				break;
 			}
 		}
 
@@ -88,7 +88,7 @@ public class JasperReportParameters implements ReportParameters {
 		return (T) getValue(value.getName());
 	}
 
-	// field
+	//field
 	@Override
 	@SuppressWarnings("unchecked")
 	public <T> T getFieldValue(String name) {
@@ -99,7 +99,7 @@ public class JasperReportParameters implements ReportParameters {
 		}
 	}
 
-	// variable
+	//variable
 	@Override
 	@SuppressWarnings("unchecked")
 	public <T> T getVariableValue(String name) {
@@ -149,7 +149,7 @@ public class JasperReportParameters implements ReportParameters {
 		return (Integer) getVariableValue(groupName + "_COUNT");
 	}
 
-	// parameter
+	//parameter
 	@Override
 	@SuppressWarnings("unchecked")
 	public <T> T getParameterValue(String name) {
@@ -190,12 +190,12 @@ public class JasperReportParameters implements ReportParameters {
 		return message;
 	}
 
-	// simple expression
+	//simple expression
 	private Object getSimpleExpressionValue(String name) {
 		return jasperScriptlet.getSimpleExpression(name).evaluate(this);
 	}
 
-	// complex expression
+	//complex expression
 	private Object getComplexExpressionValue(String name) {
 		List<Object> values = new ArrayList<Object>();
 		DRIDesignComplexExpression complexExpression = jasperScriptlet.getComplexExpression(name);
@@ -205,7 +205,7 @@ public class JasperReportParameters implements ReportParameters {
 		return complexExpression.evaluate(values, this);
 	}
 
-	// system expression
+	//system expression
 	private Object getSystemExpressionValue(String name) {
 		return jasperScriptlet.getSystemValue(name);
 	}

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -101,9 +101,9 @@ public class TableOfContentsCustomizer implements DRITableOfContentsCustomizer {
 
 		if (titleStyle == null) {
 			titleStyle = stl.style()
-					.bold()
-					.setFontSize(16)
-					.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
+				.bold()
+				.setFontSize(16)
+				.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
 		}
 	}
 
@@ -132,12 +132,12 @@ public class TableOfContentsCustomizer implements DRITableOfContentsCustomizer {
 		init();
 
 		report
-				.title(
-						title(),
-						cmp.filler().setFixedHeight(20))
-				.fields(
-						levelField, textField, referenceField, pageIndexField)
-				.detail(detailComponent());
+			.title(
+				title(),
+				cmp.filler().setFixedHeight(20))
+			.fields(
+				levelField, textField, referenceField, pageIndexField)
+			.detail(detailComponent());
 	}
 
 	protected ComponentBuilder<?, ?> title() {
@@ -163,7 +163,7 @@ public class TableOfContentsCustomizer implements DRITableOfContentsCustomizer {
 		}
 
 		TextFieldBuilder<String> textComponent = cmp.text(textField)
-				.setHyperLink(referenceHyperLink);
+  		.setHyperLink(referenceHyperLink);
 		if (textFixedWidth != null) {
 			textComponent.setFixedWidth(textFixedWidth);
 		}
@@ -174,18 +174,19 @@ public class TableOfContentsCustomizer implements DRITableOfContentsCustomizer {
 		}
 
 		TextFieldBuilder<String> dotsComponent = cmp.text(dots.toString())
-				.setStretchWithOverflow(false)
-				.setHyperLink(referenceHyperLink);
+  		.setStretchWithOverflow(false)
+  		.setHyperLink(referenceHyperLink);
 		if (dotsFixedWidth != null) {
 			dotsComponent.setFixedWidth(dotsFixedWidth);
 		}
 		headingComponent.add(dotsComponent);
 
 		TextFieldBuilder<Integer> pageIndexComponent = cmp.text(pageIndexField)
-				.setHyperLink(referenceHyperLink);
+  		.setHyperLink(referenceHyperLink);
 		if (pageIndexFixedWidth != null) {
 			pageIndexComponent.setFixedWidth(pageIndexFixedWidth);
-		} else {
+		}
+		else {
 			pageIndexComponent.setFixedColumns(pageIndexDigits);
 		}
 		headingComponent.add(pageIndexComponent);

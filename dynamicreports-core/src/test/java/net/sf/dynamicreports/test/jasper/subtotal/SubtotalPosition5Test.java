@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -48,15 +48,15 @@ public class SubtotalPosition5Test extends AbstractJasperPositionTest {
 		TextColumnBuilder<Integer> column1;
 
 		rb.columns(
-				column1 = col.column("Column1", "field1", Integer.class).setWidth(600))
-				.subtotalsAtSummary(
-						subtotal1 = sbt.sum(column1).setLabel("subtotal"),
-						subtotal2 = sbt.sum(column1).setLabel("subtotal").setLabelPosition(Position.TOP),
-						subtotal3 = sbt.sum(column1).setLabel("subtotal").setLabelPosition(Position.BOTTOM),
-						subtotal4 = sbt.sum(column1).setLabel("subtotal").setLabelPosition(Position.LEFT),
-						subtotal5 = sbt.sum(column1).setLabel("subtotal").setLabelPosition(Position.RIGHT),
-						subtotal6 = sbt.sum(column1).setLabel("subtotal").setLabelPosition(Position.LEFT).setLabelFixedWidth(100),
-						subtotal7 = sbt.sum(column1).setLabel("subtotal").setLabelPosition(Position.RIGHT).setLabelFixedWidth(150));
+					column1 = col.column("Column1", "field1", Integer.class).setWidth(600))
+			.subtotalsAtSummary(
+				subtotal1 = sbt.sum(column1).setLabel("subtotal"),
+				subtotal2 = sbt.sum(column1).setLabel("subtotal").setLabelPosition(Position.TOP),
+				subtotal3 = sbt.sum(column1).setLabel("subtotal").setLabelPosition(Position.BOTTOM),
+				subtotal4 = sbt.sum(column1).setLabel("subtotal").setLabelPosition(Position.LEFT),
+				subtotal5 = sbt.sum(column1).setLabel("subtotal").setLabelPosition(Position.RIGHT),
+				subtotal6 = sbt.sum(column1).setLabel("subtotal").setLabelPosition(Position.LEFT).setLabelFixedWidth(100),
+				subtotal7 = sbt.sum(column1).setLabel("subtotal").setLabelPosition(Position.RIGHT).setLabelFixedWidth(150));
 	}
 
 	@Override
@@ -64,26 +64,26 @@ public class SubtotalPosition5Test extends AbstractJasperPositionTest {
 		super.test();
 
 		numberOfPagesTest(1);
-		// summary
-		// TOP
+		//summary
+		//TOP
 		subtotalIndexPositionTest(subtotal1, 1, 0, 10, 58, 575, 16);
 		subtotalLabelIndexPositionTest(subtotal1, 1, 0, 10, 42, 575, 16);
-		// TOP
+		//TOP
 		subtotalIndexPositionTest(subtotal2, 2, 0, 10, 90, 575, 16);
 		subtotalLabelIndexPositionTest(subtotal2, 2, 0, 10, 74, 575, 16);
-		// BOTTOM
+		//BOTTOM
 		subtotalIndexPositionTest(subtotal3, 3, 0, 10, 106, 575, 16);
 		subtotalLabelIndexPositionTest(subtotal3, 3, 0, 10, 122, 575, 16);
-		// LEFT
+		//LEFT
 		subtotalIndexPositionTest(subtotal4, 4, 0, 287, 0, 288, 16);
 		subtotalLabelIndexPositionTest(subtotal4, 4, 0, 0, 0, 287, 16);
-		// RIGHT
+		//RIGHT
 		subtotalIndexPositionTest(subtotal5, 5, 0, 0, 0, 287, 16);
 		subtotalLabelIndexPositionTest(subtotal5, 5, 0, 287, 0, 288, 16);
-		// LEFT
+		//LEFT
 		subtotalIndexPositionTest(subtotal6, 6, 0, 100, 0, 475, 16);
 		subtotalLabelIndexPositionTest(subtotal6, 6, 0, 0, 0, 100, 16);
-		// RIGHT
+		//RIGHT
 		subtotalIndexPositionTest(subtotal7, 7, 0, 0, 0, 425, 16);
 		subtotalLabelIndexPositionTest(subtotal7, 7, 0, 425, 0, 150, 16);
 	}

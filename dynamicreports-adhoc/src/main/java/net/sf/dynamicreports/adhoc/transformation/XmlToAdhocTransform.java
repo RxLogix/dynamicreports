@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -208,14 +208,14 @@ public class XmlToAdhocTransform {
 		}
 
 		switch (xmlAdhocGroupHeaderLayout) {
-			case EMPTY:
-				return AdhocGroupHeaderLayout.EMPTY;
-			case VALUE:
-				return AdhocGroupHeaderLayout.VALUE;
-			case TITLE_AND_VALUE:
-				return AdhocGroupHeaderLayout.TITLE_AND_VALUE;
-			default:
-				throw new AdhocException("Group header layout " + xmlAdhocGroupHeaderLayout.name() + " not supported");
+		case EMPTY:
+			return AdhocGroupHeaderLayout.EMPTY;
+		case VALUE:
+			return AdhocGroupHeaderLayout.VALUE;
+		case TITLE_AND_VALUE:
+			return AdhocGroupHeaderLayout.TITLE_AND_VALUE;
+		default:
+			throw new AdhocException("Group header layout " + xmlAdhocGroupHeaderLayout.name() + " not supported");
 		}
 	}
 
@@ -237,28 +237,28 @@ public class XmlToAdhocTransform {
 		}
 
 		switch (xmlAdhocCalculation) {
-			case NOTHING:
-				return AdhocCalculation.NOTHING;
-			case COUNT:
-				return AdhocCalculation.COUNT;
-			case SUM:
-				return AdhocCalculation.SUM;
-			case AVERAGE:
-				return AdhocCalculation.AVERAGE;
-			case LOWEST:
-				return AdhocCalculation.LOWEST;
-			case HIGHEST:
-				return AdhocCalculation.HIGHEST;
-			case STANDARD_DEVIATION:
-				return AdhocCalculation.STANDARD_DEVIATION;
-			case VARIANCE:
-				return AdhocCalculation.VARIANCE;
-			case FIRST:
-				return AdhocCalculation.FIRST;
-			case DISTINCT_COUNT:
-				return AdhocCalculation.DISTINCT_COUNT;
-			default:
-				throw new AdhocException("Calculation " + xmlAdhocCalculation.name() + " not supported");
+		case NOTHING:
+			return AdhocCalculation.NOTHING;
+		case COUNT:
+			return AdhocCalculation.COUNT;
+		case SUM:
+			return AdhocCalculation.SUM;
+		case AVERAGE:
+			return AdhocCalculation.AVERAGE;
+		case LOWEST:
+			return AdhocCalculation.LOWEST;
+		case HIGHEST:
+			return AdhocCalculation.HIGHEST;
+		case STANDARD_DEVIATION:
+			return AdhocCalculation.STANDARD_DEVIATION;
+		case VARIANCE:
+			return AdhocCalculation.VARIANCE;
+		case FIRST:
+			return AdhocCalculation.FIRST;
+		case DISTINCT_COUNT:
+			return AdhocCalculation.DISTINCT_COUNT;
+		default:
+			throw new AdhocException("Calculation " + xmlAdhocCalculation.name() + " not supported");
 		}
 	}
 
@@ -268,34 +268,34 @@ public class XmlToAdhocTransform {
 		}
 
 		switch (xmlAdhocSubtotalPosition) {
-			case TITLE:
-				return AdhocSubtotalPosition.TITLE;
-			case PAGE_HEADER:
-				return AdhocSubtotalPosition.PAGE_HEADER;
-			case PAGE_FOOTER:
-				return AdhocSubtotalPosition.PAGE_FOOTER;
-			case COLUMN_HEADER:
-				return AdhocSubtotalPosition.COLUMN_HEADER;
-			case COLUMN_FOOTER:
-				return AdhocSubtotalPosition.COLUMN_FOOTER;
-			case GROUP_HEADER:
-				return AdhocSubtotalPosition.GROUP_HEADER;
-			case GROUP_FOOTER:
-				return AdhocSubtotalPosition.GROUP_FOOTER;
-			case FIRST_GROUP_HEADER:
-				return AdhocSubtotalPosition.FIRST_GROUP_HEADER;
-			case FIRST_GROUP_FOOTER:
-				return AdhocSubtotalPosition.FIRST_GROUP_FOOTER;
-			case LAST_GROUP_HEADER:
-				return AdhocSubtotalPosition.LAST_GROUP_HEADER;
-			case LAST_GROUP_FOOTER:
-				return AdhocSubtotalPosition.LAST_GROUP_FOOTER;
-			case LAST_PAGE_FOOTER:
-				return AdhocSubtotalPosition.LAST_PAGE_FOOTER;
-			case SUMMARY:
-				return AdhocSubtotalPosition.SUMMARY;
-			default:
-				throw new AdhocException("SubtotalPosition " + xmlAdhocSubtotalPosition.name() + " not supported");
+		case TITLE:
+			return AdhocSubtotalPosition.TITLE;
+		case PAGE_HEADER:
+			return AdhocSubtotalPosition.PAGE_HEADER;
+		case PAGE_FOOTER:
+			return AdhocSubtotalPosition.PAGE_FOOTER;
+		case COLUMN_HEADER:
+			return AdhocSubtotalPosition.COLUMN_HEADER;
+		case COLUMN_FOOTER:
+			return AdhocSubtotalPosition.COLUMN_FOOTER;
+		case GROUP_HEADER:
+			return AdhocSubtotalPosition.GROUP_HEADER;
+		case GROUP_FOOTER:
+			return AdhocSubtotalPosition.GROUP_FOOTER;
+		case FIRST_GROUP_HEADER:
+			return AdhocSubtotalPosition.FIRST_GROUP_HEADER;
+		case FIRST_GROUP_FOOTER:
+			return AdhocSubtotalPosition.FIRST_GROUP_FOOTER;
+		case LAST_GROUP_HEADER:
+			return AdhocSubtotalPosition.LAST_GROUP_HEADER;
+		case LAST_GROUP_FOOTER:
+			return AdhocSubtotalPosition.LAST_GROUP_FOOTER;
+		case LAST_PAGE_FOOTER:
+			return AdhocSubtotalPosition.LAST_PAGE_FOOTER;
+		case SUMMARY:
+			return AdhocSubtotalPosition.SUMMARY;
+		default:
+			throw new AdhocException("SubtotalPosition " + xmlAdhocSubtotalPosition.name() + " not supported");
 		}
 	}
 
@@ -312,12 +312,12 @@ public class XmlToAdhocTransform {
 		}
 
 		switch (xmlAdhocOrderType) {
-			case ASCENDING:
-				return AdhocOrderType.ASCENDING;
-			case DESCENDING:
-				return AdhocOrderType.DESCENDING;
-			default:
-				throw new AdhocException("Order type " + xmlAdhocOrderType.name() + " not supported");
+		case ASCENDING:
+			return AdhocOrderType.ASCENDING;
+		case DESCENDING:
+			return AdhocOrderType.DESCENDING;
+		default:
+			throw new AdhocException("Order type " + xmlAdhocOrderType.name() + " not supported");
 		}
 	}
 
@@ -379,16 +379,16 @@ public class XmlToAdhocTransform {
 		}
 
 		switch (xmlAdhocHorizontalAlignment) {
-			case LEFT:
-				return AdhocHorizontalAlignment.LEFT;
-			case CENTER:
-				return AdhocHorizontalAlignment.CENTER;
-			case RIGHT:
-				return AdhocHorizontalAlignment.RIGHT;
-			case JUSTIFIED:
-				return AdhocHorizontalAlignment.JUSTIFIED;
-			default:
-				throw new AdhocException("Horizontal alignment " + xmlAdhocHorizontalAlignment.name() + " not supported");
+		case LEFT:
+			return AdhocHorizontalAlignment.LEFT;
+		case CENTER:
+			return AdhocHorizontalAlignment.CENTER;
+		case RIGHT:
+			return AdhocHorizontalAlignment.RIGHT;
+		case JUSTIFIED:
+			return AdhocHorizontalAlignment.JUSTIFIED;
+		default:
+			throw new AdhocException("Horizontal alignment " + xmlAdhocHorizontalAlignment.name() + " not supported");
 		}
 	}
 
@@ -398,16 +398,16 @@ public class XmlToAdhocTransform {
 		}
 
 		switch (xmlAdhocVerticalAlignment) {
-			case TOP:
-				return AdhocVerticalAlignment.TOP;
-			case MIDDLE:
-				return AdhocVerticalAlignment.MIDDLE;
-			case BOTTOM:
-				return AdhocVerticalAlignment.BOTTOM;
-			case JUSTIFIED:
-				return AdhocVerticalAlignment.JUSTIFIED;
-			default:
-				throw new AdhocException("Vertical alignment " + xmlAdhocVerticalAlignment.name() + " not supported");
+		case TOP:
+			return AdhocVerticalAlignment.TOP;
+		case MIDDLE:
+			return AdhocVerticalAlignment.MIDDLE;
+		case BOTTOM:
+			return AdhocVerticalAlignment.BOTTOM;
+		case JUSTIFIED:
+			return AdhocVerticalAlignment.JUSTIFIED;
+		default:
+			throw new AdhocException("Vertical alignment " + xmlAdhocVerticalAlignment.name() + " not supported");
 		}
 	}
 
@@ -434,12 +434,12 @@ public class XmlToAdhocTransform {
 		}
 
 		switch (xmlAdhocPageOrientation) {
-			case PORTRAIT:
-				return AdhocPageOrientation.PORTRAIT;
-			case LANDSCAPE:
-				return AdhocPageOrientation.LANDSCAPE;
-			default:
-				throw new AdhocException("Page orientation " + xmlAdhocPageOrientation.name() + " not supported");
+		case PORTRAIT:
+			return AdhocPageOrientation.PORTRAIT;
+		case LANDSCAPE:
+			return AdhocPageOrientation.LANDSCAPE;
+		default:
+			throw new AdhocException("Page orientation " + xmlAdhocPageOrientation.name() + " not supported");
 		}
 	}
 
@@ -453,7 +453,8 @@ public class XmlToAdhocTransform {
 			AdhocChart adhocComponent = new AdhocChart();
 			chart((XmlAdhocChart) xmlAdhocComponent, adhocComponent);
 			return adhocComponent;
-		} else {
+		}
+		else {
 			AdhocComponent adhocComponent = new AdhocComponent();
 			component(xmlAdhocComponent, adhocComponent);
 			return adhocComponent;
@@ -504,12 +505,12 @@ public class XmlToAdhocTransform {
 		}
 
 		switch (xmlAdhocOrientation) {
-			case HORIZONTAL:
-				return AdhocOrientation.HORIZONTAL;
-			case VERTICAL:
-				return AdhocOrientation.VERTICAL;
-			default:
-				throw new AdhocException("Orientation " + xmlAdhocOrientation.name() + " not supported");
+		case HORIZONTAL:
+			return AdhocOrientation.HORIZONTAL;
+		case VERTICAL:
+			return AdhocOrientation.VERTICAL;
+		default:
+			throw new AdhocException("Orientation " + xmlAdhocOrientation.name() + " not supported");
 		}
 	}
 
@@ -544,50 +545,50 @@ public class XmlToAdhocTransform {
 		}
 
 		switch (xmlAdhocChartType) {
-			case AREA:
-				return AdhocChartType.AREA;
-			case STACKEDAREA:
-				return AdhocChartType.STACKEDAREA;
-			case BAR:
-				return AdhocChartType.BAR;
-			case STACKEDBAR:
-				return AdhocChartType.STACKEDBAR;
-			case GROUPEDSTACKEDBAR:
-				return AdhocChartType.GROUPEDSTACKEDBAR;
-			case BAR_3_D:
-				return AdhocChartType.BAR3D;
-			case STACKEDBAR_3_D:
-				return AdhocChartType.STACKEDBAR3D;
-			case LINE:
-				return AdhocChartType.LINE;
-			case LAYEREDBAR:
-				return AdhocChartType.LAYEREDBAR;
-			case WATERFALLBAR:
-				return AdhocChartType.WATERFALLBAR;
-			case DIFFERENCE:
-				return AdhocChartType.DIFFERENCE;
-			case PIE:
-				return AdhocChartType.PIE;
-			case PIE_3_D:
-				return AdhocChartType.PIE3D;
-			case SCATTER:
-				return AdhocChartType.SCATTER;
-			case SPIDER:
-				return AdhocChartType.SPIDER;
-			case TIMESERIES:
-				return AdhocChartType.TIMESERIES;
-			case XYAREA:
-				return AdhocChartType.XYAREA;
-			case XYBAR:
-				return AdhocChartType.XYBAR;
-			case XYLINE:
-				return AdhocChartType.XYLINE;
-			case XYSTEP:
-				return AdhocChartType.XYSTEP;
-			case BUBBLE:
-				return AdhocChartType.BUBBLE;
-			default:
-				throw new AdhocException("Chart type " + xmlAdhocChartType.name() + " not supported");
+		case AREA:
+			return AdhocChartType.AREA;
+		case STACKEDAREA:
+			return AdhocChartType.STACKEDAREA;
+		case BAR:
+			return AdhocChartType.BAR;
+		case STACKEDBAR:
+			return AdhocChartType.STACKEDBAR;
+		case GROUPEDSTACKEDBAR:
+			return AdhocChartType.GROUPEDSTACKEDBAR;
+		case BAR_3_D:
+			return AdhocChartType.BAR3D;
+		case STACKEDBAR_3_D:
+			return AdhocChartType.STACKEDBAR3D;
+		case LINE:
+			return AdhocChartType.LINE;
+		case LAYEREDBAR:
+			return AdhocChartType.LAYEREDBAR;
+		case WATERFALLBAR:
+			return AdhocChartType.WATERFALLBAR;
+		case DIFFERENCE:
+			return AdhocChartType.DIFFERENCE;
+		case PIE:
+			return AdhocChartType.PIE;
+		case PIE_3_D:
+			return AdhocChartType.PIE3D;
+		case SCATTER:
+			return AdhocChartType.SCATTER;
+		case SPIDER:
+			return AdhocChartType.SPIDER;
+		case TIMESERIES:
+			return AdhocChartType.TIMESERIES;
+		case XYAREA:
+			return AdhocChartType.XYAREA;
+		case XYBAR:
+			return AdhocChartType.XYBAR;
+		case XYLINE:
+			return AdhocChartType.XYLINE;
+		case XYSTEP:
+			return AdhocChartType.XYSTEP;
+		case BUBBLE:
+			return AdhocChartType.BUBBLE;
+		default:
+			throw new AdhocException("Chart type " + xmlAdhocChartType.name() + " not supported");
 		}
 	}
 
@@ -610,7 +611,8 @@ public class XmlToAdhocTransform {
 			AdhocValueRestriction adhocRestriction = new AdhocValueRestriction();
 			valueRestriction((XmlAdhocValueRestriction) xmlAdhocRestriction, adhocRestriction);
 			return adhocRestriction;
-		} else {
+		}
+		else {
 			AdhocRestriction adhocRestriction = new AdhocRestriction();
 			restriction(xmlAdhocRestriction, adhocRestriction);
 			return adhocRestriction;
@@ -641,44 +643,44 @@ public class XmlToAdhocTransform {
 		}
 
 		switch (xmlAdhocValueOperator) {
-			case EQUAL:
-				return AdhocValueOperator.EQUAL;
-			case UNEQUAL:
-				return AdhocValueOperator.UNEQUAL;
-			case IN:
-				return AdhocValueOperator.IN;
-			case NOT_IN:
-				return AdhocValueOperator.NOT_IN;
-			case LIKE:
-				return AdhocValueOperator.LIKE;
-			case NOT_LIKE:
-				return AdhocValueOperator.NOT_LIKE;
-			case START_WITH:
-				return AdhocValueOperator.START_WITH;
-			case NOT_START_WITH:
-				return AdhocValueOperator.NOT_START_WITH;
-			case END_WITH:
-				return AdhocValueOperator.END_WITH;
-			case NOT_END_WITH:
-				return AdhocValueOperator.NOT_END_WITH;
-			case GREATER:
-				return AdhocValueOperator.GREATER;
-			case GREATER_OR_EQUAL:
-				return AdhocValueOperator.GREATER_OR_EQUAL;
-			case SMALLER:
-				return AdhocValueOperator.SMALLER;
-			case SMALLER_OR_EQUAL:
-				return AdhocValueOperator.SMALLER_OR_EQUAL;
-			case BETWEEN:
-				return AdhocValueOperator.BETWEEN;
-			case NOT_BETWEEN:
-				return AdhocValueOperator.NOT_BETWEEN;
-			case IS_NOT_NULL:
-				return AdhocValueOperator.IS_NOT_NULL;
-			case IS_NULL:
-				return AdhocValueOperator.IS_NULL;
-			default:
-				throw new AdhocException("Value operator " + xmlAdhocValueOperator.name() + " not supported");
+		case EQUAL:
+			return AdhocValueOperator.EQUAL;
+		case UNEQUAL:
+			return AdhocValueOperator.UNEQUAL;
+		case IN:
+			return AdhocValueOperator.IN;
+		case NOT_IN:
+			return AdhocValueOperator.NOT_IN;
+		case LIKE:
+			return AdhocValueOperator.LIKE;
+		case NOT_LIKE:
+			return AdhocValueOperator.NOT_LIKE;
+		case START_WITH:
+			return AdhocValueOperator.START_WITH;
+		case NOT_START_WITH:
+			return AdhocValueOperator.NOT_START_WITH;
+		case END_WITH:
+			return AdhocValueOperator.END_WITH;
+		case NOT_END_WITH:
+			return AdhocValueOperator.NOT_END_WITH;
+		case GREATER:
+			return AdhocValueOperator.GREATER;
+		case GREATER_OR_EQUAL:
+			return AdhocValueOperator.GREATER_OR_EQUAL;
+		case SMALLER:
+			return AdhocValueOperator.SMALLER;
+		case SMALLER_OR_EQUAL:
+			return AdhocValueOperator.SMALLER_OR_EQUAL;
+		case BETWEEN:
+			return AdhocValueOperator.BETWEEN;
+		case NOT_BETWEEN:
+			return AdhocValueOperator.NOT_BETWEEN;
+		case IS_NOT_NULL:
+			return AdhocValueOperator.IS_NOT_NULL;
+		case IS_NULL:
+			return AdhocValueOperator.IS_NULL;
+		default:
+			throw new AdhocException("Value operator " + xmlAdhocValueOperator.name() + " not supported");
 		}
 	}
 }

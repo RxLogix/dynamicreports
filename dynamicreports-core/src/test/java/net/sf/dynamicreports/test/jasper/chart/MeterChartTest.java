@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -49,38 +49,38 @@ public class MeterChartTest extends AbstractJasperChartTest {
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.setLocale(Locale.ENGLISH)
-				.summary(
-						cht.meterChart()
-								.setValue(field("field1", Integer.class))
-								.setDataRangeLowExpression(3)
-								.setDataRangeHighExpression(30)
-								.setValueColor(Color.BLUE)
-								.setValueMask("#,###.0")
-								.setValueFont(stl.fontArial())
-								.setShape(MeterShape.CIRCLE)
-								.setMeterAngle(270)
-								.setUnits("units")
-								.setTickInterval(3d)
-								.setMeterBackgroundColor(Color.LIGHT_GRAY)
-								.setNeedleColor(Color.CYAN)
-								.setTickColor(Color.MAGENTA)
-								.setTickLabelFont(stl.fontCourierNew())
-								.intervals(
-										cht.meterInterval()
-												.setLabel("red")
-												.setAlpha(0.8)
-												.setBackgroundColor(Color.RED)
-												.setDataRangeLowExpression(25)
-												.setDataRangeHighExpression(30),
-										cht.meterInterval()
-												.setLabel("yellow")
-												.setAlpha(0.5)
-												.setBackgroundColor(Color.YELLOW)
-												.setDataRangeLowExpression(20)
-												.setDataRangeHighExpression(25)),
-						cht.meterChart()
-								.setValue(5)
-								.setShape(MeterShape.DIAL));
+			.summary(
+				cht.meterChart()
+					.setValue(field("field1", Integer.class))
+					.setDataRangeLowExpression(3)
+					.setDataRangeHighExpression(30)
+					.setValueColor(Color.BLUE)
+					.setValueMask("#,###.0")
+					.setValueFont(stl.fontArial())
+					.setShape(MeterShape.CIRCLE)
+					.setMeterAngle(270)
+					.setUnits("units")
+					.setTickInterval(3d)
+					.setMeterBackgroundColor(Color.LIGHT_GRAY)
+					.setNeedleColor(Color.CYAN)
+					.setTickColor(Color.MAGENTA)
+					.setTickLabelFont(stl.fontCourierNew())
+					.intervals(
+						cht.meterInterval()
+							.setLabel("red")
+							.setAlpha(0.8)
+							.setBackgroundColor(Color.RED)
+							.setDataRangeLowExpression(25)
+							.setDataRangeHighExpression(30),
+						cht.meterInterval()
+							.setLabel("yellow")
+							.setAlpha(0.5)
+							.setBackgroundColor(Color.YELLOW)
+							.setDataRangeLowExpression(20)
+							.setDataRangeHighExpression(25)),
+				cht.meterChart()
+					.setValue(5)
+					.setShape(MeterShape.DIAL));
 	}
 
 	@Override

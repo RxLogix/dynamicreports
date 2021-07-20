@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -28,6 +28,7 @@ import java.io.Writer;
 
 import net.sf.dynamicreports.jasper.constant.ImageType;
 
+
 /**
  * A set of methods of creating exporters
  *
@@ -35,7 +36,7 @@ import net.sf.dynamicreports.jasper.constant.ImageType;
  */
 public class ExporterBuilders {
 
-	// csv
+	//csv
 	public JasperCsvExporterBuilder csvExporter(Writer outputWriter) {
 		return Exporters.csvExporter(outputWriter);
 	}
@@ -52,7 +53,7 @@ public class ExporterBuilders {
 		return Exporters.csvExporter(outputFileName);
 	}
 
-	// docx
+	//docx
 	public JasperDocxExporterBuilder docxExporter(Writer outputWriter) {
 		return Exporters.docxExporter(outputWriter);
 	}
@@ -69,7 +70,7 @@ public class ExporterBuilders {
 		return Exporters.docxExporter(outputFileName);
 	}
 
-	// html
+	//html
 	public JasperHtmlExporterBuilder htmlExporter(Writer outputWriter) {
 		return Exporters.htmlExporter(outputWriter);
 	}
@@ -86,7 +87,7 @@ public class ExporterBuilders {
 		return Exporters.htmlExporter(outputFileName);
 	}
 
-	// ods
+	//ods
 	public JasperOdsExporterBuilder odsExporter(Writer outputWriter) {
 		return Exporters.odsExporter(outputWriter);
 	}
@@ -103,7 +104,7 @@ public class ExporterBuilders {
 		return Exporters.odsExporter(outputFileName);
 	}
 
-	// odt
+	//odt
 	public JasperOdtExporterBuilder odtExporter(Writer outputWriter) {
 		return Exporters.odtExporter(outputWriter);
 	}
@@ -120,7 +121,7 @@ public class ExporterBuilders {
 		return Exporters.odtExporter(outputFileName);
 	}
 
-	// pdf
+	//pdf
 	public JasperPdfExporterBuilder pdfExporter(Writer outputWriter) {
 		return Exporters.pdfExporter(outputWriter);
 	}
@@ -137,7 +138,7 @@ public class ExporterBuilders {
 		return Exporters.pdfExporter(outputFileName);
 	}
 
-	// rtf
+	//rtf
 	public JasperRtfExporterBuilder rtfExporter(Writer outputWriter) {
 		return Exporters.rtfExporter(outputWriter);
 	}
@@ -154,7 +155,7 @@ public class ExporterBuilders {
 		return Exporters.rtfExporter(outputFileName);
 	}
 
-	// text
+	//text
 	public JasperTextExporterBuilder textExporter(Writer outputWriter) {
 		return Exporters.textExporter(outputWriter);
 	}
@@ -171,7 +172,73 @@ public class ExporterBuilders {
 		return Exporters.textExporter(outputFileName);
 	}
 
-	// xls
+	//xhtml
+	/**
+	 * @deprecated To be removed. Use htmlExporter instead.
+	 */
+	@Deprecated
+	public JasperXhtmlExporterBuilder xhtmlExporter(Writer outputWriter) {
+		return Exporters.xhtmlExporter(outputWriter);
+	}
+
+	/**
+	 * @deprecated To be removed. Use htmlExporter instead.
+	 */
+	@Deprecated
+	public JasperXhtmlExporterBuilder xhtmlExporter(OutputStream outputStream) {
+		return Exporters.xhtmlExporter(outputStream);
+	}
+
+	/**
+	 * @deprecated To be removed. Use htmlExporter instead.
+	 */
+	@Deprecated
+	public JasperXhtmlExporterBuilder xhtmlExporter(File outputFile) {
+		return Exporters.xhtmlExporter(outputFile);
+	}
+
+	/**
+	 * @deprecated To be removed. Use htmlExporter instead.
+	 */
+	@Deprecated
+	public JasperXhtmlExporterBuilder xhtmlExporter(String outputFileName) {
+		return Exporters.xhtmlExporter(outputFileName);
+	}
+
+	//excelApiXls
+	/**
+	 * @deprecated To be removed. Use xlsExporter or xlsxExporter instead.
+	 */
+	@Deprecated
+	public JasperExcelApiXlsExporterBuilder excelApiXlsExporter(Writer outputWriter) {
+		return Exporters.excelApiXlsExporter(outputWriter);
+	}
+
+	/**
+	 * @deprecated To be removed. Use xlsExporter or xlsxExporter instead.
+	 */
+	@Deprecated
+	public JasperExcelApiXlsExporterBuilder excelApiXlsExporter(OutputStream outputStream) {
+		return Exporters.excelApiXlsExporter(outputStream);
+	}
+
+	/**
+	 * @deprecated To be removed. Use xlsExporter or xlsxExporter instead.
+	 */
+	@Deprecated
+	public JasperExcelApiXlsExporterBuilder excelApiXlsExporter(File outputFile) {
+		return Exporters.excelApiXlsExporter(outputFile);
+	}
+
+	/**
+	 * @deprecated To be removed. Use xlsExporter or xlsxExporter instead.
+	 */
+	@Deprecated
+	public JasperExcelApiXlsExporterBuilder excelApiXlsExporter(String outputFileName) {
+		return Exporters.excelApiXlsExporter(outputFileName);
+	}
+
+	//xls
 	public JasperXlsExporterBuilder xlsExporter(Writer outputWriter) {
 		return Exporters.xlsExporter(outputWriter);
 	}
@@ -188,7 +255,7 @@ public class ExporterBuilders {
 		return Exporters.xlsExporter(outputFileName);
 	}
 
-	// xlsx
+	//xlsx
 	public JasperXlsxExporterBuilder xlsxExporter(Writer outputWriter) {
 		return Exporters.xlsxExporter(outputWriter);
 	}
@@ -205,7 +272,7 @@ public class ExporterBuilders {
 		return Exporters.xlsxExporter(outputFileName);
 	}
 
-	// xml
+	//xml
 	public JasperXmlExporterBuilder xmlExporter(Writer outputWriter) {
 		return Exporters.xmlExporter(outputWriter);
 	}
@@ -222,7 +289,7 @@ public class ExporterBuilders {
 		return Exporters.xmlExporter(outputFileName);
 	}
 
-	// pptx
+	//pptx
 	public JasperPptxExporterBuilder pptxExporter(Writer outputWriter) {
 		return Exporters.pptxExporter(outputWriter);
 	}
@@ -239,7 +306,7 @@ public class ExporterBuilders {
 		return Exporters.pptxExporter(outputFileName);
 	}
 
-	// image
+	//image
 	public JasperImageExporterBuilder imageExporter(OutputStream outputStream, ImageType imageType) {
 		return Exporters.imageExporter(outputStream, imageType);
 	}

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -139,7 +139,8 @@ public class GenerateSite {
 			for (int i = 0; i < children.length; i++) {
 				runExamples(new File(dir, children[i]));
 			}
-		} else {
+		}
+		else {
 			if (dir.getName().endsWith(".class")) {
 				String name = Templates.class.getPackage().getName().replaceAll("\\.", "\\\\");
 				int index = dir.getPath().indexOf(name);
@@ -147,7 +148,7 @@ public class GenerateSite {
 					Class<?> classs = Class.forName(dir.getPath().substring(index).replaceAll("\\\\", ".").replaceAll("\\.class", ""));
 					Method method = classs.getMethod("main", String[].class);
 					if (method != null) {
-						method.invoke(null, new Object[] { null });
+						method.invoke(null, new Object[]{null});
 					}
 				} catch (NoSuchMethodException e) {
 				} catch (Exception e) {
@@ -182,8 +183,7 @@ public class GenerateSite {
 				content += "<table class=\"example\">\r\n";
 			}
 			text1 += "<@example_link id=\"" + example.getName() + "\"/>\r\n";
-			text2 += "<@example_preview id=\"" + example.getName() + "\" file=\"" + getFileType(example.getName()) + "\" file_ext=\"" + getFileExt(example.getName())
-					+ "\"/>\r\n";
+			text2 += "<@example_preview id=\"" + example.getName() + "\" file=\"" + getFileType(example.getName()) + "\" file_ext=\"" + getFileExt(example.getName()) + "\"/>\r\n";
 			if (count == new Integer(pageProp.getProperty(example.getPath() + "_size")) - 1 || next == null || !next.getPath().equals(example.getPath())) {
 				content += "<tr>\r\n";
 				content += text1;
@@ -193,7 +193,8 @@ public class GenerateSite {
 				count = 0;
 				text1 = "";
 				text2 = "";
-			} else {
+			}
+			else {
 				count++;
 			}
 			if (next == null || !next.getPath().equals(example.getPath())) {
@@ -213,7 +214,7 @@ public class GenerateSite {
 		content = "<div id=\"documentation\">\r\n<div id=\"toc\">\r\n<p><b>Table of contents</b></p>\r\n" + groupContent + "</div>\r\n" + content;
 		content += "</div>";
 
-		loader.putTemplate(name, content);
+    loader.putTemplate(name, content);
 
 		Map<String, Object> root = new HashMap<String, Object>();
 		Page page = new Page("examples/" + name.toLowerCase() + ".htm", name, content);
@@ -232,8 +233,7 @@ public class GenerateSite {
 		generateExampleImage(name, reportBuilder, Exporters.pdfExporter(""));
 	}
 
-	public static void generateExampleImage(String name, JasperReportBuilder reportBuilder, AbstractJasperExporterBuilder<?, ?> jasperExporterBuilder)
-			throws Exception {
+	public static void generateExampleImage(String name, JasperReportBuilder reportBuilder, AbstractJasperExporterBuilder<?, ?> jasperExporterBuilder) throws Exception {
 		Method method = reportBuilder.getClass().getDeclaredMethod("export", AbstractJasperExporterBuilder.class);
 		method.setAccessible(true);
 		if (jasperExporterBuilder instanceof JasperHtmlExporterBuilder) {
@@ -244,7 +244,8 @@ public class GenerateSite {
 
 		if (!Boolean.valueOf(pageProp.getProperty(name + "_htmltoimage"))) {
 			jasperToImage(name, reportBuilder);
-		} else {
+		}
+		else {
 			htmlToImage(name, reportBuilder);
 		}
 	}
@@ -256,8 +257,7 @@ public class GenerateSite {
 	}
 
 	private static void jasperToImage(String name, String imageName, float zoom, JasperReportBuilder reportBuilder) throws Exception {
-		JasperImageExporterBuilder imageExporter = Exporters.imageExporter(new FileOutputStream(examples_path + name.toLowerCase() + imageName + ".png"),
-				ImageType.PNG);
+		JasperImageExporterBuilder imageExporter = Exporters.imageExporter(new FileOutputStream(examples_path + name.toLowerCase() + imageName + ".png"), ImageType.PNG);
 		imageExporter.setOffsetX(1);
 		imageExporter.setOffsetY(1);
 		imageExporter.setPageGap(1);
@@ -270,7 +270,7 @@ public class GenerateSite {
 
 	private static void htmlToImage(String name, JasperReportBuilder reportBuilder) throws Exception {
 		FileWriter fw = new FileWriter(htmlToImageFile, true);
-		BufferedWriter out = new BufferedWriter(fw);
+	  BufferedWriter out = new BufferedWriter(fw);
 
 		int width = (int) (reportBuilder.toJasperPrint().getPageWidth() * image_large_zoom);
 		int height = (int) (reportBuilder.toJasperPrint().getPageHeight() * image_large_zoom);
@@ -284,7 +284,7 @@ public class GenerateSite {
 				" -bwidth=" + width +
 				" -bheight=" + height +
 				" -delay=60000";
-		out.write(command + "\n");
+	  out.write(command + "\n");
 
 		width = (int) (reportBuilder.toJasperPrint().getPageWidth() * image_medium_zoom);
 		height = (int) (reportBuilder.toJasperPrint().getPageHeight() * image_medium_zoom);
@@ -313,11 +313,10 @@ public class GenerateSite {
 				" " + examples_path + name.toLowerCase() + ".png";
 		out.write(command + "\n");
 
-		out.close();
+	  out.close();
 	}
 
-	public static void generateExampleImage(String name, JasperConcatenatedReportBuilder reportBuilder, AbstractJasperExporterBuilder<?, ?> jasperExporterBuilder)
-			throws Throwable {
+	public static void generateExampleImage(String name, JasperConcatenatedReportBuilder reportBuilder, AbstractJasperExporterBuilder<?, ?> jasperExporterBuilder) throws Throwable {
 		reportBuilder.toPng(new FileOutputStream(examples_path + name.toLowerCase() + "_s.png"), image_small_zoom);
 		reportBuilder.toPng(new FileOutputStream(examples_path + name.toLowerCase() + "_m.png"), image_medium_zoom);
 		reportBuilder.toPng(new FileOutputStream(examples_path + name.toLowerCase() + ".png"), image_large_zoom);
@@ -353,9 +352,9 @@ public class GenerateSite {
 			content += "<@example id=\"" + name + "\" title=true source_code=false file=\"" + getFileType(name) + "\" file_ext=\"" + getFileExt(name) + "\"/>\r\n";
 		}
 		content += "<@" + type + "_code>\r\n";
-		content += loadFile(new InputStreamReader(file)).replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("@", "&#64;");
-		content += "\r\n</@" + type + "_code>";
-		loader.putTemplate(name, content);
+    content += loadFile(new InputStreamReader(file)).replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("@", "&#64;");
+    content += "\r\n</@" + type + "_code>";
+    loader.putTemplate(name, content);
 
 		Map<String, Object> root = new HashMap<String, Object>();
 		Page page = new Page("examples/" + name.toLowerCase() + ".htm", name, content);
@@ -377,16 +376,16 @@ public class GenerateSite {
 
 	private static String loadFile(Reader fRead) throws Exception {
 		String content = "";
-		BufferedReader reader = new BufferedReader(fRead);
-		String line = reader.readLine();
-		while (line != null) {
-			content += "\r\n" + line;
-			line = reader.readLine();
+    BufferedReader reader = new BufferedReader(fRead);
+    String line = reader.readLine();
+    while (line != null) {
+    	content += "\r\n" + line;
+    	line = reader.readLine();
 		}
-		if (content.length() > 0) {
-			content = content.substring(2);
-		}
-		return content;
+    if (content.length() > 0) {
+    	content = content.substring(2);
+    }
+    return content;
 	}
 
 	public static void main(String[] args) throws Exception {

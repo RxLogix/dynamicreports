@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -47,22 +47,22 @@ public class DifferenceChartReport {
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.title(Templates.createTitleComponent("DifferenceChart"))
-					.summary(
-							cht.differenceChart()
-									.setTitle("Difference chart")
-									.setTitleFont(boldFont)
-									.setTimePeriod(field("date", type.dateType()))
-									.setTimePeriodType(TimePeriod.DAY)
-									.series(
-											cht.serie(field("value1", type.doubleType())).setLabel("Value1"),
-											cht.serie(field("value2", type.doubleType())).setLabel("Value2"))
-									.setTimeAxisFormat(
-											cht.axisFormat().setLabel("Date")))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+				.setTemplate(Templates.reportTemplate)
+				.title(Templates.createTitleComponent("DifferenceChart"))
+				.summary(
+					cht.differenceChart()
+						.setTitle("Difference chart")
+						.setTitleFont(boldFont)
+						.setTimePeriod(field("date", type.dateType()))
+						.setTimePeriodType(TimePeriod.DAY)
+						.series(
+							cht.serie(field("value1", type.doubleType())).setLabel("Value1"),
+							cht.serie(field("value2", type.doubleType())).setLabel("Value2"))
+						.setTimeAxisFormat(
+							cht.axisFormat().setLabel("Date")))
+				.pageFooter(Templates.footerComponent)
+				.setDataSource(createDataSource())
+				.show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

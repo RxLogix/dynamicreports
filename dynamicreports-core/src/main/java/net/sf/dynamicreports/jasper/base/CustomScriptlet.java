@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -32,71 +32,71 @@ import net.sf.jasperreports.engine.JRScriptletException;
 public class CustomScriptlet extends JRAbstractScriptlet {
 	private DRIScriptlet scriptlet;
 	private JasperReportParameters reportParameters;
-
+	
 	public CustomScriptlet(DRIScriptlet scriptlet) {
 		this.scriptlet = scriptlet;
 	}
-
+	
 	@Override
 	public void afterColumnInit() throws JRScriptletException {
-		scriptlet.afterColumnInit(getReportParameters());
+		scriptlet.afterColumnInit(getReportParameters());		
 	}
 
 	@Override
 	public void afterDetailEval() throws JRScriptletException {
-		scriptlet.afterDetailEval(getReportParameters());
+		scriptlet.afterDetailEval(getReportParameters());	
 	}
 
 	@Override
 	public void afterGroupInit(String groupName) throws JRScriptletException {
-		scriptlet.afterGroupInit(groupName, getReportParameters());
+		scriptlet.afterGroupInit(groupName, getReportParameters());	
 	}
 
 	@Override
 	public void afterPageInit() throws JRScriptletException {
-		scriptlet.afterPageInit(getReportParameters());
+		scriptlet.afterPageInit(getReportParameters());	
 	}
 
 	@Override
 	public void afterReportInit() throws JRScriptletException {
-		scriptlet.afterReportInit(getReportParameters());
+		scriptlet.afterReportInit(getReportParameters());	
 	}
 
 	@Override
 	public void beforeColumnInit() throws JRScriptletException {
-		scriptlet.beforeColumnInit(getReportParameters());
+		scriptlet.beforeColumnInit(getReportParameters());	
 	}
 
 	@Override
 	public void beforeDetailEval() throws JRScriptletException {
-		scriptlet.beforeDetailEval(getReportParameters());
+		scriptlet.beforeDetailEval(getReportParameters());	
 	}
 
 	@Override
 	public void beforeGroupInit(String groupName) throws JRScriptletException {
-		scriptlet.beforeGroupInit(groupName, getReportParameters());
+		scriptlet.beforeGroupInit(groupName, getReportParameters());	
 	}
 
 	@Override
 	public void beforePageInit() throws JRScriptletException {
-		scriptlet.beforePageInit(getReportParameters());
+		scriptlet.beforePageInit(getReportParameters());	
 	}
 
 	@Override
 	public void beforeReportInit() throws JRScriptletException {
-		scriptlet.beforeReportInit(getReportParameters());
+		scriptlet.beforeReportInit(getReportParameters());	
 	}
-
+	
 	private JasperReportParameters getReportParameters() {
 		if (reportParameters == null) {
 			try {
 				reportParameters = ((JasperScriptlet) getParameterValue(JasperScriptlet.SCRIPTLET_NAME)).getReportParameters();
-			} catch (JRScriptletException e) {
+			} catch (JRScriptletException e) {			
 			}
 		}
 		return reportParameters;
 	}
-
+	
 	protected DRIScriptlet getScriptlet() {
 		return scriptlet;
 	}

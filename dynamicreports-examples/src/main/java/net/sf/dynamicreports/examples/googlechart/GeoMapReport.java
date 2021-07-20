@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -38,9 +38,9 @@ import net.sf.jasperreports.engine.JRDataSource;
 /**
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  *
- *         GeoMap component works only for html export.
- *         Visit the following link for more information about geo map parameters
- *         http://code.google.com/apis/chart/interactive/docs/gallery/geomap.html
+ * GeoMap component works only for html export.
+ * Visit the following link for more information about geo map parameters
+ * http://code.google.com/apis/chart/interactive/docs/gallery/geomap.html
  */
 public class GeoMapReport {
 
@@ -50,33 +50,33 @@ public class GeoMapReport {
 
 	private void build() {
 		GeoMapBuilder geoMap1 = GoogleCharts.geoMap()
-				.setDataSource(createDataSource1())
-				.setLocation("location", String.class)
-				.setValue("quantity", Integer.class)
-				.setLabel("label", String.class)
-				.setValueLabel("Quantity")
-				.setFixedHeight(300);
+			.setDataSource(createDataSource1())
+			.setLocation("location", String.class)
+			.setValue("quantity", Integer.class)
+			.setLabel("label", String.class)
+			.setValueLabel("Quantity")
+			.setFixedHeight(300);
 
 		GeoMapBuilder geoMap2 = GoogleCharts.geoMap()
-				.setDataSource(createDataSource2())
-				.setDataMode(GeoMapDataMode.MARKERS)
-				.setRegion("US")
-				.colors(Color.decode("#FF8747"), Color.decode("#FFB581"), Color.decode("#C06000"))
-				.setLocation("location", String.class)
-				.setValue("quantity", Integer.class)
-				.setFixedHeight(300);
+		  .setDataSource(createDataSource2())
+		  .setDataMode(GeoMapDataMode.MARKERS)
+		  .setRegion("US")
+		  .colors(Color.decode("#FF8747"), Color.decode("#FFB581"), Color.decode("#C06000"))
+		  .setLocation("location", String.class)
+		  .setValue("quantity", Integer.class)
+		  .setFixedHeight(300);
 
 		try {
 			JasperHtmlExporterBuilder htmlExporter = export.htmlExporter("c:/report.html")
-					.setImagesDirName("c:/images")
-					.setOutputImagesToDir(true);
+				.setImagesDirName("c:/images")
+				.setOutputImagesToDir(true);
 
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.title(Templates.createTitleComponent("GeoMap"))
-					.summary(
-							geoMap1, cmp.verticalGap(10), geoMap2)
-					.toHtml(htmlExporter);
+			  .setTemplate(Templates.reportTemplate)
+			  .title(Templates.createTitleComponent("GeoMap"))
+			  .summary(
+			  	geoMap1, cmp.verticalGap(10), geoMap2)
+			  .toHtml(htmlExporter);
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -111,7 +111,8 @@ class BandComponentsTransform {
 		String componentName = bandName + "." + component.getUniqueName();
 		if (!componentNames.containsKey(componentName)) {
 			componentNames.put(componentName, new Integer(1));
-		} else {
+		}
+		else {
 			componentNames.put(componentName, componentNames.get(componentName) + 1);
 		}
 		component.setUniqueName(componentName + componentNames.get(componentName));
@@ -131,7 +132,8 @@ class BandComponentsTransform {
 			DRDesignList list = (DRDesignList) component;
 			if (list.getComponents().isEmpty()) {
 				return null;
-			} else if (list.getComponents().size() == 1) {
+			}
+			else if (list.getComponents().size() == 1) {
 				DRDesignComponent lComponent = list.getComponents().get(0);
 				DRDesignComponent elm = removeEmptyComponents(lComponent);
 				if (elm == null) {
@@ -144,8 +146,7 @@ class BandComponentsTransform {
 				}
 				if (lComponent != elm &&
 						(!(lComponent instanceof DRDesignList) ||
-								lComponent instanceof DRDesignList && !(lComponent.getStyle() == null && lComponent.getPrintWhenExpression() == null
-										&& ((DRDesignList) lComponent).getBackgroundComponent() == null))) {
+								lComponent instanceof DRDesignList && !(lComponent.getStyle() == null && lComponent.getPrintWhenExpression() == null && ((DRDesignList) lComponent).getBackgroundComponent() == null))) {
 					elm.setX(lComponent.getX() + elm.getX());
 					elm.setY(lComponent.getY() + elm.getY());
 				}
@@ -154,12 +155,14 @@ class BandComponentsTransform {
 					elm.setX(list.getX() + elm.getX());
 					elm.setY(list.getY() + elm.getY());
 					return elm;
-				} else {
+				}
+				else {
 					list.getComponents().clear();
 					list.getComponents().add(elm);
 					return list;
 				}
-			} else {
+			}
+			else {
 				List<DRDesignComponent> components = new ArrayList<DRDesignComponent>();
 				for (DRDesignComponent listComponent : list.getComponents()) {
 					DRDesignComponent comp = removeEmptyComponents(listComponent);
@@ -179,7 +182,8 @@ class BandComponentsTransform {
 				list.getComponents().addAll(components);
 				return list;
 			}
-		} else if (component instanceof DRDesignFiller && component.getStyle() == null && component.getPrintWhenExpression() == null) {
+		}
+		else if (component instanceof DRDesignFiller && component.getStyle() == null && component.getPrintWhenExpression() == null) {
 			return null;
 		}
 		return component;
@@ -194,7 +198,8 @@ class BandComponentsTransform {
 					listComponent.setX(list.getX() + listComponent.getX());
 					listComponent.setY(list.getY() + listComponent.getY());
 				}
-			} else {
+			}
+			else {
 				list.setComponentGroupType(ComponentGroupType.FRAME);
 			}
 
@@ -228,7 +233,8 @@ class BandComponentsTransform {
 			for (DRDesignComponent listComponent : list.getComponents()) {
 				prepareCrosstabs(listComponent);
 			}
-		} else if (component instanceof DRDesignCrosstab) {
+		}
+		else if (component instanceof DRDesignCrosstab) {
 			prepareCrosstab((DRDesignCrosstab) component);
 		}
 	}
@@ -300,7 +306,8 @@ class BandComponentsTransform {
 
 			if (previousCellDimension == null) {
 				headerWidth = cellWidth;
-			} else {
+			}
+			else {
 				headerWidth = previousCellDimension.getHeaderWidth() + previousCellDimension.getTotalHeaderWidth();
 			}
 			headerHeight = accessor.getTemplateTransform().getCrosstabColumnGroupHeaderHeight(columnGroup, designCrosstab, groupHeight);
@@ -335,7 +342,8 @@ class BandComponentsTransform {
 			headerWidth = accessor.getTemplateTransform().getCrosstabRowGroupHeaderWidth(rowGroup, designCrosstab);
 			if (previousCellDimension == null) {
 				headerHeight = cellHeight;
-			} else {
+			}
+			else {
 				headerHeight = previousCellDimension.getHeaderHeight() + previousCellDimension.getTotalHeaderHeight();
 			}
 
@@ -389,15 +397,18 @@ class BandComponentsTransform {
 			if (designCell.getColumnTotalGroup() == null && designCell.getRowTotalGroup() == null) {
 				designCell.getContent().setWidth(cellWidth);
 				designCell.getContent().setHeight(cellHeight);
-			} else if (designCell.getColumnTotalGroup() != null && designCell.getRowTotalGroup() == null) {
+			}
+			else if (designCell.getColumnTotalGroup() != null && designCell.getRowTotalGroup() == null) {
 				GroupCellDimension groupCellDimension = columnGroups.get(designCell.getColumnTotalGroup());
 				designCell.getContent().setWidth(groupCellDimension.getTotalHeaderWidth());
 				designCell.getContent().setHeight(cellHeight);
-			} else if (designCell.getColumnTotalGroup() == null && designCell.getRowTotalGroup() != null) {
+			}
+			else if (designCell.getColumnTotalGroup() == null && designCell.getRowTotalGroup() != null) {
 				GroupCellDimension groupCellDimension = rowGroups.get(designCell.getRowTotalGroup());
 				designCell.getContent().setWidth(cellWidth);
 				designCell.getContent().setHeight(groupCellDimension.getTotalHeaderHeight());
-			} else {
+			}
+			else {
 				GroupCellDimension groupCellDimension = columnGroups.get(designCell.getColumnTotalGroup());
 				designCell.getContent().setWidth(groupCellDimension.getTotalHeaderWidth());
 				groupCellDimension = rowGroups.get(designCell.getRowTotalGroup());

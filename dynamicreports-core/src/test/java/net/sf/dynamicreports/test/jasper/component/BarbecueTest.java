@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -39,43 +39,44 @@ public class BarbecueTest extends AbstractJasperTest {
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.setTemplate(template().setBarcodeHeight(20).setBarcodeStyle(stl.style(2)))
-				.title(
-						bcode.barbecue_2of7(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_3of9(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_bookland(exp.jasperSyntaxText("1234567890")),
-						bcode.barbecue_codabar(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_code128(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_code128A(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_code128B(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_code128C(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_code39(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_code39Extended(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_ean128(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_ean13(exp.jasperSyntaxText("123456789012")),
-						bcode.barbecue_globalTradeItemNumber(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_int2of5(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_monarch(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_nw7(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_pdf417(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_postnet(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_randomWeightUpca(exp.jasperSyntaxText("12345678901")),
-						bcode.barbecue_scc14ShippingCode(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_shipmentIdentificationNumber(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_sscc18(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_std2of5(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_ucc128(exp.jasperSyntaxText("12345678")).setApplicationIdentifierExpression("1"),
-						bcode.barbecue_upca(exp.jasperSyntaxText("12345678901")),
-						bcode.barbecue_usd3(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_usd4(exp.jasperSyntaxText("12345678")),
-						bcode.barbecue_usps(exp.jasperSyntaxText("12345678")),
+			.title(
+				bcode.barbecue_2of7(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_3of9(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_bookland(exp.jasperSyntaxText("1234567890")),
+				bcode.barbecue_codabar(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_code128(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_code128A(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_code128B(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_code128C(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_code39(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_code39Extended(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_ean128(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_ean13(exp.jasperSyntaxText("123456789012")),
+				bcode.barbecue_globalTradeItemNumber(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_int2of5(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_monarch(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_nw7(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_pdf417(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_postnet(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_randomWeightUpca(exp.jasperSyntaxText("12345678901")),
+				bcode.barbecue_scc14ShippingCode(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_shipmentIdentificationNumber(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_sscc18(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_std2of5(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_ucc128(exp.jasperSyntaxText("12345678")).setApplicationIdentifierExpression("1"),
+				bcode.barbecue_upca(exp.jasperSyntaxText("12345678901")),
+				bcode.barbecue_usd3(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_usd4(exp.jasperSyntaxText("12345678")),
+				bcode.barbecue_usps(exp.jasperSyntaxText("12345678")),
 
-						bcode.barbecue_ucc128("12345678").setFixedHeight(50)
-								.setApplicationIdentifierExpression(exp.jasperSyntaxText("1"))
-								.setDrawText(true)
-								.setChecksumRequired(true)
-								.setBarWidth(2)
-								.setBarHeight(5)
-								.setOrientation(BarcodeOrientation.RIGHT));
+				bcode.barbecue_ucc128("12345678").setFixedHeight(50)
+					.setApplicationIdentifierExpression(exp.jasperSyntaxText("1"))
+					.setDrawText(true)
+					.setChecksumRequired(true)
+					.setBarWidth(2)
+					.setBarHeight(5)
+					.setOrientation(BarcodeOrientation.RIGHT)
+			);
 	}
 
 	@Override

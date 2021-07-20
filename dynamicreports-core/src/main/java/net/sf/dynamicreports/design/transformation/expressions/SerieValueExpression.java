@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -47,8 +47,7 @@ public class SerieValueExpression extends AbstractSimpleExpression<Number> {
 	private Object resetValue;
 	private Map<Object, Double> values;
 
-	public SerieValueExpression(DRIDesignExpression valueExpression, DRIDesignExpression serieExpression, ResetType resetType, DRDesignGroup resetGroup,
-			String key) {
+	public SerieValueExpression(DRIDesignExpression valueExpression, DRIDesignExpression serieExpression, ResetType resetType, DRDesignGroup resetGroup, String key) {
 		this.valueExpression = valueExpression;
 		this.serieExpression = serieExpression;
 		this.resetType = resetType;
@@ -65,20 +64,20 @@ public class SerieValueExpression extends AbstractSimpleExpression<Number> {
 
 		Object resetValue = null;
 		switch (resetType) {
-			case NONE:
-			case REPORT:
-				break;
-			case PAGE:
-				resetValue = reportParameters.getPageNumber();
-				break;
-			case COLUMN:
-				resetValue = reportParameters.getColumnNumber();
-				break;
-			case GROUP:
-				resetValue = reportParameters.getValue(resetGroup.getGroupExpression().getName());
-				break;
-			default:
-				throw new DRDesignReportException("Reset type " + resetType.name() + " not supported");
+		case NONE:
+		case REPORT:
+			break;
+		case PAGE:
+			resetValue = reportParameters.getPageNumber();
+			break;
+		case COLUMN:
+			resetValue = reportParameters.getColumnNumber();
+			break;
+		case GROUP:
+			resetValue = reportParameters.getValue(resetGroup.getGroupExpression().getName());
+			break;
+		default:
+			throw new DRDesignReportException("Reset type " + resetType.name() + " not supported");
 		}
 		if (this.resetValue != null && !this.resetValue.equals(resetValue)) {
 			this.values = new HashMap<Object, Double>();
@@ -88,7 +87,8 @@ public class SerieValueExpression extends AbstractSimpleExpression<Number> {
 		Object keyValue;
 		if (key != null) {
 			keyValue = reportParameters.getValue(valueExpression.getName()) + "_" + reportParameters.getValue(key);
-		} else {
+		}
+		else {
 			keyValue = reportParameters.getValue(valueExpression.getName());
 		}
 		Number serieValue = reportParameters.getValue(serieExpression.getName());
@@ -96,7 +96,8 @@ public class SerieValueExpression extends AbstractSimpleExpression<Number> {
 		if (serieValue != null) {
 			if (value == null) {
 				value = serieValue.doubleValue();
-			} else {
+			}
+			else {
 				value += serieValue.doubleValue();
 			}
 			values.put(keyValue, value);

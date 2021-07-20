@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -44,55 +44,55 @@ public class GroupSubtotal1Test extends AbstractJasperValueTest {
 	private AggregationSubtotalBuilder<Double> subtotal3;
 	private AggregationSubtotalBuilder<Integer> subtotal4;
 	private AggregationSubtotalBuilder<Integer> subtotal5;
-
+	
 	@Override
-	protected void configureReport(JasperReportBuilder rb) {
+	protected void configureReport(JasperReportBuilder rb) {		
 		TextColumnBuilder<String> column1, column2;
 		TextColumnBuilder<Integer> column3;
 		ColumnGroupBuilder group1, group2;
-
+		
 		rb.setLocale(Locale.ENGLISH)
-				.columns(
-						column1 = col.column("Column1", "field1", String.class),
-						column2 = col.column("Column2", "field2", String.class),
-						column3 = col.column("Column3", "field3", Integer.class))
-				.groupBy(
-						group1 = grp.group(column1),
-						group2 = grp.group(column2))
-				.subtotalsAtGroupHeader(group1,
-						subtotal1 = sbt.aggregate(column3, Calculation.AVERAGE))
-				.subtotalsAtGroupFooter(group1,
-						subtotal2 = sbt.sum(column3))
-				.subtotalsAtGroupHeader(group2,
-						subtotal3 = sbt.aggregate(column3, Calculation.AVERAGE))
-				.subtotalsAtGroupFooter(group2,
-						subtotal4 = sbt.sum(column3))
-				.subtotalsAtSummary(subtotal5 = sbt.sum(column3));
+			.columns(
+					column1 = col.column("Column1", "field1", String.class),
+					column2 = col.column("Column2", "field2", String.class),
+					column3 = col.column("Column3", "field3", Integer.class))
+			.groupBy(
+					group1 = grp.group(column1),
+					group2 = grp.group(column2))				
+			.subtotalsAtGroupHeader(group1,
+					subtotal1 = sbt.aggregate(column3, Calculation.AVERAGE))
+			.subtotalsAtGroupFooter(group1,
+					subtotal2 = sbt.sum(column3))
+			.subtotalsAtGroupHeader(group2,
+					subtotal3 = sbt.aggregate(column3, Calculation.AVERAGE))
+			.subtotalsAtGroupFooter(group2,
+					subtotal4 = sbt.sum(column3))
+			.subtotalsAtSummary(subtotal5 = sbt.sum(column3));
 	}
 
 	@Override
 	public void test() {
 		super.test();
-
+		
 		numberOfPagesTest(1);
-		// groupHeader
+		//groupHeader
 		subtotalCountTest(subtotal1, 2);
 		subtotalValueTest(subtotal1, "3.5", "9.5");
-		// groupFooter
+		//groupFooter
 		subtotalCountTest(subtotal2, 2);
 		subtotalValueTest(subtotal2, "21", "57");
-
-		// groupHeader
+		
+		//groupHeader
 		subtotalIndexCountTest(subtotal3, 2, 4);
 		subtotalIndexValueTest(subtotal3, 2, "2", "5", "8", "11");
-		// groupFooter
+		//groupFooter
 		subtotalIndexCountTest(subtotal4, 2, 4);
 		subtotalIndexValueTest(subtotal4, 2, "6", "15", "24", "33");
-
+		
 		subtotalCountTest(subtotal5, 1);
 		subtotalValueTest(subtotal5, "78");
 	}
-
+	
 	@Override
 	protected JRDataSource createDataSource() {
 		DRDataSource dataSource = new DRDataSource("field1", "field2", "field3");

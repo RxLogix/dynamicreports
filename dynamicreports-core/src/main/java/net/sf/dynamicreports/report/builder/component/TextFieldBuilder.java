@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -111,7 +111,8 @@ public class TextFieldBuilder<T> extends HyperLinkComponentBuilder<TextFieldBuil
 	public TextFieldBuilder<T> setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
 		if (horizontalAlignment != null) {
 			getObject().setHorizontalTextAlignment(HorizontalTextAlignment.valueOf(horizontalAlignment.name()));
-		} else {
+		}
+		else {
 			getObject().setHorizontalTextAlignment(null);
 		}
 		return this;
@@ -132,91 +133,79 @@ public class TextFieldBuilder<T> extends HyperLinkComponentBuilder<TextFieldBuil
 		return this;
 	}
 
-	/**
-	 * This method is used to define the preferred width of a textField.
-	 * The width is set to the <code>columns</code> multiplied by width of the
-	 * character <em>m</em> for the font used
-	 *
-	 * @param columns
-	 *          the number of preferred columns >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>columns</code> is < 0
-	 */
+  /**
+   * This method is used to define the preferred width of a textField.
+   * The width is set to the <code>columns</code> multiplied by width of the
+   * character <em>m</em> for the font used
+   *
+   * @param columns the number of preferred columns >= 0
+   * @exception IllegalArgumentException if <code>columns</code> is < 0
+   */
 	public TextFieldBuilder<T> setColumns(Integer columns) {
 		getObject().setColumns(columns);
 		return this;
 	}
 
-	/**
-	 * This method is used to define the fixed width of a textField.
-	 * The width is set to the <code>columns</code> multiplied by width of the
-	 * character <em>m</em> for the font used
-	 *
-	 * @param columns
-	 *          the number of fixed columns >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>columns</code> is < 0
-	 */
+  /**
+   * This method is used to define the fixed width of a textField.
+   * The width is set to the <code>columns</code> multiplied by width of the
+   * character <em>m</em> for the font used
+   *
+   * @param columns the number of fixed columns >= 0
+   * @exception IllegalArgumentException if <code>columns</code> is < 0
+   */
 	public TextFieldBuilder<T> setFixedColumns(Integer columns) {
 		getObject().setColumns(columns);
 		getObject().setWidthType(ComponentDimensionType.FIXED);
 		return this;
 	}
 
-	/**
-	 * This method is used to define the minimum width of a textField.
-	 * The width is set to the <code>columns</code> multiplied by width of the
-	 * character <em>m</em> for the font used
-	 *
-	 * @param columns
-	 *          the number of minimum columns >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>columns</code> is < 0
-	 */
+  /**
+   * This method is used to define the minimum width of a textField.
+   * The width is set to the <code>columns</code> multiplied by width of the
+   * character <em>m</em> for the font used
+   *
+   * @param columns the number of minimum columns >= 0
+   * @exception IllegalArgumentException if <code>columns</code> is < 0
+   */
 	public TextFieldBuilder<T> setMinColumns(Integer columns) {
 		getObject().setColumns(columns);
 		getObject().setWidthType(ComponentDimensionType.EXPAND);
 		return this;
 	}
 
-	/**
-	 * This method is used to define the preferred height of a textField.
-	 * The height is set to the <code>rows</code> multiplied by height of the font
-	 *
-	 * @param rows
-	 *          the number of preferred rows >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>rows</code> is < 0
-	 */
+  /**
+   * This method is used to define the preferred height of a textField.
+   * The height is set to the <code>rows</code> multiplied by height of the font
+   *
+   * @param rows the number of preferred rows >= 0
+   * @exception IllegalArgumentException if <code>rows</code> is < 0
+   */
 	public TextFieldBuilder<T> setRows(Integer rows) {
 		getObject().setRows(rows);
 		return this;
 	}
 
-	/**
-	 * This method is used to define the fixed height of a textField.
-	 * The height is set to the <code>rows</code> multiplied by height of the font
-	 *
-	 * @param rows
-	 *          the number of fixed rows >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>rows</code> is < 0
-	 */
+  /**
+   * This method is used to define the fixed height of a textField.
+   * The height is set to the <code>rows</code> multiplied by height of the font
+   *
+   * @param rows the number of fixed rows >= 0
+   * @exception IllegalArgumentException if <code>rows</code> is < 0
+   */
 	public TextFieldBuilder<T> setFixedRows(Integer rows) {
 		getObject().setRows(rows);
 		getObject().setHeightType(ComponentDimensionType.FIXED);
 		return this;
 	}
 
-	/**
-	 * This method is used to define the minimum height of a textField.
-	 * The height is set to the <code>rows</code> multiplied by height of the font
-	 *
-	 * @param rows
-	 *          the number of minimum rows >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>rows</code> is < 0
-	 */
+  /**
+   * This method is used to define the minimum height of a textField.
+   * The height is set to the <code>rows</code> multiplied by height of the font
+   *
+   * @param rows the number of minimum rows >= 0
+   * @exception IllegalArgumentException if <code>rows</code> is < 0
+   */
 	public TextFieldBuilder<T> setMinRows(Integer rows) {
 		getObject().setRows(rows);
 		getObject().setHeightType(ComponentDimensionType.EXPAND);

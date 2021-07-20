@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -54,13 +54,13 @@ public class Style2Test extends AbstractJasperStyleTest implements Serializable 
 		StyleBuilder subtotalStyle = stl.style(2).setTopBorder(stl.pen1Point()).bold();
 
 		rb.setTextStyle(textStyle)
-				.setColumnTitleStyle(titleStyle)
-				.setSubtotalStyle(subtotalStyle)
-				.columns(
-						column1 = col.column("Column1", "field1", type.integerType()),
-						column2 = col.column("Column2", "field2", type.stringType()).setStyle(stl.style().bold()))
-				.groupBy(group1 = grp.group(column2))
-				.subtotalsAtSummary(subtotal1 = sbt.sum(column1).setLabel("total").setLabelStyle(stl.style().bold()));
+			.setColumnTitleStyle(titleStyle)
+			.setSubtotalStyle(subtotalStyle)
+			.columns(
+					column1 = col.column("Column1", "field1", type.integerType()),
+					column2 = col.column("Column2", "field2", type.stringType()).setStyle(stl.style().bold()))
+			.groupBy(group1 = grp.group(column2))
+			.subtotalsAtSummary(subtotal1 = sbt.sum(column1).setLabel("total").setLabelStyle(stl.style().bold()));
 	}
 
 	@Override
@@ -69,20 +69,19 @@ public class Style2Test extends AbstractJasperStyleTest implements Serializable 
 
 		numberOfPagesTest(1);
 
-		// column1
+		//column1
 		columnTitleStyleTest(column1, 0, null, null, "Arial", 10f, true, null);
 		columnTitlePaddingTest(column1, 0, 2, 2, 2, 2);
 
 		columnDetailStyleTest(column1, 0, null, null, "Arial", 10f, null, null);
 		columnDetailPaddingTest(column1, 0, 2, 2, 2, 2);
 
-		// column2
+		//column2
 		groupHeaderStyleTest(group1, 0, null, null, "Arial", 10f, true, null);
 
-		// subtotal
+		//subtotal
 		subtotalLabelStyleTest(subtotal1, 0, null, null, "Arial", 10f, true, null);
-		subtotalLabelBorderTest(subtotal1, 0, null, LineStyleEnum.SOLID, 0, null, LineStyleEnum.SOLID, 0, null, LineStyleEnum.SOLID, 0, null, LineStyleEnum.SOLID,
-				0);
+		subtotalLabelBorderTest(subtotal1, 0, null, LineStyleEnum.SOLID, 0, null, LineStyleEnum.SOLID, 0, null, LineStyleEnum.SOLID, 0, null, LineStyleEnum.SOLID, 0);
 	}
 
 	@Override

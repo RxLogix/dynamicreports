@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -57,7 +57,7 @@ public class XyListBuilder extends DimensionComponentBuilder<XyListBuilder, DRXy
 		return this;
 	}
 
-	public XyListBuilder add(XyListCellBuilder... cells) {
+	public XyListBuilder add(XyListCellBuilder ...cells) {
 		Validate.notNull(cells, "cells must not be null");
 		Validate.noNullElements(cells, "cells must not contains null cell");
 		for (XyListCellBuilder cell : cells) {

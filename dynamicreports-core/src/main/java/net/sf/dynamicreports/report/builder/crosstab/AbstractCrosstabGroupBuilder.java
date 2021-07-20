@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -50,8 +50,7 @@ import org.apache.commons.lang3.Validate;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 @SuppressWarnings({ "unchecked", "deprecation" })
-public abstract class AbstractCrosstabGroupBuilder<T extends AbstractCrosstabGroupBuilder<T, U, V>, U extends DRCrosstabGroup<V>, V>
-		extends AbstractBuilder<T, U> implements DRIValue<V> {
+public abstract class AbstractCrosstabGroupBuilder<T extends AbstractCrosstabGroupBuilder<T, U, V>, U extends DRCrosstabGroup<V>, V> extends AbstractBuilder<T, U> implements DRIValue<V> {
 	private static final long serialVersionUID = Constants.SERIAL_VERSION_UID;
 
 	protected AbstractCrosstabGroupBuilder(ValueColumnBuilder<?, V> column, U crosstabGroup) {
@@ -90,7 +89,8 @@ public abstract class AbstractCrosstabGroupBuilder<T extends AbstractCrosstabGro
 	public T setHeaderHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
 		if (horizontalAlignment != null) {
 			getObject().setHeaderHorizontalTextAlignment(HorizontalTextAlignment.valueOf(horizontalAlignment.name()));
-		} else {
+		}
+		else {
 			getObject().setHeaderHorizontalTextAlignment(null);
 		}
 		return (T) this;
@@ -114,14 +114,14 @@ public abstract class AbstractCrosstabGroupBuilder<T extends AbstractCrosstabGro
 	/**
 	 * Sets the crosstab group header hyperlink.
 	 *
-	 * @param hyperLink
-	 *          the group header hyperlink
+	 * @param hyperLink the group header hyperlink
 	 * @return a crosstab group builder
 	 */
 	public T setHeaderHyperLink(HyperLinkBuilder hyperLink) {
 		if (hyperLink != null) {
 			getObject().setHeaderHyperLink(hyperLink.getHyperLink());
-		} else {
+		}
+		else {
 			getObject().setHeaderHyperLink(null);
 		}
 		return (T) this;
@@ -130,7 +130,8 @@ public abstract class AbstractCrosstabGroupBuilder<T extends AbstractCrosstabGro
 	public T setHeaderStyle(ReportStyleBuilder style) {
 		if (style != null) {
 			getObject().setHeaderStyle(style.getStyle());
-		} else {
+		}
+		else {
 			getObject().setHeaderStyle(null);
 		}
 		return (T) this;
@@ -139,8 +140,7 @@ public abstract class AbstractCrosstabGroupBuilder<T extends AbstractCrosstabGro
 	/**
 	 * Adds a jasper property to the header group.
 	 *
-	 * @param propertyExpression
-	 *          the property expression
+	 * @param propertyExpression the property expression
 	 * @return a crosstab group builder
 	 */
 	public T addHeaderProperty(DRIPropertyExpression propertyExpression) {
@@ -151,10 +151,8 @@ public abstract class AbstractCrosstabGroupBuilder<T extends AbstractCrosstabGro
 	/**
 	 * Adds a jasper property to the header group.
 	 *
-	 * @param name
-	 *          the property name
-	 * @param valueExpression
-	 *          the property value expression
+	 * @param name the property name
+	 * @param valueExpression the property value expression
 	 * @return a crosstab group builder
 	 */
 	public T addHeaderProperty(String name, DRIExpression<String> valueExpression) {
@@ -165,10 +163,8 @@ public abstract class AbstractCrosstabGroupBuilder<T extends AbstractCrosstabGro
 	/**
 	 * Adds a jasper property to the header group.
 	 *
-	 * @param name
-	 *          the property name
-	 * @param value
-	 *          the property value
+	 * @param name the property name
+	 * @param value the property value
 	 * @return a crosstab group builder
 	 */
 	public T addHeaderProperty(String name, String value) {
@@ -204,7 +200,8 @@ public abstract class AbstractCrosstabGroupBuilder<T extends AbstractCrosstabGro
 	public T setTotalHeaderStyle(ReportStyleBuilder style) {
 		if (style != null) {
 			getObject().setTotalHeaderStyle(style.getStyle());
-		} else {
+		}
+		else {
 			getObject().setTotalHeaderStyle(null);
 		}
 		return (T) this;
@@ -213,8 +210,7 @@ public abstract class AbstractCrosstabGroupBuilder<T extends AbstractCrosstabGro
 	/**
 	 * Adds a jasper property to the total header group.
 	 *
-	 * @param propertyExpression
-	 *          the property expression
+	 * @param propertyExpression the property expression
 	 * @return a crosstab group builder
 	 */
 	public T addTotalHeaderProperty(DRIPropertyExpression propertyExpression) {
@@ -225,10 +221,8 @@ public abstract class AbstractCrosstabGroupBuilder<T extends AbstractCrosstabGro
 	/**
 	 * Adds a jasper property to the total header group.
 	 *
-	 * @param name
-	 *          the property name
-	 * @param valueExpression
-	 *          the property value expression
+	 * @param name the property name
+	 * @param valueExpression the property value expression
 	 * @return a crosstab group builder
 	 */
 	public T addTotalHeaderProperty(String name, DRIExpression<String> valueExpression) {
@@ -239,10 +233,8 @@ public abstract class AbstractCrosstabGroupBuilder<T extends AbstractCrosstabGro
 	/**
 	 * Adds a jasper property to the total header group.
 	 *
-	 * @param name
-	 *          the property name
-	 * @param value
-	 *          the property value
+	 * @param name the property name
+	 * @param value the property value
 	 * @return a crosstab group builder
 	 */
 	public T addTotalHeaderProperty(String name, String value) {
@@ -273,7 +265,7 @@ public abstract class AbstractCrosstabGroupBuilder<T extends AbstractCrosstabGro
 		return (T) this;
 	}
 
-	public T setComparatorExpression(DRIExpression<? extends Comparator<?>> comparatorExpression) {
+	public  T setComparatorExpression(DRIExpression<? extends Comparator<?>> comparatorExpression) {
 		getObject().setComparatorExpression(comparatorExpression);
 		return (T) this;
 	}

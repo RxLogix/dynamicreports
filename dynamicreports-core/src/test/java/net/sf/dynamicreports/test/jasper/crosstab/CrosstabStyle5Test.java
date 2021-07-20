@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -66,15 +66,15 @@ public class CrosstabStyle5Test extends AbstractJasperCrosstabStyleTest {
 		measure2 = ctab.measure("m2", "field3", Integer.class, Calculation.SUM);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.setCellWidth(50)
-				.highlightEvenRows()
-				.setGroupTotalStyle(stl.style().setBackgroundColor(Color.RED))
-				.rowGroups(
-						rowGroup)
-				.columnGroups(
-						columnGroup1, columnGroup2)
-				.measures(
-						measure1, measure2);
+			.setCellWidth(50)
+			.highlightEvenRows()
+			.setGroupTotalStyle(stl.style().setBackgroundColor(Color.RED))
+			.rowGroups(
+				rowGroup)
+			.columnGroups(
+				columnGroup1, columnGroup2)
+			.measures(
+				measure1, measure2);
 
 		rb.summary(crosstab);
 	}

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -43,7 +43,7 @@ public class ColumnTitleGroupBuilder extends AbstractBuilder<ColumnTitleGroupBui
 		super(new DRColumnTitleGroup());
 	}
 
-	public ColumnTitleGroupBuilder add(ColumnGridComponentBuilder... components) {
+	public ColumnTitleGroupBuilder add(ColumnGridComponentBuilder ...components) {
 		Validate.notNull(components, "components must not be null");
 		Validate.noNullElements(components, "components must not contains null component");
 		for (ColumnGridComponentBuilder component : components) {
@@ -65,188 +65,159 @@ public class ColumnTitleGroupBuilder extends AbstractBuilder<ColumnTitleGroupBui
 	public ColumnTitleGroupBuilder setTitleStyle(ReportStyleBuilder titleStyle) {
 		if (titleStyle != null) {
 			getObject().setTitleStyle(titleStyle.getStyle());
-		} else {
+		}
+		else {
 			getObject().setTitleStyle(null);
 		}
 		return this;
 	}
 
-	/**
-	 * This method is used to define the preferred width of a column title.
-	 * The width is set to the <code>columns</code> multiplied by width of the font
-	 *
-	 * @param columns
-	 *          the number of preferred columns >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>columns</code> is < 0
-	 */
+  /**
+   * This method is used to define the preferred width of a column title.
+   * The width is set to the <code>columns</code> multiplied by width of the font
+   *
+   * @param columns the number of preferred columns >= 0
+   * @exception IllegalArgumentException if <code>columns</code> is < 0
+   */
 	public ColumnTitleGroupBuilder setTitleColumns(Integer columns) {
 		getObject().setTitleColumns(columns);
 		return this;
 	}
 
-	/**
-	 * This method is used to define the fixed width of a column title.
-	 * The width is set to the <code>columns</code> multiplied by width of the font
-	 *
-	 * @param columns
-	 *          the number of fixed columns >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>columns</code> is < 0
-	 */
+  /**
+   * This method is used to define the fixed width of a column title.
+   * The width is set to the <code>columns</code> multiplied by width of the font
+   *
+   * @param columns the number of fixed columns >= 0
+   * @exception IllegalArgumentException if <code>columns</code> is < 0
+   */
 	public ColumnTitleGroupBuilder setTitleFixedColumns(Integer columns) {
 		getObject().setTitleColumns(columns);
 		getObject().setTitleWidthType(ComponentDimensionType.FIXED);
 		return this;
 	}
 
-	/**
-	 * This method is used to define the minimum width of a column title.
-	 * The width is set to the <code>columns</code> multiplied by width of the font
-	 *
-	 * @param columns
-	 *          the number of minimum columns >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>columns</code> is < 0
-	 */
+  /**
+   * This method is used to define the minimum width of a column title.
+   * The width is set to the <code>columns</code> multiplied by width of the font
+   *
+   * @param columns the number of minimum columns >= 0
+   * @exception IllegalArgumentException if <code>columns</code> is < 0
+   */
 	public ColumnTitleGroupBuilder setTitleMinColumns(Integer columns) {
 		getObject().setTitleColumns(columns);
 		getObject().setTitleWidthType(ComponentDimensionType.EXPAND);
 		return this;
 	}
 
-	/**
-	 * Sets the preferred width of a column title.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param width
-	 *          the column title preferred width >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>width</code> is < 0
-	 */
+  /**
+   * Sets the preferred width of a column title.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param width the column title preferred width >= 0
+   * @exception IllegalArgumentException if <code>width</code> is < 0
+   */
 	public ColumnTitleGroupBuilder setTitleWidth(Integer width) {
 		getObject().setTitleWidth(width);
 		return this;
 	}
 
-	/**
-	 * Sets the fixed width of a column title.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param width
-	 *          the column title fixed width >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>width</code> is < 0
-	 */
+  /**
+   * Sets the fixed width of a column title.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param width the column title fixed width >= 0
+   * @exception IllegalArgumentException if <code>width</code> is < 0
+   */
 	public ColumnTitleGroupBuilder setTitleFixedWidth(Integer width) {
 		getObject().setTitleWidth(width);
 		getObject().setTitleWidthType(ComponentDimensionType.FIXED);
 		return this;
 	}
 
-	/**
-	 * Sets the minimum width of a column title.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param width
-	 *          the column title minimum width >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>width</code> is < 0
-	 */
+  /**
+   * Sets the minimum width of a column title.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param width the column title minimum width >= 0
+   * @exception IllegalArgumentException if <code>width</code> is < 0
+   */
 	public ColumnTitleGroupBuilder setTitleMinWidth(Integer width) {
 		getObject().setTitleWidth(width);
 		getObject().setTitleWidthType(ComponentDimensionType.EXPAND);
 		return this;
 	}
 
-	/**
-	 * This method is used to define the preferred height of a column title.
-	 * The height is set to the <code>rows</code> multiplied by height of the font
-	 *
-	 * @param rows
-	 *          the number of preferred rows >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>rows</code> is < 0
-	 */
+  /**
+   * This method is used to define the preferred height of a column title.
+   * The height is set to the <code>rows</code> multiplied by height of the font
+   *
+   * @param rows the number of preferred rows >= 0
+   * @exception IllegalArgumentException if <code>rows</code> is < 0
+   */
 	public ColumnTitleGroupBuilder setTitleRows(Integer rows) {
 		getObject().setTitleRows(rows);
 		return this;
 	}
 
-	/**
-	 * This method is used to define the fixed height of a column title.
-	 * The height is set to the <code>rows</code> multiplied by height of the font
-	 *
-	 * @param rows
-	 *          the number of fixed rows >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>rows</code> is < 0
-	 */
+  /**
+   * This method is used to define the fixed height of a column title.
+   * The height is set to the <code>rows</code> multiplied by height of the font
+   *
+   * @param rows the number of fixed rows >= 0
+   * @exception IllegalArgumentException if <code>rows</code> is < 0
+   */
 	public ColumnTitleGroupBuilder setTitleFixedRows(Integer rows) {
 		getObject().setTitleRows(rows);
 		getObject().setTitleHeightType(ComponentDimensionType.FIXED);
 		return this;
 	}
 
-	/**
-	 * This method is used to define the minimum height of a column title.
-	 * The height is set to the <code>rows</code> multiplied by height of the font
-	 *
-	 * @param rows
-	 *          the number of minimum rows >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>rows</code> is < 0
-	 */
+  /**
+   * This method is used to define the minimum height of a column title.
+   * The height is set to the <code>rows</code> multiplied by height of the font
+   *
+   * @param rows the number of minimum rows >= 0
+   * @exception IllegalArgumentException if <code>rows</code> is < 0
+   */
 	public ColumnTitleGroupBuilder setTitleMinRows(Integer rows) {
 		getObject().setTitleRows(rows);
 		getObject().setTitleHeightType(ComponentDimensionType.EXPAND);
 		return this;
 	}
 
-	/**
-	 * Sets the preferred height of a column title.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param height
-	 *          the column title preferred height >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>height</code> is < 0
-	 */
+  /**
+   * Sets the preferred height of a column title.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param height the column title preferred height >= 0
+   * @exception IllegalArgumentException if <code>height</code> is < 0
+   */
 	public ColumnTitleGroupBuilder setTitleHeight(Integer height) {
 		getObject().setTitleHeight(height);
 		return this;
 	}
 
-	/**
-	 * Sets the fixed height of a column title.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param height
-	 *          the column title fixed height >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>height</code> is < 0
-	 */
+  /**
+   * Sets the fixed height of a column title.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param height the column title fixed height >= 0
+   * @exception IllegalArgumentException if <code>height</code> is < 0
+   */
 	public ColumnTitleGroupBuilder setTitleFixedHeight(Integer height) {
 		getObject().setTitleHeight(height);
 		getObject().setTitleHeightType(ComponentDimensionType.FIXED);
 		return this;
 	}
 
-	/**
-	 * Sets the minimum height of a column title.
-	 * 
-	 * @see net.sf.dynamicreports.report.builder.Units
-	 *
-	 * @param height
-	 *          the column title minimum height >= 0
-	 * @exception IllegalArgumentException
-	 *              if <code>height</code> is < 0
-	 */
+  /**
+   * Sets the minimum height of a column title.
+   * @see net.sf.dynamicreports.report.builder.Units
+   *
+   * @param height the column title minimum height >= 0
+   * @exception IllegalArgumentException if <code>height</code> is < 0
+   */
 	public ColumnTitleGroupBuilder setTitleMinHeight(Integer height) {
 		getObject().setTitleHeight(height);
 		getObject().setTitleHeightType(ComponentDimensionType.EXPAND);
@@ -261,8 +232,7 @@ public class ColumnTitleGroupBuilder extends AbstractBuilder<ColumnTitleGroupBui
 	/**
 	 * Adds a jasper property to the column title group.
 	 *
-	 * @param propertyExpression
-	 *          the property expression
+	 * @param propertyExpression the property expression
 	 * @return a column title group builder
 	 */
 	public ColumnTitleGroupBuilder addTitleProperty(DRIPropertyExpression propertyExpression) {
@@ -273,10 +243,8 @@ public class ColumnTitleGroupBuilder extends AbstractBuilder<ColumnTitleGroupBui
 	/**
 	 * Adds a jasper property to the column title group.
 	 *
-	 * @param name
-	 *          the property name
-	 * @param valueExpression
-	 *          the property value expression
+	 * @param name the property name
+	 * @param valueExpression the property value expression
 	 * @return a column title group builder
 	 */
 	public ColumnTitleGroupBuilder addTitleProperty(String name, DRIExpression<String> valueExpression) {
@@ -287,10 +255,8 @@ public class ColumnTitleGroupBuilder extends AbstractBuilder<ColumnTitleGroupBui
 	/**
 	 * Adds a jasper property to the column title group.
 	 *
-	 * @param name
-	 *          the property name
-	 * @param value
-	 *          the property value
+	 * @param name the property name
+	 * @param value the property value
 	 * @return a column title group builder
 	 */
 	public ColumnTitleGroupBuilder addTitleProperty(String name, String value) {

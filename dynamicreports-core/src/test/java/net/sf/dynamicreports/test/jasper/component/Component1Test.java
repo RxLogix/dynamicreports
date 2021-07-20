@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -41,18 +41,18 @@ public class Component1Test extends AbstractJasperValueTest {
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.setLocale(Locale.ENGLISH)
-				.columns(
-						col.column("Column1", "field1", Integer.class))
-				.pageFooter(
-						cmp.pageXofY(),
-						cmp.pageXslashY(),
-						cmp.currentDate().setPattern("dd.MM.yyyy"),
-						cmp.totalPages(),
-						cmp.pageNumber(),
-						cmp.totalPages().setFormatExpression("total pages {0}"),
-						cmp.pageNumber().setFormatExpression("page number {0}"),
-						cmp.currentDate().setFormatExpression("current date {0}"),
-						cmp.currentDate().setFormatExpression("current date {0}").setPattern("dd.MM.yyyy"));
+			.columns(
+					col.column("Column1", "field1", Integer.class))
+			.pageFooter(
+					cmp.pageXofY(),
+					cmp.pageXslashY(),
+					cmp.currentDate().setPattern("dd.MM.yyyy"),
+					cmp.totalPages(),
+					cmp.pageNumber(),
+					cmp.totalPages().setFormatExpression("total pages {0}"),
+					cmp.pageNumber().setFormatExpression("page number {0}"),
+					cmp.currentDate().setFormatExpression("current date {0}"),
+					cmp.currentDate().setFormatExpression("current date {0}").setPattern("dd.MM.yyyy"));
 	}
 
 	@Override

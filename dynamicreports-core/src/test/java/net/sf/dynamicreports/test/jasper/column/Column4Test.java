@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -44,8 +44,8 @@ public class Column4Test extends AbstractJasperValueTest implements Serializable
 	@Override
 	protected void configureReport(JasperReportBuilder rb) {
 		rb.columns(
-				column1 = col.column("Column1", "field1", type.stringType()).setPrintRepeatedDetailValues(false).setPrintInFirstWholeBand(true),
-				column2 = col.column("Column2", "field2", type.integerType()));
+					column1 = col.column("Column1", "field1", type.stringType()).setPrintRepeatedDetailValues(false).setPrintInFirstWholeBand(true),
+					column2 = col.column("Column2", "field2", type.integerType()));
 	}
 
 	@Override
@@ -53,12 +53,12 @@ public class Column4Test extends AbstractJasperValueTest implements Serializable
 		super.test();
 
 		numberOfPagesTest(2);
-		// column1
+		//column1
 		columnDetailCountTest(column1, 3);
 		columnDetailValueTest(column1, "test1", "test2", "test2");
 		columnTitleCountTest(column1, 2);
 		columnTitleValueTest(column1, "Column1", "Column1");
-		// column2
+		//column2
 		columnDetailCountTest(column2, 60);
 		columnDetailValueTest(column2, 0, "0");
 		columnTitleCountTest(column2, 2);

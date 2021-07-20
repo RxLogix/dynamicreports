@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -47,21 +47,21 @@ public class CrosstabTest extends AbstractJasperTest {
 		TextColumnBuilder<Integer> column3 = col.column("Column3", "field3", Integer.class);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.setRepeatColumnHeaders(false)
-				.setRepeatRowHeaders(false)
-				.setColumnBreakOffset(100)
-				.setIgnoreWidth(true)
-				.setRunDirection(RunDirection.RIGHT_TO_LEFT)
-				.rowGroups(
-						ctab.rowGroup(column1))
-				.columnGroups(
-						ctab.columnGroup(column2))
-				.measures(
-						ctab.measure(column3, Calculation.SUM));
+			.setRepeatColumnHeaders(false)
+			.setRepeatRowHeaders(false)
+			.setColumnBreakOffset(100)
+			.setIgnoreWidth(true)
+			.setRunDirection(RunDirection.RIGHT_TO_LEFT)
+			.rowGroups(
+				ctab.rowGroup(column1))
+			.columnGroups(
+				ctab.columnGroup(column2))
+			.measures(
+					ctab.measure(column3, Calculation.SUM));
 
 		rb
-				.columns(column1, column2, column3)
-				.summary(crosstab);
+			.columns(column1, column2, column3)
+			.summary(crosstab);
 	}
 
 	@Override

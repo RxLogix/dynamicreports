@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -35,15 +35,13 @@ import net.sf.dynamicreports.report.definition.expression.DRIExpression;
  */
 public class ColumnBuilders {
 
-	// text
+	//text
 	/**
 	 * Creates a new column.<br/>
 	 * It is used to show values from the data source.
 	 *
-	 * @param fieldName
-	 *          the name of the field
-	 * @param valueClass
-	 *          the field value class
+	 * @param fieldName the name of the field
+	 * @param valueClass the field value class
 	 * @return a column builder
 	 */
 	public <T> TextColumnBuilder<T> column(String fieldName, Class<T> valueClass) {
@@ -54,12 +52,9 @@ public class ColumnBuilders {
 	 * Creates a new column.<br/>
 	 * It is used to show values from the data source.
 	 *
-	 * @param title
-	 *          the column title
-	 * @param fieldName
-	 *          the name of the field
-	 * @param valueClass
-	 *          the field value class
+	 * @param title the column title
+	 * @param fieldName the name of the field
+	 * @param valueClass the field value class
 	 * @return a column builder
 	 */
 	public <T> TextColumnBuilder<T> column(String title, String fieldName, Class<T> valueClass) {
@@ -70,10 +65,8 @@ public class ColumnBuilders {
 	 * Creates a new column.<br/>
 	 * It is used to show values from the data source.
 	 *
-	 * @param fieldName
-	 *          the name of the field
-	 * @param dataType
-	 *          the field data type
+	 * @param fieldName the name of the field
+	 * @param dataType the field data type
 	 * @return a column builder
 	 */
 	public <T> TextColumnBuilder<T> column(String fieldName, DRIDataType<? super T, T> dataType) {
@@ -84,12 +77,9 @@ public class ColumnBuilders {
 	 * Creates a new column.<br/>
 	 * It is used to show values from the data source.
 	 *
-	 * @param title
-	 *          the column title
-	 * @param fieldName
-	 *          the name of the field
-	 * @param dataType
-	 *          the field data type
+	 * @param title the column title
+	 * @param fieldName the name of the field
+	 * @param dataType the field data type
 	 * @return a column builder
 	 */
 	public <T> TextColumnBuilder<T> column(String title, String fieldName, DRIDataType<? super T, T> dataType) {
@@ -100,8 +90,7 @@ public class ColumnBuilders {
 	 * Creates a new column.<br/>
 	 * It is used to show values from the data source.
 	 *
-	 * @param field
-	 *          the field definition
+	 * @param field the field definition
 	 * @return a column builder
 	 */
 	public <T> TextColumnBuilder<T> column(FieldBuilder<T> field) {
@@ -112,23 +101,20 @@ public class ColumnBuilders {
 	 * Creates a new column.<br/>
 	 * It is used to show values from the data source.
 	 *
-	 * @param title
-	 *          the column title
-	 * @param field
-	 *          the field definition
+	 * @param title the column title
+	 * @param field the field definition
 	 * @return a column builder
 	 */
 	public <T> TextColumnBuilder<T> column(String title, FieldBuilder<T> field) {
 		return Columns.column(title, field);
 	}
 
-	// expression
+	//expression
 	/**
 	 * Creates a new expression column.<br/>
 	 * The column values are defined in an expression.
 	 *
-	 * @param expression
-	 *          the value expression
+	 * @param expression the value expression
 	 * @return a column builder
 	 */
 	public <T> TextColumnBuilder<T> column(DRIExpression<T> expression) {
@@ -139,23 +125,20 @@ public class ColumnBuilders {
 	 * Creates a new expression column.<br/>
 	 * The column values are defined in an expression.
 	 *
-	 * @param title
-	 *          the column title
-	 * @param expression
-	 *          the value expression
+	 * @param title the column title
+	 * @param expression the value expression
 	 * @return a column builder
 	 */
 	public <T> TextColumnBuilder<T> column(String title, DRIExpression<T> expression) {
 		return Columns.column(title, expression);
 	}
 
-	// percentage
+	//percentage
 	/**
 	 * Creates a new percentage column.<br/>
 	 * It calculates percentage values from column values.
 	 *
-	 * @param column
-	 *          the column definition
+	 * @param column the column definition
 	 * @return a column builder
 	 */
 	public PercentageColumnBuilder percentageColumn(ValueColumnBuilder<?, ? extends Number> column) {
@@ -166,10 +149,8 @@ public class ColumnBuilders {
 	 * Creates a new percentage column.<br/>
 	 * It calculates percentage values from column values.
 	 *
-	 * @param title
-	 *          the column title
-	 * @param column
-	 *          the column definition
+	 * @param title the column title
+	 * @param column the column definition
 	 * @return a column builder
 	 */
 	public PercentageColumnBuilder percentageColumn(String title, ValueColumnBuilder<?, ? extends Number> column) {
@@ -180,10 +161,8 @@ public class ColumnBuilders {
 	 * Creates a new percentage column.<br/>
 	 * It calculates percentage values from field values.
 	 *
-	 * @param fieldName
-	 *          the name of the field
-	 * @param valueClass
-	 *          the field value class
+	 * @param fieldName the name of the field
+	 * @param valueClass the field value class
 	 * @return a column builder
 	 */
 	public PercentageColumnBuilder percentageColumn(String fieldName, Class<? extends Number> valueClass) {
@@ -194,12 +173,9 @@ public class ColumnBuilders {
 	 * Creates a new percentage column.<br/>
 	 * It calculates percentage values from field values.
 	 *
-	 * @param title
-	 *          the column title
-	 * @param fieldName
-	 *          the name of the field
-	 * @param valueClass
-	 *          the field value class
+	 * @param title the column title
+	 * @param fieldName the name of the field
+	 * @param valueClass the field value class
 	 * @return a column builder
 	 */
 	public PercentageColumnBuilder percentageColumn(String title, String fieldName, Class<? extends Number> valueClass) {
@@ -210,8 +186,7 @@ public class ColumnBuilders {
 	 * Creates a new percentage column.<br/>
 	 * It calculates percentage values from field values.
 	 *
-	 * @param field
-	 *          the field definition
+	 * @param field the field definition
 	 * @return a column builder
 	 */
 	public PercentageColumnBuilder percentageColumn(FieldBuilder<? extends Number> field) {
@@ -222,10 +197,8 @@ public class ColumnBuilders {
 	 * Creates a new percentage column.<br/>
 	 * It calculates percentage values from field values.
 	 *
-	 * @param title
-	 *          the column title
-	 * @param field
-	 *          the field definition
+	 * @param title the column title
+	 * @param field the field definition
 	 * @return a column builder
 	 */
 	public PercentageColumnBuilder percentageColumn(String title, FieldBuilder<? extends Number> field) {
@@ -235,12 +208,12 @@ public class ColumnBuilders {
 	/*public PercentageColumnBuilder percentageColumn(DRISimpleExpression<? extends Number> expression) {
 		return Columns.percentageColumn(expression);
 	}
-	
+
 	public PercentageColumnBuilder percentageColumn(String title, DRISimpleExpression<? extends Number> expression) {
 		return Columns.percentageColumn(title, expression);
 	}*/
 
-	// column row number
+	//column row number
 	/**
 	 * Creates a new row number column.<br/>
 	 * It displays row numbers, the row number is reset on each new column.
@@ -255,15 +228,14 @@ public class ColumnBuilders {
 	 * Creates a new row number column.<br/>
 	 * It displays row numbers, the row number is reset on each new column.
 	 *
-	 * @param title
-	 *          the column title
+	 * @param title the column title
 	 * @return a column builder
 	 */
 	public TextColumnBuilder<Integer> columnRowNumberColumn(String title) {
 		return Columns.columnRowNumberColumn(title);
 	}
 
-	// page row number
+	//page row number
 	/**
 	 * Creates a new row number column.<br/>
 	 * It displays row numbers, the row number is reset on each new page.
@@ -278,15 +250,14 @@ public class ColumnBuilders {
 	 * Creates a new row number column.<br/>
 	 * It displays row numbers, the row number is reset on each new page.
 	 *
-	 * @param title
-	 *          the column title
+	 * @param title the column title
 	 * @return a column builder
 	 */
 	public TextColumnBuilder<Integer> pageRowNumberColumn(String title) {
 		return Columns.pageRowNumberColumn(title);
 	}
 
-	// report row number
+	//report row number
 	/**
 	 * Creates a new row number column.<br/>
 	 * It displays row numbers.
@@ -301,21 +272,19 @@ public class ColumnBuilders {
 	 * Creates a new row number column.<br/>
 	 * It displays row numbers.
 	 *
-	 * @param title
-	 *          the column title
+	 * @param title the column title
 	 * @return a column builder
 	 */
 	public TextColumnBuilder<Integer> reportRowNumberColumn(String title) {
 		return Columns.reportRowNumberColumn(title);
 	}
 
-	// component
+	//component
 	/**
 	 * Creates a new component column.<br/>
 	 * It is used to display custom components (e.g. images or complex content) in columns.
 	 *
-	 * @param component
-	 *          the component definition
+	 * @param component the component definition
 	 * @return a column builder
 	 */
 	public ComponentColumnBuilder componentColumn(ComponentBuilder<?, ?> component) {
@@ -326,23 +295,20 @@ public class ColumnBuilders {
 	 * Creates a new component column.<br/>
 	 * It is used to display custom components (e.g. images or complex content) in columns.
 	 *
-	 * @param title
-	 *          the column title
-	 * @param component
-	 *          the component definition
+	 * @param title the column title
+	 * @param component the component definition
 	 * @return a column builder
 	 */
 	public ComponentColumnBuilder componentColumn(String title, ComponentBuilder<?, ?> component) {
 		return Columns.componentColumn(title, component);
 	}
 
-	// boolean
+	//boolean
 	/**
 	 * Creates a new boolean column.<br/>
 	 * It shows a boolean value either as a text or as an image.
 	 *
-	 * @param fieldName
-	 *          the name of the field
+	 * @param fieldName the name of the field
 	 * @return a column builder
 	 */
 	public BooleanColumnBuilder booleanColumn(String fieldName) {
@@ -353,10 +319,8 @@ public class ColumnBuilders {
 	 * Creates a new boolean column.<br/>
 	 * It shows a boolean value either as a text or as an image.
 	 *
-	 * @param title
-	 *          the column title
-	 * @param fieldName
-	 *          the name of the field
+	 * @param title the column title
+	 * @param fieldName the name of the field
 	 * @return a column builder
 	 */
 	public BooleanColumnBuilder booleanColumn(String title, String fieldName) {
@@ -367,8 +331,7 @@ public class ColumnBuilders {
 	 * Creates a new boolean column.<br/>
 	 * It shows a boolean value either as a text or as an image.
 	 *
-	 * @param field
-	 *          the field definition
+	 * @param field the field definition
 	 * @return a column builder
 	 */
 	public BooleanColumnBuilder booleanColumn(FieldBuilder<Boolean> field) {
@@ -379,10 +342,8 @@ public class ColumnBuilders {
 	 * Creates a new boolean column.<br/>
 	 * It shows a boolean value either as a text or as an image.
 	 *
-	 * @param title
-	 *          the column title
-	 * @param field
-	 *          the field definition
+	 * @param title the column title
+	 * @param field the field definition
 	 * @return a column builder
 	 */
 	public BooleanColumnBuilder booleanColumn(String title, FieldBuilder<Boolean> field) {
@@ -393,8 +354,7 @@ public class ColumnBuilders {
 	 * Creates a new boolean column.<br/>
 	 * It shows a boolean value either as a text or as an image.
 	 *
-	 * @param expression
-	 *          the boolean value expression
+	 * @param expression the boolean value expression
 	 * @return a column builder
 	 */
 	public BooleanColumnBuilder booleanColumn(DRIExpression<Boolean> expression) {
@@ -405,17 +365,15 @@ public class ColumnBuilders {
 	 * Creates a new boolean column.<br/>
 	 * It shows a boolean value either as a text or as an image.
 	 *
-	 * @param title
-	 *          the column title
-	 * @param expression
-	 *          the boolean value expression
+	 * @param title the column title
+	 * @param expression the boolean value expression
 	 * @return a column builder
 	 */
 	public BooleanColumnBuilder booleanColumn(String title, DRIExpression<Boolean> expression) {
 		return Columns.booleanColumn(title, expression);
 	}
 
-	// empty column
+	//empty column
 	/**
 	 * Creates a new empty column.<br/>
 	 *
@@ -428,10 +386,8 @@ public class ColumnBuilders {
 	/**
 	 * Creates a new empty column.<br/>
 	 *
-	 * @param showTitle
-	 *          show column title
-	 * @param showDetailRows
-	 *          show detail rows
+	 * @param showTitle show column title
+	 * @param showDetailRows show detail rows
 	 * @return a column builder
 	 */
 	public TextColumnBuilder<String> emptyColumn(boolean showTitle, boolean showDetailRows) {

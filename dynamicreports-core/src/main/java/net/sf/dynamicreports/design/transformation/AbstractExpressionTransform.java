@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -122,8 +122,7 @@ public abstract class AbstractExpressionTransform {
 		return transformExpression(expression, null, parameterName);
 	}
 
-	protected DRIDesignExpression transformExpression(DRIExpression<?> expression, DRIValueFormatter<?, ?> valueFormatter, String parameterName)
-			throws DRException {
+	protected DRIDesignExpression transformExpression(DRIExpression<?> expression, DRIValueFormatter<?, ?> valueFormatter, String parameterName) throws DRException {
 		if (expression == null) {
 			return null;
 		}
@@ -138,23 +137,32 @@ public abstract class AbstractExpressionTransform {
 		DRIDesignExpression express;
 		if (expression instanceof DRISystemExpression<?>) {
 			express = new DRDesignSystemExpression((DRISystemExpression<?>) expression);
-		} else if (expression instanceof DRIJasperExpression<?>) {
+		}
+		else if (expression instanceof DRIJasperExpression<?>) {
 			express = new DRDesignJasperExpression((DRIJasperExpression<?>) expression);
-		} else if (expression instanceof DRISimpleExpression<?>) {
+		}
+		else if (expression instanceof DRISimpleExpression<?>) {
 			express = new DRDesignSimpleExpression((DRISimpleExpression<?>) expression, parameterName);
-		} else if (expression instanceof DRIComplexExpression<?>) {
+		}
+		else if (expression instanceof DRIComplexExpression<?>) {
 			express = transformComplexExpression((DRIComplexExpression<?>) expression, parameterName);
-		} else if (expression instanceof DRIField<?>) {
+		}
+		else if (expression instanceof DRIField<?>) {
 			express = transformField((DRIField<?>) expression);
-		} else if (expression instanceof DRIVariable<?>) {
+		}
+		else if (expression instanceof DRIVariable<?>) {
 			express = transformVariable((DRIVariable<?>) expression);
-		} else if (expression instanceof DRIValueColumn<?>) {
+		}
+		else if (expression instanceof DRIValueColumn<?>) {
 			express = transformExpression(((DRIValueColumn<?>) expression).getComponent().getValueExpression());
-		} else if (expression instanceof DRIBooleanColumn) {
+		}
+		else if (expression instanceof DRIBooleanColumn) {
 			express = transformExpression(((DRIBooleanColumn) expression).getComponent().getValueExpression());
-		} else if (expression instanceof DRISubtotal<?>) {
+		}
+		else if (expression instanceof DRISubtotal<?>) {
 			express = transformExpression(((DRISubtotal<?>) expression).getValueField().getValueExpression());
-		} else {
+		}
+		else {
 			throw new DRDesignReportException("Expression " + expression.getClass().getName() + " not supported");
 		}
 		express = addExpression(express);
@@ -203,7 +211,8 @@ public abstract class AbstractExpressionTransform {
 		DRIDesignExpression sortExpression;
 		if (expression instanceof DRIDesignField || expression instanceof DRIDesignVariable) {
 			sortExpression = expression;
-		} else {
+		}
+		else {
 			@SuppressWarnings({ "rawtypes", "unchecked" })
 			DRVariable variable = new DRVariable(sort.getExpression(), Calculation.NOTHING);
 			variable.setResetType(Evaluation.NONE);
@@ -237,17 +246,23 @@ public abstract class AbstractExpressionTransform {
 		}
 		if (expression instanceof DRIDesignField) {
 			return addField((DRIDesignField) expression);
-		} else if (expression instanceof DRIDesignVariable) {
+		}
+		else if (expression instanceof DRIDesignVariable) {
 			addVariable((DRDesignVariable) expression);
-		} else if (expression instanceof DRIDesignSystemExpression) {
+		}
+		else if (expression instanceof DRIDesignSystemExpression) {
 			addSystemExpression((DRIDesignSystemExpression) expression);
-		} else if (expression instanceof DRIDesignJasperExpression) {
+		}
+		else if (expression instanceof DRIDesignJasperExpression) {
 			addJasperExpression((DRIDesignJasperExpression) expression);
-		} else if (expression instanceof DRIDesignSimpleExpression) {
+		}
+		else if (expression instanceof DRIDesignSimpleExpression) {
 			addSimpleExpression((DRIDesignSimpleExpression) expression);
-		} else if (expression instanceof DRIDesignComplexExpression) {
+		}
+		else if (expression instanceof DRIDesignComplexExpression) {
 			addComplexExpression((DRIDesignComplexExpression) expression);
-		} else {
+		}
+		else {
 			throw new DRDesignReportException("Expression " + expression.getClass().getName() + " not supported");
 		}
 		return expression;

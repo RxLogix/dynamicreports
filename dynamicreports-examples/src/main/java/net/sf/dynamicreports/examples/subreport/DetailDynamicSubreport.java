@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -44,17 +44,17 @@ public class DetailDynamicSubreport {
 
 	private void build() {
 		SubreportBuilder subreport = cmp.subreport(new SubreportExpression())
-				.setDataSource(new SubreportDataSourceExpression());
+		                                .setDataSource(new SubreportDataSourceExpression());
 
 		try {
 			report()
-					.title(Templates.createTitleComponent("DetailDynamicSubreport"))
-					.detail(
-							subreport,
-							cmp.verticalGap(20))
-					.pageFooter(Templates.footerComponent)
-					.setDataSource(createDataSource())
-					.show();
+			  .title(Templates.createTitleComponent("DetailDynamicSubreport"))
+			  .detail(
+			  	subreport,
+			  	cmp.verticalGap(20))
+			  .pageFooter(Templates.footerComponent)
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		}
@@ -72,11 +72,11 @@ public class DetailDynamicSubreport {
 			int masterRowNumber = reportParameters.getReportRowNumber();
 			JasperReportBuilder report = report();
 			report
-					.setTemplate(Templates.reportTemplate)
-					.title(cmp.text("Subreport" + masterRowNumber).setStyle(Templates.bold12CenteredStyle));
+			  .setTemplate(Templates.reportTemplate)
+			  .title(cmp.text("Subreport" + masterRowNumber).setStyle(Templates.bold12CenteredStyle));
 
 			for (int i = 1; i <= masterRowNumber; i++) {
-				report.addColumn(col.column("Column" + i, "column" + i, type.stringType()));
+			  report.addColumn(col.column("Column" + i, "column" + i, type.stringType()));
 			}
 
 			return report;

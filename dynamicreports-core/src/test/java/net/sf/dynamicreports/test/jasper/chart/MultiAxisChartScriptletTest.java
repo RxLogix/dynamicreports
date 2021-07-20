@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -62,29 +62,29 @@ public class MultiAxisChartScriptletTest extends AbstractJasperChartTest impleme
 		FieldBuilder<String> field4 = field("field4", type.stringType());
 
 		TimeSeriesChartBuilder chart1 = cht.timeSeriesChart()
-				.customizers(new Customizer1())
-				.setTimePeriod(field1)
-				.setTimePeriodType(TimePeriod.DAY)
-				.series(cht.serie(field2).setLabel("serie1"));
+			.customizers(new Customizer1())
+  		.setTimePeriod(field1)
+  		.setTimePeriodType(TimePeriod.DAY)
+  		.series(cht.serie(field2).setLabel("serie1"));
 
 		TimeSeriesChartBuilder chart2 = cht.timeSeriesChart()
-				.setTimePeriod(field1)
-				.setTimePeriodType(TimePeriod.DAY)
-				.series(cht.serie(field3).setLabel("serie2"));
+	  	.setTimePeriod(field1)
+	  	.setTimePeriodType(TimePeriod.DAY)
+	  	.series(cht.serie(field3).setLabel("serie2"));
 
 		BarChartBuilder chart3 = cht.barChart()
-				.customizers(new Customizer3())
-				.setCategory(field4)
-				.series(cht.serie(field2));
+			.customizers(new Customizer3())
+			.setCategory(field4)
+			.series(cht.serie(field2));
 
 		LineChartBuilder chart4 = cht.lineChart()
-				.customizers(new Customizer4())
-				.setCategory(field4)
-				.series(cht.serie(field3));
+			.customizers(new Customizer4())
+			.setCategory(field4)
+			.series(cht.serie(field3));
 
 		rb.summary(
-				cht.multiAxisChart(chart1, chart2).customizers(new Customizer2()),
-				cht.multiAxisChart(chart3, chart4).customizers(new Customizer5()));
+	  	cht.multiAxisChart(chart1, chart2).customizers(new Customizer2()),
+	  	cht.multiAxisChart(chart3, chart4).customizers(new Customizer5()));
 	}
 
 	@Override

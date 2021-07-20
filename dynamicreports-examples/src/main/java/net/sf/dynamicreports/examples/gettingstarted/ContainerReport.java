@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -44,28 +44,28 @@ public class ContainerReport {
 
 	private void build() {
 		boldCenteredStyle = stl.style()
-				.bold()
-				.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
-		borderedStyle = stl.style(stl.pen1Point());
+		                       .bold()
+		                       .setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
+		borderedStyle     = stl.style(stl.pen1Point());
 
 		try {
-			report()// create new report design
-					.title(
-							createTextField("Horizontal list (contains 10 textfields)"),
-							createHorizontalList(),
-							cmp.verticalGap(20),
-							createTextField("Multi row horizontal list (contains 10 textfields)"),
-							createMultiRowHorizontalList(),
-							cmp.verticalGap(20),
-							createTextField("Horizontal flow list (contains 9 textfields)"),
-							createHorizontalFlowList(),
-							cmp.verticalGap(20),
-							createTextField("Vertical list (contains 4 textfields)"),
-							createVerticalList(),
-							cmp.verticalGap(20),
-							createTextField("Nested list (contains 1 horizontal and 3 vertical lists)"),
-							createNestedList())
-					.show();// create and show report
+			report()//create new report design
+			  .title(
+			  	createTextField("Horizontal list (contains 10 textfields)"),
+			  	createHorizontalList(),
+			  	cmp.verticalGap(20),
+			  	createTextField("Multi row horizontal list (contains 10 textfields)"),
+			  	createMultiRowHorizontalList(),
+			  	cmp.verticalGap(20),
+			  	createTextField("Horizontal flow list (contains 9 textfields)"),
+			  	createHorizontalFlowList(),
+			  	cmp.verticalGap(20),
+			  	createTextField("Vertical list (contains 4 textfields)"),
+			  	createVerticalList(),
+			  	cmp.verticalGap(20),
+			  	createTextField("Nested list (contains 1 horizontal and 3 vertical lists)"),
+			  	createNestedList())
+			  .show();//create and show report
 		} catch (DRException e) {
 			e.printStackTrace();
 		}

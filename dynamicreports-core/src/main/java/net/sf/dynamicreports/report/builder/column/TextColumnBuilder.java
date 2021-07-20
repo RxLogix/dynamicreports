@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -56,12 +56,11 @@ public class TextColumnBuilder<T> extends ValueColumnBuilder<TextColumnBuilder<T
 		setValueExpression(valueExpression);
 	}
 
-	// add
+	//add
 	/**
 	 * Creates a new column by adding a column value to this column instance.
 	 *
-	 * @param column
-	 *          the column builder
+	 * @param column the column builder
 	 * @return a column builder
 	 */
 	@SuppressWarnings("unchecked")
@@ -76,8 +75,7 @@ public class TextColumnBuilder<T> extends ValueColumnBuilder<TextColumnBuilder<T
 	/**
 	 * Creates a new column by adding a value to this column instance.
 	 *
-	 * @param number
-	 *          the value
+	 * @param number the value
 	 * @return a column builder
 	 */
 	@SuppressWarnings("unchecked")
@@ -89,12 +87,11 @@ public class TextColumnBuilder<T> extends ValueColumnBuilder<TextColumnBuilder<T
 		return new TextColumnBuilder<BigDecimal>(exp).setDataType(type.bigDecimalType());
 	}
 
-	// subtract
+	//subtract
 	/**
 	 * Creates a new column by subtracting a column value from this column instance.
 	 *
-	 * @param column
-	 *          the column builder
+	 * @param column the column builder
 	 * @return a column builder
 	 */
 	@SuppressWarnings("unchecked")
@@ -109,8 +106,7 @@ public class TextColumnBuilder<T> extends ValueColumnBuilder<TextColumnBuilder<T
 	/**
 	 * Creates a new column by subtracting a value from this column instance.
 	 *
-	 * @param number
-	 *          the value
+	 * @param number the value
 	 * @return a column builder
 	 */
 	@SuppressWarnings("unchecked")
@@ -122,12 +118,11 @@ public class TextColumnBuilder<T> extends ValueColumnBuilder<TextColumnBuilder<T
 		return new TextColumnBuilder<BigDecimal>(exp).setDataType(type.bigDecimalType());
 	}
 
-	// multiply
+	//multiply
 	/**
 	 * Creates a new column by multiplying this column instance with a column value.
 	 *
-	 * @param column
-	 *          the column builder
+	 * @param column the column builder
 	 * @return a column builder
 	 */
 	@SuppressWarnings("unchecked")
@@ -142,8 +137,7 @@ public class TextColumnBuilder<T> extends ValueColumnBuilder<TextColumnBuilder<T
 	/**
 	 * Creates a new column by multiplying this column instance with a value.
 	 *
-	 * @param number
-	 *          the value
+	 * @param number the value
 	 * @return a column builder
 	 */
 	@SuppressWarnings("unchecked")
@@ -155,12 +149,11 @@ public class TextColumnBuilder<T> extends ValueColumnBuilder<TextColumnBuilder<T
 		return new TextColumnBuilder<BigDecimal>(exp).setDataType(type.bigDecimalType());
 	}
 
-	// divide
+	//divide
 	/**
 	 * Creates a new column by dividing this column instance with a column value.
 	 *
-	 * @param column
-	 *          the column builder
+	 * @param column the column builder
 	 * @return a column builder
 	 */
 	@SuppressWarnings("unchecked")
@@ -175,8 +168,7 @@ public class TextColumnBuilder<T> extends ValueColumnBuilder<TextColumnBuilder<T
 	/**
 	 * Creates a new column by dividing this column instance with a value.
 	 *
-	 * @param number
-	 *          the value
+	 * @param number the value
 	 * @return a column builder
 	 */
 	@SuppressWarnings("unchecked")

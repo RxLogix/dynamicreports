@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -32,20 +32,20 @@ import net.sf.dynamicreports.report.definition.DRIValue;
 public class ConditionBuilders {
 
 	@SuppressWarnings("unchecked")
-	public <T> EqualExpression equal(DRIValue<T> value, T... values) {
+	public <T> EqualExpression equal(DRIValue<T> value, T ...values) {
 		return Conditions.equal(value, values);
 	}
 
-	public <T extends Number> EqualValueExpression<T> equal(DRIValue<T> value, Number... number) {
+	public <T extends Number> EqualValueExpression<T> equal(DRIValue<T> value, Number ...number) {
 		return Conditions.equal(value, number);
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T> UnEqualExpression unEqual(DRIValue<T> value, T... values) {
+	public <T> UnEqualExpression unEqual(DRIValue<T> value, T ...values) {
 		return Conditions.unEqual(value, values);
 	}
 
-	public <T extends Number> UnEqualValueExpression<T> unEqual(DRIValue<T> value, Number... number) {
+	public <T extends Number> UnEqualValueExpression<T> unEqual(DRIValue<T> value, Number ...number) {
 		return Conditions.unEqual(value, number);
 	}
 

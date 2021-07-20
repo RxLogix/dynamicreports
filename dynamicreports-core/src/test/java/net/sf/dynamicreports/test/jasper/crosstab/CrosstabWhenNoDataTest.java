@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -43,17 +43,17 @@ public class CrosstabWhenNoDataTest extends AbstractJasperCrosstabPositionTest {
 		TextColumnBuilder<Double> column4 = col.column("Column4", "field4", Double.class);
 
 		CrosstabBuilder crosstab = ctab.crosstab()
-				.whenNoDataCell(cmp.text("text"), cmp.text("text"))
-				.rowGroups(
-						ctab.rowGroup(column1))
-				.columnGroups(
-						ctab.columnGroup(column2))
-				.measures(
-						ctab.measure(column3, Calculation.SUM), ctab.measure(column4, Calculation.SUM));
+			.whenNoDataCell(cmp.text("text"),cmp.text("text"))
+			.rowGroups(
+				ctab.rowGroup(column1))
+			.columnGroups(
+				ctab.columnGroup(column2))
+			.measures(
+				ctab.measure(column3, Calculation.SUM), ctab.measure(column4, Calculation.SUM));
 
 		rb.setWhenNoDataType(WhenNoDataType.ALL_SECTIONS_NO_DETAIL)
-				.columns(column1, column2, column3, column4)
-				.summary(crosstab);
+			.columns(column1, column2, column3, column4)
+			.summary(crosstab);
 	}
 
 	@Override

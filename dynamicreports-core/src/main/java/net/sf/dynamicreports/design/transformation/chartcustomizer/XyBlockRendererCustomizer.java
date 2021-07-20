@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -54,28 +54,28 @@ public class XyBlockRendererCustomizer implements DRIChartCustomizer, Serializab
 		chart.getXYPlot().getDomainAxis().setUpperMargin(0);
 		chart.getXYPlot().getRangeAxis().setUpperMargin(0);
 
-		XYBlockRenderer renderer = new XYBlockRenderer();
-		if (xyBlockPlot.getBlockWidth() != null) {
-			renderer.setBlockWidth(xyBlockPlot.getBlockWidth());
+    XYBlockRenderer renderer = new XYBlockRenderer();
+    if (xyBlockPlot.getBlockWidth() != null) {
+    	renderer.setBlockWidth(xyBlockPlot.getBlockWidth());
+    }
+    if (xyBlockPlot.getBlockHeight() != null) {
+    	renderer.setBlockHeight(xyBlockPlot.getBlockHeight());
+    }
+    if (xyBlockPlot.getBlockAnchor() != null) {
+    	renderer.setBlockAnchor(ConstantTransform.rectangleAnchor(xyBlockPlot.getBlockAnchor()));
+    }
+    LookupPaintScale paintScale = new LookupPaintScale(xyBlockPlot.getDefaultLowerBound(), xyBlockPlot.getDefaultUpperBound(), xyBlockPlot.getDefaultPaint());
+    for (DRIPaintScale scale : xyBlockPlot.getPaintScales()) {
+    	paintScale.add(scale.getValue(), scale.getPaint());
 		}
-		if (xyBlockPlot.getBlockHeight() != null) {
-			renderer.setBlockHeight(xyBlockPlot.getBlockHeight());
-		}
-		if (xyBlockPlot.getBlockAnchor() != null) {
-			renderer.setBlockAnchor(ConstantTransform.rectangleAnchor(xyBlockPlot.getBlockAnchor()));
-		}
-		LookupPaintScale paintScale = new LookupPaintScale(xyBlockPlot.getDefaultLowerBound(), xyBlockPlot.getDefaultUpperBound(), xyBlockPlot.getDefaultPaint());
-		for (DRIPaintScale scale : xyBlockPlot.getPaintScales()) {
-			paintScale.add(scale.getValue(), scale.getPaint());
-		}
-		renderer.setPaintScale(paintScale);
+    renderer.setPaintScale(paintScale);
 
-		chart.getXYPlot().setRenderer(renderer);
+    chart.getXYPlot().setRenderer(renderer);
 
-		LegendItemCollection legendItems = new LegendItemCollection();
-		for (DRIPaintScale scale : xyBlockPlot.getPaintScales()) {
-			legendItems.add(new LegendItem(scale.getLabel(), scale.getPaint()));
+    LegendItemCollection legendItems = new LegendItemCollection();
+    for (DRIPaintScale scale : xyBlockPlot.getPaintScales()) {
+    	legendItems.add(new LegendItem(scale.getLabel(), scale.getPaint()));
 		}
-		chart.getXYPlot().setFixedLegendItems(legendItems);
-	}
+    chart.getXYPlot().setFixedLegendItems(legendItems);
+  }
 }

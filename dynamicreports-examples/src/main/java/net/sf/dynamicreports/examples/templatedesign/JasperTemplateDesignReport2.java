@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -52,19 +52,19 @@ public class JasperTemplateDesignReport2 {
 
 		try {
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.setTemplateDesign(is)
-					.columns(
-							col.column("Item", "item", type.stringType()),
-							col.column("Quantity", "quantity", type.integerType()),
-							col.column("Unit price", "unitprice", type.integerType()))
-					.title(
-							Templates.createTitleComponent("JasperTemplateDesign2"),
-							cmp.subreport(createDynamicSubreport()),
-							cmp.subreport(createStaticSubreport()),
-							cmp.subreport(createStaticAndDynamicSubreport()))
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .setTemplateDesign(is)
+			  .columns(
+			  	col.column("Item",       "item",      type.stringType()),
+			  	col.column("Quantity",   "quantity",  type.integerType()),
+			  	col.column("Unit price", "unitprice", type.integerType()))
+			  .title(
+			  	Templates.createTitleComponent("JasperTemplateDesign2"),
+			  	cmp.subreport(createDynamicSubreport()),
+			  	cmp.subreport(createStaticSubreport()),
+			  	cmp.subreport(createStaticAndDynamicSubreport()))
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		} catch (JRException e) {
@@ -85,18 +85,18 @@ public class JasperTemplateDesignReport2 {
 
 	private JasperReportBuilder createSubreport(String title) {
 		StyleBuilder style = stl.style()
-				.setHorizontalTextAlignment(HorizontalTextAlignment.CENTER)
-				.setVerticalTextAlignment(VerticalTextAlignment.MIDDLE)
-				.setBorder(stl.pen1Point());
+		                        .setHorizontalTextAlignment(HorizontalTextAlignment.CENTER)
+		                        .setVerticalTextAlignment(VerticalTextAlignment.MIDDLE)
+		                        .setBorder(stl.pen1Point());
 
 		JasperReportBuilder report = report();
 		report
-				.setTemplate(Templates.reportTemplate)
-				.title(
-						cmp.horizontalList(
-								cmp.gap(30, 47),
-								cmp.text(title).setStyle(style),
-								cmp.gap(30, 47)));
+		  .setTemplate(Templates.reportTemplate)
+		  .title(
+		  	cmp.horizontalList(
+		  		cmp.gap(30, 47),
+		  		cmp.text(title).setStyle(style),
+		  		cmp.gap(30, 47)));
 
 		return report;
 	}

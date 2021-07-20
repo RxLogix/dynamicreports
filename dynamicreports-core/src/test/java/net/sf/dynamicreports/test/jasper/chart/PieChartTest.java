@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -50,20 +50,20 @@ public class PieChartTest extends AbstractJasperChartTest implements Serializabl
 		TextColumnBuilder<Integer> column2;
 
 		rb.addProperty("net.sf.jasperreports.chart.pie.ignore.duplicated.key", "true")
-				.columns(
-						column1 = col.column("Column1", "field1", String.class),
-						column2 = col.column("Column2", "field2", Integer.class))
-				.summary(
-						cht.pieChart()
-								.setKey(column1)
-								.series(cht.serie(column2))
-								.setCircular(false)
-								.setLabelFormat("label {0}")
-								.setLegendLabelFormat("legend label {0}"),
-						cht.pieChart()
-								.setKey(column1)
-								.series(cht.serie(column2))
-								.setShowLabels(false));
+			.columns(
+				column1 = col.column("Column1", "field1", String.class),
+				column2 = col.column("Column2", "field2", Integer.class))
+			.summary(
+					cht.pieChart()
+						.setKey(column1)
+						.series(cht.serie(column2))
+						.setCircular(false)
+						.setLabelFormat("label {0}")
+						.setLegendLabelFormat("legend label {0}"),
+					cht.pieChart()
+						.setKey(column1)
+						.series(cht.serie(column2))
+						.setShowLabels(false));
 	}
 
 	@Override
@@ -77,8 +77,7 @@ public class PieChartTest extends AbstractJasperChartTest implements Serializabl
 		Assert.assertEquals("plot", PiePlot.class, plot.getClass());
 		Assert.assertFalse("circular", ((PiePlot) plot).isCircular());
 		Assert.assertEquals("label format", "label {0}", ((StandardPieSectionLabelGenerator) ((PiePlot) plot).getLabelGenerator()).getLabelFormat());
-		Assert.assertEquals("legend label format", "legend label {0}",
-				((StandardPieSectionLabelGenerator) ((PiePlot) plot).getLegendLabelGenerator()).getLabelFormat());
+		Assert.assertEquals("legend label format", "legend label {0}", ((StandardPieSectionLabelGenerator) ((PiePlot) plot).getLegendLabelGenerator()).getLabelFormat());
 
 		chart = getChart("summary.chart2", 0);
 		plot = chart.getPlot();

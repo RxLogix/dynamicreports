@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -46,30 +46,33 @@ public class AggregationSubtotalBuilder<T> extends SubtotalBuilder<AggregationSu
 	private DRIExpression<?> expression;
 	private Calculation calculation;
 
-	// column
+	//column
 	protected AggregationSubtotalBuilder(ValueColumnBuilder<?, ?> column, Calculation calculation) {
 		this(column.getColumn(), column, calculation);
 	}
 
-	// field
+	//field
 	protected AggregationSubtotalBuilder(FieldBuilder<?> field, ColumnBuilder<?, ?> showInColumn, Calculation calculation) {
 		this(field.build(), showInColumn, calculation);
 	}
 
-	// expression
+	//expression
 	protected AggregationSubtotalBuilder(DRIExpression<?> expression, ColumnBuilder<?, ?> showInColumn, Calculation calculation) {
 		super(showInColumn);
 		this.expression = expression;
 		this.calculation = calculation;
 		if (calculation.equals(Calculation.COUNT) || calculation.equals(Calculation.DISTINCT_COUNT)) {
 			setDataType(DataTypes.longType());
-		} else if (calculation.equals(Calculation.AVERAGE) || calculation.equals(Calculation.STANDARD_DEVIATION) ||
+		}
+		else if (calculation.equals(Calculation.AVERAGE) || calculation.equals(Calculation.STANDARD_DEVIATION) ||
 				calculation.equals(Calculation.VARIANCE)) {
 			setDataType(DataTypes.doubleType());
-		} else if (expression instanceof DRIValueColumn) {
+		}
+		else if (expression instanceof DRIValueColumn){
 			setDataType(((DRIValueColumn<?>) expression).getComponent().getDataType());
 			setPattern(((DRIValueColumn<?>) expression).getComponent().getPattern());
-		} else if (expression instanceof DRIField) {
+		}
+		else if (expression instanceof DRIField){
 			setDataType(((DRIField<?>) expression).getDataType());
 		}
 	}
@@ -87,27 +90,27 @@ public class AggregationSubtotalBuilder<T> extends SubtotalBuilder<AggregationSu
 
 	private static Evaluation subtotalPositionToEvaluation(SubtotalPosition position) {
 		switch (position) {
-			case PAGE_HEADER:
-			case PAGE_FOOTER:
-				return Evaluation.PAGE;
-			case COLUMN_HEADER:
-			case COLUMN_FOOTER:
-				return Evaluation.COLUMN;
-			case GROUP_HEADER:
-			case GROUP_FOOTER:
-				return Evaluation.GROUP;
-			case FIRST_GROUP_HEADER:
-			case FIRST_GROUP_FOOTER:
-				return Evaluation.FIRST_GROUP;
-			case LAST_GROUP_HEADER:
-			case LAST_GROUP_FOOTER:
-				return Evaluation.LAST_GROUP;
-			case TITLE:
-			case LAST_PAGE_FOOTER:
-			case SUMMARY:
-				return Evaluation.REPORT;
-			default:
-				throw new DRReportException("Subtotal position " + position.name() + " not supported");
+		case PAGE_HEADER:
+		case PAGE_FOOTER:
+			return Evaluation.PAGE;
+		case COLUMN_HEADER:
+		case COLUMN_FOOTER:
+			return Evaluation.COLUMN;
+		case GROUP_HEADER:
+		case GROUP_FOOTER:
+			return Evaluation.GROUP;
+		case FIRST_GROUP_HEADER:
+		case FIRST_GROUP_FOOTER:
+			return Evaluation.FIRST_GROUP;
+		case LAST_GROUP_HEADER:
+		case LAST_GROUP_FOOTER:
+			return Evaluation.LAST_GROUP;
+		case TITLE:
+		case LAST_PAGE_FOOTER:
+		case SUMMARY:
+			return Evaluation.REPORT;
+		default:
+			throw new DRReportException("Subtotal position " + position.name() + " not supported");
 		}
 	}
 

@@ -1,7 +1,7 @@
 /**
  * DynamicReports - Free Java reporting library for creating reports dynamically
  *
- * Copyright (C) 2010 - 2018 Ricardo Mariaca
+ * Copyright (C) 2010 - 2016 Ricardo Mariaca
  * http://www.dynamicreports.org
  *
  * This file is part of DynamicReports.
@@ -13,7 +13,7 @@
  *
  * DynamicReports is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
@@ -40,33 +40,33 @@ import net.sf.jasperreports.engine.util.JRLoader;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 public class JasperSubreport {
-
+	
 	public JasperSubreport() {
 		build();
 	}
-
+	
 	private void build() {
-		try {
+		try {			
 			report()
-					.setTemplate(Templates.reportTemplate)
-					.title(
-							Templates.createTitleComponent("JasperSubreport"),
-							cmp.subreport(getJasperTitleSubreport()))
-					.columns(
-							col.column("Item", "item", type.stringType()),
-							col.column("Quantity", "quantity", type.integerType()),
-							col.column("Unit price", "unitprice", type.bigDecimalType()))
-					.pageFooter(Templates.footerComponent)
-					.summary(cmp.subreport(getJasperSummarySubreport()))
-					.setDataSource(createDataSource())
-					.show();
+			  .setTemplate(Templates.reportTemplate)
+			  .title(
+			  	Templates.createTitleComponent("JasperSubreport"),
+			  	cmp.subreport(getJasperTitleSubreport()))
+			  .columns(
+			  	col.column("Item",       "item",      type.stringType()),
+			  	col.column("Quantity",   "quantity",  type.integerType()),
+			  	col.column("Unit price", "unitprice", type.bigDecimalType()))
+			  .pageFooter(Templates.footerComponent)
+			  .summary(cmp.subreport(getJasperSummarySubreport()))
+			  .setDataSource(createDataSource())
+			  .show();
 		} catch (DRException e) {
 			e.printStackTrace();
 		} catch (JRException e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 	private JRDataSource createDataSource() {
 		DRDataSource dataSource = new DRDataSource("item", "quantity", "unitprice");
 		for (int i = 0; i < 10; i++) {
@@ -74,7 +74,7 @@ public class JasperSubreport {
 		}
 		return dataSource;
 	}
-
+	
 	private JasperReport getJasperTitleSubreport() throws JRException {
 		InputStream is = JasperSubreport.class.getResourceAsStream("titlesubreport.jrxml");
 		return JasperCompileManager.compileReport(is);
@@ -82,9 +82,9 @@ public class JasperSubreport {
 
 	private JasperReport getJasperSummarySubreport() throws JRException {
 		InputStream is = JasperSubreport.class.getResourceAsStream("summarysubreport.jasper");
-		return (JasperReport) JRLoader.loadObject(is);
+		return (JasperReport)JRLoader.loadObject(is);
 	}
-
+	
 	public static void main(String[] args) {
 		new JasperSubreport();
 	}
