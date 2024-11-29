@@ -236,6 +236,40 @@ public class JasperConcatenatedReportBuilder implements Serializable {
 		return export(textExporterBuilder);
 	}
 
+	// xhtml
+	/**
+	 * @deprecated To be removed. Use toHtml instead
+	 */
+	@Deprecated
+	public JasperConcatenatedReportBuilder toXhtml(OutputStream outputStream) throws DRException {
+		return toXhtml(Exporters.xhtmlExporter(outputStream));
+	}
+
+	/**
+	 * @deprecated To be removed. Use toHtml instead
+	 */
+	@Deprecated
+	public JasperConcatenatedReportBuilder toXhtml(net.sf.dynamicreports.jasper.builder.export.JasperXhtmlExporterBuilder xhtmlExporterBuilder) throws DRException {
+		return export(xhtmlExporterBuilder);
+	}
+
+	// excelApiXls
+	/**
+	 * @deprecated To be removed. Use toXls or toXlsx instead
+	 */
+	@Deprecated
+	public JasperConcatenatedReportBuilder toExcelApiXls(OutputStream outputStream) throws DRException {
+		return toExcelApiXls(Exporters.excelApiXlsExporter(outputStream));
+	}
+
+	/**
+	 * @deprecated To be removed. Use toXls or toXlsx instead
+	 */
+	@Deprecated
+	public JasperConcatenatedReportBuilder toExcelApiXls(net.sf.dynamicreports.jasper.builder.export.JasperExcelApiXlsExporterBuilder excelApiXlsExporterBuilder) throws DRException {
+		return export(excelApiXlsExporterBuilder);
+	}
+
 	// xls
 	public JasperConcatenatedReportBuilder toXls(OutputStream outputStream) throws DRException {
 		return toXls(Exporters.xlsExporter(outputStream));

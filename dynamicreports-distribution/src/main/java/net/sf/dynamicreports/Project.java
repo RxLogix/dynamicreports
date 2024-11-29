@@ -41,10 +41,9 @@ public class Project {
 	private String zxingVersion;
 	private String batikbridgeVersion;
 	private String xmlgraphicscommonsVersion;
-	private String bcprovjdkVersion;
+	private String bcprovjdk14Version;
 	private String commonsbeanutilsVersion;
 	private String commonscollectionsVersion;
-	private String commonscollections4Version;
 	private String commonsdigesterVersion;
 	private String commonslangVersion;
 	private String commonslang3Version;
@@ -55,6 +54,7 @@ public class Project {
 	private String jcommonVersion;
 	private String ecjVersion;
 	private String jfreechartVersion;
+	private String jxlVersion;
 	private String jacksonVersion;
 	private String log4jVersion;
 	private String poiVersion;
@@ -83,10 +83,9 @@ public class Project {
 		zxingVersion = properties.getProperty("zxingVersion");
 		batikbridgeVersion = properties.getProperty("batikbridgeVersion");
 		xmlgraphicscommonsVersion = properties.getProperty("xmlgraphicscommonsVersion");
-		bcprovjdkVersion = properties.getProperty("bcprovjdkVersion");
+		bcprovjdk14Version = properties.getProperty("bcprovjdk14Version");
 		commonsbeanutilsVersion = properties.getProperty("commonsbeanutilsVersion");
 		commonscollectionsVersion = properties.getProperty("commonscollectionsVersion");
-		commonscollections4Version = properties.getProperty("commonscollections4Version");
 		commonsdigesterVersion = properties.getProperty("commonsdigesterVersion");
 		commonslangVersion = properties.getProperty("commonslangVersion");
 		commonslang3Version = properties.getProperty("commonslang3Version");
@@ -97,6 +96,7 @@ public class Project {
 		jcommonVersion = properties.getProperty("jcommonVersion");
 		ecjVersion = properties.getProperty("ecjVersion");
 		jfreechartVersion = properties.getProperty("jfreechartVersion");
+		jxlVersion = properties.getProperty("jxlVersion");
 		jacksonVersion = properties.getProperty("jacksonVersion");
 		log4jVersion = properties.getProperty("log4jVersion");
 		poiVersion = properties.getProperty("poiVersion");
@@ -188,12 +188,12 @@ public class Project {
 		this.xmlgraphicscommonsVersion = xmlgraphicscommonsVersion;
 	}
 
-	public String getBcprovjdkVersion() {
-		return bcprovjdkVersion;
+	public String getBcprovjdk14Version() {
+		return bcprovjdk14Version;
 	}
 
-	public void setBcprovjdkVersion(String bcprovjdkVersion) {
-		this.bcprovjdkVersion = bcprovjdkVersion;
+	public void setBcprovjdk14Version(String bcprovjdk14Version) {
+		this.bcprovjdk14Version = bcprovjdk14Version;
 	}
 
 	public String getCommonsbeanutilsVersion() {
@@ -210,14 +210,6 @@ public class Project {
 
 	public void setCommonscollectionsVersion(String commonscollectionsVersion) {
 		this.commonscollectionsVersion = commonscollectionsVersion;
-	}
-
-	public String getCommonscollections4Version() {
-		return commonscollections4Version;
-	}
-
-	public void setCommonscollections4Version(String commonscollections4Version) {
-		this.commonscollections4Version = commonscollections4Version;
 	}
 
 	public String getCommonsdigesterVersion() {
@@ -298,6 +290,14 @@ public class Project {
 
 	public void setJfreechartVersion(String jfreechartVersion) {
 		this.jfreechartVersion = jfreechartVersion;
+	}
+
+	public String getJxlVersion() {
+		return jxlVersion;
+	}
+
+	public void setJxlVersion(String jxlVersion) {
+		this.jxlVersion = jxlVersion;
 	}
 
 	public String getJacksonVersion() {

@@ -250,6 +250,12 @@ public class JasperProperty {
 	 */
 	public static final String EXPORT_HTML_WHITE_PAGE_BACKGROUND = HtmlReportConfiguration.PROPERTY_WHITE_PAGE_BACKGROUND;
 	/**
+	 * @see JRHtmlExporterConfiguration#PROPERTY_USING_IMAGES_TO_ALIGN
+	 * @deprecated To be removed.
+	 */
+	@Deprecated
+	public static final String EXPORT_HTML_USING_IMAGES_TO_ALIGN = net.sf.jasperreports.engine.export.JRHtmlExporterConfiguration.PROPERTY_USING_IMAGES_TO_ALIGN;
+	/**
 	 * @see HtmlReportConfiguration#PROPERTY_WRAP_BREAK_WORD
 	 */
 	public static final String EXPORT_HTML_WRAP_BREAK_WORD = HtmlReportConfiguration.PROPERTY_WRAP_BREAK_WORD;
@@ -257,6 +263,12 @@ public class JasperProperty {
 	 * @see HtmlReportConfiguration#PROPERTY_SIZE_UNIT
 	 */
 	public static final String EXPORT_HTML_SIZE_UNIT = HtmlReportConfiguration.PROPERTY_SIZE_UNIT;
+	/**
+	 * @see JRHtmlReportConfiguration#PROPERTY_FRAMES_AS_NESTED_TABLES
+	 * @deprecated To be removed.
+	 */
+	@Deprecated
+	public static final String EXPORT_HTML_FRAMES_AS_NESTED_TABLES = net.sf.jasperreports.engine.export.JRHtmlReportConfiguration.PROPERTY_FRAMES_AS_NESTED_TABLES;
 	/**
 	 * @see HtmlExporterConfiguration#PROPERTY_FLUSH_OUTPUT
 	 */
@@ -425,6 +437,20 @@ public class JasperProperty {
 	 * @see JRXlsAbstractMetadataExporter#PROPERTY_DATA
 	 */
 	public static final String EXPORT_XLSMETADATA_DATA = JRXlsAbstractMetadataExporter.PROPERTY_DATA;
+
+	// jxl
+	/**
+	 * @see JxlExporterConfiguration#PROPERTY_USE_TEMP_FILE
+	 * @deprecated To be removed.
+	 */
+	@Deprecated
+	public static final String EXPORT_JXL_USE_TEMP_FILE = net.sf.jasperreports.export.JxlExporterConfiguration.PROPERTY_USE_TEMP_FILE;
+	/**
+	 * @see JxlReportConfiguration#PROPERTY_COMPLEX_FORMAT
+	 * @deprecated To be removed.
+	 */
+	@Deprecated
+	public static final String EXPORT_JXL_COMPLEX_FORMAT = net.sf.jasperreports.export.JxlReportConfiguration.PROPERTY_COMPLEX_FORMAT;
 
 	// xml
 	/**

@@ -61,7 +61,6 @@ import net.sf.dynamicreports.design.base.chart.plot.DRDesignPie3DPlot;
 import net.sf.dynamicreports.design.base.chart.plot.DRDesignPiePlot;
 import net.sf.dynamicreports.design.base.chart.plot.DRDesignSpiderPlot;
 import net.sf.dynamicreports.design.base.chart.plot.DRDesignThermometerPlot;
-import net.sf.dynamicreports.design.constant.DefaultStyleType;
 import net.sf.dynamicreports.design.constant.ResetType;
 import net.sf.dynamicreports.design.definition.DRIDesignHyperLink;
 import net.sf.dynamicreports.design.definition.DRIDesignVariable;
@@ -294,7 +293,6 @@ public class ChartTransform {
 			DRDesignChartAxis designAxis = new DRDesignChartAxis();
 			designAxis.setPosition(axis.getPosition());
 			DRDesignChart chart = transform(axis.getChart(), subDataset, resetType, resetGroup);
-			chart.setStyle(accessor.getStyleTransform().transformStyle(axis.getChart().getStyle(), false, DefaultStyleType.CHART));
 			chart.setUniqueName(ReportUtils.generateUniqueName("chart"));
 			designAxis.setChart(chart);
 			designMultiAxisPlot.getAxes().add(designAxis);

@@ -27,6 +27,7 @@ import java.io.File;
 import net.sf.dynamicreports.design.transformation.StyleResolver;
 import net.sf.dynamicreports.jasper.definition.export.JasperICsvExporter;
 import net.sf.dynamicreports.jasper.definition.export.JasperIDocxExporter;
+import net.sf.dynamicreports.jasper.definition.export.JasperIExcelApiXlsExporter;
 import net.sf.dynamicreports.jasper.definition.export.JasperIExcelExporter;
 import net.sf.dynamicreports.jasper.definition.export.JasperIExporter;
 import net.sf.dynamicreports.jasper.definition.export.JasperIHtmlExporter;
@@ -36,6 +37,7 @@ import net.sf.dynamicreports.jasper.definition.export.JasperIPdfExporter;
 import net.sf.dynamicreports.jasper.definition.export.JasperIPptxExporter;
 import net.sf.dynamicreports.jasper.definition.export.JasperIRtfExporter;
 import net.sf.dynamicreports.jasper.definition.export.JasperITextExporter;
+import net.sf.dynamicreports.jasper.definition.export.JasperIXhtmlExporter;
 import net.sf.dynamicreports.jasper.definition.export.JasperIXlsExporter;
 import net.sf.dynamicreports.jasper.definition.export.JasperIXlsxExporter;
 import net.sf.dynamicreports.jasper.definition.export.JasperIXmlExporter;
@@ -107,6 +109,8 @@ public class ExporterTransform {
 			jrExporter = csv((JasperICsvExporter) jasperExporter);
 		} else if (jasperExporter instanceof JasperIDocxExporter) {
 			jrExporter = docx((JasperIDocxExporter) jasperExporter);
+		} else if (jasperExporter instanceof JasperIExcelApiXlsExporter) {
+			jrExporter = excelApiXls((JasperIExcelApiXlsExporter) jasperExporter);
 		} else if (jasperExporter instanceof JasperIXlsExporter) {
 			jrExporter = xls((JasperIXlsExporter) jasperExporter);
 		} else if (jasperExporter instanceof JasperIXlsxExporter) {
@@ -123,6 +127,8 @@ public class ExporterTransform {
 			jrExporter = rtf((JasperIRtfExporter) jasperExporter);
 		} else if (jasperExporter instanceof JasperITextExporter) {
 			jrExporter = text((JasperITextExporter) jasperExporter);
+		} else if (jasperExporter instanceof JasperIXhtmlExporter) {
+			jrExporter = xhtml((JasperIXhtmlExporter) jasperExporter);
 		} else if (jasperExporter instanceof JasperIXmlExporter) {
 			jrExporter = xml((JasperIXmlExporter) jasperExporter);
 		} else if (jasperExporter instanceof JasperIPptxExporter) {
@@ -538,6 +544,59 @@ public class ExporterTransform {
 		return jrExporter;
 	}
 
+	private HtmlExporter xhtml(JasperIXhtmlExporter jasperExporter) {
+		SimpleHtmlExporterOutput exporterOutput = simpleHtmlExporterOutput(jasperExporter);
+		Boolean outputImagesToDir = jasperExporter.getOutputImagesToDir();
+		String imagesUri = jasperExporter.getImagesURI();
+		HtmlResourceHandler imageHandler = null;
+		if (outputImagesToDir == null || outputImagesToDir) {
+			File imagesDir = null;
+			String imagesDirName = jasperExporter.getImagesDirName();
+			if (imagesDirName != null) {
+				imagesDir = new File(imagesDirName);
+			}
+			if (imagesDir != null) {
+				imageHandler = new FileHtmlResourceHandler(imagesDir, imagesUri == null ? imagesDir.getName() + "/{0}" : imagesUri + "{0}");
+			}
+		}
+		if (imageHandler == null && imagesUri != null) {
+			imageHandler = new WebHtmlResourceHandler(imagesUri + "{0}");
+		}
+		if (imageHandler != null) {
+			exporterOutput.setImageHandler(imageHandler);
+		}
+		SimpleHtmlReportConfiguration reportExportConfiguration = new SimpleHtmlReportConfiguration();
+		reportExportConfiguration(reportExportConfiguration, jasperExporter);
+		if (jasperExporter.getWhitePageBackground() != null) {
+			reportExportConfiguration.setWhitePageBackground(jasperExporter.getWhitePageBackground());
+		}
+		if (jasperExporter.getWrapBreakWord() != null) {
+			reportExportConfiguration.setWrapBreakWord(jasperExporter.getWrapBreakWord());
+		}
+		if (jasperExporter.getSizeUnit() != null) {
+			reportExportConfiguration.setSizeUnit(ConstantTransform.sizeUnit(jasperExporter.getSizeUnit()));
+		}
+		if (jasperExporter.getIgnorePageMargins() != null) {
+			reportExportConfiguration.setIgnorePageMargins(jasperExporter.getIgnorePageMargins());
+		}
+		SimpleHtmlExporterConfiguration exporterConfiguration = new SimpleHtmlExporterConfiguration();
+		if (jasperExporter.getHtmlHeader() != null) {
+			exporterConfiguration.setHtmlHeader(jasperExporter.getHtmlHeader());
+		}
+		if (jasperExporter.getBetweenPagesHtml() != null) {
+			exporterConfiguration.setBetweenPagesHtml(jasperExporter.getBetweenPagesHtml());
+		}
+		if (jasperExporter.getHtmlFooter() != null) {
+			exporterConfiguration.setHtmlFooter(jasperExporter.getHtmlFooter());
+		}
+
+		HtmlExporter jrExporter = new HtmlExporter();
+		jrExporter.setExporterOutput(exporterOutput);
+		jrExporter.setConfiguration(reportExportConfiguration);
+		jrExporter.setConfiguration(exporterConfiguration);
+		return jrExporter;
+	}
+
 	private void reportExcelExportConfiguration(AbstractXlsReportConfiguration reportExportConfiguration, JasperIExcelExporter jasperExporter) {
 		reportExportConfiguration(reportExportConfiguration, jasperExporter);
 		if (jasperExporter.getOnePagePerSheet() != null) {
@@ -688,6 +747,21 @@ public class ExporterTransform {
 		reportExcelExporterConfiguration(exporterConfiguration, jasperExporter);
 
 		JRXlsExporter jrExporter = new JRXlsExporter();
+		jrExporter.setExporterOutput(exporterOutput);
+		jrExporter.setConfiguration(reportExportConfiguration);
+		jrExporter.setConfiguration(exporterConfiguration);
+		return jrExporter;
+	}
+
+	@SuppressWarnings("deprecation")
+	private net.sf.jasperreports.engine.export.JExcelApiExporter excelApiXls(JasperIExcelApiXlsExporter jasperExporter) {
+		SimpleOutputStreamExporterOutput exporterOutput = simpleOutputStreamExporterOutput(jasperExporter);
+		net.sf.jasperreports.export.SimpleJxlReportConfiguration reportExportConfiguration = new net.sf.jasperreports.export.SimpleJxlReportConfiguration();
+		reportExportConfiguration(reportExportConfiguration, jasperExporter);
+		net.sf.jasperreports.export.SimpleJxlExporterConfiguration exporterConfiguration = new net.sf.jasperreports.export.SimpleJxlExporterConfiguration();
+		reportExcelExporterConfiguration(exporterConfiguration, jasperExporter);
+
+		net.sf.jasperreports.engine.export.JExcelApiExporter jrExporter = new net.sf.jasperreports.engine.export.JExcelApiExporter();
 		jrExporter.setExporterOutput(exporterOutput);
 		jrExporter.setConfiguration(reportExportConfiguration);
 		jrExporter.setConfiguration(exporterConfiguration);

@@ -29,7 +29,6 @@ import java.util.Map;
 import net.sf.dynamicreports.design.base.DRDesignDataset;
 import net.sf.dynamicreports.design.definition.DRIDesignDataset;
 import net.sf.dynamicreports.design.exception.DRDesignReportException;
-import net.sf.dynamicreports.jasper.base.JasperScriptlet;
 import net.sf.dynamicreports.report.definition.DRIDataset;
 import net.sf.dynamicreports.report.exception.DRException;
 
@@ -63,7 +62,7 @@ public class DatasetTransform {
 		}
 		designDataset.setConnectionExpression(accessor.getExpressionTransform().transformExpression(dataset.getConnectionExpression()));
 		designDataset.setDataSourceExpression(accessor.getExpressionTransform().transformExpression(dataset.getDataSourceExpression()));
-		designDataset.setFilterExpression(datasetExpressionTransform.transformExpression(dataset.getFilterExpression(), JasperScriptlet.SCRIPTLET_NAME));
+		designDataset.setFilterExpression(datasetExpressionTransform.transformExpression(dataset.getFilterExpression()));
 
 		addDataset(dataset, designDataset);
 

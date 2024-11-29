@@ -920,9 +920,6 @@ public class ChartTransform {
 			JRDesignChartAxis jrAxis = new JRDesignChartAxis(jrChart);
 			jrAxis.setPosition(ConstantTransform.chartAxisPosition(axis.getPosition()));
 			JRDesignChart chart = chart(axis.getChart());
-			if (axis.getChart().getStyle() != null) {
-				chart.setStyle(accessor.getStyleTransform().getStyle(axis.getChart().getStyle()));
-			}
 			jrAxis.setChart(chart);
 			jrPlot.addAxis(jrAxis);
 		}

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>net.sourceforge.dynamicreports</groupId>
 		<artifactId>dynamicreports-parent</artifactId>
-		<version>5.1.0</version>
+		<version>5.0.1.2-Rx</version>
 	</parent>
 
 	<artifactId>dynamicreports-distribution</artifactId>
@@ -18,17 +18,16 @@
 	<properties>
 		<aspectjVersion>1.7.4</aspectjVersion>
 		<avalonframeworkimplVersion>4.2.0</avalonframeworkimplVersion>	
-		<bcprovjdkVersion>1.52</bcprovjdkVersion>	
-		<commonsbeanutilsVersion>1.9.3</commonsbeanutilsVersion>
+		<bcprovjdk14Version>138</bcprovjdk14Version>	
+		<commonsbeanutilsVersion>1.9.0</commonsbeanutilsVersion>
 		<commonscollectionsVersion>3.2.2</commonscollectionsVersion>
-		<commonscollections4Version>4.1</commonscollections4Version>
 		<commonsdigesterVersion>2.1</commonsdigesterVersion>
 		<commonsloggingVersion>1.1.1</commonsloggingVersion>
-		<commonscodecVersion>1.10</commonscodecVersion>
+		<commonscodecVersion>1.5</commonscodecVersion>
 		<zxingVersion>3.2.1</zxingVersion>
-		<itextVersion>2.1.7.js6</itextVersion>
+		<itextVersion>2.1.7.js5</itextVersion>
 		<jcommonVersion>1.0.23</jcommonVersion>
-		<ecjVersion>4.4.2</ecjVersion>
+		<ecjVersion>4.3.1</ecjVersion>
 		<jfreechartVersion>1.0.19</jfreechartVersion>
 		<log4jVersion>1.2.14</log4jVersion>
 		<jacksonVersion>2.1.4</jacksonVersion>

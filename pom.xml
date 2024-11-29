@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
 		<artifactId>oss-parent</artifactId>
-		<version>9</version>
+		<version>7</version>
 	</parent>
     
 	<groupId>net.sourceforge.dynamicreports</groupId>
 	<artifactId>dynamicreports-parent</artifactId>
-	<version>5.1.0</version>
+	<version>5.0.1.2-Rx</version>
 	<packaging>pom</packaging>
 
 	<name>DynamicReports - parent</name>
@@ -25,9 +25,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<connection>scm:svn:http://svn.code.sf.net/p/dynamicreports/code/tags/dynamicreports-5.1.0</connection>
-		<developerConnection>scm:svn:https://svn.code.sf.net/p/dynamicreports/code/tags/dynamicreports-5.1.0</developerConnection>
-		<url>http://svn.code.sf.net/p/dynamicreports/code/tags/dynamicreports-5.1.0</url>
+		<connection>scm:svn:http://svn.code.sf.net/p/dynamicreports/code/tags/dynamicreports-5.0.0</connection>
+		<developerConnection>scm:svn:https://svn.code.sf.net/p/dynamicreports/code/tags/dynamicreports-5.0.0</developerConnection>
+		<url>http://svn.code.sf.net/p/dynamicreports/code/tags/dynamicreports-5.0.0</url>
 	</scm>
  
 	<modules>
@@ -53,15 +53,16 @@
 		<sourceVersion>1.7</sourceVersion>
 		<targetVersion>1.7</targetVersion>
 		<encoding>UTF-8</encoding>
-		<jasperreportsVersion>6.5.1</jasperreportsVersion>
+		<jasperreportsVersion>6.7.1.1-Rx</jasperreportsVersion>
 		<commonslangVersion>2.6</commonslangVersion>
 		<commonslang3Version>3.1</commonslang3Version>
 		<barcode4jVersion>2.0</barcode4jVersion>
 		<barbecueVersion>1.5-beta1</barbecueVersion>
-		<batikbridgeVersion>1.9</batikbridgeVersion>
+		<batikbridgeVersion>1.8</batikbridgeVersion>
 		<xmlgraphicscommonsVersion>2.1</xmlgraphicscommonsVersion>
-		<springframeworkVersion>3.2.18.RELEASE</springframeworkVersion>
-		<poiVersion>3.15</poiVersion>
+		<springframeworkVersion>2.5</springframeworkVersion>
+		<poiVersion>3.10.1</poiVersion>
+		<jxlVersion>2.6.10</jxlVersion>
 		<junitVersion>4.0</junitVersion>
 		<hsqldbVersion>1.8.0.10</hsqldbVersion>
 		<xalanVersion>2.7.2</xalanVersion>
@@ -69,6 +70,13 @@
 		<velocityVersion>1.7</velocityVersion>
 		<jsonVersion>20080701</jsonVersion>		
 	</properties>
+	
+	<repositories>
+		<repository>
+			<id>rx</id>
+			<url>http://10.100.3.6:8080/nexus/content/repositories/thirdparty</url>
+		</repository>
+	</repositories>
 
 	<dependencyManagement>
 		<dependencies>
@@ -110,7 +118,7 @@
 						<groupId>com.ibm.icu</groupId>
 					</exclusion>
 				</exclusions>
-			</dependency>		
+			</dependency>	
 			<dependency>
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>
@@ -181,7 +189,14 @@
 				<version>${poiVersion}</version>
 				<scope>runtime</scope>
 				<optional>true</optional>
-			</dependency>				
+			</dependency>		
+			<dependency>
+				<groupId>net.sourceforge.jexcelapi</groupId>
+				<artifactId>jxl</artifactId>
+				<version>${jxlVersion}</version>
+				<scope>runtime</scope>
+				<optional>true</optional>
+			</dependency>		
 			<dependency>
 				<groupId>org.hsqldb</groupId>
 				<artifactId>hsqldb</artifactId>
@@ -372,5 +387,12 @@
 			</build>
 		</profile>
 	</profiles>
-
+	<distributionManagement>
+		<repository>
+			<id>RXLOGIX-thirdparty</id>
+			<name>RXLOGIX Thirdparty Artifacts Repo</name>
+			<url>http://10.100.3.6:8080/nexus/content/repositories/thirdparty/</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
 </project>

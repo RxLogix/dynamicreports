@@ -54,6 +54,7 @@ public class ExportTest {
 		concatenatedReport.concatenate(report, report, report);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void exportTest() {
 		try {
@@ -67,6 +68,8 @@ public class ExportTest {
 			report.toPdf(new ByteArrayOutputStream());
 			report.toRtf(new ByteArrayOutputStream());
 			report.toText(new ByteArrayOutputStream());
+			report.toXhtml(new ByteArrayOutputStream());
+			report.toExcelApiXls(new ByteArrayOutputStream());
 			report.toXls(new ByteArrayOutputStream());
 			report.toXlsx(new ByteArrayOutputStream());
 			report.toXml(new ByteArrayOutputStream());
@@ -77,6 +80,7 @@ public class ExportTest {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void concatenatedExportTest() {
 		try {
@@ -89,6 +93,8 @@ public class ExportTest {
 			concatenatedReport.toPdf(new ByteArrayOutputStream());
 			concatenatedReport.toRtf(new ByteArrayOutputStream());
 			concatenatedReport.toText(new ByteArrayOutputStream());
+			concatenatedReport.toXhtml(new ByteArrayOutputStream());
+			concatenatedReport.toExcelApiXls(new ByteArrayOutputStream());
 			concatenatedReport.toXls(new ByteArrayOutputStream());
 			concatenatedReport.toXlsx(new ByteArrayOutputStream());
 			concatenatedReport.toXml(new ByteArrayOutputStream());

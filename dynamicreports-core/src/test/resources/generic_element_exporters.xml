@@ -15,6 +15,9 @@
 						<entry key="net.sf.jasperreports.html">
 							<ref local="customHtmlExportHandler"/>
 						</entry>
+						<entry key="net.sf.jasperreports.xhtml">
+							<ref local="customHtmlExportHandler"/>
+						</entry>
 					</map>
 				</entry>
 			</map>
