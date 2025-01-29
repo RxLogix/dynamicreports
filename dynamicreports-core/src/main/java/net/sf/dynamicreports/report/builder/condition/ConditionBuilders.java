@@ -36,7 +36,7 @@ public class ConditionBuilders {
 		return Conditions.equal(value, values);
 	}
 
-	public <T extends Number> EqualValueExpression<T> equal(DRIValue<T> value, Number... number) {
+	public <T extends Number> EqualValueExpression<T> equal(DRIValue<T> value, T... number) {
 		return Conditions.equal(value, number);
 	}
 
@@ -45,7 +45,7 @@ public class ConditionBuilders {
 		return Conditions.unEqual(value, values);
 	}
 
-	public <T extends Number> UnEqualValueExpression<T> unEqual(DRIValue<T> value, Number... number) {
+	public <T extends Number> UnEqualValueExpression<T> unEqual(DRIValue<T> value, T... number) {
 		return Conditions.unEqual(value, number);
 	}
 

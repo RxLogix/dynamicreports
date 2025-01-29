@@ -36,7 +36,7 @@ public class Conditions {
 		return new EqualExpression(value, values);
 	}
 
-	public static <T extends Number> EqualValueExpression<T> equal(DRIValue<T> value, Number... number) {
+	public static <T extends Number> EqualValueExpression<T> equal(DRIValue<T> value, T... number) {
 		return new EqualValueExpression<T>(value, number);
 	}
 
@@ -45,7 +45,7 @@ public class Conditions {
 		return new UnEqualExpression(value, values);
 	}
 
-	public static <T extends Number> UnEqualValueExpression<T> unEqual(DRIValue<T> value, Number... number) {
+	public static <T extends Number> UnEqualValueExpression<T> unEqual(DRIValue<T> value, T... number) {
 		return new UnEqualValueExpression<T>(value, number);
 	}
 
